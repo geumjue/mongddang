@@ -1,17 +1,160 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+      <ul class="toolbar_list">
+        <li class="toolbar_movie">
+          <ion-button>영화</ion-button>
+        </li>
+        <li class="toolbar_series">
+          <ion-button>시리즈</ion-button>
+        </li>
+        <li class="toolbar_book">
+          <ion-button>책</ion-button>
+        </li>
+        <li class="toolbar_cartoon">
+          <ion-button>웹툰</ion-button>
+        </li>
+      </ul>
+      <img src="assets/images/logo.png" class="logo_image" alt="로고이미지">
+
+
+
+
   </ion-toolbar>
 </ion-header>
+<!--<ion-content [fullscreen]="true">-->
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large">Tab 1</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!--  <app-explore-container name="Tab 1 page"></app-explore-container>-->
+<!--</ion-content>-->
+<ion-content>
+  <div class="preview">
+    <img src="https://an2-img.amz.wtchn.net/image/v2/OdNWoV21PRyh5dqirCbuCA.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd0lqb2lMM1l5TDNOMGIzSmxMM1ZwYldGblpTODRNek00TWpNek1qWTBNamczT1NKOS5hTHlmQU9CN25XYWVKbzBRVkhGSDFRU2Y2ME1pODlkem9Bcl9pcWV2NUg0&ts=1723617498" alt="프리뷰">
+  </div>
+  <div class="home_comment">
+    <p>지금 뜨는 코멘트</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title></ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+
+      <ion-button fill="clear">Action 1</ion-button>
+      <ion-button fill="clear">Action 2</ion-button>
+    </ion-card>
+
+  </div>
+  <div class="movie_list">
+    <p>박스오피스 순위</p>
+
+
+  </div>
+  <div class="">
+    <p>평균별점이 높은 작품</p>
+  </div>
+  <div class="event">
+    <p>이벤트 ?</p>
+    <ion-card>
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+  <div class="actor">
+    <p>화제의 배우 "이도현"의 작품</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+  <div class="director">
+    <p>화제의 작품 "봉준호"의 작품</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail>
+            <ion-label>Item</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
 </ion-content>

@@ -1,0 +1,60 @@
+.toolbar_list {
+  display: flex; /* 가로 정렬 */
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0;
+  margin: 0;
+}
+.toolbar_list ion-button {
+  --margin: 0;
+  --background: white;
+  --border: none;
+  --box-shadow: none;
+  --color: black;
+  font-size:18px;
+  font-weight: bold;
+}
+
+.logo_image {
+  width: auto;  /* 이미지 너비 */
+  height: 44px;
+
+  display: block;  /* 이미지 블록 요소로 설정 */
+}
+ion-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbar_list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.toolbar_list li {
+  margin-right: 15px; /* 항목 간의 간격 조절 */
+}
+
+.toolbar_logo {
+  margin-left: auto; /* 리스트와 이미지 사이에 자동 여백 */
+}
+
+.logo_image {
+  width: 100px; /* 이미지 너비 조절 */
+  height: auto; /* 이미지 비율 유지 */
+}
+
+
+
+.preview img{
+  width: 430px;
+  height: 180px;
+  border-radius: 15px;
+}
+
+p{
+  font-size: 20px;
+
+}

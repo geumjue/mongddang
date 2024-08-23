@@ -1,13 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>createAccount</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+</head>
+<div style="text-align: center; margin-top:40px">
+  <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:280px; height: auto;">
+</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">createAccount</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content>
+  <h1 class="login-title">회원가입</h1>
+
+  <form>
+    <div class="login-box">
+      <ion-item>
+        <ion-label position="floating">닉네임</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">이메일</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">비밀번호</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </div>
+    <div class="divider-container">
+      <hr class="divider-line">
+<!--<span class="divider-text">O</span>-->
+      <hr class="divider-line">
+    </div>
+  </form>
 </ion-content>
+</html>

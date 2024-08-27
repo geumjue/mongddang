@@ -1,0 +1,64 @@
+// src/app/pages/your-page/your-page.page.scss
+
+.login-title {
+  margin: 0 auto;
+  font-size: 23px; /* 글씨 크기 조정 */
+  font-weight: bold; /* 글씨 굵기 조정 */
+  text-align: center; /* 가운데 정렬 */
+  color: #db4a2b; /* 글씨 색깔 변경 */
+}
+
+ion-item {
+  --background: #e4e2dd; /* 배경색 */
+  --border-radius: 8px; /* 모서리 둥글기 */
+  --box-shadow: none; /* 그림자 효과 */
+  margin-bottom: 16px; /* 아래쪽 여백 */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+ion-input {
+  --padding-start: 12px; /* 왼쪽 패딩 */
+  --padding-end: 12px; /* 오른쪽 패딩 */
+  --border: 1px solid #ccc; /* 테두리 */
+  --border-radius: 8px; /* 모서리 둥글기 */
+  box-shadow: none;
+}
+
+ion-label {
+  color: black; /* 레이블 색깔을 검은색으로 설정 */
+}
+
+.center-text {
+  text-align: center; /* 중앙 정렬 */
+  display: block; /* div로 감싸서 블록 레벨로 설정 */
+}
+
+.account-text {
+  color: grey;
+  font-size: 15px; /* 글씨 크기 설정 (필요에 따라 조정) */
+}
+
+.signup-text {
+  color: #db4a2b;
+  font-size: 15px; /* 글씨 크기 설정 (필요에 따라 조정) */
+}
+
+.divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* 위쪽 간격 조정 (필요에 따라 조정) */
+}
+
+.divider-line {
+  border: none;
+  border-top: 1px solid lightgray; /* 구분선 색상과 두께 설정 */
+  flex: 1;
+  margin: 0 10px; /* 구분선과 텍스트 사이의 간격 설정 */
+}
+
+.divider-text {
+  color: grey; /* "or" 텍스트 색상 설정 */
+  font-size: 14px; /* "or" 텍스트 크기 설정 */
+}

@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--<ion-header [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>-->
+<!--      Tab 2-->
+<!--    </ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!--<ion-content [fullscreen]="true">-->
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large">Tab 2</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<!--  <app-explore-container name="Tab 2 page"></app-explore-container>-->
+<!--</ion-content>-->
+<ion-content>
+  <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar>
+  <ion-searchbar show-cancel-button="always" placeholder="Always Show"></ion-searchbar>
+  <ion-searchbar show-cancel-button="never" placeholder="Never Show"></ion-searchbar>
+  <ion-searchbar
+    show-cancel-button="always"
+    cancel-button-text="Custom Cancel"
+    cancel-button-icon="trash"
+    placeholder="Custom Cancel Button"
+  ></ion-searchbar>
 </ion-content>

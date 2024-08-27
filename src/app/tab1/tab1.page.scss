@@ -6,13 +6,22 @@
 }
 .toolbar_list ion-button {
   --margin: 0;
-  --background: white;
   --border: none;
   --box-shadow: none;
   --color: black;
   font-size:18px;
   font-weight: bold;
 }
+.toolbar_list ion-button ::after{
+  position: relative;
+  left: 15px;
+  width: 1px;
+  height: 13px;
+  content: "";
+  background: black;
+}
+
+
 
 .logo_image {
   width: auto;  /* 이미지 너비 */

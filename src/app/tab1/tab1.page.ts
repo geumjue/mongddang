@@ -11,6 +11,6 @@ export class Tab1Page {
   constructor(private router: Router) {}
 
   goToSeriesPage(){
-    this.router.navigate(['/series']);
+    this.router.navigate(['tabs/tab1/series']);
   }
 }

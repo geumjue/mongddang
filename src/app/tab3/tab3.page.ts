@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
 export class Tab3Page {
   constructor(private router: Router) {}
 
-  goToLoginPage() {
+  goToCreateAccountPage() {
     this.router.navigate(['/create-account']);
   }
 

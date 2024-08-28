@@ -23,7 +23,7 @@ export class Tab3Page {
   constructor(private router: Router) {}
 
   goToCreateAccountPage() {
-    this.router.navigate(['/create-account']);
+    this.router.navigate(['/tabs/tab3/create-account']);
   }
 
 }

@@ -29,11 +29,11 @@ export class Tab3Page {
     this.router.navigate(['/tabs/tab1']);
   }
 
-  logout() {
-    this.authService.logout(); // 로그아웃 상태로 설정
-    console.log('User logged out');
-    this.router.navigate(['/tabs/tab3']); // 로그아웃 후 로그인 페이지로 라우팅
-  }
+  // logout() {
+  //   this.authService.logout(); // 로그아웃 상태로 설정
+  //   console.log('User logged out');
+  //   this.router.navigate(['/tabs/tab3']); // 로그아웃 후 로그인 페이지로 라우팅
+  // }
 
 
   goToCreateAccountPage() {

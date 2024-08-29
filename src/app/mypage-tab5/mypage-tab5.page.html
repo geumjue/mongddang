@@ -1,14 +1,34 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>mypageTab5</ion-title>
+    <ion-title>마이페이지</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mypageTab5</ion-title>
-      <ion-button (click)="logout()" expand="full" type="button">로그아웃</ion-button>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>프로필</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- 프로필 사진 -->
+      <div class="profile-image-container">
+        <img src="assets/images/unknow.png" alt="익명사진" style="width:100px; height: auto;">
+      </div>
+
+      <!-- 유저 정보 -->
+      <ion-item>
+        <ion-label>
+          <h2>닉네임  </h2>
+          <span><h3>메타몽</h3></span>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <h2>이메일  </h2>
+        <ion-input type="email" value="metamong@g.hongik.ac.kr" readonly></ion-input>
+      </ion-item>
+      <ion-buttons slot="end">
+        <ion-button (click)="logout()">로그아웃</ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

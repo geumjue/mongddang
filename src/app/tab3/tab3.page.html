@@ -25,7 +25,7 @@
         <ion-input type="password"></ion-input>
       </ion-item>
     </div>
-    <ion-button expand="full" type="submit">로그인</ion-button>
+    <ion-button (click)="login()" expand="full" type="submit">로그인</ion-button>
     <div class="center-text">
       <span class="account-text">계정이 없으신가요? </span>
       <span class="signup-text" (click)="goToCreateAccountPage()">회원가입</span>
@@ -36,4 +36,5 @@
       <hr class="divider-line">
     </div>
   </form>
+  <ion-button (click)="logout()" expand="full" type="button">로그아웃</ion-button>
 </ion-content>

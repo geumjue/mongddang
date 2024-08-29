@@ -21,6 +21,7 @@ import { AuthService} from "../services/auth.service";
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {

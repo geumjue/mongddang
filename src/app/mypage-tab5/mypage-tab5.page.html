@@ -12,23 +12,55 @@
     <ion-card-content>
       <!-- 프로필 사진 -->
       <div class="profile-image-container">
-        <img src="assets/images/unknow.png" alt="익명사진" style="width:100px; height: auto;">
+        <img src="assets/images/unknown.png" alt="익명사진" style="width:100px; height: auto;">
       </div>
 
       <!-- 유저 정보 -->
       <ion-item>
         <ion-label>
-          <h2>닉네임  </h2>
+          <h2>닉네임</h2>
           <span><h3>메타몽</h3></span>
         </ion-label>
       </ion-item>
       <ion-item>
-        <h2>이메일  </h2>
+        <h2>이메일</h2>
         <ion-input type="email" value="metamong@g.hongik.ac.kr" readonly></ion-input>
       </ion-item>
       <ion-buttons slot="end">
         <ion-button (click)="logout()">로그아웃</ion-button>
       </ion-buttons>
+      <ion-grid [fixed]="true">
+        <ion-row class="profile-row">
+          <ion-col class="col1">평점</ion-col>
+          <ion-col class="col2">코멘트</ion-col>
+          <ion-col class="col3">컬렉션</ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-grid [fixed]="true">
+      <ion-card-header>
+        <ion-card-title>보관함</ion-card-title>
+      </ion-card-header>
+      <ion-row class="storage-row">
+        <ion-col>
+          <ion-icon name="videocam"></ion-icon>
+          영화
+        </ion-col>
+        <ion-col>
+          <ion-icon name="play"></ion-icon>
+          시리즈
+        </ion-col>
+        <ion-col>
+          <ion-icon name="book"></ion-icon>
+          책
+        </ion-col>
+        <ion-col>
+          <ion-icon name="happy"></ion-icon>
+          웹툰
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>

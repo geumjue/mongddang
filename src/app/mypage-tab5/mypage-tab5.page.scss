@@ -11,7 +11,9 @@
 }
 
 
-
+ion-toolbar ion-title{
+  font-size: large;
+}
 //닉네임 부분
 ion-item ion-label h2 {
   font-size: 0.75em; /* 닉네임 글씨 크기 조정 */
@@ -56,16 +58,65 @@ ion-item {
   --inner-padding-end: 0; /* 아이템 내부 오른쪽 여백 제거 */
 }
 
+
+//평점, 코멘트, 컬렉션 스타일
+.profile-row {
+  border: solid 1px #c6c6c6; /* 전체 row를 둘러싸는 border */
+  padding: 0;
+  display: flex;
+  text-align: center;
+  font-size: 19px;
+}
+
+
+.col1, .col2 {
+  padding: 10px; /* 내부 여백 추가 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  color:black;
+  border-right: solid 1px #c6c6c6; /* 각 col 사이에 경계선 추가 */
+  box-sizing: border-box; /* padding과 border가 포함되도록 설정 */
+}
+.col3 {
+  color:black;
+  padding: 10px; /* 내부 여백 추가 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  box-sizing: border-box; /* padding과 border가 포함되도록 설정 */
+}
+
+//영화,시리즈,책,웹툰 css
+.storage-row ion-col {
+  display: flex;
+  flex-direction: column; /* 수직 정렬을 위해 방향 설정 */
+  align-items: center; /* 중앙 정렬 */
+  background: transparent;
+  border: solid 1px #c6c6c6;
+  border-radius: 20px;
+  color: black;
+  font-size: 19px;
+  margin: 5px;
+  text-align: center;
+}
+.storage-row ion-icon {
+  margin-bottom: 5px; /* 아이콘과 텍스트 간의 간격 */
+}
+
+    //.profile-row ion-col{
+    //  white-space: nowrap;
+    //  background: transparent;
+    //  border: solid 1px #c6c6c6;
+    //  color: black;
+    //  font-size: 19px;
+    //  margin: 5px;
+    //  text-align: center;
+    //}
 ion-card {
   padding: 10px; /* 카드 내부 여백 */
 }
 
 ion-card-header {
   padding-bottom: 8px; /* 카드 헤더와 카드 콘텐츠 간의 간격 */
-}
-
-ion-card-header {
   display: flex;
+  margin-bottom: 15px;
   justify-content: space-between; // 제목과 버튼 사이의 공간을 만듭니다.
   align-items: center; // 수직 정렬을 중앙으로
   height: 56px; // 필요에 따라 높이 조정
@@ -78,8 +129,13 @@ ion-card-header {
   margin-top: 10px;
 }
 
-
+//로그아웃 버튼
 ion-buttons {
   margin: 10px 0 0 260px;
 }
+
+//프로필
+//ion-card-header ion-card ion-content{
+//  color: #db4a2b;
+//}
 

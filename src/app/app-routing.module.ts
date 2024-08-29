@@ -39,11 +39,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  {
+  },
+  {
     path: 'series',
     loadChildren: () => import('./series/series.module').then( m => m.SeriesPageModule)
   },
   {
+    path: 'book',
+    loadChildren: () => import('./book/book.module').then( m => m.BookPageModule)
+=======
     path: 'rating-tab3',
     loadChildren: () => import('./rating-tab3/rating-tab3.module').then( m => m.RatingTab3PageModule)
   },

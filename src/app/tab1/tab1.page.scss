@@ -1,3 +1,12 @@
+.home_wrapper {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.home_wrapper::-webkit-scrollbar {
+  display: none;
+ }
+
 .toolbar_list {
   display: flex; /* 가로 정렬 */
   list-style: none; /* 기본 리스트 스타일 제거 */

@@ -46,8 +46,9 @@ const routes: Routes = [
   },
   {
     path: 'book',
-    loadChildren: () => import('./book/book.module').then( m => m.BookPageModule)
-=======
+    loadChildren: () => import('./book/book.module').then(m => m.BookPageModule)
+  },
+  {
     path: 'rating-tab3',
     loadChildren: () => import('./rating-tab3/rating-tab3.module').then( m => m.RatingTab3PageModule)
   },

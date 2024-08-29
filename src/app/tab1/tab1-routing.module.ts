@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 import {SeriesPage} from "../series/series.page";
+import {BookPage} from "../book/book.page";
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'series',
-    component: SeriesPage
+    component: SeriesPage,
+  },
+  {
+    path: 'book',
+    component: BookPage,
   }
 ];
 

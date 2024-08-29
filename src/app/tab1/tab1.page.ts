@@ -13,4 +13,7 @@ export class Tab1Page {
   goToSeriesPage(){
     this.router.navigate(['tabs/tab1/series']);
   }
+  goToBookPage(){
+    this.router.navigate(['tabs/tab1/book']);
+  }
 }

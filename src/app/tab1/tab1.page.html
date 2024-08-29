@@ -8,7 +8,7 @@
           <ion-button (click)="goToSeriesPage()" color="white">시리즈</ion-button>
         </li>
         <li class="toolbar_book">
-          <ion-button color="white">책</ion-button>
+          <ion-button (click)="goToBookPage()" color="white">책</ion-button>
         </li>
         <li class="toolbar_cartoon">
           <ion-button color="white">웹툰</ion-button>
@@ -46,10 +46,13 @@
     </ion-card>
 
   </div>
-  <div class="movie_list">
+  <div class="box_office_rankings">
     <p>박스오피스 순위</p>
-
-
+    <section class="movie_list">
+      <ul>
+        <li></li>
+      </ul>
+    </section>
   </div>
   <div class="star">
     <p>평균별점이 높은 작품</p>

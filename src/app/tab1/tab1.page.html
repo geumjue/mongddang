@@ -50,7 +50,18 @@
     <p>박스오피스 순위</p>
     <section class="movie_list">
       <ul>
-        <li></li>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
+
       </ul>
     </section>
   </div>

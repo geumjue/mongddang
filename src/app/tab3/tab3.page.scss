@@ -10,6 +10,11 @@
   font-family: 'SUITE-Regular', sans-serif;
 }
 
+ion-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .login-title {
   margin: 0 auto;
   font-size: 23px; /* 글씨 크기 조정 */

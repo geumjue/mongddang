@@ -17,9 +17,12 @@
   --margin: 0;
   --border: none;
   --box-shadow: none;
-  --color: black;
+  --color: grey;
   font-size:18px;
   font-weight: bold;
+}
+.toolbar_list ion-button:hover{
+  --color: black;
 }
 .toolbar_list ion-button ::after{
   position: relative;
@@ -63,22 +66,93 @@ ion-toolbar {
   width: 100px; /* 이미지 너비 조절 */
   height: auto; /* 이미지 비율 유지 */
 }
+.preview {
+  text-align: center; /* 텍스트와 이미지 가운데 정렬 */
+}
 
 .preview img{
-  width: 430px;
+  width: 400px;
   height: 180px;
+  display: inline-block;
   border-radius: 15px;
 }
 
 p{
   font-size: 20px;
+  margin-left: 16px;
+}
+
+
+//comment: 택스트 크기 설정
+.home_comment ion-card-title {
+  font-size: 18px;
+}
+.comment{
+  font-size: 15px;
+  margin-top: 10px;
+  overflow-y: hidden;
+}
+
+
+//profile: 크기 조절
+.comment_profile {
+  display: flex;
+  align-items: center;
+
+}
+ion-card-header {
+  padding-bottom: 8px;
+}
+ion-avatar {
+  width: 30px; /* 아이콘의 너비 조정 */
+  height: 30px; /* 아이콘의 높이 조정 */
+}
+
+ion-avatar img {
+  width: 100%; /* 이미지의 너비를 ion-avatar에 맞추기 */
+  height: 100%; /* 이미지의 높이를 ion-avatar에 맞추기 */
+  object-fit: cover; /* 이미지가 영역을 채우면서 비율 유지 */
+}
+
+ion-label {
+  margin-left: 5px; /* 이미지와 레이블 사이에 여백 */
+}
+
+.comment-card{
+  margin: 15px;
+}
+
+//comment: 이미지 크기 설정
+ion-thumbnail {
+  width: 70px;
+  height: 100px;
+}
+ion-thumbnail img {
+  width: 70px;
+  height: 100px;
+  border-radius: 5px;
+  object-fit: cover; /* 이미지 비율 유지하면서 썸네일에 맞게 조정 */
+}
+
+.home_comment ion-item {
+  --border-width: 0;
+  --inner-border-width: 0;
+}
+
+.text-button{
+  color: black;
+  font-size: 15px;
+}
+.text-button ion-icon {
+  font-size: 18px; /* 아이콘의 크기 조절 */
+  margin-right: 3px;
+
 }
 
 .box_office_rankings {
   width: 430px;
   margin-bottom: 30px;
 }
-
 .box_office_rankings .label {
   font-size: 20px;
   font-weight: 700;
@@ -87,17 +161,17 @@ p{
 
 .box_office_rankings .movie_list {
   width: 100%;
-  height: 400px;
+  height: 300px;
   overflow-x: scroll;
   overflow-y: hidden;
 
-  // 가로 스크롤 없애기, 대신 mobile에서만 스크롤 가능함
-  // -ms-overflow-style: none;
-  // scrollbar-width: none;
+   //가로 스크롤 없애기, 대신 mobile에서만 스크롤 가능함
+   -ms-overflow-style: none;
+   scrollbar-width: none;
 
-  // ::-webkit-scrollbar {
-  //   display: none;
-  // }
+   ::-webkit-scrollbar {
+     display: none;
+   }
 }
 
 .box_office_rankings .movie_list ul {
@@ -112,7 +186,13 @@ p{
 }
 
 .box_office_rankings .movie_list ul li {
-  width: 200px;
+  width: 130px; //왓챠피디아에서 그대로 이미지 가져온거라 따로 이미지 크기는 조정안함
+}
+
+.box_office_rankings .movie_list ul li img {
+  margin-left: 16px; /* 리스트 항목 내 모든 이미지의 왼쪽 마진 */
+  border-radius: 5px;
+
 }
 
 .box_office_rankings .movie_list ul li .description {
@@ -120,6 +200,7 @@ p{
   display: flex;
   flex-direction: column;
   gap: 5px;
+
 
   .title {
     font-size: 16px;
@@ -132,7 +213,6 @@ p{
 
   .year_country {
     font-size: 14px;
-    margin: 0;
   }
 
   .sub {

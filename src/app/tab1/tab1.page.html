@@ -1,5 +1,11 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-title>
+      <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:160px; height: 40px;">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-header [translucent]="true">
-
       <ul class="toolbar_list">
         <li class="toolbar_movie">
           <ion-button color="white">영화</ion-button>
@@ -14,11 +20,10 @@
           <ion-button color="white">웹툰</ion-button>
         </li>
       </ul>
-
 </ion-header>
 <div class="home_wrapper">
   <div class="preview">
-    <img src="https://an2-img.amz.wtchn.net/image/v2/OdNWoV21PRyh5dqirCbuCA.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd0lqb2lMM1l5TDNOMGIzSmxMM1ZwYldGblpTODRNek00TWpNek1qWTBNamczT1NKOS5hTHlmQU9CN25XYWVKbzBRVkhGSDFRU2Y2ME1pODlkem9Bcl9pcWV2NUg0&ts=1723617498" alt="프리뷰">
+    <img src="assets/images/preview.png" alt="프리뷰">
   </div>
   <div class="home_comment">
     <p>지금 뜨는 코멘트</p>
@@ -67,8 +72,27 @@
       </ul>
     </section>
   </div>
-  <div class="star">
+<!--  <div class="star">-->
+<!--    <p>평균별점이 높은 작품</p>-->
+<!--  </div>-->
+  <div class="box_office_rankings">
     <p>평균별점이 높은 작품</p>
+    <section class="movie_list">
+      <ul>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </section>
   </div>
   <div class="actor">
     <p>화제의 배우 "황정민"의 작품</p>
@@ -83,88 +107,222 @@
             <ion-thumbnail slot="start">
               <img alt="베테랑2" src="https://an2-img.amz.wtchn.net/image/v2/5hebIEomnrG7kgFeIqfu4w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpjMk1qZzFOVE0zTWpJME9UQXhNREFpZlEuMkpETVZmSDRJNGNhbWVIRkZ4R3dTeHZqcWl0YXNza2pNclNZcGNYWVFIaw">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>베테랑</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item>
             <ion-thumbnail slot="start">
               <img alt="크로스" src="https://an2-img.amz.wtchn.net/image/v2/XApRmu2NJ88a3ZeD3AtIoQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpJeE56QXlPRGMxTlRjNU16YzBJbjAuLXRwdl90Q2RVTnUza0xlMTA4YkhLbS1SRUl6N1VpUm5GbFFCSnptUzFjNA">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>크로스</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item>
             <ion-thumbnail slot="start">
               <img alt="서울의 봄"  src="https://an2-img.amz.wtchn.net/image/v2/y8zw23wQG88i2Y3lNWetpQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UazFPVEkwTmpnM016QTVNamd6TWpFaWZRLjFQU194eWZtVWFUZG5KUmhsY2V5RHVlVnZXVVhEQ2hhYlhnY01KZ1Fka1k">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>서울의 봄</h2>
+              <h4>드라마</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item lines="none">
             <ion-thumbnail slot="start">
               <img alt="길복순" src="https://an2-img.amz.wtchn.net/image/v2/lZnOM6fJ1R36uYMe69VklQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56YzRNRFUzTVRjM01qa3hNakEyTlRraWZRLlkyTHFRdXBfT3phbVNqT3cxM1ZBWVIzUi0xWV9BZjhuNV9LTDRUUUktQWs">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>길복순</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-card-content>
     </ion-card>
 
   </div>
-  <div class="director">
+<!--  <div class="director">-->
+<!--    <p>화제의 감독 "제임스 카메론"의 작품</p>-->
+<!--    <ion-card>-->
+<!--      <ion-card-header>-->
+<!--        <ion-card-title>Card Title</ion-card-title>-->
+<!--        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>-->
+<!--      </ion-card-header>-->
+<!--      <ion-card-content>-->
+<!--        <ion-list>-->
+<!--          <ion-item>-->
+<!--            <ion-thumbnail slot="start">-->
+<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
+<!--            </ion-thumbnail>-->
+<!--            <ion-label>Item</ion-label>-->
+<!--          </ion-item>-->
+
+<!--          <ion-item>-->
+<!--            <ion-thumbnail slot="start">-->
+<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
+<!--            </ion-thumbnail>-->
+<!--            <ion-label>Item</ion-label>-->
+<!--          </ion-item>-->
+
+<!--          <ion-item>-->
+<!--            <ion-thumbnail slot="start">-->
+<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
+<!--            </ion-thumbnail>-->
+<!--            <ion-label>Item</ion-label>-->
+<!--          </ion-item>-->
+
+<!--          <ion-item lines="none">-->
+<!--            <ion-thumbnail slot="start">-->
+<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
+<!--            </ion-thumbnail>-->
+<!--            <ion-label>Item</ion-label>-->
+<!--          </ion-item>-->
+<!--        </ion-list>-->
+<!--      </ion-card-content>-->
+<!--    </ion-card>-->
+
+<!--  </div>-->
+<!--  <div class="genre1">-->
+<!--    <p>#SF/판타지</p>-->
+<!--  </div>-->
+  <div class="actor">
     <p>화제의 감독 "제임스 카메론"의 작품</p>
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Card Title</ion-card-title>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        <ion-card-title>영화</ion-card-title>
+        <ion-card-subtitle>#황정민</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
           <ion-item>
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="베테랑2" src="https://an2-img.amz.wtchn.net/image/v2/5hebIEomnrG7kgFeIqfu4w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpjMk1qZzFOVE0zTWpJME9UQXhNREFpZlEuMkpETVZmSDRJNGNhbWVIRkZ4R3dTeHZqcWl0YXNza2pNclNZcGNYWVFIaw">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>베테랑</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item>
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="크로스" src="https://an2-img.amz.wtchn.net/image/v2/XApRmu2NJ88a3ZeD3AtIoQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpJeE56QXlPRGMxTlRjNU16YzBJbjAuLXRwdl90Q2RVTnUza0xlMTA4YkhLbS1SRUl6N1VpUm5GbFFCSnptUzFjNA">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>크로스</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item>
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="서울의 봄"  src="https://an2-img.amz.wtchn.net/image/v2/y8zw23wQG88i2Y3lNWetpQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UazFPVEkwTmpnM016QTVNamd6TWpFaWZRLjFQU194eWZtVWFUZG5KUmhsY2V5RHVlVnZXVVhEQ2hhYlhnY01KZ1Fka1k">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>서울의 봄</h2>
+              <h4>드라마</h4>
+            </ion-label>
           </ion-item>
-
           <ion-item lines="none">
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="길복순" src="https://an2-img.amz.wtchn.net/image/v2/lZnOM6fJ1R36uYMe69VklQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56YzRNRFUzTVRjM01qa3hNakEyTlRraWZRLlkyTHFRdXBfT3phbVNqT3cxM1ZBWVIzUi0xWV9BZjhuNV9LTDRUUUktQWs">
             </ion-thumbnail>
-            <ion-label>Item</ion-label>
+            <ion-label>
+              <h2>길복순</h2>
+              <h4>액션</h4>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-card-content>
     </ion-card>
 
   </div>
-  <div class="genre1">
+  <div class="box_office_rankings">
     <p>#SF/판타지</p>
-  </div>
-  <div class="genre2">
-    <p>#액션</p>
-  </div>
-  <div class="genre3">
-    <p>#히어로</p>
-  </div>
-  <div class="genre4">
-    <p>#애니메이션</p>
-  </div>
+    <section class="movie_list">
+      <ul>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
 
+      </ul>
+    </section>
+  </div>
+<!--  <div class="genre2">-->
+<!--    <p>#액션</p>-->
+<!--  </div>-->
+  <div class="box_office_rankings">
+    <p>#액션</p>
+    <section class="movie_list">
+      <ul>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+  </div>
+<!--  <div class="genre3">-->
+<!--    <p>#히어로</p>-->
+<!--  </div>-->
+  <div class="box_office_rankings">
+    <p>#히어로</p>
+    <section class="movie_list">
+      <ul>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+  </div>
+<!--  <div class="genre4">-->
+<!--    <p>#애니메이션</p>-->
+<!--  </div>-->
+  <div class="box_office_rankings">
+    <p>#애니메이션</p>
+    <section class="movie_list">
+      <ul>
+        <li *ngFor="let movie of boxOfficeRankings">
+          <img src="{{ movie.imgSrc }}" />
+          <div class="description">
+            <p class="title">{{ movie.title }}</p>
+            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
+            <p class="sub">
+              예매율 {{movie.reservationRate}}% 누적 관객 {{
+                movie.cumulativeAudience }}
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+  </div>
 
 </div>
 

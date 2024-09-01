@@ -52,8 +52,10 @@ ion-toolbar {
   display: flex;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }
-
 .toolbar_list li {
   margin-right: 15px; /* 항목 간의 간격 조절 */
 }
@@ -82,6 +84,10 @@ p{
   margin-left: 16px;
 }
 
+.home_comment {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 
 //comment: 택스트 크기 설정
 .home_comment ion-card-title {
@@ -174,6 +180,9 @@ ion-thumbnail img {
    }
 }
 
+.movie_list{
+  margin-top: 10px;
+}
 .box_office_rankings .movie_list ul {
   width: auto;
   gap: 12px;
@@ -186,7 +195,7 @@ ion-thumbnail img {
 }
 
 .box_office_rankings .movie_list ul li {
-  width: 130px; //왓챠피디아에서 그대로 이미지 가져온거라 따로 이미지 크기는 조정안함
+  width: 120px; //왓챠피디아에서 그대로 이미지 가져온거라 따로 이미지 크기는 조정안함
 }
 
 .box_office_rankings .movie_list ul li img {
@@ -221,4 +230,7 @@ ion-thumbnail img {
   }
 }
 
+.actor h4{
+  color: grey;
+}
 

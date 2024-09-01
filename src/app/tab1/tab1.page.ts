@@ -77,4 +77,7 @@ export class Tab1Page {
   goToBookPage(){
     this.router.navigate(['tabs/tab1/book']);
   }
+  goToMovieDetailPage(){
+    this.router.navigate(['tabs/tab1/movie-detail'])
+  }
 }

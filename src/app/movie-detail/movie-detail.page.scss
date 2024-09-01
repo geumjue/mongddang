@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  font-family: 'SUITE-Regular', sans-serif;
+}
+
+
+/*뒤로가기 버튼*/
+.backBtn{
+  font-size: 30px;
+  //margin-left: 10px;
+  //margin-top: 10px;
+  position: absolute;
+  top: 10px;
+  left:10px;
+  z-index: 10;
+  color: white;
+
+}
+
+
+/*이미지 위에 정보*/
+.detailsImage{
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  z-index: 10;
+  //background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경을 반투명하게 */
+  padding: 5px 10px;
+}
+
+
+/*포스터 위 영화정보*/
+.movieTitle{
+  color: white;
+  font-size: 43px;
+  font-weight: 800;
+}
+.detailIn{
+  color: white;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+/*별 묶음 div*/
+.star {
+  text-align: center; /* 가운데 정렬 */
+  margin-top: 10px; /* 위쪽 마진 */
+}
+/*별 아이콘*/
+.star ion-icon {
+  font-size: 40px; /* 아이콘 크기 */
+  color: #e4e4e4;
+  margin: 0 5px; /* 아이콘 사이 여백 */
+  transition: transform 0.2s /* 애니메이션 효과 */
+}
+/*별 hover시*/
+.star ion-icon:hover {
+  transform: scale(1.2); /* 호버 시 확대 효과 */
+  cursor: pointer; /* 마우스 커서 변경 */
+}
+
+.평가하기 {
+  color: grey;
+  font-size: 12px;
+}
+
+
+/*보고싶어요, 평점, 관심없어요*/
+.detail-col-want {
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 수직으로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+.detail-col{
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 수직으로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  color:grey;
+}
+
+.detail-col ion-icon, .detail-col-want ion-icon{
+  font-size: 40px; /* 아이콘 크기 조정 */
+  margin-bottom: 8px; /* 아이콘과 텍스트 간의 간격 조정 */
+}
+
+.text {
+  font-size: 14px; /* 텍스트 크기 조정 */
+  color: #000; /* 텍스트 색상 */
+}
+
+hr {
+  border: none;
+  border-top: 0.5px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  width: calc(100% - 30px);
+}
+
+.summ{
+  display: block; //블록레벨 요소로 변경.
+  font-weight: 200;
+  color: #000;
+}
+.summary {
+  color: #000;
+  display: block; //블록레벨 요소로 변경.
+  padding: 10px;
+  margin: 10px;
+  line-height: 1.5;
+}
+

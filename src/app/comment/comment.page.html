@@ -1,0 +1,303 @@
+<!--<ion-header [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>comment</ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
+
+<!--<ion-content [fullscreen]="true">-->
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large">comment</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
+<!--</ion-content>-->
+
+<!--<ion-segment value="default">-->
+<!--  <ion-segment-button value="default">-->
+<!--    <ion-label>인기순</ion-label>-->
+<!--  </ion-segment-button>-->
+<!--  <ion-segment-button value="segment">-->
+<!--    <ion-label>최신순</ion-label>-->
+<!--  </ion-segment-button>-->
+<!--</ion-segment>-->
+
+<ion-header class="header">
+  <ion-toolbar color="white">
+    <ion-title>
+<!--      <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:160px; height: 40px;">-->
+      지금 뜨는 코멘트
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-header [translucent]="true">
+  <ion-segment value="default">
+    <ion-segment-button value="default">
+      <ion-label>인기순</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="segment">
+      <ion-label>최신순</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!-- 사용자 프로필 -->
+    <ion-item lines="none">
+      <div class="comment_profile">
+        <ion-avatar slot="start">
+          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>메타몽</ion-label>
+      </div>
+      <div class="star">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+      </div>
+    </ion-item>
+    <!-- 영화 이미지와 코멘트 -->
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>인사이드 아웃2</h2>
+        <p class="comment">
+          결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+        </p>
+      </ion-label>
+    </ion-item>
+    <!-- 좋아요 및 댓글 버튼 -->
+    <ion-item >
+      <ion-button fill="clear" class="text-button">
+        <ion-label>좋아요</ion-label>1,004
+      </ion-button>
+      <ion-button fill="clear" class="text-button">
+        <ion-label>댓글</ion-label>127
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

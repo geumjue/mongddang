@@ -26,7 +26,10 @@
     <img src="assets/images/preview.png" alt="프리뷰">
   </div>
   <div class="home_comment">
-    <p>지금 뜨는 코멘트</p>
+    <p>
+      지금 뜨는 코멘트
+        <ion-icon (click)="goToCommentPage()" name="chevron-forward-outline"></ion-icon>
+    </p>
     <ion-card class="comment-card">
       <ion-card-header>
         <div class="comment_profile">

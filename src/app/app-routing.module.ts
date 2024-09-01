@@ -59,7 +59,11 @@ const routes: Routes = [
   {
     path: 'mypage-tab5',
     loadChildren: () => import('./mypage-tab5/mypage-tab5.module').then( m => m.MypageTab5PageModule)
+  },  {
+    path: 'comment',
+    loadChildren: () => import('./comment/comment.module').then( m => m.CommentPageModule)
   }
+
 
 ];
 

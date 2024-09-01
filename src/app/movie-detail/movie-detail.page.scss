@@ -1,6 +1,46 @@
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'SUITE-Regular', sans-serif;
+}
+
+
 /*뒤로가기 버튼*/
 .backBtn{
   font-size: 30px;
-  margin-left: 10px;
-  margin-top: 10px;
+  //margin-left: 10px;
+  //margin-top: 10px;
+  position: absolute;
+  top: 10px;
+  left:10px;
+  z-index: 10;
+  color: white;
+
+}
+
+/*이미지 위에 정보*/
+.detailsImage{
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  z-index: 10;
+  //background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경을 반투명하게 */
+  padding: 5px 10px;
+}
+
+.movieTitle{
+  color: white;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.detailIn{
+  color: white;
+  font-size: 14px;
+  font-weight: 100;
 }

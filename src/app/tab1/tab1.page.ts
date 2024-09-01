@@ -77,7 +77,12 @@ export class Tab1Page {
   goToBookPage(){
     this.router.navigate(['tabs/tab1/book']);
   }
+
   goToCommentPage(){
     this.router.navigate(['tabs/tab1/comment']);
+
+  goToMovieDetailPage(){
+    this.router.navigate(['tabs/tab1/movie-detail'])
+
   }
 }

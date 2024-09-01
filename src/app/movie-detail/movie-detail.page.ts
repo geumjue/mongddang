@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieDetailPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private router: Router) {
   }
 
+  ngOnInit() {
+    this.loadData()
+  }
+  loadData() {
+
+  }
+
+  goBackHomePage() {
+    this.router.navigate(['/tabs/tab1']); // 로그인 페이지로 이동합니다
+
+  }
 }

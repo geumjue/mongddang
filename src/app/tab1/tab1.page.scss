@@ -83,10 +83,15 @@ p{
   font-size: 20px;
   margin-left: 16px;
 }
+p ion-icon {
+  margin-left: 230px;
+  color: grey;/* 텍스트와 아이콘 사이의 간격을 16px로 설정 */
+}
 
 .home_comment {
   margin-top: 20px;
   margin-bottom: 50px;
+
 }
 
 //comment: 택스트 크기 설정

@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
+    <ion-card-header class="profile">
       <ion-card-title>프로필</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -27,13 +27,13 @@
         <ion-input type="email" value="metamong@g.hongik.ac.kr" readonly></ion-input>
       </ion-item>
       <ion-buttons slot="end">
-        <ion-button (click)="logout()">로그아웃</ion-button>
+        <ion-button fill="clear" (click)="logout()">로그아웃</ion-button>
       </ion-buttons>
       <ion-grid [fixed]="true">
         <ion-row class="profile-row">
           <ion-col class="col1">평점</ion-col>
           <ion-col class="col2">코멘트</ion-col>
-          <ion-col class="col3">컬렉션</ion-col>
+<!--          <ion-col class="col3">컬렉션</ion-col>-->
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -62,5 +62,14 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        좋아요
+      </ion-card-title>
+    </ion-card-header>
+        <ion-card-content class="liked-person">좋아하는 인물 </ion-card-content>
+        <ion-card-content class="liked-comment">좋아한 코멘트</ion-card-content>
   </ion-card>
 </ion-content>

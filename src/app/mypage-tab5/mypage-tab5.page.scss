@@ -7,7 +7,7 @@
 }
 
 * {
-  font-family: 'SUITE-Regular', sans-serif;
+  font-family: 'SUITE-Regular', sans-serif !important;
 }
 
 
@@ -69,14 +69,14 @@ ion-item {
 }
 
 
-.col1, .col2 {
+.col1 {
   padding: 10px; /* 내부 여백 추가 */
   text-align: center; /* 텍스트 중앙 정렬 */
   color:black;
   border-right: solid 1px #c6c6c6; /* 각 col 사이에 경계선 추가 */
   box-sizing: border-box; /* padding과 border가 포함되도록 설정 */
 }
-.col3 {
+.col2 {
   color:black;
   padding: 10px; /* 내부 여백 추가 */
   text-align: center; /* 텍스트 중앙 정렬 */
@@ -112,13 +112,14 @@ ion-item {
 ion-card {
   padding: 10px; /* 카드 내부 여백 */
 }
-
+.profile{
+  align-items: center !important;
+}
 ion-card-header {
   padding-bottom: 8px; /* 카드 헤더와 카드 콘텐츠 간의 간격 */
   display: flex;
   margin-bottom: 15px;
-  justify-content: space-between; // 제목과 버튼 사이의 공간을 만듭니다.
-  align-items: center; // 수직 정렬을 중앙으로
+  //align-items: center; // 수직 정렬을 중앙으로
   height: 56px; // 필요에 따라 높이 조정
 }
 
@@ -134,8 +135,22 @@ ion-buttons {
   margin: 10px 0 0 260px;
 }
 
-//프로필
-//ion-card-header ion-card ion-content{
-//  color: #db4a2b;
+//ion-button {
+//  //--color: #db4a2b;
 //}
+
+//ion-card-title{
+//  --color: #db4a2b;
+//}
+
+.liked-person, .liked-comment {
+  //color: #db4a2b;
+  font-size: 19px;
+  color: black;
+  padding: 15px !important;
+}
+
+
+
+
 

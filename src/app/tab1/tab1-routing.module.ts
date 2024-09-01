@@ -26,6 +26,8 @@ const routes: Routes = [
 
     path: 'comment',
     component: CommentPage,
+  },
+  {
 
     path: 'movie-detail',
     component: MovieDetailPage,

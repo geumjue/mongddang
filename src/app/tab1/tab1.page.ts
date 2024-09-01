@@ -78,11 +78,13 @@ export class Tab1Page {
     this.router.navigate(['tabs/tab1/book']);
   }
 
-  goToCommentPage(){
+  goToCommentPage() {
     this.router.navigate(['tabs/tab1/comment']);
-
-  goToMovieDetailPage(){
-    this.router.navigate(['tabs/tab1/movie-detail'])
-
   }
-}
+
+    goToMovieDetailPage()
+    {
+      this.router.navigate(['tabs/tab1/movie-detail']);
+
+    }
+  }

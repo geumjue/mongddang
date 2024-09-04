@@ -73,6 +73,7 @@
 /*보고싶어요, 평점, 관심없어요*/
 .detail-col-want {
   display: flex;
+  color: grey;
   flex-direction: column; /* 아이콘과 텍스트를 수직으로 정렬 */
   align-items: center; /* 중앙 정렬 */
   text-align: center; /* 텍스트 중앙 정렬 */
@@ -105,14 +106,47 @@ hr {
 
 .summ{
   display: block; //블록레벨 요소로 변경.
-  font-weight: 200;
+  font-weight: normal;
   color: #000;
+  margin-left:20px;
 }
 .summary {
   color: #000;
   display: block; //블록레벨 요소로 변경.
   padding: 10px;
-  margin: 10px;
+  margin-left: 10px;
   line-height: 1.5;
 }
 
+.poster {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  max-width: 100%;
+  height: auto;
+}
+
+.person{
+  h3{
+    font-size: 14px;
+    color: grey;
+  }
+  p {
+    font-size:19px;
+    color: #000;
+  }
+}
+
+/*인물 프로필*/
+.person ion-avatar {
+  width: 50px; /* 아바타의 너비를 200px로 설정 */
+  height: 50px; /* 아바타의 높이를 200px로 설정 */
+}
+/*마스크 안 이미지*/
+.person ion-avatar img {
+  width: 100%;  /* 이미지가 아바타 크기에 맞춰지도록 설정 */
+  height: 100%; /* 이미지가 아바타 크기에 맞춰지도록 설정 */
+  object-fit: cover; /* 비율을 유지하면서 아바타 영역을 채우도록 설정 */
+  border-radius: 50%; /* 이미지가 원형으로 유지되도록 설정 */
+}

@@ -69,7 +69,11 @@ const routes: Routes = [
   {
     path: 'movie-detail',
     loadChildren: () => import('./movie-detail/movie-detail.module').then( m => m.MovieDetailPageModule)
+  },  {
+    path: 'comment-write',
+    loadChildren: () => import('./comment-write/comment-write.module').then( m => m.CommentWritePageModule)
   },
+
 
 
 ];

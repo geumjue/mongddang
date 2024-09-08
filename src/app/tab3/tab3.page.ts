@@ -13,6 +13,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService} from "../services/auth.service";
 
 @Component({
@@ -21,26 +22,34 @@ import { AuthService} from "../services/auth.service";
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  email: string = '';
+  password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
+
+  // 로그인 버튼 클릭 시 실행
   login() {
-    this.authService.login(); //로그인 상태
-    console.log('User logged in');
-    this.router.navigate(['/tabs/tab1']);
+    if (this.email && this.password) {
+      this.authService.login(this.email, this.password).subscribe(
+        (response: { token: string }) => {  // response 타입 지정
+          console.log('로그인 성공:', response);
+          // 로그인 성공 시 토큰 저장 또는 페이지 이동 처리
+        },
+        (error: any) => {  // error 타입 지정 (보통 any로 둡니다)
+          console.error('로그인 실패:', error);
+        }
+      );
+    } else {
+      console.error('이메일과 비밀번호를 입력하세요.');
+    }
   }
-
-  // logout() {
-  //   this.authService.logout(); // 로그아웃 상태로 설정
-  //   console.log('User logged out');
-  //   this.router.navigate(['/tabs/tab3']); // 로그아웃 후 로그인 페이지로 라우팅
-  // }
-
 
   goToCreateAccountPage() {
-    this.router.navigate(['/tabs/tab3/create-account']);
+    console.log('회원가입 페이지로 이동');
+    // 예: 회원가입 페이지로 네비게이션
   }
-
 }
+
 
 

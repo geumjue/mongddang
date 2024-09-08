@@ -13,19 +13,20 @@
 <ion-content>
   <h1 class="login-title">로그인</h1>
 
-  <form>
+  <form (ngSubmit)="login()">
     <div class="login-box">
       <ion-item>
         <ion-label position="floating">이메일</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">비밀번호</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
       </ion-item>
     </div>
     <ion-button (click)="login()" expand="full" type="submit">로그인</ion-button>
+  </form>
       <div class="center-text">
       <span class="account-text">계정이 없으신가요? </span>
       <span class="signup-text" (click)="goToCreateAccountPage()">회원가입</span>
@@ -35,6 +36,5 @@
       <span class="divider-text">OR</span>
       <hr class="divider-line">
     </div>
-  </form>
 <!--  <ion-button (click)="logout()" expand="full" type="button">로그아웃</ion-button>-->
 </ion-content>

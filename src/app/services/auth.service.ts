@@ -56,7 +56,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://your-backend-url.com/api'; // 서버의 실제 URL로 변경
+  private apiUrl = 'http://34.64.110.178:3000/user';
 
   constructor(private http: HttpClient) {}
 
@@ -75,4 +75,10 @@ export class AuthService {
   logout(): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/logout`, {});
   }
+
+  signUp(nickname: string, email: string, password: string): Observable<void> {
+    const signUpData = { nickname, email, password };
+    return this.http.post<void>(`${this.apiUrl}/signup`, signUpData);
+  }
+
 }

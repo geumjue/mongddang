@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  font-family: 'Pretendard-Regular';
+}
+
+ion-back-button{
+  color:#db4a2b;
+  margin-left: 9px;
+
+}
+//ion-button{
+//  color: ;
+//}
+ion-item{
+  margin-top: 10px;
+
+}
+ion-input::part(native)::placeholder {
+  color: grey; /* Placeholder 텍스트 색상 */
+}
+.foot{
+  display: flex;
+  align-content: center;
+  margin: 15px;
+  color: grey;
+  font-size: 12px;
+
+}
+.foot .text_count{
+  margin-left: auto;
+}

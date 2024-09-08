@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  font-family: 'Pretendard-Regular';
+}
+ion-header{
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+
 .home_wrapper{
   overflow-y: scroll;
   scrollbar-width: none;
@@ -73,15 +89,17 @@ ion-toolbar {
 }
 
 .preview img{
-  width: 400px;
-  height: 180px;
+  width: 430px;
+  height: 210px;
   display: inline-block;
-  border-radius: 15px;
 }
 
 p{
   font-size: 20px;
   margin-left: 16px;
+}
+.bold_title{
+  font-weight: bold;
 }
 p ion-icon {
   margin-left: 230px;
@@ -92,6 +110,7 @@ p ion-icon {
   margin-top: 20px;
   margin-bottom: 50px;
 
+
 }
 
 //comment: 택스트 크기 설정
@@ -100,8 +119,10 @@ p ion-icon {
 }
 .comment{
   font-size: 15px;
+  color:grey;
   margin-top: 10px;
   overflow-y: hidden;
+
 }
 
 
@@ -110,6 +131,10 @@ p ion-icon {
   display: flex;
   align-items: center;
 
+}
+.now-comment-card-title{
+  //font-weight: 600;
+  font-size: 15px;
 }
 ion-card-header {
   padding-bottom: 8px;
@@ -130,9 +155,12 @@ ion-label {
 }
 
 .comment-card{
-  margin: 15px;
+  //padding: 10px;
 }
 
+.comment-card-header{
+  height: 50px;
+}
 //comment: 이미지 크기 설정
 ion-thumbnail {
   width: 70px;
@@ -141,7 +169,7 @@ ion-thumbnail {
 ion-thumbnail img {
   width: 70px;
   height: 100px;
-  border-radius: 5px;
+  //border-radius: 5px;
   object-fit: cover; /* 이미지 비율 유지하면서 썸네일에 맞게 조정 */
 }
 

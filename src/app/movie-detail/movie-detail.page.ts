@@ -22,4 +22,8 @@ export class MovieDetailPage implements OnInit {
     this.router.navigate(['/tabs/tab1']); // 로그인 페이지로 이동합니다
 
   }
+  goToCommentWritePage() {
+    this.router.navigate(['/comment-write']);
+  }
+
 }

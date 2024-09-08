@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../mypage-tab5/mypage-tab5.module').then(m => m.MypageTab5PageModule)
       },
       {
+        path: 'comment-write',
+        loadChildren: () => import('../comment-write/comment-write.module').then(m => m.CommentWritePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

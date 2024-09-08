@@ -79,50 +79,52 @@
       <p>정해인</p>
     </ion-label>
   </ion-item>
+  <div class="comment-container">
+    <ion-label class="commentTitle"> 코멘트 </ion-label>
+    <span class="commentCount">50+</span>
+    <span class="moreComment">더보기</span>
+  </div>
+    <ion-card>
+      <ion-list>
+        <!-- 사용자 프로필 -->
+        <ion-item>
+          <div class="comment_profile">
+            <ion-avatar slot="start">
+              <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <ion-label>메타몽</ion-label>
+          </div>
+        </ion-item>
+        <!-- 영화 이미지와 코멘트 -->
+        <ion-item lines="none">
+          <ion-label>
+            <h2 class="comment-베테랑2">베테랑2</h2>
+            <p class="comment">
+              서울의 봄 GV 때 류승완 감독님이 직접 밝히신 공식 정보 세가지.<br><br>
+              1. 올 겨울 개봉. 영화 배경이 겨울이라서 그렇답니다. 12월 확정인듯... 었으나, 추석으로 앞당겨짐.<br>
+              2. 관객들 기대와는 달리 좀 분위기가 어두워졌답니다. 2편 악역이 연쇄살인범이라는데, 그래서인듯.<br>
+              3. 정해인이 아주 멋지게 나온답니다....ㅋㅋㅋ 디피의 안준호 이병 텐션 생각하면 기대되네요.<br>
+              4. 전 편처럼 통쾌한 스타일로 달려가는 작품은 아니다, 그렇다고 유머가 없는 건 아니다.(전주국제영화제의 죽거나 혹은 나쁘거나 gv 때 밝힌 정보)<br><br>
 
-
-
-
-  <ion-list>
-    <!-- 사용자 프로필 -->
-    <ion-item lines="none">
-      <div class="comment_profile">
-        <ion-avatar slot="start">
-          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <ion-label>메타몽</ion-label>
-      </div>
-    </ion-item>
-    <!-- 영화 이미지와 코멘트 -->
-    <ion-item lines="none">
-      <ion-label>
-        <h2>베테랑2</h2>
-        <p class="comment">
-          서울의 봄 GV 때 류승완 감독님이 직접 밝히신 공식 정보 세가지.<br><br>
-          1. 올 겨울 개봉. 영화 배경이 겨울이라서 그렇답니다. 12월 확정인듯... 었으나, 추석으로 앞당겨짐.<br>
-          2. 관객들 기대와는 달리 좀 분위기가 어두워졌답니다. 2편 악역이 연쇄살인범이라는데, 그래서인듯.<br>
-          3. 정해인이 아주 멋지게 나온답니다....ㅋㅋㅋ 디피의 안준호 이병 텐션 생각하면 기대되네요.<br>
-          4. 전 편처럼 통쾌한 스타일로 달려가는 작품은 아니다, 그렇다고 유머가 없는 건 아니다.(전주국제영화제의 죽거나 혹은 나쁘거나 gv 때 밝힌 정보)<br><br>
-
-          더 문 이후로 역대 한국영화 두 번째로 돌비시네마 공식 지원(Atmos, Vision).
-        </p>
-      </ion-label>
-    </ion-item>
-    <!-- 좋아요 및 댓글 버튼 -->
-    <ion-item >
-      <ion-button fill="clear" class="text-button">
-        <ion-label>좋아요</ion-label>1,004
-      </ion-button>
-      <ion-button fill="clear" class="text-button">
-        <ion-label>댓글</ion-label>127
-      </ion-button>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
-    </ion-item>
-  </ion-list>
-
-
+              더 문 이후로 역대 한국영화 두 번째로 돌비시네마 공식 지원(Atmos, Vision).
+            </p>
+          </ion-label>
+        </ion-item>
+        <!-- 좋아요 및 댓글 버튼 -->
+        <ion-item class="good_and_comment">
+          <ion-button fill="clear" class="text-button">
+            <ion-icon name="thumbs-up"></ion-icon> 1,004
+          </ion-button>
+          <ion-button fill="clear" class="text-button">
+            <ion-icon name="thumbs-down"></ion-icon> 127
+          </ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
+          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 </ion-content>
+
 

@@ -92,13 +92,13 @@ input[type="password"] {
 /* 뒤로 가기 버튼 스타일 */
 .backLoginBtn {
   margin: 15px 25px 40px 25px;
-  background-color: #a59c9c;
+  background-color: #b5b5b5;
   color: #000;
   border-radius: 8px;
 }
 
 .backLoginBtn::part(native) {
-  background-color: #a59c9c;
+  background-color: #b5b5b5;
   color: #000;
 }
 

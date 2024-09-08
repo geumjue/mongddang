@@ -68,7 +68,7 @@ export class AuthService {
   // 로그인 요청 메서드
   login(email: string, password: string): Observable<{ token: string }> {
     const loginData = { email, password };
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, loginData);
+    return this.http.post<{ token: string }>(`${this.apiUrl}/logins`, loginData);
   }
 
   // 로그아웃 요청 메서드

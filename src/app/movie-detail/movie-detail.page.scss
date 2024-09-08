@@ -154,6 +154,7 @@ hr {
 .personTitle{
   margin-left: 13px;
   padding-bottom: 10px;
+  color: #000;
   font-weight: bold;
   font-size: 25px;
   display: block;
@@ -161,12 +162,31 @@ hr {
 }
 
 
+
+
+.comment-베테랑2{
+  display: block;
+  padding-left: 8px;
+  margin-bottom: 10px;
+}
+/*코멘트 글*/
+.comment ion-label{
+  display: block;
+  padding-left: 10px;
+}
+.comment {
+  margin-left: 9px; /* 각 p 요소에 대해 왼쪽 여백 추가 */
+  text-align: left;  /* 텍스트는 그대로 왼쪽 정렬 */
+  line-height: 1.5;  /* 텍스트 가독성 향상 */
+}
+
 ion-list{
   margin:10px;
 }
 .comment_profile
 {
   display: flex;
+  margin-left:8px;
   align-items: center;
 }
 
@@ -185,3 +205,52 @@ ion-avatar img {
   object-fit: cover;
 }
 
+ion-card {
+  margin-top: 0;
+}
+
+.commentTitle{
+  margin-left: 13px;
+  margin-top:20px;
+  padding-bottom: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+  display: block;
+
+}
+
+.commentCount {
+  margin-left: 8px; /* 코멘트와 숫자 사이 간격 */
+  padding-top:10px;
+  font-size: 14px;
+  color:#db4a2b;
+}
+
+.comment-container {
+  margin-top:30px;
+  display: flex;
+  align-items: center; /* 두 요소를 수직으로 가운데 정렬 */
+}
+
+/*버튼들*/
+.text-button{
+  color: #db4a2b;
+  margin-right: 8px;
+}
+
+.moreComment{
+  color: #db4a2b;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-top:10px;
+  cursor: pointer;
+}
+
+ion-card{
+  --background: black;
+}
+
+.card-color{
+  background-color: #db4a2b;
+}

@@ -31,6 +31,13 @@ export class AuthService {
     // POST 요청을 보내서 로그인 처리
     return this.http.post<{ token: string }>(this.apiUrl, loginData);
   }
+
+  logout() {
+    // 로그아웃 처리: 서버에 로그아웃 요청을 보내거나 클라이언트에서 상태를 초기화합니다.
+    // 이 예제에서는 상태만 초기화합니다.
+    this.setLoginStatus(false); // 로그인 상태를 false로 설정
+    console.log('User logged out from AuthService');
+  }
   setLoginStatus(status: boolean) {
     this.loggedIn.next(status);
   }

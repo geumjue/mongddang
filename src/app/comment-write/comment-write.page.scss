@@ -8,12 +8,14 @@
   font-family: 'Pretendard-Regular';
 }
 
-ion-icon{
+ion-back-button{
   color:#db4a2b;
+  margin-left: 9px;
+
 }
-ion-button{
-  color: grey;
-}
+//ion-button{
+//  color: ;
+//}
 ion-item{
   margin-top: 10px;
 
@@ -32,4 +34,3 @@ ion-input::part(native)::placeholder {
 .foot .text_count{
   margin-left: auto;
 }
-

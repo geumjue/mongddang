@@ -1,37 +1,37 @@
 <ion-header>
-  <ion-toolbar color="white">
-    <ion-title>
-      <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:160px; height: 40px;">
-    </ion-title>
-  </ion-toolbar>
+  <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:180px; height: auto;">
 </ion-header>
-<ion-header [translucent]="true">
-      <ul class="toolbar_list">
-        <li class="toolbar_movie">
-          <ion-button color="white">영화</ion-button>
-        </li>
-        <li class="toolbar_series">
-          <ion-button (click)="goToSeriesPage()" color="white">시리즈</ion-button>
-        </li>
-        <li class="toolbar_book">
-          <ion-button (click)="goToBookPage()" color="white">책</ion-button>
-        </li>
-        <li class="toolbar_cartoon">
-          <ion-button color="white">웹툰</ion-button>
-        </li>
-      </ul>
-</ion-header>
+
+<!--<ion-header [translucent]="true">-->
+<!--      <ul class="toolbar_list">-->
+<!--        <li class="toolbar_movie">-->
+<!--          <ion-button color="white">영화</ion-button>-->
+<!--        </li>-->
+<!--        <li class="toolbar_series">-->
+<!--          <ion-button (click)="goToSeriesPage()" color="white">시리즈</ion-button>-->
+<!--        </li>-->
+<!--        <li class="toolbar_book">-->
+<!--          <ion-button (click)="goToBookPage()" color="white">책</ion-button>-->
+<!--        </li>-->
+<!--        <li class="toolbar_cartoon">-->
+<!--          <ion-button color="white">웹툰</ion-button>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--</ion-header>-->
 <div class="home_wrapper">
+  <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 있는 영화를 검색하세요" style="padding: 0 15px 15px 15px;"></ion-searchbar>
+
+
   <div class="preview">
-    <img src="assets/images/preview.png" alt="프리뷰">
+    <img src="https://i.pinimg.com/564x/9a/99/a3/9a99a3247ed40add3cb88ab13213e917.jpg" alt="프리뷰">
   </div>
   <div class="home_comment">
-    <p>
+    <p class="bold_title">
       지금 뜨는 코멘트
         <ion-icon (click)="goToCommentPage()" name="chevron-forward-outline"></ion-icon>
     </p>
     <ion-card class="comment-card">
-      <ion-card-header>
+      <ion-card-header class="comment-card-header">
         <div class="comment_profile">
           <ion-avatar aria-hidden="true" slot="start">
             <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -45,7 +45,7 @@
           <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
         </ion-thumbnail>
         <ion-content>
-          <ion-card-title>인사이드 아웃2</ion-card-title>
+          <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
           <div class="comment">
             결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
           </div>
@@ -57,7 +57,7 @@
 
   </div>
   <div class="box_office_rankings">
-    <p>박스오피스 순위</p>
+    <p class="bold_title">박스오피스 순위</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">
@@ -79,7 +79,7 @@
 <!--    <p>평균별점이 높은 작품</p>-->
 <!--  </div>-->
   <div class="box_office_rankings">
-    <p>평균별점이 높은 작품</p>
+    <p class="bold_title">평균별점이 높은 작품</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">
@@ -98,7 +98,7 @@
     </section>
   </div>
   <div class="actor">
-    <p>화제의 배우 "황정민"의 작품</p>
+    <p class="bold_title">화제의 배우 "황정민"의 작품</p>
     <ion-card>
       <ion-card-header>
         <ion-card-title>영화</ion-card-title>
@@ -192,7 +192,7 @@
 <!--    <p>#SF/판타지</p>-->
 <!--  </div>-->
   <div class="actor">
-    <p>화제의 감독 "제임스 카메론"의 작품</p>
+    <p class="bold_title">화제의 감독 "제임스 카메론"의 작품</p>
     <ion-card>
       <ion-card-header>
         <ion-card-title>영화</ion-card-title>
@@ -242,7 +242,7 @@
 
   </div>
   <div class="box_office_rankings">
-    <p>#SF/판타지</p>
+    <p class="bold_title">#SF/판타지</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">
@@ -264,7 +264,7 @@
 <!--    <p>#액션</p>-->
 <!--  </div>-->
   <div class="box_office_rankings">
-    <p>#액션</p>
+    <p class="bold_title">#액션</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">
@@ -286,7 +286,7 @@
 <!--    <p>#히어로</p>-->
 <!--  </div>-->
   <div class="box_office_rankings">
-    <p>#히어로</p>
+    <p class="bold_title">#히어로</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">
@@ -308,7 +308,7 @@
 <!--    <p>#애니메이션</p>-->
 <!--  </div>-->
   <div class="box_office_rankings">
-    <p>#애니메이션</p>
+    <p class="bold_title">#애니메이션</p>
     <section class="movie_list">
       <ul>
         <li *ngFor="let movie of boxOfficeRankings">

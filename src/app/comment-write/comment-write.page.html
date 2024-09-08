@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar color="white">
-    <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon name="close-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+<!--    <ion-buttons slot="start">-->
+<!--      <ion-button>-->
+<!--        <ion-icon name="close-outline"></ion-icon>-->
+<!--      </ion-button>-->
+<!--    </ion-buttons>-->
+
+      <ion-buttons slot="start">
+        <ion-back-button default-href="movie-detail" icon="close" text=""></ion-back-button>
+      </ion-buttons>
+
     <ion-title>코멘트 작성</ion-title>
     <ion-buttons slot="end">
-      <ion-button>저장</ion-button>
+      <ion-button class="store_comment">저장</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,7 +32,6 @@
     <p>0/10000</p>
   </div>
 </div>
-
 
 
 

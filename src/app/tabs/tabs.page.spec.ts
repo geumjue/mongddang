@@ -1,29 +1,3 @@
-// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-//
-// import { TabsPage } from './tabs.page';
-//
-// describe('TabsPage', () => {
-//   let component: TabsPage;
-//   let fixture: ComponentFixture<TabsPage>;
-//
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [TabsPage],
-//       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-//     }).compileComponents();
-//   });
-//
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(TabsPage);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-//
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TabsPage } from './tabs.page';
@@ -42,7 +16,7 @@ describe('TabsPage', () => {
         {
           provide: AuthService,
           useValue: {
-            isLoggedIn: () => true, // 변경 사항에 따라 true/false로 조정
+            getLoginStatus: () => of(true), // Mock as Observable that returns true
           }
         }
       ]
@@ -60,7 +34,7 @@ describe('TabsPage', () => {
 
   it('should show additional tabs if logged in', () => {
     // Set up authService to return true (logged in)
-    spyOn(authService, 'isLoggedIn').and.returnValue(true);
+    spyOn(authService, 'getLoginStatus').and.returnValue(of(true));
     component.ngOnInit();
     fixture.detectChanges();
     const tabButtons = fixture.debugElement.queryAll(By.css('ion-tab-button'));
@@ -69,7 +43,7 @@ describe('TabsPage', () => {
 
   it('should show only login tab if not logged in', () => {
     // Set up authService to return false (not logged in)
-    spyOn(authService, 'isLoggedIn').and.returnValue(false);
+    spyOn(authService, 'getLoginStatus').and.returnValue(of(false));
     component.ngOnInit();
     fixture.detectChanges();
     const tabButtons = fixture.debugElement.queryAll(By.css('ion-tab-button'));

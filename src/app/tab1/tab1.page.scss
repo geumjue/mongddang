@@ -4,6 +4,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 *{
   font-family: 'Pretendard-Regular';
 }
@@ -275,19 +276,20 @@ ion-thumbnail img {
 
 .HOT {
   display: inline-block; /* 박스형태로 만들기 위해 inline-block 사용 */
-  background-color: #c86363;
+  background-color: #6100fd;
   font-size: 20px;
-  color: white; /* 텍스트 색상 */
+  color: #ffffff; /* 텍스트 색상 */
   padding: 2px 2px; /* 버튼처럼 보이도록 패딩 추가 */
   border-radius: 20px; /* 둥근 모서리를 만들기 위해 반지름 설정 */
-  font-weight: lighter; /* 텍스트를 굵게 */
+  font-weight: normal; /* 텍스트를 굵게 */
   text-align: center; /* 텍스트 가운데 정렬 */
   text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
 }
 
 .nows_HOT{
-  margin-top: 20px;
-  color: white;
+  display: block;
+  margin-top: 6px;
+  color: #fbfbfb;
   font-size: 29px;
-  font-weight: bold;
+  font-weight: 900;
 }

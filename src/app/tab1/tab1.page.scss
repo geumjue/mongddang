@@ -84,15 +84,6 @@ ion-toolbar {
   width: 100px; /* 이미지 너비 조절 */
   height: auto; /* 이미지 비율 유지 */
 }
-.preview {
-  text-align: center; /* 텍스트와 이미지 가운데 정렬 */
-}
-
-.preview img{
-  width: 430px;
-  height: 210px;
-  display: inline-block;
-}
 
 p{
   font-size: 20px;
@@ -267,3 +258,36 @@ ion-thumbnail img {
   color: grey;
 }
 
+/*케빈 이미지*/
+.preview {
+  position: relative;
+}
+
+.kevin_text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+  background: transparent;
+  color: white; /* 텍스트 색상을 흰색으로 변경 */
+  padding: 5px 10px;
+}
+
+.HOT {
+  display: inline-block; /* 박스형태로 만들기 위해 inline-block 사용 */
+  background-color: #c86363;
+  font-size: 20px;
+  color: white; /* 텍스트 색상 */
+  padding: 2px 2px; /* 버튼처럼 보이도록 패딩 추가 */
+  border-radius: 20px; /* 둥근 모서리를 만들기 위해 반지름 설정 */
+  font-weight: lighter; /* 텍스트를 굵게 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+}
+
+.nows_HOT{
+  margin-top: 20px;
+  color: white;
+  font-size: 29px;
+  font-weight: bold;
+}

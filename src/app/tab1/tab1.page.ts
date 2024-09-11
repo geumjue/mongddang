@@ -87,4 +87,9 @@ export class Tab1Page {
       this.router.navigate(['tabs/tab1/movie-detail']);
 
     }
+  goToTab2Page() {
+    this.router.navigate(['tabs/tab2']);
   }
+
+}
+

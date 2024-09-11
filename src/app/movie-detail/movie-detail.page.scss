@@ -247,10 +247,26 @@ ion-card {
   cursor: pointer;
 }
 
-ion-card{
-  --background: black;
-}
+//ion-card{
+//  --background: black;
+//}
 
 .card-color{
   background-color: #db4a2b;
+}
+
+/*하트아이콘 &좋아요*/
+.like {
+  text-align: center; /* 아이콘과 텍스트를 중앙 정렬 */
+}
+
+.like ion-icon {
+  font-size: 35px; /* 하트 아이콘 크기 */
+  color: grey; /* 아이콘 색상 (원하는 색으로 변경 가능) */
+}
+
+.like a {
+  margin-top: -10px;
+  font-size: 14px; /* 좋아요 텍스트 크기 */
+  color: grey; /* 텍스트 색상 */
 }

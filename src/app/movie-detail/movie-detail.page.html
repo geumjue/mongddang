@@ -8,39 +8,44 @@
       style="width: 430px; height:550px; object-fit: cover; ">
     <div class="detailsImage">
       <a class="movieTitle">베테랑2</a> <br>
-      <a class="detailIn">베테랑 2 <br>
+      <a class="detailIn">베테랑 2 ★8.9<br>
           2024 · 범죄/액션/드라마 · 한국 <br>
           1시간 58분 · 15세 <br> <br>
           예매 순위 1위(31%) · 개봉 12일전 · 누적 관객 0명</a>
     </div>
   </ion-header>
-
+  <div class="like">
+    <ion-icon name="heart-outline"></ion-icon>
+    <br>
+    <a>좋아요</a>
+  </div>
+  <hr>
   <div class="star">
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
-    <br><a class="평가하기">평가하기</a>
+<!--    <br><a class="평가하기">평가하기</a>-->
   </div>
 
-  <hr>
   <ion-grid [fixed]="true">
     <ion-row class="detail-row">
       <ion-col class="detail-col-want">
-        <ion-icon name="happy-outline"></ion-icon>
-        <div class="text">보고싶어요</div>
+<!--        <ion-icon name="happy-outline"></ion-icon>-->
+<!--        <div class="text">보고싶어요</div>-->
       </ion-col>
       <ion-col class="detail-col">
         <ion-icon (click)="goToCommentWritePage()"  name="create-outline"></ion-icon>
         <div class="text">코멘트</div>
       </ion-col>
       <ion-col class="detail-col">
-        <ion-icon name="sad-outline"></ion-icon>
-        <div class="text">관심없어요</div>
+<!--        <ion-icon name="sad-outline"></ion-icon>-->
+<!--        <div class="text">관심없어요</div>-->
       </ion-col>
     </ion-row>
   </ion-grid>
+  <hr>
   <hr>
   <a class="summ">줄거리</a>
   <a class="summary">

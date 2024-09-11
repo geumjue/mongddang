@@ -7,6 +7,7 @@ import {BookPage} from "../book/book.page";
 import {CommentPage} from "../comment/comment.page";
 
 import {MovieDetailPage} from "../movie-detail/movie-detail.page";
+import {Tab2Page} from "../tab2/tab2.page";
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     component: MovieDetailPage,
 
   }
+
 ];
 
 @NgModule({

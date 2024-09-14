@@ -7,41 +7,43 @@
     <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0820/14_48_00__66c42e1009123[S750,750].jpg"
       style="width: 430px; height:550px; object-fit: cover; ">
     <div class="detailsImage">
-      <a class="movieTitle">베테랑2</a> <br>
-      <a class="detailIn">베테랑 2 <br>
+      <a class="movieTitle">베테랑2</a><br>
+      <a class="rate_star"> ★</a><a class="rate_num">8.9</a><br>
+      <a class="detailIn">베테랑 2<br>
           2024 · 범죄/액션/드라마 · 한국 <br>
           1시간 58분 · 15세 <br> <br>
           예매 순위 1위(31%) · 개봉 12일전 · 누적 관객 0명</a>
     </div>
+    <div class="heart" style="position: absolute; bottom: 10px; right: 5px;">
+      <ion-icon name="heart-outline" style="font-size: 40px;"></ion-icon>
+    </div>
   </ion-header>
-
-  <div class="star">
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <br><a class="평가하기">평가하기</a>
-  </div>
-
-  <hr>
+<!--  <div class="star">-->
+<!--    <ion-icon name="star"></ion-icon>-->
+<!--    <ion-icon name="star"></ion-icon>-->
+<!--    <ion-icon name="star"></ion-icon>-->
+<!--    <ion-icon name="star"></ion-icon>-->
+<!--    <ion-icon name="star"></ion-icon>-->
+<!--    <br><a class="평가하기">평가하기</a>-->
+<!--  </div>-->
   <ion-grid [fixed]="true">
     <ion-row class="detail-row">
       <ion-col class="detail-col-want">
-        <ion-icon name="happy-outline"></ion-icon>
-        <div class="text">보고싶어요</div>
+        <ion-icon name="heart-outline"></ion-icon>
+        <div class="text">좋아요</div>
       </ion-col>
       <ion-col class="detail-col">
         <ion-icon (click)="goToCommentWritePage()"  name="create-outline"></ion-icon>
-        <div class="text">코멘트</div>
+        <div class="text">코멘트 작성</div>
       </ion-col>
       <ion-col class="detail-col">
-        <ion-icon name="sad-outline"></ion-icon>
-        <div class="text">관심없어요</div>
+        <ion-icon name="add-outline"></ion-icon>
+        <div class="text">컬렉션에 추가</div>
       </ion-col>
     </ion-row>
   </ion-grid>
   <hr>
+  <br>
   <a class="summ">줄거리</a>
   <a class="summary">
     가족들도 못 챙기고 밤낮 없이 범죄들과 싸우는 베테랑 형사 '서도철'(황정민)과 강력범죄수사대 형사들.
@@ -51,6 +53,10 @@
     그리고 사건은 새로운 방향으로 흐르게 되는데...
   </a>
   <img class="poster" alt="" src= "https://image.cine21.com/resize/cine21/poster/2024/0826/10_43_11__66cbddaf49c14[X230,330].jpg" />
+
+
+
+  <!-- 등장인물-->
   <ion-label class="personTitle"> 출연/제작 </ion-label>
   <ion-item class="person" button detail="true">
     <ion-avatar aria-hidden="true" slot="start">

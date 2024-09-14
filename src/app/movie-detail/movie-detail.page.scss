@@ -1,3 +1,4 @@
+//@import "~swiper/sw";
 @font-face {
   font-family: 'SUITE-Regular';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
@@ -98,7 +99,7 @@
 
 hr {
   border: none;
-  border-top: 0.5px solid #ccc;
+  border-top: 0.5px solid #dcdcdc;
   border-radius: 5px;
   margin: 10px auto;
   width: calc(100% - 30px);
@@ -180,9 +181,10 @@ hr {
   line-height: 1.5;  /* 텍스트 가독성 향상 */
 }
 
-ion-list{
-  margin:10px;
-}
+//ion-list{
+//  margin:20px 10px 10px 10px;
+//}
+
 .comment_profile
 {
   display: flex;
@@ -247,10 +249,30 @@ ion-card {
   cursor: pointer;
 }
 
-ion-card{
-  --background: black;
-}
+//ion-card{
+//  --background: black;
+//}
 
 .card-color{
   background-color: #db4a2b;
+}
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;  /* 이미지와의 간격을 설정 */
+}
+
+.heart ion-icon {
+  font-size: 38px;  /* 하트 아이콘의 크기를 조정 */
+  color: #ededed;  /* 아이콘 색상 */
+}
+
+.rate_star{
+  color:gold;
+  font-size: larger;
+}
+.rate_num{
+  color: white;
+  font-size: larger;
 }

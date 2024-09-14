@@ -24,7 +24,7 @@ export class CreateAccountPage implements OnInit {
       this.authService.signUp(this.nickname, this.email, this.password).subscribe(
         () => {
           console.log('회원가입 성공');
-          this.router.navigate(['/tabs/tab1']); // 회원가입 후 첫 번째 탭으로 이동
+          this.router.navigate(['/tabs/tab3']); // 회원가입 후 첫 번째 탭으로 이동
         },
         (error) => {
           console.error('회원가입 실패:', error);

@@ -56,7 +56,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://34.64.110.178:3000/api/user';
+  private apiUrl = 'http://34.64.110.178:3000/api/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -68,7 +68,7 @@ export class AuthService {
   // 로그인 요청 메서드
   login(email: string, password: string): Observable<{ token: string }> {
     const loginData = { email, password };
-    return this.http.post<{ token: string }>(`${this.apiUrl}/logins`, loginData);
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, loginData);
   }
 
   // 로그아웃 요청 메서드
@@ -78,7 +78,7 @@ export class AuthService {
 
   signUp(nickname: string, email: string, password: string): Observable<void> {
     const signUpData = { nickname, email, password };
-    return this.http.post<void>(`${this.apiUrl}/signups`, signUpData);
+    return this.http.post<void>(`${this.apiUrl}/signup`, signUpData);
   }
 
 }

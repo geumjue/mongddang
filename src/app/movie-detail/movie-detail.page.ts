@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-detail.page.scss'],
 })
 export class MovieDetailPage implements OnInit {
+
+  isGalleryOpen = true;
+  //슬라이더 옵션 설정
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
 
   constructor(private router: Router) {
   }
@@ -26,4 +33,7 @@ export class MovieDetailPage implements OnInit {
     this.router.navigate(['/comment-write']);
   }
 
+  closeGallery() {
+    this.isGalleryOpen = false;
+  }
 }

@@ -49,14 +49,15 @@
 //   // }
 // }
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LogInRequestData } from '../models/auth-login-request-data.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://34.64.110.178:3000/api/auth';
+  private apiUrl = 'http://localhost:3000/api/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -66,9 +67,9 @@ export class AuthService {
   }
 
   // 로그인 요청 메서드
-  login(email: string, password: string): Observable<{ token: string }> {
-    const loginData = { email, password };
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, loginData);
+  login(logInRequestData: LogInRequestData): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}/signin`, logInRequestData, { headers, withCredentials: true });
   }
 
   // 로그아웃 요청 메서드
@@ -76,8 +77,9 @@ export class AuthService {
     return this.http.post<void>(`${this.apiUrl}/logout`, {});
   }
 
-  signUp(nickname: string, email: string, password: string): Observable<void> {
-    const signUpData = { nickname, email, password };
+  // 회원가입 요청 메서드
+  signUp(username: string, email: string, password: string): Observable<void> {
+    const signUpData = { username, email, password };
     return this.http.post<void>(`${this.apiUrl}/signup`, signUpData);
   }
 

@@ -1,0 +1,25 @@
+import { IonicModule } from '@ionic/angular';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Tab3Page } from './login.page';
+// import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { LoginPageRoutingModule } from './login-routing.module';
+import{ RouterModule} from "@angular/router";
+
+@NgModule({
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    // ExploreContainerComponentModule,
+    LoginPageRoutingModule,
+    RouterModule.forChild([{path:'',component:LoginPage}])
+  ],
+  declarations: [LoginPage]
+})
+export class LoginPageModule {}
+
+
+
+

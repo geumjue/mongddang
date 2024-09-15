@@ -3,11 +3,11 @@ import { IonicModule } from '@ionic/angular';
 
 // import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { Tab3Page } from './login.page';
+import { LoginPage } from './login.page';
 
 describe('LoginPage', () => {
   let component: LoginPage;
-  let fixture: ComponentFixture<Tab3Page>;
+  let fixture: ComponentFixture<LoginPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

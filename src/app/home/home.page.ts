@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class Tab1Page {
+export class HomePage {
   public boxOfficeRankings = [
     {
       rank: 1,
@@ -72,12 +72,12 @@ export class Tab1Page {
   constructor(private router: Router) {}
 
   goToNowsCommentPage() {
-    this.router.navigate(['comment/home/nows-comment']);
+    this.router.navigate(['tabs/home/nows-comment']);
   }
 
     goToMovieDetailPage()
     {
-      this.router.navigate(['movie/home/movie-detail']);
+      this.router.navigate(['tabs/home/movie-detail']);
 
     }
   goToSearchPage() {

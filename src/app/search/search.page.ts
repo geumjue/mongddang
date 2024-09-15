@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: 'search.page.html',
   styleUrls: ['search.page.scss']
 })
-export class searchPage {
+export class SearchPage {
 
   constructor() {}
 

@@ -213,7 +213,7 @@ ion-card {
 
 .commentTitle{
   margin-left: 13px;
-  margin-top:20px;
+  margin-top:22px;
   padding-bottom: 10px;
   color: #000;
   font-weight: bold;
@@ -275,4 +275,50 @@ ion-card {
 .rate_num{
   color: white;
   font-size: larger;
+}
+/*갤러리 내 이미지*/
+.gallery_img{
+  margin: 0 20px 0 20px;
+  display: flex;
+  //justify-content: space-between; /* 이미지 간 간격 조정 */
+  gap: 10px; /* 이미지 사이의 여백 */
+}
+.gallery_img img{
+  width: 100%; /* 이미지를 컨테이너 크기에 맞게 조정 */
+  max-width: 190px; /* 원하는 이미지 크기 설정 */
+  height: auto; /* 비율 유지하면서 크기 조정 */
+}
+
+.gallery_text{
+  margin-top: 80px;
+  margin-left: 13px;
+  padding-bottom: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+  display: block;
+
+}
+
+.video_text{
+  margin-top: 30px;
+  margin-left: 13px;
+  padding-bottom: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+  display: block;
+
+}
+
+.video_clip{
+  margin: 0 20px 70px 20px;
+  display: flex;
+  //justify-content: space-between; /* 이미지 간 간격 조정 */
+  gap: 10px; /* 이미지 사이의 여백 */
+}
+.video_clip img{
+  width: 100%; /* 이미지를 컨테이너 크기에 맞게 조정 */
+  max-width: 190px; /* 원하는 이미지 크기 설정 */
+  height: auto; /* 비율 유지하면서 크기 조정 */
 }

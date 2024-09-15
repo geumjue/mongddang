@@ -8,28 +8,24 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'home',
+        loadChildren: () => import('../../home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../../search/search.module').then(m => m.Tab2PageModule)
+        path: 'search',
+        loadChildren: () => import('../../search/search.module').then(m => m.SearchPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../../auth/login/login.module').then(m => m.Tab3PageModule)
+        path: 'login',
+        loadChildren: () => import('../../auth/login/login.module').then(m => m.LoginPageModule)
       },
+      // {
+      //   path: 'collection',
+      //   loadChildren: () => import('../../collection/collection.module').then(m => m.CollectionPageModule)
+      // },
       {
-        path: 'rating-tab3',
-        loadChildren: () => import('../../collection/collection.module').then(m => m.RatingTab3PageModule)
-      },
-      {
-        path: 'news-tab4',
-        loadChildren: () => import('../../news-tab4/news-tab4.module').then(m => m.NewsTab4PageModule)
-      },
-      {
-        path: 'mypage-tab5',
-        loadChildren: () => import('../../mypage/mypage.module').then(m => m.MypageTab5PageModule)
+        path: 'mypage',
+        loadChildren: () => import('../../mypage/mypage.module').then(m => m.MypagePageModule)
       },
       {
         path: 'comment-write',
@@ -37,14 +33,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];

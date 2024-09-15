@@ -10,10 +10,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'collection',
-    loadChildren: () => import('../collection/collection.module').then( m => m.CollectionPageModule)
-  },
+  // {
+  //   path: 'collection',
+  //   loadChildren: () => import('../collection/collection.module').then( m => m.CollectionPageModule)
+  // },
   {
     path: 'mypage',
     loadChildren: () => import('../mypage/mypage.module').then( m => m.MypagePageModule)

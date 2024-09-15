@@ -8,7 +8,7 @@ import { LogInRequestData } from '../models/auth-login-request-data.interface';
   templateUrl: 'login.page.html',
   styleUrls: ['login.page.scss']
 })
-export class Tab3Page {
+export class LoginPage {
   email: string = '';
   password: string = '';
 
@@ -37,7 +37,7 @@ export class Tab3Page {
       }
     });
   }
-  
+
 
   goToCreateAccountPage() {
     console.log('회원가입 페이지로 이동');

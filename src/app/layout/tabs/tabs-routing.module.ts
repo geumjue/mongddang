@@ -19,10 +19,10 @@ const routes: Routes = [
         path: 'login',
         loadChildren: () => import('../../auth/login/login.module').then(m => m.LoginPageModule)
       },
-      // {
-      //   path: 'collection',
-      //   loadChildren: () => import('../../collection/collection.module').then(m => m.CollectionPageModule)
-      // },
+      {
+        path: 'collection',
+        loadChildren: () => import('../../collection/collection.module').then(m => m.CollectionPageModule)
+      },
       {
         path: 'mypage',
         loadChildren: () => import('../../mypage/mypage.module').then(m => m.MypagePageModule)

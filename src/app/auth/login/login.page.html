@@ -38,6 +38,8 @@
 
 <ion-content>
   <h1 class="login-title" style="margin-top: 10px">로그인</h1>
+
+  <form (ngSubmit)="login()">
 <div class="login" style="margin: 10px">
   <div class="login-box" style="margin-top: 60px">
     <ion-item>
@@ -55,8 +57,8 @@
   </ion-item>
 </div>
 </div>
-
   <ion-button (click)="login()" expand="full" type="submit">로그인</ion-button>
+  </form>
   <ion-button class="sign-up" (click)="goToCreateAccountPage()" expand="full">회원가입</ion-button>
 
 

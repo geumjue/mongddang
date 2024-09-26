@@ -36,7 +36,7 @@ export class CreateAccountPage implements OnInit {
   }
 
   goBackLoginPage() {
-    this.router.navigate(['/tabs/tab3']); // 로그인 페이지로 이동합니다
+    this.router.navigate(['/tabs/login']); // 로그인 페이지로 이동합니다
 
   }
 }

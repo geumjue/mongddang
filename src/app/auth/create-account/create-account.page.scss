@@ -1,37 +1,172 @@
+//@font-face {
+//  font-family: 'SUITE-Regular';
+//  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+//  font-weight: 400;
+//  font-style: normal;
+//}
+//
+//* {
+//  font-family: 'SUITE-Regular', sans-serif;
+//}
+//
+//.createAccountTitle {
+//  margin: 10px auto;
+//  font-size: 23px;
+//  font-weight: bold;
+//  text-align: center;
+//  color: #db4a2b;
+//}
+//
+//
+//div {
+//  margin-bottom: 16px;
+//  margin-left: 20px;
+//  margin-right: 20px;
+//}
+//
+//label {
+//  display: block;
+//  margin-bottom: 5px;
+//  font-weight: bold;
+//  color: black;
+//}
+//
+//input[type="text"],
+//input[type="email"],
+//input[type="password"] {
+//  width: 100%;
+//  padding: 12px;
+//  border: 1px solid #ccc;
+//  border-radius: 8px;
+//  box-shadow: none;
+//}
+//
+//.center-text {
+//  text-align: center;
+//  display: block;
+//}
+//
+//.account-text {
+//  color: grey;
+//  font-size: 15px;
+//}
+//
+//.signup-text {
+//  color: #db4a2b;
+//  font-size: 15px;
+//}
+//
+//.divider-container {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  margin-top: 20px;
+//}
+//
+//.divider-line {
+//  border: none;
+//  border-top: 1px solid lightgray;
+//  flex: 1;
+//  margin: 0 10px;
+//}
+//
+//.divider-text {
+//  color: grey;
+//  font-size: 14px;
+//}
+//
+///* 회원가입 버튼 스타일 */
+//.signUp {
+//  margin: 40px 25px 15px 25px;
+//  background-color: #db4a2b;
+//  color: #000;
+//  border-radius: 8px;
+//}
+//
+//.signUp::part(native) {
+//  background-color: #db4a2b;
+//  color: #000;
+//}
+//
+//
+///* 뒤로 가기 버튼 스타일 */
+//.backLoginBtn {
+//  margin: 15px 25px 40px 25px;
+//  background-color: #b5b5b5;
+//  color: #000;
+//  border-radius: 8px;
+//}
+//
+//.backLoginBtn::part(native) {
+//  background-color: #b5b5b5;
+//  color: #000;
+//}
+//
+//ion-button:disabled {
+//  background-color: gray;
+//  color: #000;
+//}
+
+
+
+
+/*지민수정*/
+
 @font-face {
-  font-family: 'SUITE-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
-* {
-  font-family: 'SUITE-Regular', sans-serif;
+*{
+  font-family: 'Pretendard-Regular';
 }
+.logo_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 20px 0;
+}
+.logo_image img{
+  text-align: center;
+  width: 120px;
+  height: auto;
 
+}
 .createAccountTitle {
-  margin: 10px auto;
+  margin: 0 auto;
   font-size: 23px;
   font-weight: bold;
   text-align: center;
-  color: #db4a2b;
+  color: #e06142;
 }
 
 
-div {
-  margin-bottom: 16px;
-  margin-left: 20px;
-  margin-right: 20px;
+.text h1{
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin: 25px auto 0;
+
+}
+
+form {
+ margin: 20px 20px 30px 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
   font-weight: bold;
-  color: black;
+  color: #3e3e3e;
+  font-size: 18px;
+
 }
 
-input[type="text"],
+input[type="nickname"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -41,68 +176,41 @@ input[type="password"] {
   box-shadow: none;
 }
 
-.center-text {
-  text-align: center;
-  display: block;
+input {
+  background-color: #ffffff;
+  border: 2px solid rgb(255, 118, 67) !important;
+  height: 70px;
+  border-radius: 20px !important;
 }
 
-.account-text {
-  color: grey;
-  font-size: 15px;
+input:focus{
+  //border-color: rgb(255, 113, 59);
+  background-color: rgb(255, 248, 244);
+  outline: none;
+  border-width: 3px;
+
 }
 
-.signup-text {
-  color: #db4a2b;
-  font-size: 15px;
-}
-
-.divider-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.divider-line {
-  border: none;
-  border-top: 1px solid lightgray;
-  flex: 1;
-  margin: 0 10px;
-}
-
-.divider-text {
-  color: grey;
-  font-size: 14px;
-}
 
 /* 회원가입 버튼 스타일 */
 .signUp {
-  margin: 40px 25px 15px 25px;
-  background-color: #db4a2b;
-  color: #000;
-  border-radius: 8px;
+  margin: 200px 30px 0 30px;
+  height: 70px;
+  border-radius: 50px; /* 모서리 둥글기 */
 }
 
 .signUp::part(native) {
-  background-color: #db4a2b;
-  color: #000;
-}
-
-
-/* 뒤로 가기 버튼 스타일 */
-.backLoginBtn {
-  margin: 15px 25px 40px 25px;
-  background-color: #b5b5b5;
-  color: #000;
-  border-radius: 8px;
-}
-
-.backLoginBtn::part(native) {
-  background-color: #b5b5b5;
-  color: #000;
+  background-color: #edecec;
+  color: #1c1c1c;
+  border-radius: 50px; /* 모서리 둥글기 */
 }
 
 ion-button:disabled {
-  background-color: gray;
+  background-color: white;
+  color: #000;
+}
+
+.backLoginBtn::part(native) {
+  background-color: white;
   color: #000;
 }

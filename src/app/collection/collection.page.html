@@ -14,16 +14,12 @@
     <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 컬렉션을 검색하세요"
                    style="padding: 0 15px 15px 15px;"></ion-searchbar>
   </div>
-<!--  <hr class="line">-->
 
-<!--  <ion-card class="christmas_movie">-->
-<!--    <img alt="" src="assets/images/kevin_nofilter.png" />-->
-<!--    <ion-card-header>-->
-<!--      <ion-card-title>크리스마스에 생각나는 영화</ion-card-title>-->
-<!--      <img alt="" src="assets/images/unknow.png" style="width:25px; height: auto;">-->
-<!--      <ion-card-subtitle>몽땅</ion-card-subtitle>-->
-<!--    </ion-card-header>-->
-<!--  </ion-card>-->
+  <div class="popular">
+    <ion-icon name="caret-down-outline"></ion-icon>
+    <span>인기순</span>
+  </div>
+
   <p class="hot">인기🔥</p>
   <div class="christmas_movie">
     <div class="header">
@@ -39,7 +35,10 @@
            src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
       <img class="alone" alt=""
            src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
-
+    </div>
+    <div class="likes">
+      <ion-icon name="heart"></ion-icon>
+      <span>326</span>
     </div>
   </div>
 <!--  <hr class="line">-->
@@ -47,7 +46,7 @@
   <div class="christmas_movie">
     <div class="header">
       <img class="unknow-image" alt="" src="https://i0.wp.com/studiolorier.com/wp-content/uploads/2018/10/Profile-Round-Sander-Lorier.jpg?ssl=1"
-           style="width:50px; height: auto;">
+           style="width:45px; height: auto;">
       <p>천만 돌파한 한국 영화는 뭐가 있을까?</p>
       <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>
     </div>
@@ -58,14 +57,17 @@
            src="https://upload.wikimedia.org/wikipedia/ko/7/76/%EC%84%9C%EC%9A%B8%EC%9D%98_%EB%B4%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg">
       <img class="alone" alt=""
            src="https://upload.wikimedia.org/wikipedia/ko/b/b9/%EB%B2%94%EC%A3%84%EB%8F%84%EC%8B%9C_2_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg">
-
+    </div>
+    <div class="likes">
+      <ion-icon name="heart-outline"></ion-icon>
+      <span>220</span>
     </div>
   </div>
 
   <div class="christmas_movie">
     <div class="header">
       <img class="unknow-image" alt="" src="https://i.pinimg.com/736x/67/83/e3/6783e345ea01488d01e7f00aa3ab1d7f.jpg"
-           style="width:50px; height: auto;">
+           style="width:42px; height: auto;">
       <p>웹툰 원작 영화 컬렉션</p>
       <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>
     </div>
@@ -76,8 +78,31 @@
            src="https://upload.wikimedia.org/wikipedia/ko/e/e0/%EB%82%B4%EB%B6%80%EC%9E%90%EB%93%A4.jpg">
       <img class="alone" alt=""
            src="https://i.namu.wiki/i/Qm14ivE5O0WsT2xgwzRfcoxLz-FRw27190lcjwJ3qMpo7UVBtLx_iOsmnIS0zT2_XGuJPRx1FJrnOjJ853qS4Q.webp">
-
+    </div>
+    <div class="likes">
+      <ion-icon name="heart-outline"></ion-icon>
+      <span>104</span>
     </div>
   </div>
 
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+<!--    <ion-fab-list side="top">-->
+<!--    </ion-fab-list>-->
+  </ion-fab>
+
 </ion-content>
+
+
+<!--  <hr class="line">-->
+
+<!--  <ion-card class="christmas_movie">-->
+<!--    <img alt="" src="assets/images/kevin_nofilter.png" />-->
+<!--    <ion-card-header>-->
+<!--      <ion-card-title>크리스마스에 생각나는 영화</ion-card-title>-->
+<!--      <img alt="" src="assets/images/unknow.png" style="width:25px; height: auto;">-->
+<!--      <ion-card-subtitle>몽땅</ion-card-subtitle>-->
+<!--    </ion-card-header>-->
+<!--  </ion-card>-->

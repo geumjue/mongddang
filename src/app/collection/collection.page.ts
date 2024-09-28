@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { addIcons } from 'ionicons';
+import {
+  chevronDownCircle,
+  chevronForwardCircle,
+  chevronUpCircle,
+  colorPalette,
+  document,
+  globe,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-collection',
@@ -7,7 +16,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+    addIcons({ chevronDownCircle, chevronForwardCircle, chevronUpCircle, colorPalette, document, globe });
+  }
 
   ngOnInit() {
   }

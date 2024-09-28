@@ -10,9 +10,9 @@
 }
 
 /*서치바 css*/
-.searchbar_collection {
+.searchbar_collection  {
   //margin-top: 15px; /* Adjust this if you need more space */
-  padding: 0 15px;
+  padding: 0 15px ;
 }
 
 /*logo이미지*/
@@ -51,8 +51,9 @@ ion-header {
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   margin-bottom: 10px; /* 텍스트와 영화 이미지 사이의 간격 */
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
+  color: #1c1c1c;
 }
 
 .unknow-image {
@@ -64,14 +65,15 @@ ion-header {
 .movie-images {
   display: flex;
   flex-direction: row; /* 가로 방향으로 나열 */
+  justify-content: center;
 }
 
 .alone {
-  width: 130px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
+  width: 120px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
   height: auto;
   //max-width: 100px; /* 최대 너비 설정 */
   margin: 5px; /* 이미지 사이의 간격 */
-  border-radius: 10px; /* 모서리를 둥글게 설정 (값 조정 가능) */
+  border-radius: 8px; /* 모서리를 둥글게 설정 (값 조정 가능) */
 }
 /*인기 (불)*/
 .hot{
@@ -81,7 +83,7 @@ ion-header {
   margin-left: 22px;
   color: #ffffff;
   display: inline-block; /* 박스형태로 만들기 위해 inline-block 사용 */
-  background-color: #7016ff;
+  background-color: #db4a2b;
   padding: 3px 3px 3px 7px; /* 버튼처럼 보이도록 패딩 추가 */
   border-radius: 17px; /* 둥근 모서리를 만들기 위해 반지름 설정 */
   text-align: center; /* 텍스트 가운데 정렬 */
@@ -95,3 +97,47 @@ ion-header {
   margin: 0 0 20px 0;
 
 }
+
+/*인기순*/
+.popular {
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트 세로 중앙 정렬 */
+  justify-content: flex-end; /* 오른쪽으로 정렬 */
+  position: relative; /* 위치 조정을 위해 relative 사용 */
+  padding: 0 20px 0 15px; /* 여백 추가 */
+  color: #db4a2b;
+  margin-bottom: 10px;
+}
+
+/* 좋아요 수 */
+.likes {
+  display: flex; /* 아이콘과 텍스트를 가로로 정렬 */
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  font-size: 20px;
+  padding: 5px 15px;
+  color: #db4a2b;
+  //font-weight: bold;
+}
+.likes span{
+  font-size: 13px;
+  color: #292929;
+}
+
+/*공유버튼 css*/
+ion-fab-button::part(native) {
+  background-color: #db4a2b;
+  border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  color: #f1f1f1;
+}
+ion-fab-button::part(native):hover::after {
+  background-color: #d55b41;
+}
+ion-fab-button::part(native):active::after {
+  background-color: #d55b41;
+}
+
+
+

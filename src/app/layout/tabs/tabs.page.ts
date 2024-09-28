@@ -31,6 +31,11 @@ import { BehaviorSubject } from 'rxjs';  // BehaviorSubject import
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage implements OnInit {
+  selectedTab: string = 'home'; // 기본 탭 설정
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
   public showAdditionalTabs: boolean = false;
 
   constructor(private authService: AuthService) {}

@@ -299,8 +299,7 @@ ion-card {
 
 }
 
-/* 갤러리 modal*/
-ion-modal#gallery1-modal, {
+ion-modal#example-modal {
   --width: fit-content;
   --min-width: 250px;
   --height: fit-content;
@@ -308,11 +307,11 @@ ion-modal#gallery1-modal, {
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 
-ion-modal#gallery1-modal h1 {
+ion-modal#example-modal h1 {
   margin: 20px 20px 10px 20px;
 }
 
-ion-modal#gallery1-modal ion-icon {
+ion-modal#example-modal ion-icon {
   margin-right: 6px;
 
   width: 48px;
@@ -323,10 +322,9 @@ ion-modal#gallery1-modal ion-icon {
   color: #aaaaaa;
 }
 
-ion-modal#gallery1-modal .wrapper {
+ion-modal#example-modal .wrapper {
   margin-bottom: 10px;
 }
-
 
 
 

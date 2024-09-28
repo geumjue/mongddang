@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { personCircle } from 'ionicons/icons';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,6 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-detail.page.scss'],
 })
 export class MovieDetailPage implements OnInit {
+
+  isModalOpen = false; // Modal 열림 상태
+
+  // Modal을 열기 위한 메서드
+  presentModal() {
+    this.isModalOpen = true; // Modal 열림
+  }
+
+  // Modal을 닫기 위한 메서드
+  closeModal() {
+    this.isModalOpen = false; // Modal 닫힘
+  }
 
   isGalleryOpen = true;
   //슬라이더 옵션 설정
@@ -16,6 +30,11 @@ export class MovieDetailPage implements OnInit {
   };
 
   constructor(private router: Router) {
+    addIcons({ personCircle });
+
+
+
+
   }
 
   ngOnInit() {
@@ -33,7 +52,10 @@ export class MovieDetailPage implements OnInit {
     this.router.navigate(['/comment-write']);
   }
 
+
+
   closeGallery() {
     this.isGalleryOpen = false;
+
   }
 }

@@ -54,33 +54,36 @@
   </a>
   <img class="poster" alt="" src= "https://image.cine21.com/resize/cine21/poster/2024/0826/10_43_11__66cbddaf49c14[X230,330].jpg" />
 
-  <ion-label class="gallery_text">갤러리</ion-label>
-  <div class="gallery_img">
-    <ion-button id="gallery_img1" expand="block"> <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;"></ion-button>
-    <ion-modal id="gallery1-modal" #modal trigger="open-custom-dialog">
-      <ng-template>
-        <div class="wrapper">
-          <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;">
-        </div>
-      </ng-template>
-    </ion-modal>
-      <ion-button id="gallery_img2" expand="block"> <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg" style="width: 100%;"></ion-button>
-      <ion-modal id="gallery2-modal" #modal trigger="open-custom-dialog">
-        <ng-template>
-          <div class="wrapper">
-            <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;">
-          </div>
-        </ng-template>
-      </ion-modal>
 
 
 
 <!--    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg">-->
 <!--    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg">-->
+
+
+
+  <ion-label class="gallery_text">갤러리</ion-label>
+  <div class="gallery_img">
+    <!-- 첫 번째 이미지 버튼 -->
+    <ion-button (click)="presentModal('https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg')" fill="clear">
+      <img alt="이미지 버튼" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg">
+    </ion-button>
+
+    <!-- 두 번째 이미지 버튼 -->
+    <ion-button (click)="presentModal('https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg')" fill="clear">
+      <img alt="이미지 버튼" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg">
+    </ion-button>
   </div>
 
-
-
+  <!-- Modal 설정 -->
+  <ion-modal [isOpen]="isModalOpen" (didDismiss)="closeModal()" class="example-modal">
+    <ng-template>
+      <ion-content>
+        <img [src]="selectedImage" alt="모달 이미지" style="width: 100%;">
+        <ion-button (click)="closeModal()">Close</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 
 

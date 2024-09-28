@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from "@angular/router";
 import { addIcons } from 'ionicons';
 import {
   chevronDownCircle,
@@ -16,11 +17,18 @@ import {
 })
 export class CollectionPage implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ chevronDownCircle, chevronForwardCircle, chevronUpCircle, colorPalette, document, globe });
   }
 
   ngOnInit() {
+    this.loadData()
+  }
+  loadData() {
+
   }
 
+  goToUploadCollectionPage() {
+    this.router.navigate(['/upload-collection']);
+  }
 }

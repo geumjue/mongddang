@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'collection',
     loadChildren: () => import('./collection/collection.module').then( m => m.CollectionPageModule)
   },
+  {
+    path: 'upload-collection',
+    loadChildren: () => import('./collection/upload-collection/upload-collection.module').then(m => m.UploadCollectionPageModule)
+  },
+
 
 
 

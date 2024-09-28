@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  font-family: 'Pretendard-Regular';
+}
+
+ion-back-button{
+  color:#db4a2b;
+  margin-left: 9px;
+
+}
+//ion-button{
+//  color: ;
+//}
+ion-item{
+  margin-top: 10px;
+
+}
+ion-input::part(native)::placeholder {
+  color: grey; /* Placeholder 텍스트 색상 */
+}
+.foot{
+  display: flex;
+  align-content: center;
+  margin: 15px;
+  color: grey;
+  font-size: 12px;
+
+}
+.foot .text_count{
+  margin-left: auto;
+}
+
+.christmas_movie {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 쌓이게 설정 */
+  margin: 0 10px 10px 10px;
+  border: 2px solid transparent; /* 기본적으로 투명한 테두리 */
+  transition: border-color 0.3s; /* 테두리 색상 변화에 애니메이션 추가 */
+  cursor: pointer;
+  padding:10px;
+}
+.christmas_movie.active {
+  border-color: #db4a2b; /* 선택되었을 때 테두리 색상 */
+  border-radius: 8px;
+}
+
+/*크히스마스에 생각나는 영화*/
+.header {
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  margin-bottom: 3px; /* 텍스트와 영화 이미지 사이의 간격 */
+  font-size: 17px;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+
+.movie-images {
+  display: flex;
+  flex-direction: row; /* 가로 방향으로 나열 */
+}
+
+.alone {
+  width: 70px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
+  height: auto;
+  object-fit: cover;
+  //max-width: 100px; /* 최대 너비 설정 */
+  margin: 3px; /* 이미지 사이의 간격 */
+  border-radius: 3px; /* 모서리를 둥글게 설정 (값 조정 가능) */
+}
+
+.store_comment {
+  color: grey; // 기본 색상
+
+  &.active-share {
+    color: #db4a2b; // 선택된 경우 색상
+  }
+}
+
+.description {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: grey;
+  font-size: 15px;
+}
+
+.custom-cancel-button {
+  background-color: transparent; /* Red */
+  color: #db4a2b; /* Text color */
+}
+
+.custom-confirm-button {
+  background-color: #222222; /* Blue */
+  color: white; /* Text color */
+}

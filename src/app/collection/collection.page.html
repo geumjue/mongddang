@@ -85,11 +85,14 @@
     </div>
   </div>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" >
     <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
+      <ion-icon (click)="goToUploadCollectionPage()" name="add"></ion-icon>
     </ion-fab-button>
 <!--    <ion-fab-list side="top">-->
+<!--&lt;!&ndash;      <ion-fab-button>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ion-icon name="document"></ion-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ion-fab-button>&ndash;&gt;-->
 <!--    </ion-fab-list>-->
   </ion-fab>
 

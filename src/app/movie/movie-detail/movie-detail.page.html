@@ -56,9 +56,33 @@
 
   <ion-label class="gallery_text">갤러리</ion-label>
   <div class="gallery_img">
-    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg">
-    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg">
+    <ion-button id="gallery_img1" expand="block"> <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;"></ion-button>
+    <ion-modal id="gallery1-modal" #modal trigger="open-custom-dialog">
+      <ng-template>
+        <div class="wrapper">
+          <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;">
+        </div>
+      </ng-template>
+    </ion-modal>
+      <ion-button id="gallery_img2" expand="block"> <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg" style="width: 100%;"></ion-button>
+      <ion-modal id="gallery2-modal" #modal trigger="open-custom-dialog">
+        <ng-template>
+          <div class="wrapper">
+            <img src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg" style="width: 100%;">
+          </div>
+        </ng-template>
+      </ion-modal>
+
+
+
+<!--    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e9574859[S750,750].jpg">-->
+<!--    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0806/61443_66b17e95c85b0[S750,750].jpg">-->
   </div>
+
+
+
+
+
 
   <ion-label class="video_text">동영상</ion-label>
   <div class="video_clip">

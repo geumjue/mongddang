@@ -196,14 +196,15 @@ ion-thumbnail img {
   overflow-x: scroll;
   overflow-y: hidden;
 
-   //가로 스크롤 없애기, 대신 mobile에서만 스크롤 가능함
-   -ms-overflow-style: none;
-   scrollbar-width: none;
-
-   ::-webkit-scrollbar {
-     display: none;
-   }
+   ////가로 스크롤 없애기, 대신 mobile에서만 스크롤 가능함
+   //-ms-overflow-style: none;
+   //scrollbar-width: none;
+   //
+   //::-webkit-scrollbar {
+   //  display: none;
+   //}
 }
+
 
 .movie_list{
   margin-top: 10px;
@@ -234,30 +235,104 @@ ion-thumbnail img {
   display: flex;
   flex-direction: column;
   gap: 5px;
-
-
-  .title {
-    font-size: 16px;
-    font-weight: 400;
-    // 길어지면 ... 처리
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .year_country {
-    font-size: 14px;
-  }
-
-  .sub {
-    font-size: 13px;
-    color: #7e7e7e;
-  }
 }
+
+
+
+
+/* 정렬하기 */
+
+//
+//.box_office_rankings {
+//  width: 430px;
+//  margin-bottom: 30px;
+//}
+//
+//.box_office_rankings .label {
+//  font-size: 20px;
+//  font-weight: 700;
+//  padding: 14px 0;
+//}
+//
+//.box_office_rankings .movie_list {
+//  width: 100%;
+//  height: auto; /* height를 auto로 설정하여 내부 콘텐츠에 맞게 동적으로 조정 */
+//  margin-top: 10px;
+//}
+//
+//.box_office_rankings .movie_list swiper-container {
+//  width: 100%;
+//  overflow-x: hidden; /* Swiper는 자체적으로 스크롤 처리를 하므로 overflow 설정을 조정 */
+//}
+//
+//.box_office_rankings .movie_list swiper-slide {
+//  width: 120px; /* 슬라이드의 너비를 고정 */
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  margin-right: 12px; /* 각 슬라이드 사이에 여백 추가 */
+//}
+//
+//.box_office_rankings .movie_list swiper-slide img {
+//  width: 100%; /* 이미지가 슬라이드의 너비에 맞게 설정 */
+//  border-radius: 5px;
+//}
+//
+//.box_office_rankings .movie_list swiper-slide .description {
+//  margin-top: 5px;
+//  text-align: center;
+//}
+//
+//.title {
+//  font-size: 16px;
+//  font-weight: 400;
+//  overflow: hidden;
+//  text-overflow: ellipsis;
+//  white-space: nowrap;
+//}
+//
+//.year_country {
+//  font-size: 14px;
+//}
+//
+//.sub {
+//  font-size: 13px;
+//  color: #7e7e7e;
+//}
+
+
+
+
+
+
+
+
+
+
 
 .actor h4{
   color: grey;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*케빈 이미지*/
 .preview {

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="tabs/collection" icon="close" text=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>컬렉션 업로드</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id = "present-alert" class="store_comment">공유</ion-button>
+      <ion-alert
+        trigger="present-alert"
+        header="컬렉션을 공유하시겠습니까?"
+        [buttons]="alertButtons"
+        (didDismiss)="setResult($event)"
+      ></ion-alert>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <p class="description">공유하고자 하는 컬렉션을 선택해주세요.</p>
+  <div class="christmas_movie" tabindex="0" (click)="selectMovie($event)">
+    <div class="header">
+      <span>goldzooo의 인생 영화 모음집</span>
+      <!--      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>-->
+    </div>
+    <div class="movie-images">
+      <img class="alone"
+           src="https://an2-img.amz.wtchn.net/image/v2/CRh1UW5KwboKqIVRqEZ8kQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2d4YlhWcFoycG1hVEEwWW1GMmFqQnhaV2Q1SW4wLnk2WE12M3ZOaFh1bFlnc3dDUHlxNDEyQ1AtOVhja0E5UWxzbEdWNmhBTEU" alt="">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/zFPvn3jK-7iDRd0Wbrmf1Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlp5YVRsM2RHeG5jV3BuTkhKNWVITm9PWE5ySW4wLlVaNkRzclJaaHhuZHlZbERITnl0YkExajZsMVVrclRYc0xCbTZCWU9KRVE">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/KWUdZfFXdO2NyTx4EJ_0ag.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2h3Y25rMFpIcGpaWEJpT0dkbmVuZzNhMlZ4SW4wLmFzZFV4VzVGczFfSWlrVWpCOGZac3ZWVW4wZU1ibFZsVTl3MEU1aldmUG8">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/WgF5vgHRirBeQXVpnmwy-A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlY1WW01bWNHRTNjRGMwTm1ZM2JteDFjamx0SW4wLkM5SHdNQXBVTTdIQ3RMemhpNTRCTFdUTlFjM3gydWxkTVJtaEhNcGdocHM">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/dxKRDWzUXkmFaAjG9ODR9A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFd05qQTBNVGt5TURZeE1qSXdOemNpZlEudFRJalVPRUdzd3phenZBZl9ocFBNZ2xTQ1hLYVBKbDdteFNsdXRlcEdzbw">
+
+    </div>
+  </div>
+
+  <div class="christmas_movie" tabindex="0" (click)="selectMovie($event)" >
+    <div class="header">
+<!--      <ion-radio value="1">크리스마스에 생각나는 영화(2024)</ion-radio>-->
+      <span>크리스마스에 생각나는 영화(2024)</span>
+<!--      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>-->
+    </div>
+    <div class="movie-images">
+      <img class="alone"
+           src="https://an2-img.amz.wtchn.net/image/v2/vTsxcPKaoS9TLL89TdEz7A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk16azBOVEE1T0RneE1qVTJNalUyTVRFaWZRLmlWVUQyTkNzT3ZJcVlxMzV2MEhlUDBTVzNFLWhWUlB5M0V2ZTZSVzh6Zm8" alt="">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/ZZNsVtTTkb5H01UBbMhGTQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1pvZW1zMGQzWndNR015ZDNkek5uUnphR2RwSW4wLlVpRDVZRDUyYmlPU2Raanp2UktZUjFrd1A2S0lJZnJ0SERtVkc1MGVrTkk">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/nQEG6hXeCFqJq6yG6Z9C3Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMk4zWW10d2JHVmlkR1I1ZW5NemJtVndiR2x6SW4wLnJsMHBGemhHNm1UMWpQaWFJeFJwNXVJNndZUVBrWkRvZFJUT2NLS2RocGc">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/puTvHDPotCo7rd5wsknFBQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMnB2Y1hZMVpISjVNV04yY25oeWJXTjBiV0Z5SW4wLnVHdW90WExNZGhINk1QbUc2V2FiaE9yRTR5VXdBZ2p0RC1mUjVIZWZwc1E">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/I3hyGrXUf77sA8x4IhQkWw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFM01ERTNOVEl3TlRBM09USXdOREV3T0RraWZRLk1MT2syRjlQOXU1aU5sd3JPZEdRb1VvbkowWTZjMnRjNTJaZHlxeFAzVVE">
+<!--      <img class="alone" alt=""-->
+<!--           src="https://an2-img.amz.wtchn.net/image/v2/sB5FgqDinznc4sAqLgeONQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1J0WjNBd1kySm1ZMk42ZG1VM1pUTndlWEZ2SW4wLlBGRnpvVEhuemFySWVWUXVRdjNBclUycUVsOVdnVU5oXzJrRVRuSk9TdG8">-->
+<!--      -->
+    </div>
+  </div>
+  <!--  <hr class="line">-->
+
+  <div class="christmas_movie" tabindex="0" (click)="selectMovie($event)">
+    <div class="header">
+      <span>천만 돌파한 한국 영화는 뭐가 있을까?</span>
+<!--      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>-->
+    </div>
+    <div class="movie-images">
+      <img class="alone"
+           src="https://file2.nocutnews.co.kr/newsroom/image/2023/05/03/202305031010068401_0.jpg" alt="">
+      <img class="alone" alt=""
+           src="https://upload.wikimedia.org/wikipedia/ko/b/b9/%EB%B2%94%EC%A3%84%EB%8F%84%EC%8B%9C_2_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/s1WtYTmmb-LItzrTITFYkw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1EazNNakF5T0RFeU5UVTFOVEEzTWpraWZRLlZsc1E3Tm9tZGVHclNKZERFOXlUOU9XLUJXU0J6MFVUemZaTWlPYTJMVHM">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/OivZbOIO9E4s7J0E69K0gg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlJ4WTJwcVlXdDZOemhtYTNScE5ERjVibmN6SW4wLkFmQWNMQkV6dWpwUXEtZmtSMkFVcWJ0aU1CR1NjV1RrWHhpejJCSHR4V3c">
+      <img class="alone" alt=""
+           src="https://an2-img.amz.wtchn.net/image/v2/4fXGcnpr8CS5f2l3jE2Z-Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2gzY1d0aWEyeHRkbkJsZG5sNllXWjFabUp5SW4wLmMwUjdILXByVzhFVGhESDZQckNpc2M0RkhGOW1mdl9MRnE3RGswU1VRcUU">
+    </div>
+  </div>
+
+<!--  </ion-radio-group>-->
+</ion-content>
+<!--<div class="foot">-->
+<!--</div>-->
+
+

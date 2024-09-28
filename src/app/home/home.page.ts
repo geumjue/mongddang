@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,7 +6,11 @@ import {Router} from "@angular/router";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage {
+export class HomePage implements AfterViewInit{
+  // @ViewChild('swiper_preview') swiperRef_preview!: ElementRef;
+  @ViewChild('swiper_cgv') swiperRef_cgv!: ElementRef;
+  @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
+
   public boxOfficeRankings = [
     {
       rank: 1,
@@ -69,7 +73,43 @@ export class HomePage {
       cumulativeAudience: '427.6만명',
     },
   ];
+
+
+
+
+
+
   constructor(private router: Router) {}
+
+  ngAfterViewInit() {
+    // const swiperEl_preview = this.swiperRef_preview.nativeElement;
+    const swiperEl_cgv = this.swiperRef_cgv.nativeElement;
+    const swiperEl_netflix = this.swiperRef_netflix.nativeElement;
+
+
+
+    const params = {
+      slidesPerView: 3,
+      spaceBetween: 5,
+    };
+
+    Object.assign(swiperEl_cgv, params);
+    swiperEl_cgv.initialize();
+
+    Object.assign(swiperEl_netflix, params);
+    swiperEl_netflix.initialize();
+
+    // Object.assign(swiperEl_preview, {
+    //   slidesPerView: 1, // 한 번에 하나의 이미지 표시
+    //   spaceBetween: 5,
+    //   autoplay: {
+    //     delay: 2000, // 2초마다 전환
+    //     disableOnInteraction: false, // 사용자 상호작용 시에도 자동 전환 유지
+    //   },
+    //   loop: true, // 루프 설정
+    // });
+    // swiperEl_preview.initialize();
+  }
 
   goToNowsCommentPage() {
     this.router.navigate(['tabs/home/nows-comment']);

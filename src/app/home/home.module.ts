@@ -6,6 +6,10 @@ import { HomePage } from './home.page';
 // import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { register } from 'swiper/element/bundle';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+register();
 
 @NgModule({
   imports: [
@@ -15,6 +19,7 @@ import { HomePageRoutingModule } from './home-routing.module';
     // ExploreContainerComponentModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageModule {}

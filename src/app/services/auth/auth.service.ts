@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
-import { SignInRequestData } from 'src/app/auth/models/auth-signin-request-data.interface';
-import { AuthResponse } from 'src/app/auth/models/auth-reponse.interface';
+import { AuthResponse } from 'src/app/auth/models/auth/auth-reponse.interface';
+import { SignInRequestData } from 'src/app/auth/models/auth/auth-signin-request-data.interface';
+
 
 @Injectable({
   providedIn: 'root',

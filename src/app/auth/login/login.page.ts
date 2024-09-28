@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from "../services/auth.service";
-import { LogInRequestData } from '../models/auth-login-request-data.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { SignInRequestData } from '../models/auth-signin-request-data.interface';
+
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,12 @@ export class LoginPage {
 
   // 로그인 버튼 클릭 시 실행
   login() {
-    const logInRequestData: LogInRequestData = {
+    const signInRequestData: SignInRequestData = {
       email: this.email,
       password: this.password,
     };
 
-    this.authService.login(logInRequestData).subscribe({
+    this.authService.logIn(signInRequestData).subscribe({
       next: response => {
         if (response.success) {
           this.router.navigate(['/']);

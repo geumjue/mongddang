@@ -22,8 +22,8 @@
 //
 // }
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../auth/services/auth.service";
 import { BehaviorSubject } from 'rxjs';  // BehaviorSubject import
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-tabs',
@@ -42,10 +42,10 @@ export class TabsPage implements OnInit {
 
   ngOnInit() {
     // 로그인 상태를 구독하여 탭 표시 여부 결정
-    this.authService.getLoginStatus().subscribe((isLoggedIn: boolean) => {
-      this.showAdditionalTabs = isLoggedIn;
-      console.log('showAdditionalTabs:', this.showAdditionalTabs);
-    });
+    // this.authService.getLoginStatus().subscribe((isLoggedIn: boolean) => {
+    //   this.showAdditionalTabs = isLoggedIn;
+    //   console.log('showAdditionalTabs:', this.showAdditionalTabs);
+    // });
   }
 }
 

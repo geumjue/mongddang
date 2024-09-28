@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { SignInRequestData } from '../../models/auth/auth-signin-request-data.interface';
 
 
 @Component({

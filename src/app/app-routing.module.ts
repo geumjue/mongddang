@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'collection',
     loadChildren: () => import('./collection/collection.module').then( m => m.CollectionPageModule)
   },
+  {
+    path: 'actor-list',
+    loadChildren: () => import('./actor-list/actor-list.module').then(m => m.ActorListPageModule)
+  },
+
 
 
 

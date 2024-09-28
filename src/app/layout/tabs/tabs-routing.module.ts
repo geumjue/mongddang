@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../../comment/comment-write/comment-write.module').then(m => m.CommentWritePageModule)
       },
       {
+        path: 'actor-list',
+        loadChildren: () => import('../../actor-list/actor-list.module').then(m => m.ActorListPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

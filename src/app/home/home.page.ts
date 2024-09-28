@@ -123,6 +123,10 @@ export class HomePage implements AfterViewInit{
   goToSearchPage() {
     this.router.navigate(['tabs/search']);
   }
+  goToActorListPage() {
+    this.router.navigate(['tabs/actor-list']);
+  }
+
 
 }
 

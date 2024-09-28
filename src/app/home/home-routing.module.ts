@@ -4,6 +4,7 @@ import { HomePage } from './home.page';
 import {NowsCommentPage} from "../comment/nows-comment/nows-comment.page";
 import {MovieDetailPage} from "../movie/movie-detail/movie-detail.page";
 import {SearchPage} from "../search/search.page";
+import {ActorListPage} from "../actor-list/actor-list.page";
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
     path: 'movie-detail',
     component: MovieDetailPage,
 
-  }
+  },
 
 ];
 

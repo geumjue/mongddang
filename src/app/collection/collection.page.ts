@@ -22,10 +22,6 @@ export class CollectionPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loadData()
-  }
-  loadData() {
-
   }
 
   goToUploadCollectionPage() {

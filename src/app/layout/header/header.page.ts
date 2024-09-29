@@ -15,6 +15,7 @@ export class HeaderPage implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+
 //     this.isLoggedIn = this.authService.isLoggedIn();
 //     if (this.isLoggedIn) {
 //       this.userProfilePicture = this.authService.getUserProfilePictureFromToken() || '/assets/default-profile.png';

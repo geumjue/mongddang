@@ -1,136 +1,40 @@
-<<<<<<< HEAD
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--  <title>회원가입</title>-->
-<!--</head>-->
-<!--<div style="text-align: center; margin-top:40px">-->
-<!--  <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:280px; height: auto;">-->
-<!--</div>-->
 
-<!--<ion-header [translucent]="true"></ion-header>-->
-
-<!--<ion-content>-->
-<!--  <h1 class="createAccountTitle">회원가입</h1>-->
-
-<!--  <form #signUpForm="ngForm" (ngSubmit)="signUp()">-->
-<!--    <div class="login-box">-->
-<!--      <div>-->
-<!--        <label for="username">닉네임</label>-->
-<!--        <input id="username" type="text" name="username"  [(ngModel)]="username" placeholder="닉네임을 입력하세요">-->
-<!--      </div>-->
-
-<!--      <div>-->
-<!--        <label for="email">이메일</label>-->
-<!--        <input id="email" type="email" name="email"  [(ngModel)]="email" placeholder="이메일을 입력하세요">-->
-<!--      </div>-->
-
-<!--      <div>-->
-<!--        <label for="password">비밀번호</label>-->
-<!--        <input id="password" type="password" name="password"  [(ngModel)]="password" placeholder="비밀번호를 입력하세요">-->
-<!--      </div>-->
-<!--      <ion-button class="signUp" expand="full" type="submit">회원가입</ion-button>-->
-<!--    </div>-->
-<!--    <div class="divider-container">-->
-<!--      <hr class="divider-line">-->
-<!--&lt;!&ndash;<span class="divider-text">O</span>&ndash;&gt;-->
-<!--&lt;!&ndash;      <hr class="divider-line">&ndash;&gt;-->
-<!--    </div>-->
-<!--  </form>-->
-<!--  <ion-button class="backLoginBtn"(click)="goBackLoginPage()">뒤로 가기</ion-button>-->
-<!--</ion-content>-->
-<!--</html>-->
-
-
-
-<!--지민수정-->
-=======
->>>>>>> cebbdf0a6ffee5c0822cbbca24ec27aa9179d6c7
-<ion-toolbar style="--background: white; color: white;">
-  <ion-buttons slot="start">
-    <ion-button class="backLoginBtn" (click)="goBackLoginPage()">
-      <ion-icon name="close-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
-
-<<<<<<< HEAD
-
-<!--원래버전-->
-<!--<div style="text-align: center; margin-top:120px">-->
-<!--  <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:200px; height: auto;">-->
-<!--</div>-->
-
-<!--<ion-content>-->
-<!--  <h1 class="createAccountTitle" style="margin-top: 10px">회원가입</h1>-->
-
-<!--  <form (ngSubmit)="signUp()">-->
-<!--    <div class="login-box" style="margin-top: 60px">-->
-<!--      <div>-->
-<!--        <label for="username">닉네임</label>-->
-<!--        <input id="username" type="text" name="username"  [(ngModel)]="username" placeholder="닉네임을 입력하세요">-->
-<!--      </div>-->
-
-<!--      <div>-->
-<!--        <label for="email">이메일</label>-->
-<!--        <input id="email" type="email" name="email"  [(ngModel)]="email" placeholder="이메일을 입력하세요">-->
-<!--      </div>-->
-
-<!--      <div>-->
-<!--        <label for="password">비밀번호</label>-->
-<!--        <input id="password" type="password" name="password"  [(ngModel)]="password" placeholder="비밀번호를 입력하세요">-->
-<!--      </div>-->
-<!--      <ion-button class="signUp" expand="full" type="submit">회원가입</ion-button>-->
-<!--    </div>-->
-
-<!--  </form>-->
-<!--</ion-content>-->
-
-=======
->>>>>>> cebbdf0a6ffee5c0822cbbca24ec27aa9179d6c7
 <ion-content>
-  <div class="logo_image">
-    <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로">
-  </div>
+  <div class="total" style="margin-top: 150px">
+  <p class="signup-title">회원가입</p>
+<div class="sign">
   <div class="text">
     <h1>영화를 리뷰하고<br>
       컬렉션을 만들어보세요!</h1>
   </div>
 
   <form (ngSubmit)="signUp()">
-    <div class="login-box" style="margin-top: 80px">
-      <ion-item>
-        <label for="email">이메일</label>
+    <div class="login-box" >
+      <div class="container">
+      <label for="email">이메일</label>
+      <ion-item lines="none">
         <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="이메일을 입력하세요" required>
       </ion-item>
+      </div>
 
-<<<<<<< HEAD
-      <ion-item>
+      <div class="container">
         <label for="password">비밀번호</label>
+      <ion-item lines="none">
         <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="비밀번호를 입력하세요" required>
       </ion-item>
+      </div>
 
-      <ion-item>
+      <div class="container">
         <label for="username">닉네임</label>
+      <ion-item lines="none">
         <input type="username" id="username" name="username" [(ngModel)]="username" placeholder="닉네임을 입력하세요" required>
       </ion-item>
+      </div>
     </div>
-    <ion-button class="signUp" expand="full" type="submit">회원가입</ion-button>
   </form>
-=======
-        <form class="email-form">
-          <label for="email">이메일</label>
-          <input type="email"  id="email" name="email"  [(ngModel)]="email" placeholder="이메일을 입력하세요" required>
-        </form>
-
-        <form class="password-form">
-          <label for="password">비밀번호</label>
-          <input type="password"  id="password" name="password"  [(ngModel)]="password" placeholder="비밀번호를 입력하세요" required>
-        </form>
->>>>>>> cebbdf0a6ffee5c0822cbbca24ec27aa9179d6c7
+</div>
+    <ion-button class="signUp" expand="full" type="submit">회원가입</ion-button>
 
 
-
+  </div>
 </ion-content>

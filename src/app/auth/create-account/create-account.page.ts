@@ -12,13 +12,13 @@ export class CreateAccountPage {
   username: string = '';
   email: string = '';
   password: string = '';
-  
+
 
 
   constructor(private router: Router, private authService: AuthService) {}
 
   signUp() {
-    alert(this.email)  
+    alert(this.email)
     const signUpRequestData: SignUpRequestData = {
       username: this.username,
       password: this.password,
@@ -41,7 +41,7 @@ export class CreateAccountPage {
       console.log('Sign Up request completed.');
     }
   });
-  
+
 }
 
   goBackLoginPage() {

@@ -1,400 +1,47 @@
-<ion-header>
-  <img src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:180px; height: auto;">
-</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Welcome to the Board App Page</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This is the main page of the application. Not Ready to use yet. 🛠️
+    </ion-card-content>
+  </ion-card>
 
-<!--<ion-header [translucent]="true">-->
-<!--      <ul class="toolbar_list">-->
-<!--        <li class="toolbar_movie">-->
-<!--          <ion-button color="white">영화</ion-button>-->
-<!--        </li>-->
-<!--        <li class="toolbar_series">-->
-<!--          <ion-button (click)="goToSeriesPage()" color="white">시리즈</ion-button>-->
-<!--        </li>-->
-<!--        <li class="toolbar_book">-->
-<!--          <ion-button (click)="goToBookPage()" color="white">책</ion-button>-->
-<!--        </li>-->
-<!--        <li class="toolbar_cartoon">-->
-<!--          <ion-button color="white">웹툰</ion-button>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--</ion-header>-->
-<div class="home_wrapper">
-  <ion-searchbar (click)="goToSearchPage()" color="light" show-clear-button="never" placeholder="찾고 있는 영화를 검색하세요" style="padding: 0 15px 15px 15px;"></ion-searchbar>
-
-  <div class="preview">
-    <swiper-container #swiper_preview>
-      <swiper-slide data-swiper-autoplay="2000">
-        <img src="assets/images/kevin.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
-        <div class="kevin_text">
-          <a class="HOT">🎅HOT🎄</a><br>
-          <a class="nows_HOT">크리스마스에 생각나는 영화</a>
-        </div>
-        <a class="preview_count">1/2</a>
-      </swiper-slide>
-
-      <swiper-slide data-swiper-autoplay="2000">
-        <img src="assets/images/harry3.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
-        <div class="kevin_text">
-          <a class="HOT">🎅HOT🎄</a><br>
-          <a class="nows_HOT">"해리포터 정주행, 준비됐어?"</a>
-        </div>
-        <a class="preview_count">2/2</a>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-
-
-
-
-<!--코멘트-->
-  <div class="home_comment">
-    <p class="bold_title">
-      지금 뜨는 코멘트
-        <ion-icon (click)="goToNowsCommentPage()" name="chevron-forward-outline"></ion-icon>
-    </p>
-    <swiper-container #swiper_comments>
-      <swiper-slide >
-        <ion-card class="comment-card">
-          <ion-card-header class="comment-card-header">
-            <div class="comment_profile">
-              <ion-avatar aria-hidden="true" slot="start">
-                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-              </ion-avatar>
-              <ion-label>메타몽</ion-label>
-            </div>
-          </ion-card-header>
-          <ion-item>
-            <!-- 영화 이미지-->
-            <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
-            </ion-thumbnail>
-            <ion-content>
-              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
-              <div class="comment">
-                결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
-              </div>
-            </ion-content>
-          </ion-item>
-          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>
-          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>
-        </ion-card>
-      </swiper-slide>
-      <swiper-slide>
-        <ion-card class="comment-card">
-          <ion-card-header class="comment-card-header">
-            <div class="comment_profile">
-              <ion-avatar aria-hidden="true" slot="start">
-                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-              </ion-avatar>
-              <ion-label>메타몽</ion-label>
-            </div>
-          </ion-card-header>
-          <ion-item>
-            <!-- 영화 이미지-->
-            <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
-            </ion-thumbnail>
-            <ion-content>
-              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
-              <div class="comment">
-                결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
-              </div>
-            </ion-content>
-          </ion-item>
-          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>
-          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>
-        </ion-card>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-
-
-  <!--순위-->
-  <div class="box_office_rankings">
-    <p class="bold_title">박스오피스 순위</p>
-    <section class="movie_list">
+  <ion-card>
+    <ion-card-header>
+      <h5>CGV MOVIES</h5>
+    </ion-card-header>
+    <ion-card-content>
       <swiper-container #swiper_cgv>
-        <swiper-slide *ngFor="let movie of boxOfficeRankings">
-          <a [href]="'https://moviestory.cgv.co.kr/fanpage/mainView?movieIdx=' + movie.rank">
-            <img [src]="movie.imgSrc" alt="{{ movie.title }}">
-          </a>
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{ movie.reservationRate }}% 누적 관객 {{ movie.cumulativeAudience }}
-            </p>
-          </div>
-        </swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88488"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88488/88488_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88531"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88531/88531_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88500"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88500/88500_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88499"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88499/88499_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88485"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88485/88485_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=88687"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88687/88687_320.jpg"></a></swiper-slide>
+          <swiper-slide><a href="https://moviestory.cgv.co.kr/fanpage/mainView;jsessionid=...&movieIdx=77772"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000077/77772/77772_320.jpg"></a></swiper-slide>
+        </swiper-container>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h5>NETFLIX SERIES</h5>
+    </ion-card-header>
+    <ion-card-content>
+      <swiper-container #swiper_netflix>
+        <swiper-slide><a href="https://m.kinolights.com/title/125601"><img src="https://file.kinolights.com/s/content_poster/202408/13/46825657-6778-440a-94b7-5dab55771173.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/130737"><img src="https://file.kinolights.com/s/content_poster/202406/13/f053a4af-1e1f-4c59-b672-9f1f62450b32.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/130244"><img src="https://file.kinolights.com/s/content_poster/202407/19/d3c5aa85-ea5d-4be3-a9bf-4302d2ed1b7b.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/136465"><img src="https://file.kinolights.com/s/content_poster/202409/03/94ec063c-c11a-409a-a72c-f23c1caa1d70.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/97833"><img src="https://file.kinolights.com/s/content_poster/202307/12/8864e988-b7ae-4c86-98e8-72535905e90c.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/136323"><img src="https://file.kinolights.com/s/content_poster/202409/03/4e312d56-5ae5-463b-a1f3-319813a70dd9.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/135659"><img src="https://file.kinolights.com/s/content_poster/202407/30/4a3c4045-b2dc-4811-ac88-a15a6b6356ea.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/136704"><img src="https://file.kinolights.com/s/content_poster/202409/02/c1af77c5-e5d5-49cb-a865-cf4984a09789.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/78554"><img src="https://file.kinolights.com/s/content_poster/202307/12/76c46436-adba-45b6-8d90-8e0d7cc0fc5c.webp"></a></swiper-slide>
+        <swiper-slide><a href="https://m.kinolights.com/title/111908"><img src="https://file.kinolights.com/s/content_poster/202309/11/0115be6e-ef82-46f9-b31b-92b5e26c83cb.webp"></a></swiper-slide>
       </swiper-container>
-    </section>
-
-  </div>
-<!--  <div class="star">-->
-<!--    <p>평균별점이 높은 작품</p>-->
-<!--  </div>-->
-  <div class="box_office_rankings">
-    <p class="bold_title">평균별점이 높은 작품</p>
-    <section class="movie_list">
-      <ul>
-        <li *ngFor="let movie of boxOfficeRankings">
-          <img src="{{ movie.imgSrc }}" />
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{movie.reservationRate}}% 누적 관객 {{
-                movie.cumulativeAudience }}
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-  </div>
-  <div class="
-  actor">
-    <p class="bold_title">화제의 배우 "황정민"의 작품</p>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>영화</ion-card-title>
-        <ion-card-subtitle>#황정민</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="베테랑2" src="https://an2-img.amz.wtchn.net/image/v2/5hebIEomnrG7kgFeIqfu4w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpjMk1qZzFOVE0zTWpJME9UQXhNREFpZlEuMkpETVZmSDRJNGNhbWVIRkZ4R3dTeHZqcWl0YXNza2pNclNZcGNYWVFIaw" (click)="goToMovieDetailPage()">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>베테랑</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="크로스" src="https://an2-img.amz.wtchn.net/image/v2/XApRmu2NJ88a3ZeD3AtIoQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpJeE56QXlPRGMxTlRjNU16YzBJbjAuLXRwdl90Q2RVTnUza0xlMTA4YkhLbS1SRUl6N1VpUm5GbFFCSnptUzFjNA">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>크로스</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="서울의 봄"  src="https://an2-img.amz.wtchn.net/image/v2/y8zw23wQG88i2Y3lNWetpQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UazFPVEkwTmpnM016QTVNamd6TWpFaWZRLjFQU194eWZtVWFUZG5KUmhsY2V5RHVlVnZXVVhEQ2hhYlhnY01KZ1Fka1k">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>서울의 봄</h2>
-              <h4>드라마</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-thumbnail slot="start">
-              <img alt="길복순" src="https://an2-img.amz.wtchn.net/image/v2/lZnOM6fJ1R36uYMe69VklQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56YzRNRFUzTVRjM01qa3hNakEyTlRraWZRLlkyTHFRdXBfT3phbVNqT3cxM1ZBWVIzUi0xWV9BZjhuNV9LTDRUUUktQWs">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>길복순</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-
-  </div>
-<!--  <div class="director">-->
-<!--    <p>화제의 감독 "제임스 카메론"의 작품</p>-->
-<!--    <ion-card>-->
-<!--      <ion-card-header>-->
-<!--        <ion-card-title>Card Title</ion-card-title>-->
-<!--        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>-->
-<!--      </ion-card-header>-->
-<!--      <ion-card-content>-->
-<!--        <ion-list>-->
-<!--          <ion-item>-->
-<!--            <ion-thumbnail slot="start">-->
-<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
-<!--            </ion-thumbnail>-->
-<!--            <ion-label>Item</ion-label>-->
-<!--          </ion-item>-->
-
-<!--          <ion-item>-->
-<!--            <ion-thumbnail slot="start">-->
-<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
-<!--            </ion-thumbnail>-->
-<!--            <ion-label>Item</ion-label>-->
-<!--          </ion-item>-->
-
-<!--          <ion-item>-->
-<!--            <ion-thumbnail slot="start">-->
-<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
-<!--            </ion-thumbnail>-->
-<!--            <ion-label>Item</ion-label>-->
-<!--          </ion-item>-->
-
-<!--          <ion-item lines="none">-->
-<!--            <ion-thumbnail slot="start">-->
-<!--              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />-->
-<!--            </ion-thumbnail>-->
-<!--            <ion-label>Item</ion-label>-->
-<!--          </ion-item>-->
-<!--        </ion-list>-->
-<!--      </ion-card-content>-->
-<!--    </ion-card>-->
-
-<!--  </div>-->
-<!--  <div class="genre1">-->
-<!--    <p>#SF/판타지</p>-->
-<!--  </div>-->
-  <div class="actor">
-    <p class="bold_title">화제의 감독 "제임스 카메론"의 작품</p>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>영화</ion-card-title>
-        <ion-card-subtitle>#황정민</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="베테랑2" src="https://an2-img.amz.wtchn.net/image/v2/5hebIEomnrG7kgFeIqfu4w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpjMk1qZzFOVE0zTWpJME9UQXhNREFpZlEuMkpETVZmSDRJNGNhbWVIRkZ4R3dTeHZqcWl0YXNza2pNclNZcGNYWVFIaw">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>베테랑</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="크로스" src="https://an2-img.amz.wtchn.net/image/v2/XApRmu2NJ88a3ZeD3AtIoQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpJeE56QXlPRGMxTlRjNU16YzBJbjAuLXRwdl90Q2RVTnUza0xlMTA4YkhLbS1SRUl6N1VpUm5GbFFCSnptUzFjNA">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>크로스</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img alt="서울의 봄"  src="https://an2-img.amz.wtchn.net/image/v2/y8zw23wQG88i2Y3lNWetpQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UazFPVEkwTmpnM016QTVNamd6TWpFaWZRLjFQU194eWZtVWFUZG5KUmhsY2V5RHVlVnZXVVhEQ2hhYlhnY01KZ1Fka1k">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>서울의 봄</h2>
-              <h4>드라마</h4>
-            </ion-label>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-thumbnail slot="start">
-              <img alt="길복순" src="https://an2-img.amz.wtchn.net/image/v2/lZnOM6fJ1R36uYMe69VklQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56YzRNRFUzTVRjM01qa3hNakEyTlRraWZRLlkyTHFRdXBfT3phbVNqT3cxM1ZBWVIzUi0xWV9BZjhuNV9LTDRUUUktQWs">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>길복순</h2>
-              <h4>액션</h4>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-
-  </div>
-  <div class="box_office_rankings">
-    <p class="bold_title">#SF/판타지</p>
-    <section class="movie_list">
-      <ul>
-        <li *ngFor="let movie of boxOfficeRankings">
-          <img src="{{ movie.imgSrc }}" />
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{movie.reservationRate}}% 누적 관객 {{
-                movie.cumulativeAudience }}
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-  </div>
-<!--  <div class="genre2">-->
-<!--    <p>#액션</p>-->
-<!--  </div>-->
-  <div class="box_office_rankings">
-    <p class="bold_title">#액션</p>
-    <section class="movie_list">
-      <ul>
-        <li *ngFor="let movie of boxOfficeRankings">
-          <img src="{{ movie.imgSrc }}" />
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{movie.reservationRate}}% 누적 관객 {{
-                movie.cumulativeAudience }}
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-  </div>
-<!--  <div class="genre3">-->
-<!--    <p>#히어로</p>-->
-<!--  </div>-->
-  <div class="box_office_rankings">
-    <p class="bold_title">#히어로</p>
-    <section class="movie_list">
-      <ul>
-        <li *ngFor="let movie of boxOfficeRankings">
-          <img src="{{ movie.imgSrc }}" />
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{movie.reservationRate}}% 누적 관객 {{
-                movie.cumulativeAudience }}
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-  </div>
-<!--  <div class="genre4">-->
-<!--    <p>#애니메이션</p>-->
-<!--  </div>-->
-  <div class="box_office_rankings">
-    <p class="bold_title">#애니메이션</p>
-    <section class="movie_list">
-      <ul>
-        <li *ngFor="let movie of boxOfficeRankings">
-          <img src="{{ movie.imgSrc }}" />
-          <div class="description">
-            <p class="title">{{ movie.title }}</p>
-            <p class="year_country">{{ movie.year }} ・ {{ movie.country }}</p>
-            <p class="sub">
-              예매율 {{movie.reservationRate}}% 누적 관객 {{
-                movie.cumulativeAudience }}
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-  </div>
-
-<!-- 두개 이상일 때는 slider 두개 이상이여야함 -->
-  <swiper-container #swiper_netflix>
-    <swiper-slide><a href="https://m.kinolights.com/title/125601"><img src="https://file.kinolights.com/s/content_poster/202408/13/46825657-6778-440a-94b7-5dab55771173.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/130737"><img src="https://file.kinolights.com/s/content_poster/202406/13/f053a4af-1e1f-4c59-b672-9f1f62450b32.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/130244"><img src="https://file.kinolights.com/s/content_poster/202407/19/d3c5aa85-ea5d-4be3-a9bf-4302d2ed1b7b.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/136465"><img src="https://file.kinolights.com/s/content_poster/202409/03/94ec063c-c11a-409a-a72c-f23c1caa1d70.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/97833"><img src="https://file.kinolights.com/s/content_poster/202307/12/8864e988-b7ae-4c86-98e8-72535905e90c.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/136323"><img src="https://file.kinolights.com/s/content_poster/202409/03/4e312d56-5ae5-463b-a1f3-319813a70dd9.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/135659"><img src="https://file.kinolights.com/s/content_poster/202407/30/4a3c4045-b2dc-4811-ac88-a15a6b6356ea.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/136704"><img src="https://file.kinolights.com/s/content_poster/202409/02/c1af77c5-e5d5-49cb-a865-cf4984a09789.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/78554"><img src="https://file.kinolights.com/s/content_poster/202307/12/76c46436-adba-45b6-8d90-8e0d7cc0fc5c.webp"></a></swiper-slide>
-    <swiper-slide><a href="https://m.kinolights.com/title/111908"><img src="https://file.kinolights.com/s/content_poster/202309/11/0115be6e-ef82-46f9-b31b-92b5e26c83cb.webp"></a></swiper-slide>
-  </swiper-container>
-</div>
-
+    </ion-card-content>
+  </ion-card> 
+</ion-content>

@@ -1,20 +1,5 @@
 export interface CommentAttachmentAndUseResponseData{
-    id: number;
-    title: string;
-    contents: string;
-    author: string;
-    createAt: Date;
-    updatedAt: Date;
-    user: {
-        id: number;
-        username: string;
-        movie: string;
-
-    };
-    attachments: {
-        id: number;
-        filename: string;
-        path: string;
-        url: string;
-    }[];
+    username: string; // 사용자 이름
+    content: string;  // 댓글 내용
+    movieId: string;  // 영화 ID
 }

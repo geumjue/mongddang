@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { AuthRoutingModule } from './auth-routing.module';
 import { CreateAccountPage } from './create-account/create-account.page';
 import { LoginPage } from './login/login.page';
-import { MypagePage } from './mypage/mypage.page';
+// MypagePage는 여기서 제거
 
 @NgModule({
   imports: [
@@ -14,6 +14,15 @@ import { MypagePage } from './mypage/mypage.page';
     IonicModule,
     AuthRoutingModule
   ],
-  declarations: [LoginPage, CreateAccountPage, MypagePage]
+  declarations: [
+    LoginPage,
+    CreateAccountPage,
+    // MypagePage는 여기서 제거
+  ],
+  exports: [
+    LoginPage,
+    CreateAccountPage,
+    // MypagePage는 여기서 제거
+  ]
 })
-export class AuthModule { }
+export class AuthModule {}

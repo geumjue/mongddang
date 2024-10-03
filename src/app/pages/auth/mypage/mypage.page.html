@@ -19,57 +19,65 @@
       <ion-item>
         <ion-label>
           <h2>닉네임</h2>
-          <span><h3>메타몽</h3></span>
+          <h3>{{ nickname || '정보 없음' }}</h3> <!-- 닉네임이 없을 경우 대체 텍스트 -->
         </ion-label>
       </ion-item>
       <ion-item>
-        <h2>이메일</h2>
-        <ion-input type="email" value="metamong@g.hongik.ac.kr" readonly></ion-input>
+        <ion-label>
+          <h2>이메일</h2>
+        </ion-label>
+        <ion-input type="email" [value]="email || '정보 없음'" readonly></ion-input> <!-- 이메일이 없을 경우 대체 텍스트 -->
       </ion-item>
+
       <ion-buttons slot="end">
         <ion-button fill="clear" (click)="logout()">로그아웃</ion-button>
       </ion-buttons>
+
       <ion-grid [fixed]="true">
         <ion-row class="profile-row">
           <ion-col class="col1">평점</ion-col>
           <ion-col class="col2">코멘트</ion-col>
-<!--          <ion-col class="col3">컬렉션</ion-col>-->
+          <!-- <ion-col class="col3">컬렉션</ion-col> -->
         </ion-row>
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <ion-card>
-    <ion-grid [fixed]="true">
-      <ion-card-header>
-        <ion-card-title>보관함</ion-card-title>
-      </ion-card-header>
-      <ion-row class="storage-row">
-        <ion-col>
-          <ion-icon name="videocam"></ion-icon>
-          영화
-        </ion-col>
-        <ion-col>
-          <ion-icon name="play"></ion-icon>
-          시리즈
-        </ion-col>
-        <ion-col>
-          <ion-icon name="book"></ion-icon>
-          책
-        </ion-col>
-        <ion-col>
-          <ion-icon name="happy"></ion-icon>
-          웹툰
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+
   <ion-card>
     <ion-card-header>
-      <ion-card-title>
-        좋아요
-      </ion-card-title>
+      <ion-card-title>보관함</ion-card-title>
     </ion-card-header>
-        <ion-card-content class="liked-person">좋아하는 인물 </ion-card-content>
-        <ion-card-content class="liked-comment">좋아한 코멘트</ion-card-content>
+    <ion-card-content>
+      <ion-grid [fixed]="true">
+        <ion-row class="storage-row">
+          <ion-col>
+            <ion-icon name="videocam"></ion-icon>
+            영화
+          </ion-col>
+          <ion-col>
+            <ion-icon name="play"></ion-icon>
+            시리즈
+          </ion-col>
+          <ion-col>
+            <ion-icon name="book"></ion-icon>
+            책
+          </ion-col>
+          <ion-col>
+            <ion-icon name="happy"></ion-icon>
+            웹툰
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>좋아요</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="liked-person">좋아하는 인물</div>
+      <div class="liked-comment">좋아한 코멘트</div>
+    </ion-card-content>
   </ion-card>
 </ion-content>

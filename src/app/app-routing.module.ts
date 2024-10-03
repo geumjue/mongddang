@@ -4,7 +4,8 @@ import { HomePage } from './pages/home/home.page';
 
 const routes: Routes = [
   {
-    path: '', component: HomePage
+    path: '',
+    component: HomePage
   },
   {
     path: 'auth',
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'collection',
     loadChildren: () => import('./pages/collection/collection.module').then(m => m.CollectionPageModule)
+  },
+  {
+    path: 'mypage',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule) // 올바른 경로로 수정
   },
 ];
 

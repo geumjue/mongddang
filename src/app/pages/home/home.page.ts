@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {Router} from "@angular/router";
+import {MovieService} from "../../services/movie/movie.service";
+import {GetMoviesResponseData} from "../../models/movie/movie-getmovie-response-data.interface";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,14 @@ export class HomePage implements AfterViewInit{
   @ViewChild('swiper_cgv') swiperRef_cgv!: ElementRef;
   @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
 
-  constructor(private router: Router) {}
+  // 변수 설정
+  movies: GetMoviesResponseData[] = [];
+
+  constructor(private router: Router, private movieService: MovieService) {}
+
+  ngOnInit() {
+    this.getMovies()
+  }
 
   ngAfterViewInit() {
     // const swiperEl_preview = this.swiperRef_preview.nativeElement;
@@ -34,14 +43,26 @@ export class HomePage implements AfterViewInit{
   //   this.router.navigate(['tabs/home/nows-comment']);
   // }
 
-  //   goToMovieDetailPage()
-  //   {
-  //     this.router.navigate(['tabs/home/movie-detail']);
-
-  //   }
   // goToSearchPage() {
   //   this.router.navigate(['tabs/search']);
   // }
 
+  getMovies() {
+    this.movieService.getMovies().subscribe({
+      next: (response: GetMoviesResponseData[]) => {
+        this.movies = response;
+      },
+      error: (err: any) => {
+        console.log(err)
+      },
+      complete: () => {
+        console.log('complete')
+      }
+    })
+  }
+
+  goToMovieDetailPage(id: string) {
+    this.router.navigate([`movie/detail/${id}`]);
+  }
 }
 

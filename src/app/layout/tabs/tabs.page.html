@@ -1,28 +1,28 @@
-  <ion-tabs class="center">
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button routerLink="/" [ngClass]="{'active-tab': selectedTab === 'home'}" (click)="selectTab('home')">
-        <ion-icon aria-hidden="true" name="home" [ngClass]="{'active-icon': selectedTab === 'home'}"></ion-icon>
-        <ion-label [ngClass]="{'active-label': selectedTab === 'home'}">홈</ion-label>
-      </ion-tab-button>
+<ion-tabs class="center">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/" [ngClass]="{'active-tab': selectedTab === 'home'}" (click)="selectTab('home')">
+      <ion-icon aria-hidden="true" name="home" [ngClass]="{'active-icon': selectedTab === 'home'}"></ion-icon>
+      <ion-label [ngClass]="{'active-label': selectedTab === 'home'}">홈</ion-label>
+    </ion-tab-button>
 
-      <ion-tab-button routerLink="movie/search" [ngClass]="{'active-tab': selectedTab === 'search'}" (click)="selectTab('search')">
-        <ion-icon aria-hidden="true" name="search-outline" [ngClass]="{'active-icon': selectedTab === 'search'}"></ion-icon>
-        <ion-label [ngClass]="{'active-label': selectedTab === 'search'}">검색</ion-label>
-      </ion-tab-button>
+    <ion-tab-button routerLink="movie/search" [ngClass]="{'active-tab': selectedTab === 'search'}" (click)="selectTab('search')">
+      <ion-icon aria-hidden="true" name="search-outline" [ngClass]="{'active-icon': selectedTab === 'search'}"></ion-icon>
+      <ion-label [ngClass]="{'active-label': selectedTab === 'search'}">검색</ion-label>
+    </ion-tab-button>
 
-      <ion-tab-button routerLink="/collection" [ngClass]="{'active-tab': selectedTab === 'collection'}" (click)="selectTab('collection')">
-        <ion-icon name="star-outline" [ngClass]="{'active-icon': selectedTab === 'collection'}"></ion-icon>
-        <ion-label [ngClass]="{'active-label': selectedTab === 'collection'}">컬렉션 홈</ion-label>
-      </ion-tab-button>
+    <ion-tab-button routerLink="/collection" [ngClass]="{'active-tab': selectedTab === 'collection'}" (click)="selectTab('collection')">
+      <ion-icon name="star-outline" [ngClass]="{'active-icon': selectedTab === 'collection'}"></ion-icon>
+      <ion-label [ngClass]="{'active-label': selectedTab === 'collection'}">컬렉션 홈</ion-label>
+    </ion-tab-button>
 
-      <ion-tab-button routerLink="/auth" *ngIf="!showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'login'}" (click)="selectTab('login')">
-        <ion-icon aria-hidden="true" name="person-outline" [ngClass]="{'active-icon': selectedTab === 'login'}"></ion-icon>
-        <ion-label [ngClass]="{'active-label': selectedTab === 'login'}">로그인</ion-label>
-      </ion-tab-button>
+    <ion-tab-button routerLink="/auth" *ngIf="!showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'login'}" (click)="selectTab('login')">
+      <ion-icon aria-hidden="true" name="person-outline" [ngClass]="{'active-icon': selectedTab === 'login'}"></ion-icon>
+      <ion-label [ngClass]="{'active-label': selectedTab === 'login'}">로그인</ion-label>
+    </ion-tab-button>
 
-      <ion-tab-button routerLink="/" *ngIf="showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'mypage'}" (click)="selectTab('mypage')">
-        <ion-icon name="person" [ngClass]="{'active-icon': selectedTab === 'mypage'}"></ion-icon>
-        <ion-label [ngClass]="{'active-label': selectedTab === 'mypage'}">마이페이지</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+    <ion-tab-button routerLink="/mypage" *ngIf="showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'mypage'}" (click)="selectTab('mypage')">
+      <ion-icon name="person" [ngClass]="{'active-icon': selectedTab === 'mypage'}"></ion-icon>
+      <ion-label [ngClass]="{'active-label': selectedTab === 'mypage'}">마이페이지</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,7 +1,9 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { addIcons } from 'ionicons';
 import { personCircle } from 'ionicons/icons';
+import {MovieService} from "../../../services/movie/movie.service";
+import {GetMovieByIdResponseData} from "../../../models/movie/movie-getmoviebyid-response-data.interface";
 
 
 
@@ -12,12 +14,16 @@ import { personCircle } from 'ionicons/icons';
 })
 export class MovieDetailPage implements OnInit {
 
+  id: string = '';
+
   isModalOpen = false;  // Modal 열림 상태
   selectedImage: string | null = null; // 선택된 이미지 경로 저장
 
-
-
-
+  movie = {
+    id: "",
+    title: "",
+    posterUrl: ""
+  };
 
   isGalleryOpen = true;
   //슬라이더 옵션 설정
@@ -26,15 +32,16 @@ export class MovieDetailPage implements OnInit {
     speed: 400
   };
 
-  constructor(private router: Router) {
+  constructor(private route: ActivatedRoute , private movieService: MovieService) {
     addIcons({ personCircle });
 
   }
 
   ngOnInit() {
-    this.loadData()
-
+    this.id = this.route.snapshot.params['id'];
+    this.getMovieById(this.id)
   }
+
   // Modal을 열기 위한 메서드
   presentModal(imageUrl: string) {
     this.selectedImage = imageUrl; // 클릭된 이미지의 URL을 저장
@@ -47,17 +54,12 @@ export class MovieDetailPage implements OnInit {
     this.selectedImage = null; // 선택된 이미지 초기화
   }
 
-
-  loadData() {
-
-  }
-
   goBackHomePage() {
-    this.router.navigate(['/tabs/tab1']); // 로그인 페이지로 이동합니다
+    // this.router.navigate(['/tabs/tab1']); // 로그인 페이지로 이동합니다
 
   }
   goToCommentWritePage() {
-    this.router.navigate(['/comment-write']);
+    // this.router.navigate(['/comment-write']);
   }
 
 
@@ -66,4 +68,20 @@ export class MovieDetailPage implements OnInit {
     this.isGalleryOpen = false;
 
   }
+
+  getMovieById(id: string){
+    this.movieService.getMovieById(id).subscribe({
+      next: (response: GetMovieByIdResponseData) => {
+        this.movie =response;
+      },
+      error: (err: any) => {
+        console.log(err)
+      },
+      complete: () => {
+        console.log('complete')
+      }
+    })
+
+  }
+
 }

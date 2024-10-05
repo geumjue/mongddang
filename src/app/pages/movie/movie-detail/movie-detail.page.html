@@ -4,7 +4,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense" style="position:  relative;">
     <ion-icon name="arrow-back" class="backBtn" (click)="goBackHomePage()"></ion-icon>
-    <img alt="" src="https://image.cine21.com/resize/cine21/still/2024/0820/14_48_00__66c42e1009123[S750,750].jpg"
+    <img alt="" [src]="movie.posterUrl"
       style="width: 430px; height:550px; object-fit: cover; ">
     <div class="detailsImage">
       <a class="movieTitle">베테랑2</a><br>

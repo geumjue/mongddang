@@ -22,7 +22,22 @@ export class MovieDetailPage implements OnInit {
   movie = {
     id: "",
     title: "",
-    posterUrl: ""
+    directorName: "",
+    genre: "",
+    contents: "",
+    runningTime: 0,
+    posterUrl: "",
+    stillUrl: "",
+    favorite: 0,
+    nation: "",
+    company: "",
+    ratedYn: false,
+    type: "",
+    actor: "",
+    releasedAt: "",
+    createdAt: "",
+    modifiedAt: ""
+
   };
 
   isGalleryOpen = true;

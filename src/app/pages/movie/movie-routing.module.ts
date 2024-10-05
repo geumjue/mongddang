@@ -6,16 +6,20 @@ import { CommentWritePage } from './movie-comment/comment-write/comment-write.pa
 
 const routes: Routes = [
   {
-    path: '', component: SearchPage
+    path: '',
+    component: SearchPage
   },
   {
-    path: 'detail/:id', component: MovieDetailPage
+    path: 'detail/:id',
+    component: MovieDetailPage // 영화 상세 페이지 컴포넌트
   },
   {
-    path: 'search', component: SearchPage
+    path: 'search',
+    component: SearchPage
   },
   {
-    path: 'comment/write/:movieId', component: CommentWritePage
+    path: 'comment/write/:movieId',
+    component: CommentWritePage
   },
 ];
 

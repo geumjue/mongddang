@@ -10,34 +10,37 @@
       <ion-card-title>프로필</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <!-- 프로필 사진 -->
       <div class="profile-image-container">
         <img src="assets/images/unknown.png" alt="익명사진" style="width:100px; height: auto;">
       </div>
-
-      <!-- 유저 정보 -->
       <ion-item>
         <ion-label>
           <h2>닉네임</h2>
+<<<<<<< HEAD
+          <h3>{{ nickname || '정보 없음' }}</h3> <!-- 닉네임 표시 -->
+=======
           <h3>{{ username || '정보 없음' }}</h3> <!-- 닉네임이 없을 경우 대체 텍스트 -->
+>>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2>이메일</h2>
         </ion-label>
-        <ion-input type="email" [value]="email || '정보 없음'" readonly></ion-input> <!-- 이메일이 없을 경우 대체 텍스트 -->
+        <ion-input type="email" [value]="email || '정보 없음'" readonly></ion-input> <!-- 이메일 표시 -->
       </ion-item>
-
       <ion-buttons slot="end">
-        <ion-button fill="clear" (click)="logout()">로그아웃</ion-button>
+        <ion-button fill="clear" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
+        <ion-button fill="clear" *ngIf="!isLoggedIn" (click)="goToLogin()">로그인</ion-button>
       </ion-buttons>
-
+      <div class="login-status">
+        <p *ngIf="isLoggedIn">현재 로그인 상태입니다.</p>
+        <p *ngIf="!isLoggedIn">로그인되지 않았습니다.</p>
+      </div>
       <ion-grid [fixed]="true">
         <ion-row class="profile-row">
           <ion-col class="col1">평점</ion-col>
           <ion-col class="col2">코멘트</ion-col>
-          <!-- <ion-col class="col3">컬렉션</ion-col> -->
         </ion-row>
       </ion-grid>
     </ion-card-content>

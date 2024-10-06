@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from "../../../services/movie/movie.service";
 import { GetMovieByIdResponseData } from "../../../models/movie/movie-getmoviebyid-response-data.interface";
 import { addIcons } from 'ionicons';
@@ -13,9 +13,9 @@ import { personCircle } from 'ionicons/icons';
 export class MovieDetailPage implements OnInit {
 
   id: string = '';
-  isModalOpen = false;  
-  selectedImage: string | null = null; 
-  isLiked: boolean = false; 
+  isModalOpen = false;
+  selectedImage: string | null = null;
+  isLiked: boolean = false;
 
   movie = {
     id: "",
@@ -53,24 +53,18 @@ export class MovieDetailPage implements OnInit {
     this.getMovieById(this.id)
   }
 
-  // Modal을 열기 위한 메서드
-  presentModal(imageUrl: string) {
-    this.selectedImage = imageUrl; // 클릭된 이미지의 URL을 저장
-    this.isModalOpen = true; // Modal 열림
-  }
-
   toggleLike() {
-    this.isLiked = !this.isLiked; 
+    this.isLiked = !this.isLiked;
     if (this.isLiked) {
       const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
       favoriteMovies.push({ title: this.movie.title, posterUrl: this.movie.posterUrl });
       localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
-      this.router.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
+      // this.route.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
     }
   }
 
   goBackHomePage() {
-    this.router.navigate(['/tabs/tab1']); 
+    this.route.navigate(['/home']);
   }
 
   goToCommentWritePage() {
@@ -79,13 +73,13 @@ export class MovieDetailPage implements OnInit {
   }
 
   presentModal(imageUrl: string) {
-    this.selectedImage = imageUrl; 
-    this.isModalOpen = true; 
+    this.selectedImage = imageUrl;
+    this.isModalOpen = true;
   }
 
   closeModal() {
-    this.isModalOpen = false; 
-    this.selectedImage = null; 
+    this.isModalOpen = false;
+    this.selectedImage = null;
   }
 
   getMovieById(id: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router'; // Router 추가
+import { Router } from '@angular/router';
+import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 
 @Component({
   selector: 'app-mypage',
@@ -8,15 +9,12 @@ import { Router } from '@angular/router'; // Router 추가
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
-<<<<<<< HEAD
+
   nickname: string | null = null; // 사용자 닉네임
   email: string | null = null; // 사용자 이메일
   isLoggedIn: boolean = false; // 로그인 상태를 나타내는 변수
-=======
-  username: string | undefined;
-  email: string | undefined;
-  isLoggedIn: boolean = false; // 로그인 상태 프로퍼티 추가
->>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
+
+  username: string | null = null; // 사용자 이름 추가
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -33,18 +31,12 @@ export class MypagePage implements OnInit {
     if (userId) {
       // 사용자 정보 요청
       this.authService.getUserInfo(userId).subscribe(
-<<<<<<< HEAD
-        (response) => {
+        (response: AuthResponse) => {
           console.log('User info response:', response); // API 응답 확인
           if (response.success && response.data) {
             this.nickname = response.data.user.nickname; // 닉네임 저장
             this.email = response.data.user.email; // 이메일 저장
-=======
-        (response: AuthResponse) => {
-          if (response && response.data) {
-            this.username = response.data.user.username;
-            this.email = response.data.user.email;
->>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
+            this.username = response.data.user.username; // 사용자 이름 저장 추가
           } else {
             console.error('Invalid response:', response); // 에러 처리
           }

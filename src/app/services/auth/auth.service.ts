@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap, catchError, BehaviorSubject } from 'rxjs';
-import { jwtDecode } from 'jwt-decode'; // 'import { jwtDecode } from 'jwt-decode';' 대신 이 방법으로 수정
+import { jwtDecode } from 'jwt-decode'; // 수정된 임포트 방법
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { SignUpRequestData } from 'src/app/models/auth/auth-signup-request-data.interface';
 import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.interface';
@@ -13,15 +13,8 @@ import { ApiResponse } from 'src/app/models/common/api-response.interface';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-<<<<<<< HEAD
   private loggedInSubject = new BehaviorSubject<boolean>(this.checkInitialLoginStatus());
-  private user: { nickname: string; email: string } | null = null;
-=======
-  public user: { username: string; email: string } | null = null;
-
-  // 1. BehaviorSubject로 로그인 상태 관리
-  private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
->>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
+  private user: { username: string; email: string } | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 

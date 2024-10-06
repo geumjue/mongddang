@@ -7,6 +7,7 @@ export interface AuthResponse {
     message: string; // 메시지
     data: { // 사용자 정보
         user: {
+            nickname: string | null;
             id:string;
             username:string;
             email: string;

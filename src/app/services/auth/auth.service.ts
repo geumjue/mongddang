@@ -14,7 +14,7 @@ import { ApiResponse } from 'src/app/models/common/api-response.interface';
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
   private loggedInSubject = new BehaviorSubject<boolean>(this.checkInitialLoginStatus());
-  private user: { username: string; email: string } | null = null;
+  public user: { username: string; email: string } | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 

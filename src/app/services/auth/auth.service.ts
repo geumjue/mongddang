@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, tap, catchError } from 'rxjs';
+import { Observable, of, tap, catchError, BehaviorSubject } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { SignUpRequestData } from 'src/app/models/auth/auth-signup-request-data.interface';
@@ -14,12 +14,20 @@ export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
   public user: { username: string; email: string } | null = null;
 
+  // 1. BehaviorSubject로 로그인 상태 관리
+  private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+
   constructor(private http: HttpClient, private router: Router) {}
 
   // 회원가입 메소드
   signUp(data: SignUpRequestData): Observable<AuthResponse> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<AuthResponse>(`${this.apiUrl}/signup`, data, { headers, withCredentials: true });
+  }
+
+  // 2. 로그인 상태를 Observable로 반환하는 메서드
+  getLoginStatus(): Observable<boolean> {
+    return this.loggedInSubject.asObservable(); // 로그인 상태를 구독할 수 있도록 반환
   }
 
   // 로그인 메소드
@@ -46,6 +54,7 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
+          this.loggedInSubject.next(true); // 3. 로그인 성공 시 상태 업데이트
           this.router.navigate(['/mypage']); // 로그인 성공 시 마이페이지로 리다이렉트
         }
       }),
@@ -67,6 +76,7 @@ export class AuthService {
       tap(() => {
         this.clearCookies();
         this.user = null; // 로그아웃 시 사용자 정보 초기화
+        this.loggedInSubject.next(false); // 4. 로그아웃 시 상태 업데이트
       })
     );
   }

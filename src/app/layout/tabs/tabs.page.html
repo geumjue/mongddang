@@ -15,12 +15,13 @@
       <ion-label [ngClass]="{'active-label': selectedTab === 'collection'}">컬렉션 홈</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/auth" *ngIf="!showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'login'}" (click)="selectTab('login')">
+    <!-- 로그인 상태에 따라 버튼 표시 -->
+    <ion-tab-button *ngIf="!showAdditionalTabs" routerLink="/auth" [ngClass]="{'active-tab': selectedTab === 'login'}" (click)="selectTab('login')">
       <ion-icon aria-hidden="true" name="person-outline" [ngClass]="{'active-icon': selectedTab === 'login'}"></ion-icon>
       <ion-label [ngClass]="{'active-label': selectedTab === 'login'}">로그인</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/mypage" *ngIf="showAdditionalTabs" [ngClass]="{'active-tab': selectedTab === 'mypage'}" (click)="selectTab('mypage')">
+    <ion-tab-button *ngIf="showAdditionalTabs" routerLink="/mypage" [ngClass]="{'active-tab': selectedTab === 'mypage'}" (click)="selectTab('mypage')">
       <ion-icon name="person" [ngClass]="{'active-icon': selectedTab === 'mypage'}"></ion-icon>
       <ion-label [ngClass]="{'active-label': selectedTab === 'mypage'}">마이페이지</ion-label>
     </ion-tab-button>

@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'mypage',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule) // 올바른 경로로 수정
   },
+  {
+    path: 'mypage',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
 ];
 
 @NgModule({

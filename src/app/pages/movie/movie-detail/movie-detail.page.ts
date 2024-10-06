@@ -1,23 +1,21 @@
-import { Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'; 
+import { MovieService } from "../../../services/movie/movie.service";
+import { GetMovieByIdResponseData } from "../../../models/movie/movie-getmoviebyid-response-data.interface";
 import { addIcons } from 'ionicons';
 import { personCircle } from 'ionicons/icons';
-import {MovieService} from "../../../services/movie/movie.service";
-import {GetMovieByIdResponseData} from "../../../models/movie/movie-getmoviebyid-response-data.interface";
-
-
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.page.html',
-  styleUrls: ['./movie-detail.page.scss'],
+  styleUrls: ['./movie-detail.page.scss']
 })
 export class MovieDetailPage implements OnInit {
 
   id: string = '';
-
-  isModalOpen = false;  // Modal 열림 상태
-  selectedImage: string | null = null; // 선택된 이미지 경로 저장
+  isModalOpen = false;  
+  selectedImage: string | null = null; 
+  isLiked: boolean = false; 
 
   movie = {
     id: "",
@@ -48,7 +46,6 @@ export class MovieDetailPage implements OnInit {
 
   constructor(private route: Router, private activateRoute: ActivatedRoute , private movieService: MovieService) {
     addIcons({ personCircle });
-
   }
 
   ngOnInit() {
@@ -62,41 +59,46 @@ export class MovieDetailPage implements OnInit {
     this.isModalOpen = true; // Modal 열림
   }
 
-  // Modal을 닫기 위한 메서드
-  closeModal() {
-    this.isModalOpen = false; // Modal 닫힘
-    this.selectedImage = null; // 선택된 이미지 초기화
+  toggleLike() {
+    this.isLiked = !this.isLiked; 
+    if (this.isLiked) {
+      const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
+      favoriteMovies.push({ title: this.movie.title, posterUrl: this.movie.posterUrl });
+      localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
+      this.router.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
+    }
   }
 
   goBackHomePage() {
-    // this.router.navigate(['/tabs/tab1']); // 로그인 페이지로 이동합니다
-
+    this.router.navigate(['/tabs/tab1']); 
   }
+
   goToCommentWritePage() {
     this.id = this.activateRoute.snapshot.params['id'];
     this.route.navigate([`movie/detail/${this.id}/comment/write`]);
   }
 
-
-
-  closeGallery() {
-    this.isGalleryOpen = false;
-
+  presentModal(imageUrl: string) {
+    this.selectedImage = imageUrl; 
+    this.isModalOpen = true; 
   }
 
-  getMovieById(id: string){
+  closeModal() {
+    this.isModalOpen = false; 
+    this.selectedImage = null; 
+  }
+
+  getMovieById(id: string) {
     this.movieService.getMovieById(id).subscribe({
       next: (response: GetMovieByIdResponseData) => {
-        this.movie =response;
+        this.movie = response;
       },
       error: (err: any) => {
-        console.log(err)
+        console.log(err);
       },
       complete: () => {
-        console.log('complete')
+        console.log('complete');
       }
-    })
-
+    });
   }
-
 }

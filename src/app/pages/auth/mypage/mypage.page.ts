@@ -11,7 +11,7 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
-  nickname: string | undefined;
+  username: string | undefined;
   email: string | undefined;
   isLoggedIn: boolean = false; // 로그인 상태 프로퍼티 추가
 
@@ -25,7 +25,7 @@ export class MypagePage implements OnInit {
       this.authService.getUserInfo(userId).subscribe(
         (response: AuthResponse) => {
           if (response && response.data) {
-            this.nickname = response.data.user.nickname;
+            this.username = response.data.user.username;
             this.email = response.data.user.email;
           } else {
             console.error('Invalid response format:', response);

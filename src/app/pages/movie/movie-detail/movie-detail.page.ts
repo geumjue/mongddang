@@ -37,13 +37,26 @@ export class MovieDetailPage implements OnInit {
     modifiedAt: ""
   };
 
-  constructor(private route: ActivatedRoute, private router: Router, private movieService: MovieService) {
+  isGalleryOpen = true;
+  //슬라이더 옵션 설정
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+
+  constructor(private route: Router, private activateRoute: ActivatedRoute , private movieService: MovieService) {
     addIcons({ personCircle });
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.getMovieById(this.id);
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.getMovieById(this.id)
+  }
+
+  // Modal을 열기 위한 메서드
+  presentModal(imageUrl: string) {
+    this.selectedImage = imageUrl; // 클릭된 이미지의 URL을 저장
+    this.isModalOpen = true; // Modal 열림
   }
 
   toggleLike() {
@@ -61,7 +74,8 @@ export class MovieDetailPage implements OnInit {
   }
 
   goToCommentWritePage() {
-    this.router.navigate(['/comment-write']); 
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/write`]);
   }
 
   presentModal(imageUrl: string) {

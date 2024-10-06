@@ -1,12 +1,7 @@
-export interface CommentWithUserResponseData{
-    id: number;
-    title: string;
-    contents: string;
-    author:string;
-    createdAt: Date;
-    updateAt: Date;
-    user:{
-        id: number;
-        username: string;
-    }
+export class CommentWithUserResponseData {
+    constructor(
+        public id: number,      // 댓글 ID
+        public username: string, // 사용자 이름
+        public content: string   // 댓글 내용
+    ) {}
 }

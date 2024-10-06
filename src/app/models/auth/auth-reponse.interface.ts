@@ -7,8 +7,10 @@ export interface AuthResponse {
     message: string; // 메시지
     data: { // 사용자 정보
         user: {
-            nickname: string; // 사용자 닉네임
-            email: string;    // 사용자 이메일
+            id:string;
+            username:string;
+            email: string;
+            role: string;
         };
         token: string; // JWT 토큰
     } | null; // data 속성을 null로 설정 가능

@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>내가 저장한 영화</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div class="favorite-container">
+      <ion-list>
+        <ion-item *ngFor="let movie of favoriteMovies">
+          <ion-thumbnail slot="start">
+            <img [src]="movie.posterUrl" alt="{{ movie.title }} 포스터">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ movie.title }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="favoriteMovies.length === 0">
+          <ion-label class="no-favorites">저장된 영화가 없습니다.</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+  

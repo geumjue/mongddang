@@ -13,8 +13,15 @@ import { ApiResponse } from 'src/app/models/common/api-response.interface';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
+<<<<<<< HEAD
   private loggedInSubject = new BehaviorSubject<boolean>(this.checkInitialLoginStatus());
   private user: { nickname: string; email: string } | null = null;
+=======
+  public user: { username: string; email: string } | null = null;
+
+  // 1. BehaviorSubject로 로그인 상태 관리
+  private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+>>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -53,7 +60,7 @@ export class AuthService {
       tap(response => {
         if (response.success && response.data) {
           this.user = {
-            nickname: response.data.user.nickname,
+            username: response.data.user.username,
             email: response.data.user.email,
           };
           this.loggedInSubject.next(true);

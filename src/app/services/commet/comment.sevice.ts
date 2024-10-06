@@ -54,7 +54,7 @@ export class CommentService {
   postCommentById(username:string,content:string,movieId:string): Observable<CommentWriteResponseData>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<CommentWriteResponseData>(
-      `${this.apiUrl}/write`,
+      `${this.apiUrl}`,
       { username, content, movieId },
       { headers, withCredentials: true }
     );

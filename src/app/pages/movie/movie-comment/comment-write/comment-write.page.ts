@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CommentWriteResponseData} from "../../../../models/comment/comment-write-response-data";
 import {CommentService} from "../../../../services/commet/comment.sevice";
 import {AuthService} from "../../../../services/auth/auth.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -14,12 +14,17 @@ export class CommentWritePage {
 
   content = "";
 
-  constructor(private activateRoute: ActivatedRoute, private commentService: CommentService, private authService: AuthService) { }
+  constructor(private route: Router,private activateRoute: ActivatedRoute, private commentService: CommentService, private authService: AuthService) { }
+
+
+  goBackMovieDetail(movieId: string){
+    this.route.navigate([`movie/detail/${movieId}`])
+  }
 
   postCommentById(username: string, content: string, movieId: string){
     this.commentService.postCommentById(username, content, movieId).subscribe({
       next: (response: CommentWriteResponseData) => {
-        // this.comment =response;
+        this.goBackMovieDetail(movieId)
       },
       error: (err: any) => {
         console.log(err)
@@ -28,6 +33,8 @@ export class CommentWritePage {
         console.log('complete')
       }
     })
+
+
 
   }
 

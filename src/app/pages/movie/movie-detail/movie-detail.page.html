@@ -1,11 +1,10 @@
-<ion-header [translucent]="true">
-</ion-header>
+<ion-header [translucent]="true"></ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense" style="position:  relative;">
+  <ion-header collapse="condense" style="position: relative;">
     <ion-icon name="arrow-back" class="backBtn" (click)="goBackHomePage()"></ion-icon>
-    <img alt="" [src]="movie.posterUrl"
-      style="width: 430px; height:550px; object-fit: cover; ">
+
+    <img alt="" [src]="movie.posterUrl" style="width: 430px; height:550px; object-fit: cover;">
     <div class="detailsImage">
       <a class="movieTitle">{{movie.title}}</a><br>
       <a class="rate_star"> ★</a><a class="rate_num">{{movie.favorite}}</a><br>
@@ -13,29 +12,24 @@
         {{ movie.releasedAt || '개봉일 미정' }} · {{ movie.genre }} · {{ movie.nation }} <br>
         {{ movie.runningTime }}분 · {{ movie.ratedYn ? '15세 이상 관람가' : '연령 제한 없음' }} <br> <br>
         상영 회사: {{ movie.company }}<br>
-        {{ movie.favorite }}위</a>
+        {{ movie.favorite }}위
+      </a>
     </div>
-    <div class="heart" style="position: absolute; bottom: 10px; right: 5px;">
-      <ion-icon name="heart-outline" style="font-size: 40px;"></ion-icon>
-    </div>
+    <!-- 컬렉션 우측 위의 좋아요 아이콘 제거 -->
   </ion-header>
-<!--  <div class="star">-->
-<!--    <ion-icon name="star"></ion-icon>-->
-<!--    <ion-icon name="star"></ion-icon>-->
-<!--    <ion-icon name="star"></ion-icon>-->
-<!--    <ion-icon name="star"></ion-icon>-->
-<!--    <ion-icon name="star"></ion-icon>-->
-<!--    <br><a class="평가하기">평가하기</a>-->
-<!--  </div>-->
 
   <ion-grid [fixed]="true">
     <ion-row class="detail-row">
-      <ion-col class="detail-col-want">
-        <ion-icon name="heart-outline"></ion-icon>
+      <ion-col class="detail-col-want" (click)="toggleLike()">
+        <ion-icon 
+          [name]="isLiked ? 'heart' : 'heart-outline'" 
+          [style.color]="isLiked ? 'red' : '#ededed'" 
+          style="font-size: 40px;">
+        </ion-icon>
         <div class="text">좋아요</div>
       </ion-col>
       <ion-col class="detail-col">
-        <ion-icon (click)="goToCommentWritePage()"  name="create-outline"></ion-icon>
+        <ion-icon (click)="goToCommentWritePage()" name="create-outline"></ion-icon>
         <div class="text">코멘트 작성</div>
       </ion-col>
       <ion-col class="detail-col">
@@ -44,26 +38,22 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <hr>
-  <br>
+  <hr><br>
 
-<!--  줄거리-->
+  <!-- Movie Summary -->
   <a class="summ">줄거리</a>
   <a class="summary">{{movie.contents}}</a>
-  <img class="poster" alt="" [src]= "movie.posterUrl">
+  <img class="poster" alt="" [src]="movie.posterUrl">
 
-<!--갤러리-->
+  <!-- Gallery Section -->
   <ion-label class="gallery_text">갤러리</ion-label>
   <div class="gallery_img">
-<!--    *ngFor="let stillUrl of movie.stillUrls"-->
     <ion-button (click)="presentModal(movie.stillUrl)" fill="clear">
       <img alt="이미지 버튼" [src]="movie.stillUrl">
     </ion-button>
-
-
   </div>
 
-  <!-- Modal 설정 -->
+  <!-- Modal -->
   <ion-modal [isOpen]="isModalOpen" (didDismiss)="closeModal()" class="example-modal">
     <ng-template>
       <ion-content>
@@ -73,19 +63,15 @@
     </ng-template>
   </ion-modal>
 
-
-
-<!--  동영상-->
+  <!-- Video Section -->
   <ion-label class="video_text">동영상</ion-label>
   <div class="video_clip">
     <img alt="" src="assets/images/베테랑2_teaser_clip.png">
     <img alt="" src="assets/images/베테랑2_main_clip.png">
   </div>
 
-
-  <!-- 등장인물-->
-  <ion-label class="personTitle"> 출연/제작 </ion-label>
-<!--  감독-->
+  <!-- Cast and Crew Section -->
+  <ion-label class="personTitle">출연/제작</ion-label>
   <ion-item class="person" button detail="true">
     <ion-avatar aria-hidden="true" slot="start">
       <img alt="" src="https://d3ihz389yobwks.cloudfront.net/1597460401462931326056635100.jpg"/>
@@ -95,11 +81,10 @@
       <p>{{movie.directorName}}</p>
     </ion-label>
   </ion-item>
-<!--  주연-->
+
   <ion-item class="person" button detail="true">
-<!--    *ngFor="let actor of movie.actors"-->
     <ion-avatar aria-hidden="true" slot="start">
-      <img alt="" src="https://i.pinimg.com/originals/da/db/12/dadb12aaea59a6a7f48db400de12d0a5.png" />
+      <img alt="" src="https://i.pinimg.com/originals/da/db/12/dadb12aaea59a6a7f48db400de12d0a5.png"/>
     </ion-avatar>
     <ion-label>
       <h3>주연</h3>
@@ -107,59 +92,30 @@
     </ion-label>
   </ion-item>
 
-
+  <!-- Comment Section -->
   <div class="comment-container">
-    <ion-label class="commentTitle"> 코멘트 </ion-label>
+    <ion-label class="commentTitle">코멘트</ion-label>
     <span class="commentCount">50+</span>
     <span class="moreComment">더보기</span>
   </div>
 
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <div class="comment_profile">
+          <ion-avatar slot="start">
+            <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+          </ion-avatar>
+          <ion-label>메타몽</ion-label>
+        </div>
+      </ion-item>
 
-    <ion-card>
-      <ion-list>
-        <!-- 사용자 프로필 -->
-        <ion-item>
-          <div class="comment_profile">
-            <ion-avatar slot="start">
-              <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-            </ion-avatar>
-            <ion-label>메타몽</ion-label>
-          </div>
-        </ion-item>
-
-
-
-
-        <!-- 영화 이미지와 코멘트 -->
-        <ion-item lines="none">
-          <ion-label>
-            <h2 class="comment-베테랑2">베테랑2</h2>
-            <p class="comment">
-              서울의 봄 GV 때 류승완 감독님이 직접 밝히신 공식 정보 세가지.<br><br>
-              1. 올 겨울 개봉. 영화 배경이 겨울이라서 그렇답니다. 12월 확정인듯... 었으나, 추석으로 앞당겨짐.<br>
-              2. 관객들 기대와는 달리 좀 분위기가 어두워졌답니다. 2편 악역이 연쇄살인범이라는데, 그래서인듯.<br>
-              3. 정해인이 아주 멋지게 나온답니다....ㅋㅋㅋ 디피의 안준호 이병 텐션 생각하면 기대되네요.<br>
-              4. 전 편처럼 통쾌한 스타일로 달려가는 작품은 아니다, 그렇다고 유머가 없는 건 아니다.(전주국제영화제의 죽거나 혹은 나쁘거나 gv 때 밝힌 정보)<br><br>
-
-              더 문 이후로 역대 한국영화 두 번째로 돌비시네마 공식 지원(Atmos, Vision).
-            </p>
-          </ion-label>
-        </ion-item>
-        <!-- 좋아요 및 댓글 버튼 -->
-        <ion-item class="good_and_comment">
-          <ion-button fill="clear" class="text-button">
-            <ion-icon name="thumbs-up"></ion-icon> 1,004
-          </ion-button>
-          <ion-button fill="clear" class="text-button">
-            <ion-icon name="thumbs-down"></ion-icon> 127
-          </ion-button>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
-          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
-        </ion-item>
-      </ion-list>
-    </ion-card>
+      <ion-item lines="none">
+        <ion-label>
+          <h2 class="comment-베테랑2">베테랑2</h2>
+          <p class="comment">영화 관련 코멘트...</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
-
-

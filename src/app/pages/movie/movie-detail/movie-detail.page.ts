@@ -37,7 +37,6 @@ export class MovieDetailPage implements OnInit {
     releasedAt: "",
     createdAt: "",
     modifiedAt: ""
-
   };
 
   isGalleryOpen = true;
@@ -47,13 +46,13 @@ export class MovieDetailPage implements OnInit {
     speed: 400
   };
 
-  constructor(private route: ActivatedRoute , private movieService: MovieService) {
+  constructor(private route: Router, private activateRoute: ActivatedRoute , private movieService: MovieService) {
     addIcons({ personCircle });
 
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.activateRoute.snapshot.params['id'];
     this.getMovieById(this.id)
   }
 
@@ -74,7 +73,8 @@ export class MovieDetailPage implements OnInit {
 
   }
   goToCommentWritePage() {
-    // this.router.navigate(['/comment-write']);
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/write`]);
   }
 
 

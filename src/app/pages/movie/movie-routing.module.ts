@@ -18,11 +18,8 @@ const routes: Routes = [
     component: SearchPage
   },
   {
-
-    path: 'detail/:id/comment/write', component: CommentWritePage
-    path: 'comment/write/:movieId',
+    path: 'detail/:id/comment/write',
     component: CommentWritePage
-
   },
 ];
 

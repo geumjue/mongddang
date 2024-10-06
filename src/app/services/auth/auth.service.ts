@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { nickname: string; email: string } | null = null;
+  public user: { username: string; email: string } | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -43,7 +43,7 @@ export class AuthService {
         if (response.success && response.data) {
           // 로그인 성공 시 사용자 정보 저장
           this.user = {
-            nickname: response.data.user.nickname,
+            username: response.data.user.username,
             email: response.data.user.email,
           };
           this.router.navigate(['/mypage']); // 로그인 성공 시 마이페이지로 리다이렉트

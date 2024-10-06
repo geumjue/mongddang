@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'search', component: SearchPage
   },
   {
-    path: 'comment/write/:movieId', component: CommentWritePage
+    path: 'detail/:id/comment/write', component: CommentWritePage
   },
 ];
 

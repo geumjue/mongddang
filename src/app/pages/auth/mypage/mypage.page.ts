@@ -9,15 +9,18 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
+
   nickname: string | null = null; // 사용자 닉네임
   email: string | null = null; // 사용자 이메일
   isLoggedIn: boolean = false; // 로그인 상태를 나타내는 변수
+
+  username: string | null = null; // 사용자 이름 추가
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     // 로그인 상태 구독
-    this.authService.getLoginStatus().subscribe((status: boolean) => {
+    this.authService.isLoggedIn().subscribe((status: boolean) => {
       this.isLoggedIn = status; // 로그인 상태 업데이트
     });
 
@@ -33,6 +36,7 @@ export class MypagePage implements OnInit {
           if (response.success && response.data) {
             this.nickname = response.data.user.nickname; // 닉네임 저장
             this.email = response.data.user.email; // 이메일 저장
+            this.username = response.data.user.username; // 사용자 이름 저장 추가
           } else {
             console.error('Invalid response:', response); // 에러 처리
           }

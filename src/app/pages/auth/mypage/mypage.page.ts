@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
+import { ApiResponse } from 'src/app/models/common/api-response.interface';
+import { addIcons } from 'ionicons';
+import { personCircle } from 'ionicons/icons';
+import {jwtDecode} from 'jwt-decode'; // JWT 디코딩을 위한 패키지
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
+
 
 @Component({
   selector: 'app-mypage',
@@ -10,33 +17,71 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 })
 export class MypagePage implements OnInit {
 
-  nickname: string | null = null; // 사용자 닉네임
-  email: string | null = null; // 사용자 이메일
-  isLoggedIn: boolean = false; // 로그인 상태를 나타내는 변수
+  username: string = ''; // 기본값 설정
+  email: string = ''; // 기본값 설정
+  isLoggedIn: boolean = false;
 
-  username: string | null = null; // 사용자 이름 추가
+  user = {
+    id: "",              // 사용자 ID
+    username: "",        // 사용자 이름
+    email: "",           // 사용자 이메일
+    createdAt: "",       // 가입일
+    modifiedAt: ""       // 수정일
+  };
 
-  constructor(private authService: AuthService, private router: Router) {}
+
+  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
+    addIcons({ personCircle });
+  }
 
   ngOnInit() {
-    // 로그인 상태 구독
-    this.authService.isLoggedIn().subscribe((status: boolean) => {
-      this.isLoggedIn = status; // 로그인 상태 업데이트
+
+    this.isLoggedIn = this.authService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      this.getUserData();
+    } else {
+      console.error('User is not logged in');
+    }
+  }
+
+  // 로그인 함수 추가
+  login(credentials: { email: string, password: string }) {
+    this.authService.login(credentials).subscribe((response) => {
+        const token = response.token;  // 서버에서 받은 토큰
+        if (token) {
+            localStorage.setItem('authToken', token);  // 토큰을 저장
+            this.router.navigate(['/mypage']);  // 마이페이지로 이동
+        } else {
+            console.error('Received response does not contain a token');
+        }
+    }, (error) => {
+        console.error('Login failed:', error);
     });
+}
 
-    // 사용자 ID 가져오기
-    const userId = this.authService.getUserIdFromToken(); 
-    console.log('User ID from token:', userId); // 디버깅용 로그
 
+  // JWT 토큰에서 사용자 ID 추출
+  private getUserIdFromToken(): string | null {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const decodedToken: any = jwtDecode(token); // JWT 디코딩
+      return decodedToken.id; // 사용자 ID 반환
+    }
+    return null; // 토큰이 없으면 null 반환
+  }
+
+  getUserData() {
+    const userId = this.getUserIdFromToken(); // 사용자 ID 가져오기
     if (userId) {
-      // 사용자 정보 요청
-      this.authService.getUserInfo(userId).subscribe(
-        (response: AuthResponse) => {
-          console.log('User info response:', response); // API 응답 확인
-          if (response.success && response.data) {
-            this.nickname = response.data.user.nickname; // 닉네임 저장
-            this.email = response.data.user.email; // 이메일 저장
-            this.username = response.data.user.username; // 사용자 이름 저장 추가
+      this.userService.getUserById(userId).subscribe(
+        (response: ApiResponse<GetUserResponseData>) => { // 응답 타입 지정
+          if (response && response.data) {
+            this.user = response.data; // 전체 사용자 객체를 할당
+            this.username = this.user.username; // 사용자 닉네임
+            this.email = this.user.email; // 사용자 이메일
+            console.log(this.user);
+
           } else {
             console.error('Invalid response:', response); // 에러 처리
           }
@@ -46,21 +91,19 @@ export class MypagePage implements OnInit {
         }
       );
     } else {
-      console.warn('No user ID found in token'); // 경고 메시지
-      this.isLoggedIn = false; // 로그인 상태 설정
+
+      console.error('No auth token found or invalid user ID');
+
     }
   }
 
   // 로그아웃 메소드
   logout() {
-    this.authService.logOut().subscribe(() => {
-      this.isLoggedIn = false; // 로그아웃 후 로그인 상태 변경
-      this.router.navigate(['/']); // 로그아웃 후 홈으로 리다이렉트
-    });
-  }
 
-  // 로그인 페이지로 이동하는 메소드
-  goToLogin() {
-    this.router.navigate(['/login']); // 로그인 페이지로 이동
+    this.authService.logOut().subscribe(() => { // 로그아웃 후 구독
+      console.log('User logged out');
+      this.router.navigate(['/home']);
+    });
+
   }
 }

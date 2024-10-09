@@ -5,6 +5,9 @@
     <div class="login" style="margin: 10px">
       <div class="login-box" style="margin-top: 60px">
         <ion-item>
+          <ion-input [(ngModel)]="email" name="email" labelPlacement="stacked" placeholder="email">
+            <ion-icon slot="start" name="person" aria-hidden="true" style="color:grey"></ion-icon>
+          </ion-input>
           <ion-input [(ngModel)]="email" name="email" labelPlacement="stacked" placeholder="email"></ion-input>
           <ion-icon slot="start" name="person" aria-hidden="true" style="color:grey"></ion-icon>
         </ion-item>
@@ -12,6 +15,13 @@
 
       <div class="password-box">
         <ion-item>
+          <ion-input [(ngModel)]="password" name="password" labelPlacement="stacked" placeholder="password">
+            <ion-icon slot="start" name="lock-closed" aria-hidden="true" style="color:grey"></ion-icon>
+          </ion-input>
+        </ion-item>
+      </div>
+    </div>
+    
           <ion-input [(ngModel)]="password" name="password" labelPlacement="stacked" placeholder="password"></ion-input>
           <ion-icon slot="start" name="lock-closed" aria-hidden="true" style="color:grey"></ion-icon>
         </ion-item>
@@ -19,5 +29,6 @@
     </div>
     <ion-button expand="full" type="submit">로그인</ion-button>
   </form>
+
   <ion-button class="sign-up" (click)="goToCreateAccountPage()" expand="full">회원가입</ion-button>
 </ion-content>

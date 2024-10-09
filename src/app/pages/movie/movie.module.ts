@@ -7,6 +7,7 @@ import { MovieDetailPage } from './movie-detail/movie-detail.page';
 import { CommentWritePage } from './movie-comment/comment-write/comment-write.page';
 import { MoviePageRoutingModule } from './movie-routing.module';
 import { SearchPage } from './movie-search/search.page';
+import { MovieFavoritePage } from './movie-favorite/movie-favorite.page';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { SearchPage } from './movie-search/search.page';
     IonicModule,
     MoviePageRoutingModule
   ],
-  declarations: [MovieDetailPage, CommentWritePage, MovieDetailPage, SearchPage]
+  declarations: [MovieDetailPage, CommentWritePage, MovieDetailPage, SearchPage, MovieFavoritePage]
 })
 export class MovieModule {}

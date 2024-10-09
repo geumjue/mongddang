@@ -1,0 +1,7 @@
+ion-toolbar {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  --background: white; /* 배경색 설정 */
+  height: 50px; /* 필요에 따라 높이 설정 */
+}

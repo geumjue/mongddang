@@ -35,30 +35,32 @@ export class MypagePage implements OnInit {
   }
 
   ngOnInit() {
-
-    this.isLoggedIn = this.authService.isLoggedIn();
-
-    if (this.isLoggedIn) {
-      this.getUserData();
-    } else {
-      console.error('User is not logged in');
-    }
+    // Observable<boolean>를 subscribe하여 로그인 상태 확인
+    this.authService.getLoginStatus().subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn; // 로그인 상태 업데이트
+      if (this.isLoggedIn) {
+        this.getUserData(); // 로그인 상태일 때 사용자 데이터 가져오기
+      } else {
+        console.error('User is not logged in');
+      }
+    });
   }
 
   // 로그인 함수 추가
   login(credentials: { email: string, password: string }) {
     this.authService.login(credentials).subscribe((response) => {
-        const token = response.token;  // 서버에서 받은 토큰
-        if (token) {
-            localStorage.setItem('authToken', token);  // 토큰을 저장
-            this.router.navigate(['/mypage']);  // 마이페이지로 이동
-        } else {
-            console.error('Received response does not contain a token');
-        }
+      const token = response.token;  // 서버에서 받은 토큰
+      if (token) {
+        localStorage.setItem('authToken', token);  // 토큰을 저장
+        this.router.navigate(['/mypage']);  // 마이페이지로 이동
+      } else {
+        console.error('Received response does not contain a token');
+      }
     }, (error) => {
-        console.error('Login failed:', error);
+      console.error('Login failed:', error);
     });
-}
+  }
+
 
 
   // JWT 토큰에서 사용자 ID 추출

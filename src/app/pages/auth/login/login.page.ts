@@ -26,7 +26,7 @@ export class LoginPage {
       password: this.password,
     };
 
-    this.authService.logIn(signInRequestData).subscribe({
+    this.authService.login(signInRequestData).subscribe({
       next: response => {
         if (response.success) {
           // 로그인 성공 시 마이페이지로 이동

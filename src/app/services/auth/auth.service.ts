@@ -17,7 +17,7 @@ export class AuthService {
   public user: { username: string; email: string } | null = null;
 
   // 1. BehaviorSubject로 로그인 상태 관리
-  private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  private loggedInSubject = new BehaviorSubject<boolean>(this.checkInitialLoginStatus());
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,12 +37,10 @@ export class AuthService {
     return this.loggedInSubject.asObservable();
   }
 
-
-  // 로그인 메소드 (기존)
-  logIn(data: SignInRequestData): Observable<AuthResponse> {
+  // 로그인 메소드
+  login(data: SignInRequestData): Observable<ApiResponse<AuthResponse>>  {
     // 이미 로그인 상태라면 마이페이지로 리다이렉트
-    if (this.isLoggedIn()) {
-
+    if (this.loggedInSubject.getValue()) {
       this.router.navigate(['/mypage']);
       return of({
         success: false,
@@ -75,13 +73,6 @@ export class AuthService {
         } as unknown as ApiResponse<AuthResponse>);
       })
     );
-  }
-
-  // 새로운 로그인 메서드 추가
-  login(credentials: { email: string, password: string }): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
   }
 
   // 로그아웃 메소드

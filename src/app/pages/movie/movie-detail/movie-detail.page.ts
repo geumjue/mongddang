@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from "../../../services/movie/movie.service";
 import { GetMovieByIdResponseData } from "../../../models/movie/movie-getmoviebyid-response-data.interface";
 import { addIcons } from 'ionicons';
@@ -13,9 +13,9 @@ import { personCircle } from 'ionicons/icons';
 export class MovieDetailPage implements OnInit {
 
   id: string = '';
-  isModalOpen = false;  
-  selectedImage: string | null = null; 
-  isLiked: boolean = false; 
+  isModalOpen = false;
+  selectedImage: string | null = null;
+  isLiked: boolean = false;
 
   movie = {
     id: "",
@@ -37,41 +37,49 @@ export class MovieDetailPage implements OnInit {
     modifiedAt: ""
   };
 
-  constructor(private route: ActivatedRoute, private router: Router, private movieService: MovieService) {
+  isGalleryOpen = true;
+  //슬라이더 옵션 설정
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+
+  constructor(private route: Router, private activateRoute: ActivatedRoute , private movieService: MovieService) {
     addIcons({ personCircle });
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.getMovieById(this.id);
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.getMovieById(this.id)
   }
 
   toggleLike() {
-    this.isLiked = !this.isLiked; 
+    this.isLiked = !this.isLiked;
     if (this.isLiked) {
       const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
       favoriteMovies.push({ title: this.movie.title, posterUrl: this.movie.posterUrl });
       localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
-      this.router.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
+      // this.route.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
     }
   }
 
   goBackHomePage() {
-    this.router.navigate(['/tabs/tab1']); 
+    this.route.navigate(['/home']);
   }
 
   goToCommentWritePage() {
-    this.router.navigate(['/comment-write']); 
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/write`]);
   }
 
   presentModal(imageUrl: string) {
-    this.selectedImage = imageUrl; 
-    this.isModalOpen = true; 
+    this.selectedImage = imageUrl;
+    this.isModalOpen = true;
   }
 
   closeModal() {
-    this.isModalOpen = false; 
-    this.selectedImage = null; 
+    this.isModalOpen = false;
+    this.selectedImage = null;
   }
 
   getMovieById(id: string) {

@@ -1,18 +1,106 @@
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Welcome to the Board App Page</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      This is the main page of the application. Not Ready to use yet. 🛠️
-    </ion-card-content>
-  </ion-card>
+  <div class="searchbar_collection" style="margin-top: 55px;">
+    <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!"
+                   style="padding: 0 15px 15px 15px;"></ion-searchbar>
+  </div>
+  <div class="preview">
+    <swiper-container #swiper_preview>
+      <swiper-slide data-swiper-autoplay="2000">
+        <img src="assets/images/kevin.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+        <div class="kevin_text">
+          <a class="HOT">🎅HOT🎄</a><br>
+          <a class="nows_HOT">크리스마스에 생각나는 영화</a>
+        </div>
+        <a class="preview_count">1/2</a>
+      </swiper-slide>
 
-  <ion-card>
-    <ion-card-header>
-      <h5>CGV MOVIES</h5>
-    </ion-card-header>
-    <ion-card-content>
+      <swiper-slide data-swiper-autoplay="2000">
+        <img src="assets/images/harry3.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+        <div class="kevin_text">
+          <a class="HOT">🎅HOT🎄</a><br>
+          <a class="nows_HOT">"해리포터 정주행, 준비됐어?"</a>
+        </div>
+        <a class="preview_count">2/2</a>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <div class="home_comment">
+    <p class="bold_title">
+      지금 뜨는 코멘트
+<!--      <ion-icon (click)="goToNowsCommentPage()" name="chevron-forward-outline"></ion-icon>-->
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </p>
+    <swiper-container #swiper_comments>
+      <swiper-slide >
+        <ion-card class="comment-card">
+          <ion-card-header class="comment-card-header">
+            <div class="comment_profile">
+              <ion-avatar aria-hidden="true" slot="start">
+                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              </ion-avatar>
+              <ion-label>메타몽</ion-label>
+            </div>
+          </ion-card-header>
+          <ion-item>
+            <!-- 영화 이미지-->
+            <ion-thumbnail slot="start">
+              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+            </ion-thumbnail>
+            <ion-content>
+              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
+              <div class="comment">
+                결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+              </div>
+            </ion-content>
+          </ion-item>
+          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>
+          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>
+        </ion-card>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-card class="comment-card">
+          <ion-card-header class="comment-card-header">
+            <div class="comment_profile">
+              <ion-avatar aria-hidden="true" slot="start">
+                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              </ion-avatar>
+              <ion-label>메타몽</ion-label>
+            </div>
+          </ion-card-header>
+          <ion-item>
+            <!-- 영화 이미지-->
+            <ion-thumbnail slot="start">
+              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+            </ion-thumbnail>
+            <ion-content>
+              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
+              <div class="comment">
+                결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+              </div>
+            </ion-content>
+          </ion-item>
+          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>
+          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>
+        </ion-card>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+<!--  -->
+<!--  <ion-card>-->
+<!--    <ion-card-header>-->
+<!--      <ion-card-title>Welcome to the Board App Page</ion-card-title>-->
+<!--    </ion-card-header>-->
+<!--    <ion-card-content>-->
+<!--      This is the main page of the application. Not Ready to use yet. 🛠️-->
+<!--    </ion-card-content>-->
+<!--  </ion-card>-->
+
+<!--  <ion-card>-->
+<!--    <ion-card-header>-->
+      <h5 style="font-weight: bold;">박스오피스 순위</h5>
+<!--    </ion-card-header>-->
+<!--    <ion-card-content>-->
       <swiper-container #swiper_cgv>
         <swiper-slide *ngFor="let movie of movies" (click)="goToMovieDetailPage(movie.id)">
 <!--          <a [href]="movie.posterUrl">-->
@@ -20,12 +108,12 @@
 <!--          </a>-->
         </swiper-slide>
       </swiper-container>
-    </ion-card-content>
-  </ion-card>
+<!--    </ion-card-content>-->
+<!--  </ion-card>-->
 
   <ion-card>
     <ion-card-header>
-      <h5>NETFLIX SERIES</h5>
+      <h5>인기순위</h5>
     </ion-card-header>
     <ion-card-content>
 <!--      <swiper-container #swiper_netflix>-->

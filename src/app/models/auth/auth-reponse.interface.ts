@@ -1,7 +1,5 @@
-// src/app/models/auth/auth-response.interface.ts
-
 export interface AuthResponse {
-    user: any;
+    user: string;
     success: boolean; // 성공 여부
     statusCode: number; // 상태 코드
     message: string; // 메시지

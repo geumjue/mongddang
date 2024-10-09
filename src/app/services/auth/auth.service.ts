@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { nickname: string; email: string } | null = null;
+  public user: { username: string; email: string } | null = null;
 
   // 1. BehaviorSubject로 로그인 상태 관리
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
@@ -30,7 +30,7 @@ export class AuthService {
     return this.loggedInSubject.asObservable(); // 로그인 상태를 구독할 수 있도록 반환
   }
 
-  // 로그인 메소드
+  // 로그인 메소드 (기존)
   logIn(data: SignInRequestData): Observable<AuthResponse> {
     // 이미 로그인 상태라면 마이페이지로 리다이렉트
     if (this.isLoggedIn()) {
@@ -51,7 +51,7 @@ export class AuthService {
         if (response.success && response.data) {
           // 로그인 성공 시 사용자 정보 저장
           this.user = {
-            nickname: response.data.user.nickname,
+            username: response.data.user.username,
             email: response.data.user.email,
           };
           this.loggedInSubject.next(true); // 3. 로그인 성공 시 상태 업데이트
@@ -68,6 +68,13 @@ export class AuthService {
         } as AuthResponse);
       })
     );
+  }
+
+  // 새로운 로그인 메서드 추가
+  login(credentials: { email: string, password: string }): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
   }
 
   // 로그아웃 메소드

@@ -72,7 +72,7 @@ export class AuthService {
 
   // 새로운 로그인 메서드 추가
   login(credentials: { email: string, password: string }): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials, {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/signin`, credentials, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }

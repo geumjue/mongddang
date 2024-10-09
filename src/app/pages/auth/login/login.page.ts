@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -27,8 +28,8 @@ export class LoginPage {
     };
 
     this.authService.login(signInRequestData).subscribe({
-      next: response => {
-        const token = response.token; // token 속성으로 접근
+      next: (response: AuthResponse) => {
+        const token = response.data?.token; // token 속성으로 접근
         if (token) {
           // 로그인 성공 시 마이페이지로 이동
           localStorage.setItem('authToken', token); // 토큰 저장

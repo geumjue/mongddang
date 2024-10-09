@@ -8,14 +8,15 @@ import { CommentWritePage } from './movie-comment/comment-write/comment-write.pa
 import { MoviePageRoutingModule } from './movie-routing.module';
 import { SearchPage } from './movie-search/search.page';
 import { MovieFavoritePage } from './movie-favorite/movie-favorite.page';
+import { MovieCharacterPage } from "./movie-character/movie-character.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MoviePageRoutingModule
+    MoviePageRoutingModule,
   ],
-  declarations: [MovieDetailPage, CommentWritePage, MovieDetailPage, SearchPage, MovieFavoritePage]
+  declarations: [MovieCharacterPage, MovieDetailPage, CommentWritePage, MovieDetailPage, SearchPage, MovieFavoritePage]
 })
 export class MovieModule {}

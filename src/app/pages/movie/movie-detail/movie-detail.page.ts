@@ -71,7 +71,9 @@ export class MovieDetailPage implements OnInit {
     this.id = this.activateRoute.snapshot.params['id'];
     this.route.navigate([`movie/detail/${this.id}/comment/write`]);
   }
-
+  goToMovieCharacterPage() {
+    this.route.navigate([`movie/character`]);
+  }
   presentModal(imageUrl: string) {
     this.selectedImage = imageUrl;
     this.isModalOpen = true;

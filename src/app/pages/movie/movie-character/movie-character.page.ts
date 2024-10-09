@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { IonicModule } from "@ionic/angular";
 
 @Component({
   selector: 'app-movie-character',
@@ -11,9 +12,9 @@ export class MovieCharacterPage implements OnInit {
   constructor(private route: Router, private activateRoute: ActivatedRoute) { }
 
 
-  goBackMovieDetailPage() {
-    this.route.navigate(['/movie/detail']);
-  }
+  // goBackMovieDetailPage() {
+  //   this.route.navigate(['/movie/detail']);
+  // }
 
   ngOnInit() {
   }

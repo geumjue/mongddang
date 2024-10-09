@@ -21,9 +21,9 @@
   <ion-grid [fixed]="true">
     <ion-row class="detail-row">
       <ion-col class="detail-col-want" (click)="toggleLike()">
-        <ion-icon 
-          [name]="isLiked ? 'heart' : 'heart-outline'" 
-          [style.color]="isLiked ? 'red' : '#ededed'" 
+        <ion-icon
+          [name]="isLiked ? 'heart' : 'heart-outline'"
+          [style.color]="isLiked ? 'red' : '#ededed'"
           style="font-size: 40px;">
         </ion-icon>
         <div class="text">좋아요</div>
@@ -78,7 +78,7 @@
     </ion-avatar>
     <ion-label>
       <h3>감독</h3>
-      <p>{{movie.directorName}}</p>
+      <p (click)="goToMovieCharacterPage()">{{movie.directorName}}</p>
     </ion-label>
   </ion-item>
 
@@ -88,7 +88,7 @@
     </ion-avatar>
     <ion-label>
       <h3>주연</h3>
-      <p>{{movie.actor}}</p>
+      <p (click)="goToMovieCharacterPage()">{{movie.actor}}</p>
     </ion-label>
   </ion-item>
 

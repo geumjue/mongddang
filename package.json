@@ -23,6 +23,7 @@
     "@angular/router": "^18.2.7",
     "@ionic/angular": "^8.3.0",
     "@nestjs/cli": "^10.4.5",
+    "@types/passport-jwt": "^4.0.1",
     "cors": "^2.8.5",
     "ionicons": "^7.0.0",
     "jwt-decode": "^4.0.0",

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
-import {jwtDecode} from 'jwt-decode'; // JWT 디코딩을 위한 패키지
+import { jwtDecode }from 'jwt-decode'; // JWT 디코딩을 위한 패키지
 
 @Injectable({
     providedIn: 'root'
@@ -13,57 +13,58 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    // JWT 토큰에서 사용자 ID 추출
-    private getUserIdFromToken(): string | null {
+    // JWT 토큰에서 사용자 이메일 추출
+    private getUserEmailFromToken(): string | null {
         const token = localStorage.getItem('authToken');
         if (token) {
             const decodedToken: any = jwtDecode(token); // JWT 디코딩
-            return decodedToken.id; // 사용자 ID 반환
+            return decodedToken.email; // 사용자 이메일 반환
         }
         return null; // 토큰이 없으면 null 반환
     }
 
-    // 현재 로그인한 사용자의 데이터 가져오기
+    // 현재 로그인한 사용자의 데이터 가져오기 (이메일 사용)
     getUserData(): Observable<ApiResponse<GetUserResponseData>> {
-        const userId = this.getUserIdFromToken(); // 사용자 ID 가져오기
-        if (userId) {
+        const email = this.getUserEmailFromToken(); // 사용자 이메일 가져오기
+        if (email) {
             const token = localStorage.getItem('authToken'); // 토큰 불러오기
             const headers = new HttpHeaders({
                 'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
                 'Content-Type': 'application/json'
             });
 
-            return this.http.get<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/${userId}`, { headers, withCredentials: true });
+            return this.http.get<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/email/${email}`, { headers, withCredentials: true });
         } else {
-            throw new Error('No auth token found or invalid user ID');
+            throw new Error('No auth token found or invalid email');
         }
     }
 
-    // 사용자 ID로 사용자 정보 가져오기
-    getUserById(userId: string): Observable<ApiResponse<GetUserResponseData>> {
+    // 사용자 이메일로 사용자 정보 가져오기
+    getUserByEmail(email: string): Observable<ApiResponse<GetUserResponseData>> {
         const token = localStorage.getItem('authToken'); // 토큰 불러오기
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
             'Content-Type': 'application/json'
         });
 
-        return this.http.get<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/${userId}`, { headers, withCredentials: true });
+        return this.http.get<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/email/${email}`, { headers, withCredentials: true });
     }
 
     // 사용자 정보 수정하기
-    updateUser(userId: string, formData: FormData): Observable<ApiResponse<GetUserResponseData>> {
+    updateUser(email: string, formData: FormData): Observable<ApiResponse<GetUserResponseData>> {
         const headers = new HttpHeaders({
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`, // JWT 토큰
             'enctype': 'multipart/form-data'
         });
-        return this.http.put<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/${userId}`, formData, { headers, withCredentials: true });
+        return this.http.put<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/email/${email}`, formData, { headers, withCredentials: true });
     }
 
     // 사용자 탈퇴하기
-    deleteUser(userId: string): Observable<ApiResponse<void>> {
+    deleteUser(email: string): Observable<ApiResponse<void>> {
         const headers = new HttpHeaders({
-            Authorization: `Bearer ${localStorage.getItem('authToken')}`, // JWT 토큰
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`, // JWT 토큰
             'Content-Type': 'application/json'
         });
-        return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/${userId}`, { headers, withCredentials: true });
+        return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/email/${email}`, { headers, withCredentials: true });
     }
 }

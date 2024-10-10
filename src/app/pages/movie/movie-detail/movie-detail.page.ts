@@ -12,6 +12,11 @@ import { personCircle } from 'ionicons/icons';
 })
 export class MovieDetailPage implements OnInit {
 
+  isCollectionModalOpen = false;
+  isGalleryModalOpen = false;
+  isSecondModalOpen = false;
+  selectedItem: string | undefined;
+
   id: string = '';
   isModalOpen = false;
   selectedImage: string | null = null;
@@ -74,15 +79,46 @@ export class MovieDetailPage implements OnInit {
   goToMovieCharacterPage() {
     this.route.navigate([`movie/character`]);
   }
-  presentModal(imageUrl: string) {
-    this.selectedImage = imageUrl;
-    this.isModalOpen = true;
+
+
+
+
+  presentCollectionModal() {
+    this.isCollectionModalOpen = true;
   }
 
-  closeModal() {
-    this.isModalOpen = false;
+  closeCollectionModal() {
+    this.isCollectionModalOpen = false;
+  }
+
+  openSecondModal(item: string) {
+    this.selectedItem = item; // 선택한 아이템을 저장
+    this.isSecondModalOpen = true; // 두 번째 모달 열기
+  }
+
+  closeSecondModal() {
+    this.isSecondModalOpen = false; // 두 번째 모달 닫기
+  }
+
+  presentGalleryModal(imageUrl: string) {
+    this.selectedImage = imageUrl;
+    this.isGalleryModalOpen = true;
+  }
+
+  closeGalleryModal() {
+    this.isGalleryModalOpen = false;
     this.selectedImage = null;
   }
+  // presentModal(imageUrl: string) {
+  //   this.selectedImage = imageUrl;
+  //   this.isModalOpen = true;
+  // }
+  //
+  //
+  // closeModal() {
+  //   this.isModalOpen = false;
+  //   this.selectedImage = null;
+  // }
 
   getMovieById(id: string) {
     this.movieService.getMovieById(id).subscribe({

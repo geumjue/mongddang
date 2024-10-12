@@ -14,17 +14,15 @@ export class TabsPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    // 로그인 상태를 구독하여 탭 표시 여부 결정
+    // 로그인 상태 초기화
     this.authService.getLoginStatus().subscribe((isLoggedIn: boolean) => {
-      this.showAdditionalTabs = isLoggedIn; // 로그인 상태에 따라 추가 탭 표시
-      if (isLoggedIn) {
-        this.selectedTab = 'mypage'; // 로그인 상태일 때 선택된 탭
-      } else {
-        this.selectedTab = 'home'; // 로그인하지 않은 상태일 때 기본 탭
-      }
-      console.log('showAdditionalTabs:', this.showAdditionalTabs);
-      console.log('selectedTab:', this.selectedTab);
+      this.updateTabs(isLoggedIn);
     });
+  }
+
+  updateTabs(isLoggedIn: boolean) {
+    this.showAdditionalTabs = isLoggedIn; // 로그인 상태에 따라 추가 탭 표시
+    this.selectedTab = isLoggedIn ? 'mypage' : 'login'; // 로그인 상태에 따른 선택된 탭 설정
   }
 
   selectTab(tab: string) {
@@ -34,10 +32,10 @@ export class TabsPage implements OnInit {
   logOut() {
     this.authService.logOut().subscribe(response => {
       if (response.success) {
-        this.showAdditionalTabs = false; // 로그아웃 시 추가 탭 숨기기
-        this.selectedTab = 'home'; // 로그아웃 시 홈 탭 선택
+        this.updateTabs(false); // 로그아웃 시 추가 탭 숨기기
         this.router.navigate(['/']); // 메인 페이지로 리다이렉트
       }
     });
   }
 }
+

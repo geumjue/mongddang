@@ -12,7 +12,7 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { id: string; username: string; email: string } | null = null;
+  public user: { username: string; email: string } | null = null;
 
   // BehaviorSubject to manage login status
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
@@ -48,11 +48,11 @@ export class AuthService {
       tap(response => {
         if (response.success && response.data) {
           this.user = {
-            id: response.data.user.id,
             username: response.data.user.username,
             email: response.data.user.email,
           };
-          localStorage.setItem('token', response.data.token); // Store token as 'token' in local storage
+          // Store the token received from the response
+          localStorage.setItem('token', response.data.token); // 'token'에서 JWT 가져오기
           this.loggedInSubject.next(true); // Update login status
           this.router.navigate(['/mypage']); // Redirect to mypage on successful login
         }

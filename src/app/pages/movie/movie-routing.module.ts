@@ -5,6 +5,8 @@ import { MovieDetailPage } from './movie-detail/movie-detail.page';
 import { CommentWritePage } from './movie-comment/comment-write/comment-write.page';
 import { MovieFavoritePage } from './movie-favorite/movie-favorite.page';
 import {MovieCharacterPage} from "./movie-character/movie-character.page";
+import {CommentListPage} from "./movie-comment/comment-list/comment-list.page";
+
 
 const routes: Routes = [
   {
@@ -31,6 +33,10 @@ const routes: Routes = [
   {
     path: 'character',
     component: MovieCharacterPage
+  },
+  {
+    path: 'detail/:id/comment/list',
+    component: CommentListPage
   },
 ];
 

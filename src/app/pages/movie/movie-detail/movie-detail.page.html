@@ -41,10 +41,10 @@
       </ion-col>
 
       <!-- 첫 번째 모달 -->
-      <ion-modal [isOpen]="isCollectionModalOpen" (didDismiss)="closeCollectionModal()" class="example-modal">
+      <ion-modal [isOpen]="isCollectionModalOpen" (didDismiss)="closeCollectionModal()" id="example-modal">
         <ng-template>
           <div class="wrapper">
-            <h1>Dialog header</h1>
+            <h1>컬렉션 추가</h1>
             <ion-list lines="none">
               <ion-item
                 *ngFor="let collection of collections"
@@ -60,10 +60,10 @@
       </ion-modal>
 
       <!-- 두 번째 모달 -->
-      <ion-modal [isOpen]="isSecondModalOpen" (didDismiss)="closeSecondModal()" class="example-modal">
+      <ion-modal [isOpen]="isSecondModalOpen" (didDismiss)="closeSecondModal()" id="example-modal">
         <ng-template>
           <div class="wrapper">
-            <h1>Selected Item: {{ selectedItem.name }}</h1>
+            <h1>새로운 컬렉션 {{ selectedItem.name }}</h1>
             <ion-button (click)="closeSecondModal()">추가</ion-button>
           </div>
         </ng-template>
@@ -128,7 +128,7 @@
   <div class="comment-container">
     <ion-label class="commentTitle">코멘트</ion-label>
     <span class="commentCount">50+</span>
-    <span class="moreComment">더보기</span>
+    <span class="moreComment" (click)="goToCommentListPage()">더보기</span>
   </div>
 
   <ion-card>

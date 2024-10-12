@@ -37,6 +37,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/movie/movie.module').then(m => m.MovieModule)
   },
 
+
 ];
 
 @NgModule({

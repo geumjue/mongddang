@@ -101,6 +101,10 @@ export class MovieDetailPage implements OnInit {
   goToMovieCharacterPage() {
     this.route.navigate([`movie/character`]);
   }
+  goToCommentListPage() {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/list`]);
+  }
 
 
 

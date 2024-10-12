@@ -51,7 +51,8 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
-          localStorage.setItem('token', response.data.token); // Store token as 'token' in local storage
+          // Store the token received from the response
+          localStorage.setItem('token', response.data.token); // 'token'에서 JWT 가져오기
           this.loggedInSubject.next(true); // Update login status
           this.router.navigate(['/mypage']); // Redirect to mypage on successful login
         }

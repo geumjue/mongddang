@@ -41,22 +41,18 @@
       </ion-col>
 
       <!-- 첫 번째 모달 -->
-      <ion-modal [isOpen]="isCollectionModalOpen" (didDismiss)="closeCollectionModal()" class="example-modal">
+      <ion-modal [isOpen]="isCollectionModalOpen" (didDismiss)="closeCollectionModal()" id="example-modal">
         <ng-template>
           <div class="wrapper">
-            <h1>Dialog header</h1>
+            <h1>컬렉션 추가</h1>
             <ion-list lines="none">
-              <ion-item button="true" detail="false" (click)="openSecondModal('Item 1')">
+              <ion-item
+                *ngFor="let collection of collections"
+                button="true"
+                detail="false"
+                (click)="openSecondModal(collection)">
                 <ion-icon name="person-circle"></ion-icon>
-                <ion-label>Item 1</ion-label>
-              </ion-item>
-              <ion-item button="true" detail="false" (click)="openSecondModal('Item 2')">
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-label>Item 2</ion-label>
-              </ion-item>
-              <ion-item button="true" detail="false" (click)="openSecondModal('Item 3')">
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-label>Item 3</ion-label>
+                <ion-label>{{ collection.name }}</ion-label>
               </ion-item>
             </ion-list>
           </div>
@@ -64,16 +60,14 @@
       </ion-modal>
 
       <!-- 두 번째 모달 -->
-      <ion-modal [isOpen]="isSecondModalOpen" (didDismiss)="closeSecondModal()" class="example-modal">
+      <ion-modal [isOpen]="isSecondModalOpen" (didDismiss)="closeSecondModal()" id="example-modal">
         <ng-template>
           <div class="wrapper">
-            <h1>Selected Item: {{ selectedItem }}</h1>
-            <ion-button (click)="closeSecondModal()">Close</ion-button>
+            <h1>새로운 컬렉션 {{ selectedItem.name }}</h1>
+            <ion-button (click)="closeSecondModal()">추가</ion-button>
           </div>
         </ng-template>
       </ion-modal>
-
-
     </ion-row>
   </ion-grid>
   <hr><br>
@@ -134,7 +128,7 @@
   <div class="comment-container">
     <ion-label class="commentTitle">코멘트</ion-label>
     <span class="commentCount">50+</span>
-    <span class="moreComment">더보기</span>
+    <span class="moreComment" (click)="goToCommentListPage()">더보기</span>
   </div>
 
   <ion-card>

@@ -4,9 +4,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
-import { addIcons } from 'ionicons';
-import { personCircle } from 'ionicons/icons';
-import { jwtDecode } from 'jwt-decode'; // JWT 디코딩을 위한 올바른 import
+import { AlertController } from '@ionic/angular';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-mypage',
@@ -14,21 +13,15 @@ import { jwtDecode } from 'jwt-decode'; // JWT 디코딩을 위한 올바른 imp
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
-  username: string = ''; // 기본값 설정
-  email: string = ''; // 기본값 설정
+  user: GetUserResponseData | undefined;
   isLoggedIn: boolean = false;
 
-  user = {
-    id: "",              // 사용자 ID
-    username: "",        // 사용자 이름
-    email: "",           // 사용자 이메일
-    createdAt: "",       // 가입일
-    modifiedAt: ""       // 수정일
-  };
-
-  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
-    addIcons({ personCircle });
-  }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
+    private alertController: AlertController
+  ) { }
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
@@ -36,49 +29,80 @@ export class MypagePage implements OnInit {
     if (this.isLoggedIn) {
       this.getUserData();
     } else {
-      console.error('User is not logged in');
-      this.router.navigate(['/login']); // 로그인 페이지로 리디렉션
+      console.error('사용자가 로그인하지 않았습니다');
+      this.router.navigate(['/auth/login']);
     }
   }
 
-  // JWT 토큰에서 사용자 이메일 추출
+  // JWT 토큰에서 이메일을 추출하는 메서드
   private getUserEmailFromToken(): string | null {
-    const token = localStorage.getItem('token'); // 'authToken'에서 'token'으로 수정
+    const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken: any = jwtDecode(token); // JWT 디코딩
-      return decodedToken.email; // 사용자 이메일 반환
+      const decodedToken: any = jwtDecode(token);
+      console.log('Decoded Token:', decodedToken); // 디코딩된 토큰 내용 확인
+      return decodedToken.email;
     }
-    return null; // 토큰이 없으면 null 반환
+    return null;
   }
 
-  // 현재 사용자 데이터 가져오기
+  // 사용자 데이터를 가져오는 메서드
   getUserData() {
-    const email = this.getUserEmailFromToken(); // 사용자 이메일 가져오기
+    const email = this.getUserEmailFromToken();
     if (email) {
-      this.userService.getUserByEmail(email).subscribe(
-        (response: ApiResponse<GetUserResponseData>) => {
-          if (response && response.data) {
-            this.user = response.data; // 전체 사용자 객체를 할당
-            this.username = this.user.username; // 사용자 닉네임
-            this.email = this.user.email; // 사용자 이메일
-            console.log(this.user);
-          } else {
-            console.error('Invalid response format:', response);
+      this.userService.getUserByEmail(email).subscribe({
+        next: (user: GetUserResponseData) => { // ApiResponse 대신 GetUserResponseData로 직접 받음
+          console.log('User Data:', user); // user 데이터가 제대로 오는지 확인
+          this.user = user;
+        },
+        error: (err) => {
+          console.error('사용자 정보를 가져오는 중 오류:', err);
+        },
+        complete: () => {
+          console.log('사용자 정보 요청 완료.');
+        }
+      });
+    } else {
+      console.error('유효한 인증 토큰이 없거나 이메일이 유효하지 않습니다');
+    }
+  }
+
+
+  // 로그아웃 확인 알림 표시
+  async confirmLogout() {
+    const alert = await this.alertController.create({
+      header: '로그아웃',
+      message: '정말로 로그아웃 하시겠습니까?',
+      buttons: [
+        {
+          text: '취소',
+          role: 'cancel',
+          handler: () => {
+            console.log('로그아웃이 취소되었습니다.');
           }
         },
-        (error) => {
-          console.error('Error fetching user info:', error);
+        {
+          text: '로그아웃',
+          handler: () => {
+            this.logout();
+          }
         }
-      );
-    } else {
-      console.error('No auth token found or invalid email');
-    }
+      ]
+    });
+    await alert.present(); // 알림 표시
   }
 
+  // 로그아웃 메서드
   logout() {
-    this.authService.logOut().subscribe(() => { // 로그아웃 후 구독
-      console.log('User logged out');
-      this.router.navigate(['/']);
+    this.authService.logOut().subscribe({
+      next: () => {
+        console.log('사용자가 로그아웃되었습니다');
+        localStorage.removeItem('token'); // 로그아웃 시 토큰 제거
+        this.isLoggedIn = false; // 상태를 로그아웃으로 설정
+        this.router.navigate(['/auth/login']); // 로그인 페이지로 이동
+      },
+      error: (err) => {
+        console.error('로그아웃 중 오류 발생:', err);
+      }
     });
   }
 }

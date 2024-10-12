@@ -14,35 +14,23 @@
         <img src="assets/images/unknown.png" alt="익명사진" class="profile-image">
       </div>
 
-
       <!-- 유저 정보 -->
-      <ion-item class="user-info-item">
+      <ion-item class="user-info-item" *ngIf="user">
         <ion-label>
           <h2>닉네임</h2>
           <h3>{{ user.username }}</h3>
-
         </ion-label>
       </ion-item>
-      <ion-item class="user-info-item">
+      <ion-item class="user-info-item" *ngIf="user">
         <ion-label>
           <h2>이메일</h2>
-          <h3>{{ user.email}}</h3>
+          <h3>{{ user.email }}</h3>
         </ion-label>
       </ion-item>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
-        <!-- <ion-button fill="clear" *ngIf="!isLoggedIn" (click)="login()">로그인</ion-button> -->
-      </ion-buttons>
-
-
-<!--      <ion-grid>-->
-<!--        <ion-row class="profile-row">-->
-<!--          <ion-col class="col1">코멘트</ion-col>-->
-<!--          <ion-col class="col2">컬렉션</ion-col>-->
-<!--        </ion-row>-->
-<!--      </ion-grid>-->
     </ion-card-content>
   </ion-card>
+
+  <!-- 기타 카드 내용 -->
 
   <ion-card>
     <ion-card-header>
@@ -63,10 +51,6 @@
             <ion-icon name="book"></ion-icon>
             코멘트
           </ion-col>
-<!--          <ion-col>-->
-<!--            <ion-icon name="happy"></ion-icon>-->
-<!--            웹툰-->
-<!--          </ion-col>-->
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -77,8 +61,12 @@
       <ion-card-title>My 컬렉션</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-<!--      <div class="liked-person">좋아하는 영화</div>-->
-<!--      <div class="liked-comment">좋아하는 코멘트</div>-->
+      <!-- 추가 콘텐츠 -->
     </ion-card-content>
   </ion-card>
+
+  <!-- 로그아웃 버튼을 하단에 추가 -->
+  <div class="logout-button-container">
+    <ion-button expand="full" color="danger" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
+  </div>
 </ion-content>

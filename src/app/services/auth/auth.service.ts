@@ -12,7 +12,7 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { username: string; email: string } | null = null;
+  public user: { id: string; username: string; email: string } | null = null;
 
   // BehaviorSubject to manage login status
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
@@ -48,6 +48,7 @@ export class AuthService {
       tap(response => {
         if (response.success && response.data) {
           this.user = {
+            id: response.data.user.id,
             username: response.data.user.username,
             email: response.data.user.email,
           };

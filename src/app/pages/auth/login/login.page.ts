@@ -28,14 +28,12 @@ export class LoginPage {
     };
 
     this.authService.login(signInRequestData).subscribe({
-      next: (response: AuthResponse) => {
-        const token = response.data?.token; // token 속성으로 접근
-        if (token) {
-          // 로그인 성공 시 마이페이지로 이동
-          localStorage.setItem('authToken', token); // 토큰 저장
+      next: response => {
+        if (response.success) {
+          // 마이페이지로 이동
           this.router.navigate(['/mypage']);
         } else {
-          console.error('로그인 실패: 토큰이 없습니다.');
+          console.error('로그인 실패:', response.message);
         }
       },
       error: err => {

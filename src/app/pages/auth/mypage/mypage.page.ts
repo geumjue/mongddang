@@ -6,7 +6,7 @@ import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.d
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { addIcons } from 'ionicons';
 import { personCircle } from 'ionicons/icons';
-import {jwtDecode}from 'jwt-decode'; // Correct import for JWT decoding
+import { jwtDecode } from 'jwt-decode'; // JWT 디코딩을 위한 올바른 import
 
 @Component({
   selector: 'app-mypage',
@@ -26,10 +26,6 @@ export class MypagePage implements OnInit {
     modifiedAt: ""       // 수정일
   };
 
-  // 로그인 정보를 위한 변수 추가
-  emailInput: string = '';
-  passwordInput: string = '';
-
   constructor(private router: Router, private authService: AuthService, private userService: UserService) {
     addIcons({ personCircle });
   }
@@ -41,37 +37,13 @@ export class MypagePage implements OnInit {
       this.getUserData();
     } else {
       console.error('User is not logged in');
+      this.router.navigate(['/login']); // 로그인 페이지로 리디렉션
     }
-  }
-
-  // 로그인 함수 수정
-  login() {
-    if (!this.emailInput || !this.passwordInput) {
-      console.error('이메일 또는 비밀번호가 입력되지 않았습니다.');
-      return;
-    }
-
-    const credentials = {
-      email: this.emailInput,
-      password: this.passwordInput
-    };
-
-    this.authService.login(credentials).subscribe((response) => {
-      const token = response.data?.token; // 서버에서 받은 토큰
-      if (token) {
-        localStorage.setItem('authToken', token); // 토큰을 저장
-        this.router.navigate(['/mypage']); // 마이페이지로 이동
-      } else {
-        console.error('Received response does not contain a token');
-      }
-    }, (error) => {
-      console.error('Login failed:', error);
-    });
   }
 
   // JWT 토큰에서 사용자 이메일 추출
   private getUserEmailFromToken(): string | null {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token'); // 'authToken'에서 'token'으로 수정
     if (token) {
       const decodedToken: any = jwtDecode(token); // JWT 디코딩
       return decodedToken.email; // 사용자 이메일 반환
@@ -106,7 +78,7 @@ export class MypagePage implements OnInit {
   logout() {
     this.authService.logOut().subscribe(() => { // 로그아웃 후 구독
       console.log('User logged out');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     });
   }
 }

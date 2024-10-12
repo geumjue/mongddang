@@ -35,13 +35,15 @@
 
 
 
-      <ion-col class="detail-col" (click)="presentCollectionModal()">
+      <ion-col class="detail-col">
+<!--        (click)="presentCollectionModal()"-->
         <ion-icon name="bookmark-outline"></ion-icon>
         <div class="text">컬렉션에 추가</div>
       </ion-col>
 
       <!-- 첫 번째 모달 -->
-      <ion-modal [isOpen]="isCollectionModalOpen" (didDismiss)="closeCollectionModal()" id="example-modal">
+      <ion-modal [isOpen]="isCollectionModalOpen" id="example-modal">
+<!--        (didDismiss)="closeCollectionModal()"-->
         <ng-template>
           <div class="wrapper">
             <h1>컬렉션 추가</h1>
@@ -50,7 +52,8 @@
                 *ngFor="let collection of collections"
                 button="true"
                 detail="false"
-                (click)="openSecondModal(collection)">
+                >
+<!--                (click)="openSecondModal(collection)"-->
                 <ion-icon name="person-circle"></ion-icon>
                 <ion-label>{{ collection.name }}</ion-label>
               </ion-item>
@@ -60,11 +63,13 @@
       </ion-modal>
 
       <!-- 두 번째 모달 -->
-      <ion-modal [isOpen]="isSecondModalOpen" (didDismiss)="closeSecondModal()" id="example-modal">
+      <ion-modal [isOpen]="isSecondModalOpen"  id="example-modal">
+<!--        (didDismiss)="closeSecondModal()"-->
         <ng-template>
           <div class="wrapper">
             <h1>새로운 컬렉션 {{ selectedItem.name }}</h1>
-            <ion-button (click)="closeSecondModal()">추가</ion-button>
+            <ion-button >추가</ion-button>
+<!--            (click)="closeSecondModal()"-->
           </div>
         </ng-template>
       </ion-modal>
@@ -80,17 +85,20 @@
   <!-- Gallery Section -->
   <ion-label class="gallery_text">갤러리</ion-label>
   <div class="gallery_img">
-    <ion-button (click)="presentGalleryModal(movie.stillUrl)" fill="clear">
+    <ion-button fill="clear">
+<!--      (click)="presentGalleryModal(movie.stillUrl)"-->
       <img alt="이미지 버튼" [src]="movie.stillUrl">
     </ion-button>
   </div>
 
   <!-- Modal -->
-  <ion-modal [isOpen]="isGalleryModalOpen" (didDismiss)="closeGalleryModal()" class="example-modal">
+  <ion-modal [isOpen]="isGalleryModalOpen"  class="example-modal">
+<!--    (didDismiss)="closeGalleryModal()"-->
     <ng-template>
       <ion-content>
         <img [src]="selectedImage" alt="모달 이미지" style="width: 100%;">
-        <ion-button (click)="closeGalleryModal()">Close</ion-button>
+        <ion-button>Close</ion-button>
+<!--        (click)="closeGalleryModal()"-->
       </ion-content>
     </ng-template>
   </ion-modal>
@@ -110,7 +118,7 @@
     </ion-avatar>
     <ion-label>
       <h3>감독</h3>
-      <p (click)="goToMovieCharacterPage()">{{movie.directorName}}</p>
+      <p>{{movie.directorName}}</p>
     </ion-label>
   </ion-item>
 
@@ -120,7 +128,7 @@
     </ion-avatar>
     <ion-label>
       <h3>주연</h3>
-      <p (click)="goToMovieCharacterPage()">{{movie.actor}}</p>
+      <p>{{movie.actor}}</p>
     </ion-label>
   </ion-item>
 

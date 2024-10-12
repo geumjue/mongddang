@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap, catchError, BehaviorSubject } from 'rxjs';
 import { SignUpRequestData } from 'src/app/models/auth/auth-signup-request-data.interface';
 import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.interface';
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',

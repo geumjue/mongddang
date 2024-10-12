@@ -32,10 +32,6 @@ const routes: Routes = [
     path: 'mypage',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },
-  {
-    path: 'movie-character',
-    loadChildren: () => import('./pages/movie/movie.module').then(m => m.MovieModule)
-  },
 
 
 ];

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CollectionPage } from './listing-collection/collection.page';
 import {UploadCollectionPage} from "./upload-collection/upload-collection.page";
+import {DetailCollectionPage} from "./detail-collection/detail-collection.page";
 
 const routes: Routes = [
   {
@@ -10,7 +11,10 @@ const routes: Routes = [
   },
   {
     path: 'upload-collection', component: UploadCollectionPage,
-  }
+  },
+  {
+    path: 'detail-collection', component: DetailCollectionPage,
+  },
 ];
 
 @NgModule({

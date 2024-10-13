@@ -25,6 +25,9 @@ export class CollectionPage implements OnInit {
   }
 
   goToUploadCollectionPage() {
-    this.router.navigate(['/upload-collection']);
+    this.router.navigate(['collection/upload-collection']);
+  }
+  goToDetailCollectionPage() {
+    this.router.navigate(['collection/detail-collection']);
   }
 }

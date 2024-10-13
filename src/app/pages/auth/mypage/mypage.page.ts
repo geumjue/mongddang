@@ -16,9 +16,13 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class MypagePage implements OnInit {
 
-  nickname: string | null = null; // 사용자 닉네임
-  email: string | null = null; // 사용자 이메일
-  isLoggedIn: boolean = false; // 로그인 상태를 나타내는 변수
+  nickname: string | null = null;
+  email: string | null = null;
+  isLoggedIn: boolean = false;
+  
+  // user 속성 추가
+  user = { username: '', email: '' };
+
 
 
   constructor(
@@ -39,6 +43,14 @@ export class MypagePage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.authService.getLoginStatus().subscribe((status) => {
+      this.isLoggedIn = status;
+    });
+
+    const userId = this.authService.getUserIdFromToken();
+    console.log('User ID from token:', userId);
+
     this.isLoggedIn = this.authService.isLoggedIn();
 
     if (this.isLoggedIn) {
@@ -50,16 +62,19 @@ export class MypagePage implements OnInit {
   }
 
 
+
     if (userId) {
-      // 사용자 정보 요청
       this.authService.getUserInfo(userId).subscribe(
-        (response) => {
-          console.log('User info response:', response); // API 응답 확인
-          if (response.success && response.data) {
-            this.nickname = response.data.user.username; // 닉네임 저장
-            this.email = response.data.user.email; // 이메일 저장
+        (response) => { // 타입 명시
+          console.log('User info response:', response);
+          if (response && response.success && response.data) {
+            this.nickname = response.data.user.username;
+            this.email = response.data.user.email;
+            // user 속성 사용
+            this.user.username = response.data.user.username;
+            this.user.email = response.data.user.email;
           } else {
-            console.error('Invalid response:', response); // 에러 처리
+            console.error('Invalid response:', response);
           }
 
   // JWT 토큰에서 이메일을 추출하는 메서드
@@ -82,15 +97,31 @@ export class MypagePage implements OnInit {
           console.log('User Data:', user); // user 데이터가 제대로 오는지 확인
           this.user = user;
         },
+
+        (error) => { // 타입 명시
+          console.error('Error fetching user info:', error);
+
         error: (err) => {
           console.error('사용자 정보를 가져오는 중 오류:', err);
 
         },
         complete: () => {
           console.log('사용자 정보 요청 완료.');
+
         }
       });
     } else {
+
+      console.warn('No user ID found in token');
+      this.isLoggedIn = false;
+    }
+  }
+
+  logout() {
+    this.authService.logOut().subscribe(() => {
+      this.isLoggedIn = false;
+      this.router.navigate(['/']);
+
       console.error('유효한 인증 토큰이 없거나 이메일이 유효하지 않습니다');
     }
   }
@@ -116,9 +147,14 @@ export class MypagePage implements OnInit {
           }
         }
       ]
+
     });
     await alert.present(); // 알림 표시
   }
+
+
+  goToLogin() {
+    this.router.navigate(['/login']);
 
   // 로그아웃 메서드
   logout() {
@@ -133,5 +169,17 @@ export class MypagePage implements OnInit {
         console.error('로그아웃 중 오류 발생:', err);
       }
     });
+
   }
+
+  goToDeleteAccount() {
+    this.router.navigate(['/delete-account']);
+  }
+
+  // 추가된 메서드들
+  goToLikedMoviePage() {}
+  
+  goToLikedCollectionPage() {}
+  
+  goToLikedCommentPage() {}
 }

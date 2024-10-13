@@ -60,6 +60,10 @@
     <ion-card-header>
       <ion-card-title>My 컬렉션</ion-card-title>
     </ion-card-header>
+
+    <ion-card-content>
+      <!-- 추가 콘텐츠 -->
+
     <ion-card-content class="collection-content">
       <div class="collection-row">
         <div class="collection-container">
@@ -116,6 +120,7 @@
           <h3 class="collection-title">인생 애니메이션😻</h3> <!-- 제목 추가 -->
         </div>
       </div>
+
     </ion-card-content>
   </ion-card>
 
@@ -123,4 +128,9 @@
   <div class="logout-button-container">
     <ion-button expand="full" color="danger" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
   </div>
+</ion-content>
+
+<ion-content>
+  <!-- 기존 내용 -->
+  <ion-button (click)="goToDeleteAccount()" color="danger">회원 탈퇴</ion-button>
 </ion-content>

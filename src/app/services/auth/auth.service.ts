@@ -13,15 +13,20 @@ export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
   public user: { username: string; email: string } | null = null;
 
+
   // 로그인 상태를 관리하는 BehaviorSubject
+
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   constructor(private http: HttpClient, private router: Router) {}
 
+
   // 로그인 상태를 Observable로 제공
+
   getLoginStatus(): Observable<boolean> {
     return this.loggedInSubject.asObservable();
   }
+
 
   // 회원가입 메서드
   signUp(data: SignUpRequestData): Observable<AuthResponse> {
@@ -39,6 +44,7 @@ export class AuthService {
     );
   }
 
+
   // 로그인 메서드
   login(data: SignInRequestData): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
@@ -50,10 +56,11 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
-          // 받은 JWT 토큰을 로컬 스토리지에 저장
+
           localStorage.setItem('token', response.data.token);
-          this.loggedInSubject.next(true); // 로그인 상태 업데이트
-          this.router.navigate(['/mypage']); // 로그인 성공 시 마이페이지로 리디렉션
+          this.loggedInSubject.next(true);
+          this.router.navigate(['/mypage']);
+
         }
       }),
       catchError(error => {
@@ -68,13 +75,13 @@ export class AuthService {
     );
   }
 
-  // 로그아웃 메서드
   logOut(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => {
-        this.clearUserData(); // 사용자 정보와 토큰을 초기화
-        this.loggedInSubject.next(false); // 로그인 상태 업데이트
-        this.router.navigate(['/auth/login']); // 로그아웃 후 로그인 페이지로 이동
+        this.clearUserData();
+        this.loggedInSubject.next(false);
+        this.router.navigate(['/auth/login']);
+
       }),
       catchError(error => {
         console.error('로그아웃 오류:', error);
@@ -82,6 +89,45 @@ export class AuthService {
       })
     );
   }
+
+  deleteAccount(password: string): Observable<any> {
+    const userId = this.getUserIdFromToken();
+    return this.http.post(`${this.apiUrl}/users/${userId}/delete`, { password }).pipe(
+      tap(() => {
+        this.logOut();
+      }),
+      catchError(error => {
+        console.error('회원 탈퇴 오류:', error);
+        return of(null);
+      })
+    );
+  }
+
+  private clearUserData(): void {
+    localStorage.removeItem('token');
+    this.user = null;
+  }
+
+  public isLoggedIn(): boolean {
+    return !!this.extractToken();
+  }
+
+  private extractToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  public getUserIdFromToken(): string | null {
+    // 토큰에서 사용자 ID를 추출하는 로직 필요
+    return null;
+  }
+
+  public getUserInfo(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users/${userId}`).pipe(
+      catchError(error => {
+        console.error('사용자 정보 가져오기 오류:', error);
+        return of(null);
+      })
+    );
 
   // 사용자 정보와 토큰을 초기화하는 메서드
   private clearUserData(): void {

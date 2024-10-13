@@ -20,6 +20,7 @@ import {AuthService} from "../../../services/auth/auth.service";
 })
 export class MovieDetailPage implements OnInit {
 
+
   isCollectionModalOpen = false;
   isGalleryModalOpen = false;
   isSecondModalOpen = false;
@@ -31,6 +32,7 @@ export class MovieDetailPage implements OnInit {
     createdAt: "",
     modifiedAt: ""
   };
+
 
   id: string = '';
   isModalOpen = false;
@@ -57,14 +59,20 @@ export class MovieDetailPage implements OnInit {
     modifiedAt: ""
   };
 
+
   collections: GetCollectionsResponseData[] = []
 
+
   isGalleryOpen = true;
+
   //슬라이더 옵션 설정
   slideOpts = {
     initialSlide: 0,
     speed: 400
   };
+
+
+  constructor(private route: Router, private activateRoute: ActivatedRoute, private movieService: MovieService) {
 
   constructor(
     private route: Router,
@@ -72,12 +80,13 @@ export class MovieDetailPage implements OnInit {
     private movieService: MovieService,
     private collectionService: CollectionService,
     private authService: AuthService) {
+
     addIcons({ personCircle });
   }
 
   ngOnInit() {
     this.id = this.activateRoute.snapshot.params['id'];
-    this.getMovieById(this.id)
+    this.getMovieById(this.id);
   }
 
   toggleLike() {
@@ -86,17 +95,27 @@ export class MovieDetailPage implements OnInit {
       const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
       favoriteMovies.push({ title: this.movie.title, posterUrl: this.movie.posterUrl });
       localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
-      // this.route.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
+
+      this.route.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
+
     }
   }
 
   goBackHomePage() {
+
     this.route.navigate(['/home']);
+
   }
 
   goToCommentWritePage() {
     this.id = this.activateRoute.snapshot.params['id'];
     this.route.navigate([`movie/detail/${this.id}/comment/write`]);
+  }
+
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedImage = null;
   }
 
   goToCommentListPage() {
@@ -158,6 +177,7 @@ export class MovieDetailPage implements OnInit {
       }
     });
   }
+}
   //
   // getCollections(){
   //   this.collectionService.getCollections().subscribe({
@@ -187,3 +207,4 @@ export class MovieDetailPage implements OnInit {
   //   })
   // }
 }
+

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular'; // IonicModule 추가
 import { MypagePage } from './mypage.page';
 import { MypagePageRoutingModule } from './mypage-routing.module';
+import { LikedMoviePage } from './liked-movie/liked-movie.page';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MypagePageRoutingModule } from './mypage-routing.module';
     IonicModule, // IonicModule 추가
     MypagePageRoutingModule
   ],
-  declarations: [MypagePage]
+  declarations: [MypagePage,LikedMoviePage
+  ]
 })
 export class MypagePageModule {}

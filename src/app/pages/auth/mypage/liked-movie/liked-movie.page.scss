@@ -1,0 +1,15 @@
+ion-content {
+    background-color: #f9f9f9; // 배경색 설정
+  }
+  
+  ion-item {
+    --background: white; // 아이템 배경색
+    margin: 10px; // 여백 설정
+    border-radius: 8px; // 모서리 둥글게
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // 그림자 효과
+  }
+  
+  ion-thumbnail {
+    border-radius: 8px; // 썸네일 모서리 둥글게
+  }
+  

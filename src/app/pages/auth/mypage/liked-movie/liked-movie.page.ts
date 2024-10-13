@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liked-movie.page.scss'],
 })
 export class LikedMoviePage implements OnInit {
-
-  constructor() { }
+  likedMovies: any[] = [];
 
   ngOnInit() {
+    this.loadLikedMovies();
   }
 
+  loadLikedMovies() {
+    const storedMovies = localStorage.getItem('favoriteMovies');
+    if (storedMovies) {
+      this.likedMovies = JSON.parse(storedMovies);
+    }
+  }
 }

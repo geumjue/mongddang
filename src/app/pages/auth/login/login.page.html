@@ -1,23 +1,27 @@
 <ion-content>
   <h1 class="login-title" style="margin-top: 10px">로그인</h1>
 
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="login()" #loginForm="ngForm"> <!-- 템플릿 참조 변수 추가 -->
     <div class="login" style="margin: 10px">
       <div class="login-box" style="margin-top: 60px">
         <ion-item>
-          <ion-input [(ngModel)]="email" name="email" labelPlacement="stacked" placeholder="email"></ion-input>
-          <ion-icon slot="start" name="person" aria-hidden="true" style="color:grey"></ion-icon>
+          <ion-input [(ngModel)]="email" name="email" type="email" required labelPlacement="stacked" placeholder="이메일"> <!-- 이메일 형식 지정 및 필수 입력 필드 -->
+            <ion-icon slot="start" name="person" aria-hidden="true" style="color:grey"></ion-icon>
+          </ion-input>
         </ion-item>
       </div>
 
       <div class="password-box">
         <ion-item>
-          <ion-input [(ngModel)]="password" name="password" labelPlacement="stacked" placeholder="password"></ion-input>
-          <ion-icon slot="start" name="lock-closed" aria-hidden="true" style="color:grey"></ion-icon>
+          <ion-input [(ngModel)]="password" name="password" type="password" required labelPlacement="stacked" placeholder="비밀번호"> <!-- 비밀번호 형식 지정 및 필수 입력 필드 -->
+            <ion-icon slot="start" name="lock-closed" aria-hidden="true" style="color:grey"></ion-icon>
+          </ion-input>
         </ion-item>
       </div>
     </div>
-    <ion-button expand="full" type="submit">로그인</ion-button>
+    
+    <ion-button expand="full" type="submit" [disabled]="!loginForm.form.valid">로그인</ion-button> <!-- 로그인 버튼 비활성화 설정 -->
   </form>
+
   <ion-button class="sign-up" (click)="goToCreateAccountPage()" expand="full">회원가입</ion-button>
 </ion-content>

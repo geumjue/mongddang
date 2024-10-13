@@ -8,6 +8,12 @@
 *{
   font-family: 'Pretendard-Regular';
 }
+
+.searchbar_collection  {
+  //margin-top: 15px; /* Adjust this if you need more space */
+  padding: 0 10px ;
+}
+
 ion-header{
   display: flex;
   justify-content: center;
@@ -147,11 +153,12 @@ ion-label {
 }
 
 .comment-card{
-  //padding: 10px;
+  padding: 15px;
+  margin: 20px 20px;
 }
 
 .comment-card-header{
-  height: 50px;
+  height: 40px;
 }
 //comment: 이미지 크기 설정
 ion-thumbnail {
@@ -301,36 +308,9 @@ ion-thumbnail img {
 //}
 
 
-
-
-
-
-
-
-
-
-
 .actor h4{
   color: grey;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

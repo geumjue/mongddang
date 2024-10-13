@@ -15,16 +15,16 @@ export class LoginPage {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    // 이메일과 비밀번호가 입력되었는지 확인
     if (!this.email || !this.password) {
       console.error('이메일 또는 비밀번호가 입력되지 않았습니다.');
-      return; // 입력이 없으면 로그인 요청을 하지 않음
+      return;
     }
 
     const signInRequestData: SignInRequestData = {
       email: this.email,
       password: this.password,
     };
+
 
     // Correct method name
     this.authService.login(signInRequestData).subscribe({
@@ -38,9 +38,19 @@ export class LoginPage {
       },
       error: (err) => {
         console.error('Sign In error:', err);
+
+    this.authService.login(signInRequestData).subscribe({
+      next: response => {
+        if (!response.success) {
+          console.error('로그인 실패:', response.message);
+        }
+      },
+      error: err => {
+        console.error('로그인 오류:', err);
+
       },
       complete: () => {
-        console.log('Sign In request completed.');
+        console.log('로그인 요청 완료.');
       }
     });
   }

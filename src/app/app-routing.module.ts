@@ -29,14 +29,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule) // 올바른 경로로 수정
   },
   {
-    path: 'mypage',
+    path: 'liked-movie',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },
   {
+    path: 'liked-collection',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
+  {
+
     path: 'delete-account',
     loadChildren: () => import('./pages/auth/delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
   },
   
+
+    path: 'liked-comment',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
+
+
+
+
 
 ];
 

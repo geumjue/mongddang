@@ -4,6 +4,9 @@ import { SearchPage } from './movie-search/search.page';
 import { MovieDetailPage } from './movie-detail/movie-detail.page';
 import { CommentWritePage } from './movie-comment/comment-write/comment-write.page';
 import { MovieFavoritePage } from './movie-favorite/movie-favorite.page';
+import {CommentListPage} from "./movie-comment/comment-list/comment-list.page";
+
+
 
 const routes: Routes = [
   {
@@ -14,7 +17,7 @@ const routes: Routes = [
     path: '',
     component: MovieFavoritePage
   },
-  
+
   {
     path: 'detail/:id',
     component: MovieDetailPage // 영화 상세 페이지 컴포넌트
@@ -27,6 +30,13 @@ const routes: Routes = [
     path: 'detail/:id/comment/write',
     component: CommentWritePage
   },
+
+
+  {
+    path: 'detail/:id/comment/list',
+    component: CommentListPage
+  },
+
 ];
 
 @NgModule({

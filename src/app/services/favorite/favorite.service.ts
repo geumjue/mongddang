@@ -1,8 +1,8 @@
+// favorite.service.ts
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { FavoriteRequestData } from "src/app/models/favorite/favorite-request.data";
-import { FavoriteResponseData, ShowFavoriteByIdResponseData, ShowFavoritesResponseData } from "src/app/models/favorite/favorite-response.data";
+import { FavoriteResponseData, ShowFavoritesResponseData } from "src/app/models/favorite/favorite-response.data";
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +13,19 @@ export class FavoriteService {
   constructor(private http: HttpClient) {}
 
   // 즐겨찾기 추가
-  addFavorite(movie: FavoriteRequestData): Observable<FavoriteResponseData> {
+  addFavorite(username: string, movieId: string): Observable<FavoriteResponseData> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<FavoriteResponseData>(`${this.apiUrl}/add`, movie, { headers });
+    return this.http.post<FavoriteResponseData>(
+      `${this.apiUrl}/add`, 
+      { username, movieId }, 
+      { headers, withCredentials: true }
+    );
   }
 
-  // 즐겨찾기 삭제
-  removeFavorite(id: number): Observable<FavoriteResponseData> {
+  // 즐겨찾기 상태 확인
+  checkFavorite(username: string, movieId: string): Observable<boolean> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.delete<FavoriteResponseData>(`${this.apiUrl}/remove/${id}`, { headers });
+    return this.http.get<boolean>(`${this.apiUrl}/check/${username}/${movieId}`, { headers });
   }
 
   // 사용자 즐겨찾기 조회
@@ -30,9 +34,5 @@ export class FavoriteService {
     return this.http.get<ShowFavoritesResponseData[]>(`${this.apiUrl}/show/${userId}`, { headers });
   }
 
-  // 즐겨찾기 상세 조회
-  getFavoriteById(id: number): Observable<ShowFavoriteByIdResponseData> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<ShowFavoriteByIdResponseData>(`${this.apiUrl}/show/detail/${id}`, { headers });
-  }
+  // ...
 }

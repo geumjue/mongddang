@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CommentWriteResponseData} from "../../../../models/comment/comment-write-response-data";
-import {CommentService} from "../../../../services/commet/comment.sevice";
+import {CommentService} from "../../../../services/comment/comment.sevice";
 import {AuthService} from "../../../../services/auth/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 

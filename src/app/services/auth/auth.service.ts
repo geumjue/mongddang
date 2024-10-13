@@ -13,20 +13,15 @@ export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
   public user: { username: string; email: string } | null = null;
 
-
   // 로그인 상태를 관리하는 BehaviorSubject
-
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   constructor(private http: HttpClient, private router: Router) {}
 
-
   // 로그인 상태를 Observable로 제공
-
   getLoginStatus(): Observable<boolean> {
     return this.loggedInSubject.asObservable();
   }
-
 
   // 회원가입 메서드
   signUp(data: SignUpRequestData): Observable<AuthResponse> {
@@ -44,7 +39,6 @@ export class AuthService {
     );
   }
 
-
   // 로그인 메서드
   login(data: SignInRequestData): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
@@ -60,7 +54,6 @@ export class AuthService {
           localStorage.setItem('token', response.data.token);
           this.loggedInSubject.next(true);
           this.router.navigate(['/mypage']);
-
         }
       }),
       catchError(error => {
@@ -81,7 +74,6 @@ export class AuthService {
         this.clearUserData();
         this.loggedInSubject.next(false);
         this.router.navigate(['/auth/login']);
-
       }),
       catchError(error => {
         console.error('로그아웃 오류:', error);
@@ -128,20 +120,5 @@ export class AuthService {
         return of(null);
       })
     );
-
-  // 사용자 정보와 토큰을 초기화하는 메서드
-  private clearUserData(): void {
-    localStorage.removeItem('token'); // 로컬 스토리지에서 토큰 삭제
-    this.user = null; // 메모리에서 사용자 정보 초기화
-  }
-
-  // 사용자가 로그인 상태인지 확인하는 메서드
-  public isLoggedIn(): boolean {
-    return !!this.extractToken();
-  }
-
-  // 로컬 스토리지에서 토큰을 추출하는 메서드
-  private extractToken(): string | null {
-    return localStorage.getItem('token');
   }
 }

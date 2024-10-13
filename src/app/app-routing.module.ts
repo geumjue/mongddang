@@ -41,8 +41,7 @@ const routes: Routes = [
     path: 'delete-account',
     loadChildren: () => import('./pages/auth/delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
   },
-  
-
+  {
     path: 'liked-comment',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },

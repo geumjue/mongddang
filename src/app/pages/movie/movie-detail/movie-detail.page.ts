@@ -72,7 +72,7 @@ export class MovieDetailPage implements OnInit {
   };
 
 
-  constructor(private route: Router, private activateRoute: ActivatedRoute, private movieService: MovieService) {
+  //constructor(private route: Router, private activateRoute: ActivatedRoute, private movieService: MovieService) {
 
   constructor(
     private route: Router,
@@ -206,5 +206,5 @@ export class MovieDetailPage implements OnInit {
   //     }
   //   })
   // }
-}
+
 

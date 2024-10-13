@@ -40,14 +40,14 @@
       <ion-grid>
         <ion-row class="storage-row">
           <ion-col>
-            <ion-icon name="videocam"></ion-icon>
+            <ion-icon name="videocam" (click)="goToLikedMoviePage()"></ion-icon>
             영화
           </ion-col>
-          <ion-col>
+          <ion-col (click)="goToLikedCollectionPage()">
             <ion-icon name="play"></ion-icon>
             컬렉션
           </ion-col>
-          <ion-col>
+          <ion-col (click)="goToLikedCommentPage()">
             <ion-icon name="book"></ion-icon>
             코멘트
           </ion-col>

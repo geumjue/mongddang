@@ -1,3 +1,19 @@
 <ion-content>
-  <ion-searchbar show-cancel-button="focus" cancel-button-text="취소" placeholder="검색어를 입력하세요"></ion-searchbar>
+  <ion-searchbar show-cancel-button="focus" cancel-button-text="취소" placeholder="검색어를 입력하세요"
+  style="margin-top: 50px;"></ion-searchbar>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>영화 제목</ion-card-title>
+      <ion-button (click)="toggleComments()">
+        {{ showComments ? '댓글 접기' : '댓글 보기' }}
+      </ion-button>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="showComments">
+      <p>댓글 1: 이 영화 정말 재밌어요!</p>
+      <p>댓글 2: 감독의 연출이 뛰어납니다!</p>
+      <!-- 추가 댓글 내용 -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>

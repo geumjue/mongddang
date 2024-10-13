@@ -11,76 +11,116 @@
     </ion-card-header>
     <ion-card-content>
       <div class="profile-image-container">
-        <img src="assets/images/unknown.png" alt="익명사진" style="width:100px; height: auto;">
+        <img src="assets/images/unknown.png" alt="익명사진" class="profile-image">
       </div>
-      <ion-item>
+
+      <!-- 유저 정보 -->
+      <ion-item class="user-info-item" *ngIf="user">
         <ion-label>
           <h2>닉네임</h2>
-<<<<<<< HEAD
-          <h3>{{ nickname || '정보 없음' }}</h3> <!-- 닉네임 표시 -->
-=======
-          <h3>{{ username || '정보 없음' }}</h3> <!-- 닉네임이 없을 경우 대체 텍스트 -->
->>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
+          <h3>{{ user.username }}</h3>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="user-info-item" *ngIf="user">
         <ion-label>
           <h2>이메일</h2>
+          <h3>{{ user.email }}</h3>
         </ion-label>
-        <ion-input type="email" [value]="email || '정보 없음'" readonly></ion-input> <!-- 이메일 표시 -->
       </ion-item>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
-        <ion-button fill="clear" *ngIf="!isLoggedIn" (click)="goToLogin()">로그인</ion-button>
-      </ion-buttons>
-      <div class="login-status">
-        <p *ngIf="isLoggedIn">현재 로그인 상태입니다.</p>
-        <p *ngIf="!isLoggedIn">로그인되지 않았습니다.</p>
-      </div>
-      <ion-grid [fixed]="true">
-        <ion-row class="profile-row">
-          <ion-col class="col1">평점</ion-col>
-          <ion-col class="col2">코멘트</ion-col>
-        </ion-row>
-      </ion-grid>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>보관함</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid [fixed]="true">
-        <ion-row class="storage-row">
-          <ion-col>
-            <ion-icon name="videocam"></ion-icon>
-            영화
-          </ion-col>
-          <ion-col>
-            <ion-icon name="play"></ion-icon>
-            시리즈
-          </ion-col>
-          <ion-col>
-            <ion-icon name="book"></ion-icon>
-            책
-          </ion-col>
-          <ion-col>
-            <ion-icon name="happy"></ion-icon>
-            웹툰
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+  <!-- 기타 카드 내용 -->
 
   <ion-card>
     <ion-card-header>
       <ion-card-title>좋아요</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <div class="liked-person">좋아하는 인물</div>
-      <div class="liked-comment">좋아한 코멘트</div>
+      <ion-grid>
+        <ion-row class="storage-row">
+          <ion-col>
+            <ion-icon name="videocam" (click)="goToLikedMoviePage()"></ion-icon>
+            영화
+          </ion-col>
+          <ion-col (click)="goToLikedCollectionPage()">
+            <ion-icon name="play"></ion-icon>
+            컬렉션
+          </ion-col>
+          <ion-col (click)="goToLikedCommentPage()">
+            <ion-icon name="book"></ion-icon>
+            코멘트
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
+
+  <ion-card class="Mycollection">
+    <ion-card-header>
+      <ion-card-title>My 컬렉션</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="collection-content">
+      <div class="collection-row">
+        <div class="collection-container">
+          <div class="poster">
+            <div class="image image1">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/3A4qOu7RtiKpI_OHcrM6SQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2t6ZVdwbFkyWjZNM2xsYm5WNGFIWjFPV3gySW4wLnFMR29ZX0ZEYnNIZnllX1c4cWR3bmlqdnFHTldHWmNQQjJoV1RkZmFpb1U" alt="">
+            </div>
+            <div class="image image2">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/XsZSX-2QKku7t-5cVPmp8g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0psYXpCemNIcG1lRzVoWnpWd2NHcGhOMngxSW4wLjAyOGpLblhTakNaRVJtbnh0UE9SZXFFRW5rVC15WFlCQ01Md3Z3X1VRLTg">
+            </div>
+            <div class="image image3">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/z8hZdM7cUm4va_dSpGHc_w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0YzZUdJNWRtRTJaM0YyZVdvNGIzVjVibk50SW4wLlJhanhXS09EdTZjOGxEVUVvOEVad3Blal9sWWdxNENsa1gzQjFsOFVZZmM" alt="">
+            </div>
+            <div class="image image4">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/wnEk0nj3dCeBVjlBFsieHQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlZzWm1odloyWjVaR1p5Ym5ob2FIWXpaM2Q2SW4wLnNMSEFMQzhYX2ZkZWdmMW5vVXhVcGNLZHZGVEZBa1F1V2ZtWGE3ZUdPSzA">
+            </div>
+          </div>
+          <h3 class="collection-title">인생 애니메이션😻</h3> <!-- 제목 추가 -->
+        </div>
+
+        <div class="collection-container">
+          <div class="poster">
+            <div class="image image1">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/3A4qOu7RtiKpI_OHcrM6SQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2t6ZVdwbFkyWjZNM2xsYm5WNGFIWjFPV3gySW4wLnFMR29ZX0ZEYnNIZnllX1c4cWR3bmlqdnFHTldHWmNQQjJoV1RkZmFpb1U" alt="">
+            </div>
+            <div class="image image2">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/XsZSX-2QKku7t-5cVPmp8g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0psYXpCemNIcG1lRzVoWnpWd2NHcGhOMngxSW4wLjAyOGpLblhTakNaRVJtbnh0UE9SZXFFRW5rVC15WFlCQ01Md3Z3X1VRLTg">
+            </div>
+            <div class="image image3">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/z8hZdM7cUm4va_dSpGHc_w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0YzZUdJNWRtRTJaM0YyZVdvNGIzVjVibk50SW4wLlJhanhXS09EdTZjOGxEVUVvOEVad3Blal9sWWdxNENsa1gzQjFsOFVZZmM" alt="">
+            </div>
+            <div class="image image4">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/wnEk0nj3dCeBVjlBFsieHQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlZzWm1odloyWjVaR1p5Ym5ob2FIWXpaM2Q2SW4wLnNMSEFMQzhYX2ZkZWdmMW5vVXhVcGNLZHZGVEZBa1F1V2ZtWGE3ZUdPSzA">
+            </div>
+          </div>
+          <h3 class="collection-title">인생 애니메이션😻</h3> <!-- 제목 추가 -->
+        </div>
+
+        <div class="collection-container">
+          <div class="poster">
+            <div class="image image1">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/3A4qOu7RtiKpI_OHcrM6SQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2t6ZVdwbFkyWjZNM2xsYm5WNGFIWjFPV3gySW4wLnFMR29ZX0ZEYnNIZnllX1c4cWR3bmlqdnFHTldHWmNQQjJoV1RkZmFpb1U" alt="">
+            </div>
+            <div class="image image2">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/XsZSX-2QKku7t-5cVPmp8g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0psYXpCemNIcG1lRzVoWnpWd2NHcGhOMngxSW4wLjAyOGpLblhTakNaRVJtbnh0UE9SZXFFRW5rVC15WFlCQ01Md3Z3X1VRLTg">
+            </div>
+            <div class="image image3">
+              <img src="https://an2-img.amz.wtchn.net/image/v2/z8hZdM7cUm4va_dSpGHc_w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0YzZUdJNWRtRTJaM0YyZVdvNGIzVjVibk50SW4wLlJhanhXS09EdTZjOGxEVUVvOEVad3Blal9sWWdxNENsa1gzQjFsOFVZZmM" alt="">
+            </div>
+            <div class="image image4">
+              <img alt="" src="https://an2-img.amz.wtchn.net/image/v2/wnEk0nj3dCeBVjlBFsieHQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlZzWm1odloyWjVaR1p5Ym5ob2FIWXpaM2Q2SW4wLnNMSEFMQzhYX2ZkZWdmMW5vVXhVcGNLZHZGVEZBa1F1V2ZtWGE3ZUdPSzA">
+            </div>
+          </div>
+          <h3 class="collection-title">인생 애니메이션😻</h3> <!-- 제목 추가 -->
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 로그아웃 버튼을 하단에 추가 -->
+  <div class="logout-button-container">
+    <ion-button expand="full" color="danger" *ngIf="isLoggedIn" (click)="logout()">로그아웃</ion-button>
+  </div>
 </ion-content>

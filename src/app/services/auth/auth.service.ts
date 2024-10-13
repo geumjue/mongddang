@@ -1,61 +1,48 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap, catchError, BehaviorSubject } from 'rxjs';
-import { jwtDecode } from 'jwt-decode'; // 'import { jwtDecode } from 'jwt-decode';' 대신 이 방법으로 수정
-import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { SignUpRequestData } from 'src/app/models/auth/auth-signup-request-data.interface';
 import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.interface';
 import { Router } from '@angular/router';
-import { ApiResponse } from 'src/app/models/common/api-response.interface';
+import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-<<<<<<< HEAD
-  private loggedInSubject = new BehaviorSubject<boolean>(this.checkInitialLoginStatus());
-  private user: { nickname: string; email: string } | null = null;
-=======
   public user: { username: string; email: string } | null = null;
 
-  // 1. BehaviorSubject로 로그인 상태 관리
+  // 로그인 상태를 관리하는 BehaviorSubject
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
->>>>>>> aadbb87c962767128065447e8d1c760b80a49e95
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  private checkInitialLoginStatus(): boolean {
-    const token = this.extractToken();
-    return token !== null;
-  }
-
-  // 회원가입 메소드
-  signUp(data: SignUpRequestData): Observable<ApiResponse<AuthResponse>> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<ApiResponse<AuthResponse>>(`${this.apiUrl}/signup`, data, { headers, withCredentials: true });
-  }
-
-  // 로그인 상태를 Observable로 반환하는 메소드
+  // 로그인 상태를 Observable로 제공
   getLoginStatus(): Observable<boolean> {
     return this.loggedInSubject.asObservable();
   }
 
-  // 로그인 메소드
-  logIn(data: SignInRequestData): Observable<ApiResponse<AuthResponse>> {
-    if (this.checkInitialLoginStatus()) {
-      this.router.navigate(['/mypage']);
-      return of({
-        success: false,
-        data: null,
-        statusCode: 403,
-        message: 'Already logged in',
-      } as unknown as ApiResponse<AuthResponse>);
-    }
+  // 회원가입 메서드
+  signUp(data: SignUpRequestData): Observable<AuthResponse> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<AuthResponse>(`${this.apiUrl}/signup`, data, { headers }).pipe(
+      catchError(error => {
+        console.error('회원가입 오류:', error);
+        return of({
+          success: false,
+          data: null,
+          statusCode: error.status,
+          message: error.message,
+        } as AuthResponse);
+      })
+    );
+  }
 
-    return this.http.post<ApiResponse<AuthResponse>>(`${this.apiUrl}/signin`, data, {
+  // 로그인 메서드
+  login(data: SignInRequestData): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      withCredentials: true,
     }).pipe(
       tap(response => {
         if (response.success && response.data) {
@@ -63,77 +50,52 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
-          this.loggedInSubject.next(true);
-          this.router.navigate(['/mypage']);
+          // 받은 JWT 토큰을 로컬 스토리지에 저장
+          localStorage.setItem('token', response.data.token);
+          this.loggedInSubject.next(true); // 로그인 상태 업데이트
+          this.router.navigate(['/mypage']); // 로그인 성공 시 마이페이지로 리디렉션
         }
       }),
       catchError(error => {
+        console.error('로그인 오류:', error);
         return of({
           success: false,
           data: null,
           statusCode: error.status,
           message: error.message,
-        } as unknown as ApiResponse<AuthResponse>);
+        } as AuthResponse);
       })
     );
   }
 
-  // 로그아웃 메소드
-  logOut(): Observable<ApiResponse<null>> {
-    return this.http.post<ApiResponse<null>>(`${this.apiUrl}/logout`, {}, { withCredentials: true }).pipe(
+  // 로그아웃 메서드
+  logOut(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => {
-        this.clearCookies();
-        this.user = null;
-        this.loggedInSubject.next(false); // 로그인 상태를 false로 설정
-        console.log('로그아웃 성공');
-        this.router.navigate(['/']); // 로그아웃 후 메인 페이지로 이동
+        this.clearUserData(); // 사용자 정보와 토큰을 초기화
+        this.loggedInSubject.next(false); // 로그인 상태 업데이트
+        this.router.navigate(['/auth/login']); // 로그아웃 후 로그인 페이지로 이동
       }),
       catchError(error => {
-        console.error('Logout error:', error);
-        return of({
-          success: false,
-          data: null,
-          statusCode: error.status,
-          message: error.message,
-        } as ApiResponse<null>);
+        console.error('로그아웃 오류:', error);
+        return of({});
       })
     );
   }
 
-  // 사용자 정보 가져오기 메소드
-  getUserInfo(userId: number): Observable<AuthResponse> {
-    return this.http.get<AuthResponse>(`${this.apiUrl}/users/${userId}`);
+  // 사용자 정보와 토큰을 초기화하는 메서드
+  private clearUserData(): void {
+    localStorage.removeItem('token'); // 로컬 스토리지에서 토큰 삭제
+    this.user = null; // 메모리에서 사용자 정보 초기화
   }
 
-  // 쿠키에서 JWT 토큰 추출
+  // 사용자가 로그인 상태인지 확인하는 메서드
+  public isLoggedIn(): boolean {
+    return !!this.extractToken();
+  }
+
+  // 로컬 스토리지에서 토큰을 추출하는 메서드
   private extractToken(): string | null {
-    return this.getCookie('Authorization');
-  }
-
-  // 토큰에서 사용자 ID 추출
-  getUserIdFromToken(): number | null {
-    const token = this.extractToken();
-    if (token) {
-      const decodedToken: { userId: number } = jwtDecode(token);
-      return decodedToken.userId || null;
-    }
-    return null;
-  }
-
-  // 로그인 상태 확인 메소드
-  isLoggedIn(): Observable<boolean> {
-    return this.loggedInSubject.asObservable(); // Observable로 반환하여 subscribe 가능
-  }
-
-  // 쿠키에서 특정 이름의 값 추출
-  private getCookie(name: string): string | null {
-    const cookies = document.cookie.split('; ').find(row => row.startsWith(name));
-    return cookies ? cookies.split('=')[1] : null;
-  }
-
-  // 쿠키 삭제
-  private clearCookies(): void {
-    document.cookie = 'Authorization=; Max-Age=0; path=/';
-    this.user = null;
+    return localStorage.getItem('token');
   }
 }

@@ -1,93 +1,87 @@
-//폰트 스타일
 @font-face {
-  font-family: 'SUITE-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
-* {
-  font-family: 'SUITE-Regular', sans-serif !important;
+*{
+  font-family: 'Pretendard-Regular';
 }
 
-
-ion-toolbar ion-title{
+ion-toolbar ion-title {
   font-size: large;
 }
-//닉네임 부분
+
+.profile {
+  align-items: center !important;
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0; /* 이미지와 다른 요소 간 간격 조정 */
+}
+
+.profile-image {
+  width: 100px;
+  height: auto;
+  border-radius: 50%; /* 원형 이미지 */
+  border: 2px solid #db4a2b; /* 테두리 추가 */
+}
+
+.user-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+ion-item {
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+
 ion-item ion-label h2 {
-  font-size: 0.75em; /* 닉네임 글씨 크기 조정 */
-  display: inline;
-  margin-right: 10px;
+  font-size: 0.75em;
   color: gray;
 }
+
 ion-item ion-label h3 {
-  font-size: 1.10em; /* 닉네임 글씨 크기 조정 */
-  margin: 0; /* 여백 제거 */
-  display: inline;
-}
-
-
-//이메일 부분
-ion-item h2 {
-  font-size: 0.75em; /* 닉네임 글씨 크기 조정 */
-  display: inline;
-  color: gray;
-  margin-right: 10px;
+  font-size: 1.1em;
+  margin: 0;
 }
 
 ion-input {
-  margin-top: 0; /* 이메일 입력 필드와 레이블 간의 간격 제거 */
-  padding: 0; /* 입력 필드 내부 여백 제거 */
-  border: none; /* 입력 필드 테두리 제거 */
-  font-size: 1.05em; /* 이메일 글씨 크기 조정 */
+  margin-top: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.05em;
   color: #2a2a2a;
 }
 
-
-
-//닉네임 이메일 필드
-ion-item {
-  display: flex;
-  align-items: center; /* 아이템 내의 콘텐츠를 수직 가운데 정렬 */
-  width: 100%; /* 아이템이 카드의 전체 너비를 차지하도록 설정 */
-  margin-bottom: 0; /* 아이템 간의 간격 제거 */
-  white-space: nowrap;
-  padding: 0; /* 내부 여백 제거 */
-  border: none; /* 테두리 제거 */
-  --inner-padding-end: 0; /* 아이템 내부 오른쪽 여백 제거 */
-}
-
-
-//평점, 코멘트, 컬렉션 스타일
 .profile-row {
-  border: solid 1px #c6c6c6; /* 전체 row를 둘러싸는 border */
-  padding: 0;
+  border: solid 1px #c6c6c6;
   display: flex;
   text-align: center;
   font-size: 19px;
 }
 
-
-.col1 {
-  padding: 10px; /* 내부 여백 추가 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  color:black;
-  border-right: solid 1px #c6c6c6; /* 각 col 사이에 경계선 추가 */
-  box-sizing: border-box; /* padding과 border가 포함되도록 설정 */
+.col1, .col2 {
+  padding: 10px;
+  color: black;
+  text-align: center;
+  border-right: solid 1px #c6c6c6;
 }
+
 .col2 {
-  color:black;
-  padding: 10px; /* 내부 여백 추가 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  box-sizing: border-box; /* padding과 border가 포함되도록 설정 */
+  border-right: none; /* 마지막 열은 오른쪽 경계선 제거 */
 }
 
-//영화,시리즈,책,웹툰 css
 .storage-row ion-col {
   display: flex;
-  flex-direction: column; /* 수직 정렬을 위해 방향 설정 */
-  align-items: center; /* 중앙 정렬 */
+  flex-direction: column;
+  align-items: center;
   background: transparent;
   border: solid 1px #c6c6c6;
   border-radius: 20px;
@@ -96,64 +90,85 @@ ion-item {
   margin: 5px;
   text-align: center;
 }
+
 .storage-row ion-icon {
-  margin-bottom: 5px; /* 아이콘과 텍스트 간의 간격 */
+  margin-bottom: 5px;
 }
 
-    //.profile-row ion-col{
-    //  white-space: nowrap;
-    //  background: transparent;
-    //  border: solid 1px #c6c6c6;
-    //  color: black;
-    //  font-size: 19px;
-    //  margin: 5px;
-    //  text-align: center;
-    //}
 ion-card {
-  padding: 10px; /* 카드 내부 여백 */
+  padding: 10px;
+  margin: 20px 20px; /* 카드 간의 간격 추가 */
 }
-
-.profile{
-  align-items: center !important;
-}
-ion-card-header {
-  padding-bottom: 8px; /* 카드 헤더와 카드 콘텐츠 간의 간격 */
-  display: flex;
-  margin-bottom: 15px;
-  //align-items: center; // 수직 정렬을 중앙으로
-  height: 56px; // 필요에 따라 높이 조정
-}
-
-.profile-image-container {
-  display: flex;
-  justify-content: center; /* 이미지 왼쪽 정렬 */
-  margin-bottom: 20px; /* 이미지와 다음 요소 간의 간격 */
-  margin-top: 10px;
-}
-
-//로그아웃 버튼
-ion-buttons {
-  margin: 10px 0 0 260px;
-}
-
-//ion-button {
-//  //--color: #db4a2b;
-//}
-
-//ion-card-title{
-//  --color: #db4a2b;
-//}
 
 .liked-person, .liked-comment {
-  //color: #db4a2b;
   font-size: 19px;
   color: black;
   padding: 15px !important;
 }
-//ion-content {
-//  --background-color: lightsalmon;
-//}
 
+ion-card-title{
+  font-size: 24px;
+}
+.logout-button-container {
+  margin-top: 20px;
+  padding: 0 16px;
+}
 
+/*마이컬렉션부분*/
+.collection-container {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 정렬 */
+  align-items: center;
+}
 
+.poster {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열로 설정 */
+  grid-template-rows: repeat(2, 1fr);    /* 2행으로 설정 */
+  width: 130px;                          /* 원하는 너비로 설정 */
+  height: 160px;                         /* 원하는 높이로 설정 */
+  border: 2px solid grey; /* 테두리 스타일 */
+  border-radius: 5px;
+  position: relative;
+}
 
+.image {
+  position: relative;                    /* 자식 요소에 대한 위치 설정 */
+  overflow: hidden;                     /* 자식 요소가 카드 밖으로 나가지 않도록 설정 */
+  border: 1px solid grey;               /* 각 이미지에 테두리 추가 */
+  width: 100%;                          /* 가로 100% */
+  height: 100%;                         /* 세로 100% */
+}
+
+.image img {
+  width: 100%;                          /* 가로 100% */
+  height: 100%;                         /* 세로 100% */
+  object-fit: cover;                    /* 이미지 비율 유지하며 잘리도록 설정 */
+}
+
+.Mycollection{
+  padding-bottom: 40px;
+}
+
+.collection-title {
+  margin-top: 10px;                    /* 제목과 포스터 사이의 여백 */
+  font-size: 12px;                     /* 제목 크기 조정 */
+  font-weight: bold;                   /* 제목 두께 조정 */
+  width: 130px;                        /* 포스터 너비와 동일하게 설정 */
+  word-wrap: break-word;               /* 단어 줄 바꿈 허용 */
+  overflow-wrap: break-word;           /* 단어 줄 바꿈 허용 (구버전 지원) */
+  color: #101010;
+  margin-left: 2px;
+}
+
+.collection-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2개의 컬럼 설정 */
+  gap: 10px; /* 컬렉션 간의 간격 조정 */
+  margin-bottom: 20px; /* 아래쪽 여백 추가 */
+}

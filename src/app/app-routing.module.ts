@@ -29,9 +29,21 @@ const routes: Routes = [
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule) // 올바른 경로로 수정
   },
   {
-    path: 'mypage',
+    path: 'liked-movie',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },
+  {
+    path: 'liked-collection',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
+  {
+    path: 'liked-comment',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
+
+
+
+
 ];
 
 @NgModule({

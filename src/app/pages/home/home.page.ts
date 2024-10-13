@@ -39,9 +39,9 @@ export class HomePage implements AfterViewInit{
     swiperEl_netflix.initialize();
   }
 
-  // goToNowsCommentPage() {
-  //   this.router.navigate(['tabs/home/nows-comment']);
-  // }
+  goToNowsCommentPage() {
+    this.router.navigate(['nows-comment']);
+  }
 
   // goToSearchPage() {
   //   this.router.navigate(['tabs/search']);

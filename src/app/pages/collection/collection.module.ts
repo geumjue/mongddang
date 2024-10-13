@@ -8,14 +8,15 @@ import { CollectionPageRoutingModule } from './collection-routing.module';
 
 import { CollectionPage } from './listing-collection/collection.page';
 import { UploadCollectionPage } from './upload-collection/upload-collection.page';
+import {DetailCollectionPage} from "./detail-collection/detail-collection.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CollectionPageRoutingModule
+    CollectionPageRoutingModule,
   ],
-  declarations: [CollectionPage, UploadCollectionPage]
+  declarations: [CollectionPage, UploadCollectionPage, DetailCollectionPage]
 })
 export class CollectionPageModule {}

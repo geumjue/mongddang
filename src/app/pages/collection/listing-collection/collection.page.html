@@ -2,13 +2,6 @@
   <img class=logo-image src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:180px; height: auto;">
 </ion-header>
 
-<!--<ion-content [fullscreen]="true">-->
-<!--  <ion-header collapse="condense">-->
-<!--    <ion-toolbar>-->
-<!--&lt;!&ndash;      <ion-title size="large">인기있는 컬렉션</ion-title>&ndash;&gt;-->
-<!--    </ion-toolbar>-->
-<!--  </ion-header>-->
-<!--</ion-content>-->
 <ion-content>
   <div class="searchbar_collection">
     <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 컬렉션을 검색하세요"
@@ -26,7 +19,7 @@
       <img class="unknow-image" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_ERNCSI1HFpbvGex7nWhFR-ZYtVQnhCjEhAr4ryvrDdMVUxiGCFvuYeY9hfiHYQfxpA&usqp=CAU"
            style="width:50px; height: auto;">
       <p> 크리스마스에 생각나는 영화<br>(2024)</p>
-      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;"></ion-icon>
+      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage()"></ion-icon>
     </div>
     <div class="movie-images">
       <img class="alone"

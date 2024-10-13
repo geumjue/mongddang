@@ -19,18 +19,23 @@ export class CommentWritePage {
     private route: Router,
     private activateRoute: ActivatedRoute,
     private commentService: CommentService,
-    private authService: AuthService) {}
+    private authService: AuthService
+  ) {}
 
 
   goBackMovieDetail() {
     const movieId = this.activateRoute.snapshot.params['id'];
-    this.route.navigate([`movie/detail/${movieId}`])
+    this.route.navigate([`movie/detail/${movieId}`]);
+  }
+
+  goToCommentsPage(movieId: string) {
+    this.route.navigate([`movie/detail/${movieId}/comment/list`]); // 전체 코멘트 페이지로 이동
   }
 
   postCommentById(username: string, content: string, movieId: string) {
     this.commentService.postCommentById(username, content, movieId).subscribe({
       next: (response: CommentWriteResponseData) => {
-        this.goBackMovieDetail()
+        this.goToCommentsPage(movieId)
       },
       error: (err: any) => {
         console.log(err)

@@ -40,14 +40,14 @@ export class UserService {
     }
 
     // 사용자 이메일로 사용자 정보 가져오기
-    getUserByEmail(email: string): Observable<ApiResponse<GetUserResponseData>> {
+    getUserByEmail(email: string): Observable<GetUserResponseData> {
         const token = localStorage.getItem('authToken'); // 토큰 불러오기
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
             'Content-Type': 'application/json'
         });
 
-        return this.http.get<ApiResponse<GetUserResponseData>>(`${this.apiUrl}/email/${email}`, { headers, withCredentials: true });
+        return this.http.get<GetUserResponseData>(`${this.apiUrl}/mypage/${email}`, { headers, withCredentials: true });
     }
 
     // 사용자 정보 수정하기

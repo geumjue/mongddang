@@ -23,6 +23,16 @@ export class MypagePage implements OnInit {
     private alertController: AlertController
   ) { }
 
+  goToLikedMoviePage() {
+    this.router.navigate([`mypage/liked-movie`]);
+  }
+  goToLikedCollectionPage() {
+    this.router.navigate(['mypage/liked-collection']);
+  }
+  goToLikedCommentPage() {
+    this.router.navigate(['mypage/liked-comment']);
+  }
+
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
 

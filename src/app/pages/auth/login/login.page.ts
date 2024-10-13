@@ -26,8 +26,9 @@ export class LoginPage {
       password: this.password,
     };
 
-    this.authService.logIn(signInRequestData).subscribe({
-      next: response => {
+    // Correct method name
+    this.authService.login(signInRequestData).subscribe({
+      next: (response) => {
         if (response.success) {
           // 로그인 성공 시 마이페이지로 이동
           this.router.navigate(['/mypage']);
@@ -35,7 +36,7 @@ export class LoginPage {
           console.error('Sign In failed:', response.message);
         }
       },
-      error: err => {
+      error: (err) => {
         console.error('Sign In error:', err);
       },
       complete: () => {

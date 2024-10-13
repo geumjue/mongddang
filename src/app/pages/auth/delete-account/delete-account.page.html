@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>회원 탈퇴</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text color="danger">
+    <h2>정말로 탈퇴하시겠습니까?</h2>
+    <p>탈퇴하시려면 비밀번호를 입력해주세요.</p>
+  </ion-text>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">비밀번호</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" color="danger">회원 탈퇴 확인</ion-button>
+  </form>
+</ion-content>

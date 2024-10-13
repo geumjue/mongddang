@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { AlertController } from '@ionic/angular';
 import { jwtDecode } from 'jwt-decode';
+
 
 @Component({
   selector: 'app-mypage',
@@ -13,8 +15,11 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./mypage.page.scss'],
 })
 export class MypagePage implements OnInit {
-  user: GetUserResponseData | undefined;
-  isLoggedIn: boolean = false;
+
+  nickname: string | null = null; // 사용자 닉네임
+  email: string | null = null; // 사용자 이메일
+  isLoggedIn: boolean = false; // 로그인 상태를 나타내는 변수
+
 
   constructor(
     private userService: UserService,
@@ -44,6 +49,19 @@ export class MypagePage implements OnInit {
     }
   }
 
+
+    if (userId) {
+      // 사용자 정보 요청
+      this.authService.getUserInfo(userId).subscribe(
+        (response) => {
+          console.log('User info response:', response); // API 응답 확인
+          if (response.success && response.data) {
+            this.nickname = response.data.user.username; // 닉네임 저장
+            this.email = response.data.user.email; // 이메일 저장
+          } else {
+            console.error('Invalid response:', response); // 에러 처리
+          }
+
   // JWT 토큰에서 이메일을 추출하는 메서드
   private getUserEmailFromToken(): string | null {
     const token = localStorage.getItem('token');
@@ -66,6 +84,7 @@ export class MypagePage implements OnInit {
         },
         error: (err) => {
           console.error('사용자 정보를 가져오는 중 오류:', err);
+
         },
         complete: () => {
           console.log('사용자 정보 요청 완료.');

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutsModule } from './layout/layouts.module';
 import { HomePageModule } from './pages/home/home.module';
+import {CollectionPageModule} from "./pages/collection/collection.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { HomePageModule } from './pages/home/home.module';
     AppRoutingModule,
     HttpClientModule,
     LayoutsModule,
-    HomePageModule
+    HomePageModule,
+    CollectionPageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

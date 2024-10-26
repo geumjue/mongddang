@@ -6,12 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./search.page.scss']
 })
 export class SearchPage  {
-  showComments: boolean = false; // 댓글 표시 여부
+  searchTerm: string = '';
+  searchResults: string[] = [];
+
+  // 예시 데이터
+  data: string[] = [
+    '베테랑',
+    '미이라',
+    '나홀로집에',
+    '센과치히로의행방불명',
+    '범죄도시',
+    '겨울왕국'
+  ];
 
   constructor() {}
 
-  toggleComments() {
-    this.showComments = !this.showComments; // 댓글 표시 상태 반전
+  onSearch(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.searchResults = this.data.filter(item =>
+      item.toLowerCase().includes(query)
+    );
   }
 }
 

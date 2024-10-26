@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular'; // IonicModule 추가
 import { MypagePage } from './mypage.page';
 import { MypagePageRoutingModule } from './mypage-routing.module';
 import { LikedMoviePage } from './liked-movie/liked-movie.page';
+import {MyCollectionPage} from "./my-collection/my-collection.page";
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { LikedMoviePage } from './liked-movie/liked-movie.page';
     IonicModule, // IonicModule 추가
     MypagePageRoutingModule
   ],
-  declarations: [MypagePage,LikedMoviePage
+  declarations: [MypagePage,LikedMoviePage, MyCollectionPage
   ]
 })
 export class MypagePageModule {}

@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'liked-comment',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },
+  {
+    path: 'my-colleciton',
+    loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  },
 
 
 

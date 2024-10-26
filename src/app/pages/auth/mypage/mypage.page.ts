@@ -128,4 +128,8 @@ export class MypagePage implements OnInit {
   goToDeleteAccount() {
     this.router.navigate(['/delete-account']);
   }
+
+  goToMyCollectionPage () {
+    this.router.navigate(['mypage/my-collection'])
+  }
 }

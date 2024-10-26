@@ -1,9 +1,11 @@
 <ion-content>
   <ion-searchbar
-    show-cancel-button="focus"
+    color="light"
+    show-cancel-button="never"
     cancel-button-text="취소"
     placeholder="검색어를 입력하세요"
-    style="margin-top: 50px;"
+    style="margin-top: 50px;
+    padding: 0 15px 15px 15px;"
     [(ngModel)]="searchTerm"
     (ionInput)="onSearch($event)">
   </ion-searchbar>

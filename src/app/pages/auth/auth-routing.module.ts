@@ -6,6 +6,7 @@ import { MypagePage } from './mypage/mypage.page';
 import {LikedMoviePage} from "./mypage/liked-movie/liked-movie.page";
 import {LikedCollectionPage} from "./mypage/liked-collection/liked-collection.page";
 import {LikedCommentPage} from "./mypage/liked-comment/liked-comment.page";
+import {MyCollectionPage} from "./mypage/my-collection/my-collection.page";
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'mypage/liked-comment', component: LikedCommentPage
+  },
+  {
+    path: 'mypage/my-collection', component: MyCollectionPage
   },
 ];
 

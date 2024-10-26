@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*{
+  font-family: 'Pretendard-Regular';
+}
+
+/*서치바 css*/
+.searchbar_collection  {
+  //margin-top: 15px; /* Adjust this if you need more space */
+  padding: 0 15px ;
+}
+
+/*logo이미지*/
+ion-header {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  height: 58px; /* 필요에 따라 헤더 높이 설정 */
+}
+
+///*크리스마스에 생각나는 영화 css*/
+//ion-card{
+//  margin:20px;
+//}
+//.christmas_movie{
+//  width: 90%; /* 카드의 전체 너비를 80%로 줄임 */
+//  margin: 0 auto; /* 가운데 정렬 */
+//  transform: scale(0.9); /* 크기를 90%로 축소 */
+//  transition: transform 0.3s ease-in-out; /* 크기 변화에 애니메이션 추가 (선택 사항) */
+//}
+//.christmas_movie:hover{
+//  transform: scale(1); /* 마우스를 올렸을 때 원래 크기로 돌아오게 할 수 있음 (선택 사항) */
+//}
+//ion-card-subtitle{
+//  font-size: 20px;
+//}
+.christmas_movie {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 쌓이게 설정 */
+  margin: 0 20px 40px 20px;
+}
+
+
+/*크히스마스에 생각나는 영화*/
+.header {
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  margin-bottom: 10px; /* 텍스트와 영화 이미지 사이의 간격 */
+  font-size: 20px;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.unknow-image {
+  width: 25px;
+  height: auto;
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+
+.movie-images {
+  display: flex;
+  flex-direction: row; /* 가로 방향으로 나열 */
+  justify-content: center;
+}
+
+.alone {
+  width: 120px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
+  height: auto;
+  //max-width: 100px; /* 최대 너비 설정 */
+  margin: 5px; /* 이미지 사이의 간격 */
+  border-radius: 8px; /* 모서리를 둥글게 설정 (값 조정 가능) */
+}
+/*인기 (불)*/
+.hot{
+  font-weight: lighter;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 22px;
+  color: #ffffff;
+  display: inline-block; /* 박스형태로 만들기 위해 inline-block 사용 */
+  background-color: #db4a2b;
+  padding: 3px 3px 3px 7px; /* 버튼처럼 보이도록 패딩 추가 */
+  border-radius: 17px; /* 둥근 모서리를 만들기 위해 반지름 설정 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+}
+
+/*구역 나눔 선*/
+//.line{
+//  border: none;
+//  border-top: 5px solid #f6f6f6;
+//  margin: 0 0 20px 0;
+//
+//}
+
+/*인기순*/
+.popular {
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트 세로 중앙 정렬 */
+  justify-content: flex-end; /* 오른쪽으로 정렬 */
+  position: relative; /* 위치 조정을 위해 relative 사용 */
+  padding: 0 20px 0 15px; /* 여백 추가 */
+  color: #db4a2b;
+  margin-bottom: 10px;
+}
+
+/* 좋아요 수 */
+.likes {
+  display: flex; /* 아이콘과 텍스트를 가로로 정렬 */
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  font-size: 20px;
+  padding: 5px 15px;
+  color: #db4a2b;
+  //font-weight: bold;
+}
+.likes span{
+  font-size: 13px;
+  color: #292929;
+}
+
+/*공유버튼 css*/
+ion-fab-button::part(native) {
+  background-color: #db4a2b;
+  border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  color: #f1f1f1;
+}
+ion-fab-button::part(native):hover::after {
+  background-color: #d55b41;
+}
+ion-fab-button::part(native):active::after {
+  background-color: #d55b41;
+}
+
+
+

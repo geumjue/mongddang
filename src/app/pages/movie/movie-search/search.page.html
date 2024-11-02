@@ -10,18 +10,14 @@
   </ion-searchbar>
 
   <div *ngIf="searchTerm">
-    <p *ngIf="searchResults.length > 0">{{ searchResults.length }}건의 검색 결과</p>
+    <p class="Number-of-search-results" *ngIf="searchResults.length > 0">{{ searchResults.length }}건의 검색 결과</p>
     <p *ngIf="searchResults.length === 0">검색 결과가 없습니다.</p>
   </div>
 
   <div *ngIf="searchTerm && searchResults.length > 0" class="movie-grid">
-    <div class="movie-item" *ngFor="let result of searchResults">
-      <ion-card (click)="goToMovieDetail(result.title)">
-        <img [src]="result.posterUrl" alt="{{ result.title }}" />
-        <ion-card-header>
-          <ion-card-title>{{ result.title }}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
+    <div class="movie-item" *ngFor="let result of searchResults" (click)="goToMovieDetail(result.title)">
+      <img [src]="result.posterUrl" alt="{{ result.title }}" class="movie-poster" />
+      <p class="movie-title">{{ result.title }}</p>
     </div>
   </div>
 

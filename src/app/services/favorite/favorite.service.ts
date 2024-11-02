@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { FavoriteRequestData } from "src/app/models/favorite/favorite-request.data";
+import { FavoriteCollectionRequestData, FavoriteRequestData, ShowFavoriteCollectionsResponseData } from "src/app/models/favorite/favorite-request.data";
 import { FavoriteResponseData, ShowFavoriteByIdResponseData, ShowFavoritesResponseData,  } from "src/app/models/favorite/favorite-response.data";
 import { CheckFavoriteResponseData } from "src/app/models/favorite/checkfavorite-response.data";
 
@@ -46,5 +46,21 @@ export class FavoriteService {
   checkIfFavorited(userId: number, movieId: number): Observable<CheckFavoriteResponseData> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<CheckFavoriteResponseData>(`${this.apiUrl}/check/${userId}/${movieId}`, { headers });
+  }
+
+  // 컬렉션 즐겨찾기 추가
+  addFavoriteCollection(favoriteCollectionRequestData: FavoriteCollectionRequestData): Observable<FavoriteResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<FavoriteResponseData>(
+      `${this.apiUrl}/add-collection`,  // 엔드포인트를 추가해야 할 수도 있어
+      favoriteCollectionRequestData,
+      { headers, withCredentials: true }
+    );
+  }
+
+  // 사용자 즐겨찾기 컬렉션 조회
+  getUserFavoriteCollections(userId: number): Observable<ShowFavoriteCollectionsResponseData[]> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<ShowFavoriteCollectionsResponseData[]>(`${this.apiUrl}/show/collections/${userId}`, { headers });
   }
 }

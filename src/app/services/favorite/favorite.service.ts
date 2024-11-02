@@ -1,31 +1,33 @@
-// favorite.service.ts
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { FavoriteResponseData, ShowFavoritesResponseData } from "src/app/models/favorite/favorite-response.data";
+import { FavoriteRequestData } from "src/app/models/favorite/favorite-request.data";
+import { FavoriteResponseData, ShowFavoriteByIdResponseData, ShowFavoritesResponseData,  } from "src/app/models/favorite/favorite-response.data";
+import { CheckFavoriteResponseData } from "src/app/models/favorite/checkfavorite-response.data";
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
-  private readonly apiUrl = 'http://localhost:3000/api/favourites';
+  private readonly apiUrl = 'http://localhost:3000/api/favorite';  // 엔드포인트 설정
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // 즐겨찾기 추가
-  addFavorite(username: string, movieId: string): Observable<FavoriteResponseData> {
+  addFavorite(favoriteRequestData: FavoriteRequestData): Observable<FavoriteResponseData> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<FavoriteResponseData>(
-      `${this.apiUrl}/add`, 
-      { username, movieId }, 
+      `${this.apiUrl}/add`,
+      favoriteRequestData,  // 요청 데이터를 FavoriteRequestData로 전달
       { headers, withCredentials: true }
     );
   }
 
-  // 즐겨찾기 상태 확인
-  checkFavorite(username: string, movieId: string): Observable<boolean> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<boolean>(`${this.apiUrl}/check/${username}/${movieId}`, { headers });
+  // 즐겨찾기 삭제
+  removeFavorite(userId: number, movieId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/remove/${userId}/${movieId}`, {
+      withCredentials: true
+    });
   }
 
   // 사용자 즐겨찾기 조회
@@ -34,5 +36,15 @@ export class FavoriteService {
     return this.http.get<ShowFavoritesResponseData[]>(`${this.apiUrl}/show/${userId}`, { headers });
   }
 
-  // ...
+  // ID로 특정 즐겨찾기 조회
+  getFavoriteById(id: number): Observable<ShowFavoriteByIdResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<ShowFavoriteByIdResponseData>(`${this.apiUrl}/show/detail/${id}`, { headers });
+  }
+
+  // 사용자와 영화에 대한 즐겨찾기 여부 확인
+  checkIfFavorited(userId: number, movieId: number): Observable<CheckFavoriteResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<CheckFavoriteResponseData>(`${this.apiUrl}/check/${userId}/${movieId}`, { headers });
+  }
 }

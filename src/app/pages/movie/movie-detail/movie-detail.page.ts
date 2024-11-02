@@ -4,14 +4,10 @@ import { MovieService } from "../../../services/movie/movie.service";
 import { GetMovieByIdResponseData } from "../../../models/movie/movie-getmoviebyid-response-data.interface";
 import { addIcons } from 'ionicons';
 import { personCircle } from 'ionicons/icons';
-import {CollectionService} from "../../../services/collection/collection.service";
-import {GetCollectionsResponseData} from "../../../models/collection/collection-getcollections.interface.data";
-import {
-  UpdateCollectionRequestData,
-  UpdateCollectionResponseData
-} from "../../../models/collection/collection-updatecollection.interface.data";
-import {AuthService} from "../../../services/auth/auth.service";
-
+import { CollectionService } from "../../../services/collection/collection.service";
+import { GetCollectionsResponseData } from "../../../models/collection/collection-getcollections.interface.data";
+import { AuthService } from "../../../services/auth/auth.service";
+import { FavoriteService } from "../../../services/favorite/favorite.service"; // FavoriteService import
 
 @Component({
   selector: 'app-movie-detail',
@@ -20,11 +16,13 @@ import {AuthService} from "../../../services/auth/auth.service";
 })
 export class MovieDetailPage implements OnInit {
 
-
   isCollectionModalOpen = false;
   isGalleryModalOpen = false;
   isSecondModalOpen = false;
-  selectedItem: GetCollectionsResponseData = {
+  isModalOpen = false;
+  isLiked: boolean = false;
+  likedMovies: any[] = []; // likedMovies 속성 추가
+  selectedItem: GetCollectionsResponseData = { // selectedItem 선언 추가
     id: 0,
     name: "",
     like: 0,
@@ -33,11 +31,8 @@ export class MovieDetailPage implements OnInit {
     modifiedAt: ""
   };
 
-
-  id: string = '';
-  isModalOpen = false;
   selectedImage: string | null = null;
-  isLiked: boolean = false;
+  id: string = '';
 
   movie = {
     id: "",
@@ -59,111 +54,95 @@ export class MovieDetailPage implements OnInit {
     modifiedAt: ""
   };
 
-
-  collections: GetCollectionsResponseData[] = []
-
-
+  collections: GetCollectionsResponseData[] = [];
   isGalleryOpen = true;
 
-  //슬라이더 옵션 설정
   slideOpts = {
     initialSlide: 0,
     speed: 400
   };
-
-
-  //constructor(private route: Router, private activateRoute: ActivatedRoute, private movieService: MovieService) {
 
   constructor(
     private route: Router,
     private activateRoute: ActivatedRoute,
     private movieService: MovieService,
     private collectionService: CollectionService,
-    private authService: AuthService) {
-
+    private authService: AuthService,
+    private favoriteService: FavoriteService // FavoriteService 주입
+  ) {
     addIcons({ personCircle });
   }
 
   ngOnInit() {
     this.id = this.activateRoute.snapshot.params['id'];
     this.getMovieById(this.id);
-  }
+    console.log('AuthService user on page load:', this.authService.user);
 
+    // 필요 시 강제로 사용자 정보 초기화 호출
+    if (!this.authService.user) {
+      this.authService.initializeUser();
+    }
+
+    // 좋아요 상태를 초기화
+    this.checkIfLiked();
+  }
+  checkIfLiked() {
+    const userId = parseInt(this.authService.user?.id || '0', 10); // userId를 number로 변환
+    this.favoriteService.getUserFavorites(userId).subscribe({
+      next: (favorites) => {
+        this.isLiked = favorites.some(fav => fav.movieId === parseInt(this.id, 10));
+        console.log(`isLiked 상태: ${this.isLiked}`);
+      },
+      error: (err: any) => {
+        console.error('좋아요 상태 확인 중 오류 발생:', err);
+      }
+    });
+
+  }
   toggleLike() {
     this.isLiked = !this.isLiked;
+    console.log('AuthService user:', this.authService.user);
+
+    let userId = parseInt(this.authService.user?.id || '0', 10); // userId를 number로 변환
+
     if (this.isLiked) {
-      const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
-      favoriteMovies.push({ title: this.movie.title, posterUrl: this.movie.posterUrl });
-      localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
+      const newFavorite = {
+        movieId: parseInt(this.movie.id, 10),
+        movietitle: this.movie.title || '제목 없음',
+        posterUrl: this.movie.posterUrl || '/assets/default-poster.jpg',
+        userId: userId,
+      };
 
-      this.route.navigate(['/movie-favorite']); // 좋아요 클릭 후 favorite 페이지로 이동
-
+      this.favoriteService.addFavorite({
+        userId: userId,
+        movieId: newFavorite.movieId,
+        movietitle: newFavorite.movietitle, // 추가된 필드
+        posterUrl: newFavorite.posterUrl // 추가된 필드
+      }).subscribe({
+        next: () => {
+          console.log('좋아요가 저장되었습니다.', { success: true, message: '좋아하는 항목이 추가되었습니다.' });
+          this.likedMovies.push(newFavorite);
+          console.log('Updated likedMovies array:', this.likedMovies);
+        },
+        error: (err: any) => { // 타입 명시
+          console.error('좋아요 추가 중 오류 발생:', err);
+        }
+      });
+    } else {
+      this.favoriteService.removeFavorite(userId, parseInt(this.movie.id, 10)).subscribe({
+        next: () => {
+          console.log('좋아요가 취소되었습니다.');
+          this.likedMovies = this.likedMovies.filter(movie => movie.movieId !== parseInt(this.movie.id, 10));
+          console.log('Updated likedMovies array after removal:', this.likedMovies);
+        },
+        error: (err: any) => { // 타입 명시
+          console.error('좋아요 제거 중 오류 발생:', err);
+        }
+      });
     }
-  }
-
-  goBackHomePage() {
-
-    this.route.navigate(['/home']);
 
   }
 
-  goToCommentWritePage() {
-    this.id = this.activateRoute.snapshot.params['id'];
-    this.route.navigate([`movie/detail/${this.id}/comment/write`]);
-  }
-
-
-  closeModal() {
-    this.isModalOpen = false;
-    this.selectedImage = null;
-  }
-
-  goToCommentListPage() {
-    this.id = this.activateRoute.snapshot.params['id'];
-    this.route.navigate([`movie/detail/${this.id}/comment/list`]);
-  }
-
-
-
-  //
-  // presentCollectionModal() {
-  //   this.getCollections(); // api가 호출이 되면서 화면이 열림
-  //   this.isCollectionModalOpen = true;
-  // }
-  //
-  // closeCollectionModal() {
-  //   this.isCollectionModalOpen = false;
-  // }
-  //
-  // openSecondModal(collection: GetCollectionsResponseData) {
-  //   this.selectedItem = collection; // 선택한 아이템을 저장
-  //   this.isSecondModalOpen = true; // 두 번째 모달 열기
-  // }
-  //
-  // closeSecondModal() {
-  //   const userId = this.authService.user?.id;
-  //   const id = this.selectedItem.id;
-  //   const payload = {
-  //     name: this.selectedItem.name,
-  //     movieIds: this.selectedItem.movies?.map(movie => Number(movie.id)),
-  //     userId: [Number(userId)]
-  //   }
-  //   this.updateCollection(id, payload);
-  //
-  //   this.isSecondModalOpen = false; // 두 번째 모달 닫기
-  // }
-  //
-  // presentGalleryModal(imageUrl: string) {
-  //   this.selectedImage = imageUrl;
-  //   this.isGalleryModalOpen = true;
-  // }
-  //
-  // closeGalleryModal() {
-  //   this.isGalleryModalOpen = false;
-  //   this.selectedImage = null;
-  // }
-  //
-  //
   getMovieById(id: string) {
     this.movieService.getMovieById(id).subscribe({
       next: (response: GetMovieByIdResponseData) => {
@@ -177,34 +156,23 @@ export class MovieDetailPage implements OnInit {
       }
     });
   }
+
+  goBackHomePage() {
+    this.route.navigate(['/home']);
+  }
+
+  goToCommentWritePage() {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/write`]);
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedImage = null;
+  }
+
+  goToCommentListPage() {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${this.id}/comment/list`]);
+  }
 }
-  //
-  // getCollections(){
-  //   this.collectionService.getCollections().subscribe({
-  //     next: (response: GetCollectionsResponseData[]) => {
-  //       this.collections = response;
-  //     },
-  //     error: (err: any) => {
-  //       console.log('getCollections error', err);
-  //     },
-  //     complete: () => {
-  //       console.log('getCollections complete');
-  //     }
-  //   })
-  // }
-  //
-  // updateCollection(id: number, payload: UpdateCollectionRequestData){
-  //   this.collectionService.updateCollection(id, payload).subscribe({
-  //     next: (response: UpdateCollectionResponseData[]) => {
-  //       console.log('updateCollection next')
-  //     },
-  //     error: (err: any) => {
-  //       console.log('updateCollection error', err);
-  //     },
-  //     complete: () => {
-  //       console.log('updateCollection complete');
-  //     }
-  //   })
-  // }
-
-

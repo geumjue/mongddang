@@ -8,3 +8,28 @@
 *{
   font-family: 'Pretendard-Regular';
 }
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.movie-item {
+  flex: 1 1 calc(33% - 10px); /* 한 줄에 3개씩 표시 */
+  margin-bottom: 15px;
+
+  ion-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  ion-card:hover {
+    transform: scale(1.05); /* 마우스 오버 시 확대 효과 */
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

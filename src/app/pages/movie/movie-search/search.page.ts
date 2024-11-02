@@ -11,20 +11,19 @@ import { GetMoviesResponseData } from '../../../models/movie/movie-getmovie-resp
 })
 export class SearchPage implements OnInit {
   searchTerm: string = '';
-  searchResults: string[] = [];
-  data: string[] = []; // 영화 제목 배열
-  movie: GetMovieByIdResponseData | undefined; // 선택된 영화 정보를 저장하기 위한 변수
+  searchResults: any[] = []; // 검색 결과 배열
+  data: any[] = []; // 전체 영화 데이터 (박스오피스 영화 목록)
 
   constructor(private router: Router, private movieService: MovieService) {}
 
   ngOnInit() {
-    this.loadMovies(); // 컴포넌트 초기화 시 영화 데이터 로드
+    this.loadMovies();
   }
 
   loadMovies() {
     this.movieService.getMovies().subscribe({
       next: (response: GetMoviesResponseData[]) => {
-        this.data = response.map(movie => movie.title); // 영화 제목 배열 초기화
+        this.data = response; // 전체 영화 데이터 저장
       },
       error: (err: any) => {
         console.log(err);
@@ -32,24 +31,20 @@ export class SearchPage implements OnInit {
     });
   }
 
-  getMovieById(id: string) {
-    this.movieService.getMovieById(id).subscribe({
-      next: (response: GetMovieByIdResponseData) => {
-        this.movie = response; // 선택된 영화 정보 저장
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('complete');
-      }
-    });
+  goToMovieDetail(title: string) {
+    const selectedMovie = this.data.find(movie => movie.title === title);
+    if (selectedMovie) {
+      this.router.navigate(['/movie/detail', selectedMovie.id]); // 영화 상세 페이지로 이동
+    }
   }
 
-  onSearch(event: any) {
-    const query = event.target.value.toLowerCase();
-    this.searchResults = this.data.filter(item =>
-      item.toLowerCase().includes(query)
-    );
+  searchMovies() {
+    if (this.searchTerm.trim()) {
+      this.searchResults = this.data
+        .filter(item => item.title.toLowerCase().includes(this.searchTerm.toLowerCase())) // 제목에 검색어가 포함된 영화 필터링
+        .map(item => ({ title: item.title, posterUrl: item.posterUrl })); // 제목과 포스터 URL만 포함
+    } else {
+      this.searchResults = []; // 검색어가 없으면 결과 초기화
+    }
   }
 }

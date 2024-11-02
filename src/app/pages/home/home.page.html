@@ -1,6 +1,6 @@
 <ion-content>
   <div class="searchbar_collection" style="margin-top: 55px;">
-    <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!"
+    <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!" (click)="goToSearchPage()"
                    style="padding: 0 15px 15px 15px;"></ion-searchbar>
   </div>
   <div class="preview">
@@ -98,17 +98,11 @@
 <!--  <ion-card>-->
 <!--    <ion-card-header>-->
       <h5 style="font-weight: bold;">박스오피스 순위</h5>
-<!--    </ion-card-header>-->
-<!--    <ion-card-content>-->
       <swiper-container #swiper_cgv>
         <swiper-slide *ngFor="let movie of movies" (click)="goToMovieDetailPage(movie.id)">
-<!--          <a [href]="movie.posterUrl">-->
             <img [src]="movie.posterUrl">
-<!--          </a>-->
         </swiper-slide>
       </swiper-container>
-<!--    </ion-card-content>-->
-<!--  </ion-card>-->
 
   <ion-card>
     <ion-card-header>

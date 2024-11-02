@@ -9,6 +9,11 @@
     (keyup.enter)="searchMovies()">
   </ion-searchbar>
 
+  <div *ngIf="searchTerm">
+    <p *ngIf="searchResults.length > 0">{{ searchResults.length }}건의 검색 결과</p>
+    <p *ngIf="searchResults.length === 0">검색 결과가 없습니다.</p>
+  </div>
+
   <div *ngIf="searchTerm && searchResults.length > 0" class="movie-grid">
     <div class="movie-item" *ngFor="let result of searchResults">
       <ion-card (click)="goToMovieDetail(result.title)">
@@ -27,8 +32,4 @@
       </ion-item>
     </ion-list>
   </div>
-
-  <ion-item *ngIf="searchResults.length === 0 && searchTerm">
-    <p>검색 결과가 없습니다.</p>
-  </ion-item>
 </ion-content>

@@ -10,19 +10,12 @@
   box-sizing: border-box; /* 박스 모델을 쉽게 관리하기 위해 추가 */
 }
 
-ion-header {
-  --background: #f8f8f8; /* 헤더 배경색 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 헤더 그림자 효과 */
-  height: 120px;
-}
 
-ion-toolbar {
-  --ion-color-primary: #db4a2b; /* 툴바 색상 */
-  height: 120px;
-}
+ion-back-button{
+  color:#db4a2b;
+  margin-left: 9px;
+  margin-top: 40px;
 
-ion-back-button {
-  color: #db4a2b;
 }
 
 ion-title {
@@ -39,14 +32,9 @@ ion-content {
 ion-item {
   margin-top: 9px;
   border-radius: 8px; /* 모서리 둥글게 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
 
-ion-input {
-  --padding-start: 20px; /* 입력 필드의 왼쪽 여백 */
-  --padding-end: 20px; /* 입력 필드의 오른쪽 여백 */
-  height: 50px;
-}
+
 
 ion-input::part(native)::placeholder {
   color: grey; /* Placeholder 텍스트 색상 */
@@ -65,24 +53,24 @@ ion-input::part(native)::placeholder {
   margin-left: auto;
 }
 
-.store_comment {
-  background-color: #db4a2b; /* 버튼 배경색 */
-  color: white; /* 버튼 텍스트 색상 */
-  border-radius: 8px; /* 버튼 모서리 둥글게 */
-  padding: 2px 5px; /* 버튼 패딩 */
-  font-weight: bold; /* 버튼 글자 두께 */
-  margin-top: 50px;
-  margin-left: 20px;
-}
+//.store_comment {
+//  width: 70px;
+//  height: 50px;
+//  background-color: #db4a2b; /* 버튼 배경색 */
+//  color: white; /* 버튼 텍스트 색상 */
+//  border-radius: 8px; /* 버튼 모서리 둥글게 */
+//  padding: 2px 5px; /* 버튼 패딩 */
+//  font-weight: bold; /* 버튼 글자 두께 */
+//  margin-top: 50px;
+//  margin-left: 20px;
+//}
 
+.store_comment {
+  color: grey; // 기본 색상
+  margin-top: 40px;
+}
 .store_comment:hover {
   background-color: #c43e2a; /* 호버 효과 */
   transition: background-color 0.3s; /* 부드러운 전환 효과 */
 }
 
-.temp_comment {
-  background-color: #f0f0f0; /* 임시 저장 배경색 */
-  padding: 10px; /* 패딩 */
-  border-radius: 8px; /* 모서리 둥글게 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-}

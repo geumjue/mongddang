@@ -82,33 +82,6 @@
   <a class="summary">{{movie.contents}}</a>
   <img class="poster" alt="" [src]="movie.posterUrl">
 
-  <!-- Gallery Section -->
-  <ion-label class="gallery_text">갤러리</ion-label>
-  <div class="gallery_img">
-    <ion-button fill="clear">
-<!--      (click)="presentGalleryModal(movie.stillUrl)"-->
-      <img alt="이미지 버튼" [src]="movie.stillUrl">
-    </ion-button>
-  </div>
-
-  <!-- Modal -->
-  <ion-modal [isOpen]="isGalleryModalOpen"  class="example-modal">
-<!--    (didDismiss)="closeGalleryModal()"-->
-    <ng-template>
-      <ion-content>
-        <img [src]="selectedImage" alt="모달 이미지" style="width: 100%;">
-        <ion-button>Close</ion-button>
-<!--        (click)="closeGalleryModal()"-->
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-  <!-- Video Section -->
-  <ion-label class="video_text">동영상</ion-label>
-  <div class="video_clip">
-    <img alt="" src="assets/images/베테랑2_teaser_clip.png">
-    <img alt="" src="assets/images/베테랑2_main_clip.png">
-  </div>
 
   <!-- Cast and Crew Section -->
   <ion-label class="personTitle">출연/제작</ion-label>

@@ -98,17 +98,11 @@
 <!--  <ion-card>-->
 <!--    <ion-card-header>-->
       <h5 style="font-weight: bold;">박스오피스 순위</h5>
-<!--    </ion-card-header>-->
-<!--    <ion-card-content>-->
       <swiper-container #swiper_cgv>
         <swiper-slide *ngFor="let movie of movies" (click)="goToMovieDetailPage(movie.id)">
-<!--          <a [href]="movie.posterUrl">-->
             <img [src]="movie.posterUrl">
-<!--          </a>-->
         </swiper-slide>
       </swiper-container>
-<!--    </ion-card-content>-->
-<!--  </ion-card>-->
 
   <ion-card>
     <ion-card-header>

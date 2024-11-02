@@ -46,8 +46,9 @@ export class HomePage implements AfterViewInit {
   }
 
   goToSearchPage() {
-    this.router.navigate(['search'])
+    this.router.navigate(['search'], { state: { movies: this.movies } });
   }
+
   getMovies() {
     this.movieService.getMovies().subscribe({
       next: (response: GetMoviesResponseData[]) => {

@@ -16,7 +16,8 @@ export class LoginPage {
 
   login() {
     if (!this.email || !this.password) {
-      console.error('이메일 또는 비밀번호가 입력되지 않았습니다.');
+      // 크롬 경고창으로 메시지 표시
+      window.alert('이메일 또는 비밀번호가 입력되지 않았습니다.');
       return;
     }
 
@@ -32,11 +33,13 @@ export class LoginPage {
           // 로그인 성공 시 마이페이지로 이동
           this.router.navigate(['/mypage']);
         } else {
-          console.error('로그인 실패:', response.message);
+          // 크롬 경고창으로 로그인 실패 메시지 표시
+          window.alert(response.message); // 사용자 친화적인 오류 메시지 표시
         }
       },
       error: (err) => {
-        console.error('로그인 오류:', err);
+        // 크롬 경고창으로 존재하지 않는 아이디 메시지 표시
+        window.alert('로그인 처리 중 오류가 발생했습니다.');
       },
       complete: () => {
         console.log('로그인 요청 완료.');

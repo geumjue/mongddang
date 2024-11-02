@@ -3,7 +3,7 @@
 
 <ion-content>
   <div style="text-align: center; margin-top: 80px;">
-    <ion-icon name="trash-outline" style="font-size: 40px;color: #3e3e3e;"></ion-icon>
+    <ion-icon name="trash-outline" style="font-size: 40px; color: #3e3e3e;" aria-hidden="true"></ion-icon>
     <h2 class="notice">몽땅 탈퇴 전 확인하세요</h2>
     <p class="notice_detail">탈퇴하시면 이용 중인 마이페이지가 폐쇄되며,</p>
     <p class="notice_detail2">모든 데이터는 복구가 불가능합니다.</p>
@@ -13,8 +13,9 @@
     <p style="margin-bottom: 7px;">· 좋아하는 영화, 컬렉션 등 모든 정보가 삭제됩니다.</p>
     <p>· 타인 글의 댓글은 삭제되지 않으니 미리 확인해주세요.</p>
   </div>
+
   <div style="text-align: center; margin-bottom: 40px;">
-    <ion-checkbox labelPlacement="start" style="font-size: 12px;" color="light">
+    <ion-checkbox labelPlacement="start" style="font-size: 12px;" color="light" required>
       안내사항을 모두 확인하였으며, 이에 동의합니다.
     </ion-checkbox>
   </div>
@@ -22,8 +23,8 @@
   <p style="text-align: center; margin-top: 20px;">탈퇴하시려면 비밀번호를 입력해주세요.</p>
   <form (ngSubmit)="onSubmit()">
     <ion-item>
-<!--      <ion-label position="floating">비밀번호</ion-label>-->
-      <ion-input label=""[(ngModel)]="password" name="password" required></ion-input>
+      <ion-label position="floating">비밀번호</ion-label>
+      <ion-input [(ngModel)]="password" name="password" required type="password" aria-required="true"></ion-input>
     </ion-item>
     <ion-button class="delete" expand="block" type="submit" color="light">탈퇴 하기</ion-button>
   </form>

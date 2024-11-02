@@ -5,6 +5,8 @@ import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { Injectable } from '@angular/core';
+import axios from 'axios'; // axios 모듈 임포트
+import { jwtDecode } from 'jwt-decode'; // jwt-decode 모듈 임포트
 
 @Injectable({
   providedIn: 'root',
@@ -40,33 +42,39 @@ export class AuthService {
   }
 
   // 로그인 메서드
-  login(data: SignInRequestData): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    }).pipe(
-      tap(response => {
-        if (response.success && response.data) {
-          this.user = {
-            username: response.data.user.username,
-            email: response.data.user.email,
-          };
+login(data: SignInRequestData): Observable<AuthResponse> {
+  return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  }).pipe(
+    tap(response => {
+      if (response.success && response.data) {
+        this.user = {
+          username: response.data.user.username,
+          email: response.data.user.email,
+        };
 
-          localStorage.setItem('token', response.data.token);
-          this.loggedInSubject.next(true);
-          this.router.navigate(['/mypage']);
-        }
-      }),
-      catchError(error => {
-        console.error('로그인 오류:', error);
-        return of({
-          success: false,
-          data: null,
-          statusCode: error.status,
-          message: error.message,
-        } as AuthResponse);
-      })
-    );
-  }
+        localStorage.setItem('token', response.data.token);
+        this.loggedInSubject.next(true);
+        this.router.navigate(['/mypage']);
+      }
+    }),
+    catchError(error => {
+      console.error('로그인 오류:', error);
+      let errorMessage = '로그인 중 오류가 발생했습니다.'; // 기본 오류 메시지
+
+      if (error.status === 401) {
+        errorMessage = '존재하지않거나 올바르지 않은 이메일 입니다.'; // 401 상태 코드에 대한 사용자 친화적인 메시지
+      }
+
+      return of({
+        success: false,
+        data: null,
+        statusCode: error.status,
+        message: errorMessage,
+      } as AuthResponse);
+    })
+  );
+}
 
   logOut(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
@@ -82,17 +90,35 @@ export class AuthService {
     );
   }
 
-  deleteAccount(password: string): Observable<any> {
-    const userId = this.getUserIdFromToken();
-    return this.http.post(`${this.apiUrl}/users/${userId}/delete`, { password }).pipe(
-      tap(() => {
-        this.logOut();
-      }),
-      catchError(error => {
-        console.error('회원 탈퇴 오류:', error);
-        return of(null);
+  // 수정된 회원 탈퇴 메서드
+  deleteAccount(password: string): Promise<any> {
+    const token = this.extractToken(); // 로컬스토리지에서 토큰 가져오기
+    const userId = this.getUserIdFromToken(); // 토큰에서 사용자 ID 가져오기
+    if (!userId || !token) {
+      console.error('사용자 ID 또는 토큰이 유효하지 않습니다.');
+      return Promise.resolve(null); // 유효하지 않으면 null 반환
+    }
+
+    return axios
+      .delete(`${this.apiUrl}/users/${userId}/delete`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: { password }, // DELETE 요청의 body에 비밀번호 포함
       })
-    );
+      .then(response => {
+        if (response.status === 200) {
+          this.clearUserData(); // 요청이 성공적으로 완료되면 로컬스토리지 데이터 삭제
+          console.log('회원 탈퇴가 성공적으로 완료되었습니다.');
+          window.location.reload(); // 페이지 새로고침 추가
+        } else {
+          console.error('회원 탈퇴 요청 실패:', response.data);
+        }
+      })
+      .catch(error => {
+        console.error('회원 탈퇴 오류:', error);
+        return null;
+      });
   }
 
   private clearUserData(): void {
@@ -109,8 +135,16 @@ export class AuthService {
   }
 
   public getUserIdFromToken(): string | null {
-    // 토큰에서 사용자 ID를 추출하는 로직 필요
-    return null;
+    const token = this.extractToken();
+    if (!token) return null;
+
+    try {
+        const decoded: any = jwtDecode(token); // jwt-decode를 사용하여 토큰 디코드
+        return decoded.userId; // 'id'를 'userId'로 수정
+    } catch (error) {
+        console.error('토큰 디코드 오류:', error);
+        return null;
+    }
   }
 
   public getUserInfo(userId: string): Observable<any> {

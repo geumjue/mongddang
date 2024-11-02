@@ -24,6 +24,7 @@
     "@ionic/angular": "^8.3.0",
     "@nestjs/cli": "^10.4.5",
     "@types/passport-jwt": "^4.0.1",
+    "axios": "^1.7.7",
     "cors": "^2.8.5",
     "ionicons": "^7.0.0",
     "jwt-decode": "^4.0.0",
@@ -37,7 +38,7 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.0",
+    "@angular-devkit/build-angular": "^18.2.11",
     "@angular-eslint/builder": "^18.0.0",
     "@angular-eslint/eslint-plugin": "^18.0.0",
     "@angular-eslint/eslint-plugin-template": "^18.0.0",

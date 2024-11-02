@@ -26,3 +26,19 @@ export interface ShowFavoriteByIdResponseData {
   posterUrl: string;
   addedAt: Date;
 }
+
+export interface FavoriteCollectionRequestData {
+  userId: number;
+  collectionId: number;
+  collectionName: string;
+  description: string;
+}
+
+export interface ShowFavoriteCollectionsResponseData {
+  collectionId: number;
+  collectionName: string;
+  description: string;
+  addedAt: Date;
+}
+
+

@@ -5,7 +5,8 @@ import { SignInRequestData } from 'src/app/models/auth/auth-signin-request-data.
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { Injectable } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';  // 수정된 부분: jwt_decode로 임포트
+import axios from 'axios'; // axios 모듈 임포트
+import { jwtDecode } from 'jwt-decode'; // jwt-decode 모듈 임포트
 
 export interface User {
   id: string;  // 추가된 id 속성
@@ -18,7 +19,7 @@ export interface User {
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { id: string; username: string; email: string } | null = null;
+  public user: User | null = null;
 
   // 로그인 상태를 관리하는 BehaviorSubject
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
@@ -26,7 +27,8 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     this.initializeUser(); // 서비스 초기화 시 사용자 정보 설정
   }
-  public  initializeUser() {
+
+  public initializeUser() {
     const userId = this.getUserIdFromToken();
     if (userId) {
       this.user = { id: userId, username: 'Unknown', email: 'Unknown' }; // 필요한 경우 추가 API 호출로 사용자 정보 가져오기
@@ -67,7 +69,7 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
-  
+
           console.log('AuthService user after login:', this.user); // 디버깅용
           localStorage.setItem('token', response.data.token);
           this.loggedInSubject.next(true);
@@ -85,8 +87,7 @@ export class AuthService {
       })
     );
   }
-  
-  
+
   logOut(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => {
@@ -101,17 +102,35 @@ export class AuthService {
     );
   }
 
-  deleteAccount(password: string): Observable<any> {
-    const userId = this.getUserIdFromToken();
-    return this.http.post(`${this.apiUrl}/users/${userId}/delete`, { password }).pipe(
-      tap(() => {
-        this.logOut();
-      }),
-      catchError(error => {
-        console.error('회원 탈퇴 오류:', error);
-        return of(null);
+  // 수정된 회원 탈퇴 메서드
+  deleteAccount(password: string): Promise<any> {
+    const token = this.extractToken(); // 로컬스토리지에서 토큰 가져오기
+    const userId = this.getUserIdFromToken(); // 토큰에서 사용자 ID 가져오기
+    if (!userId || !token) {
+      console.error('사용자 ID 또는 토큰이 유효하지 않습니다.');
+      return Promise.resolve(null); // 유효하지 않으면 null 반환
+    }
+
+    return axios
+      .delete(`${this.apiUrl}/users/${userId}/delete`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: { password }, // DELETE 요청의 body에 비밀번호 포함
       })
-    );
+      .then(response => {
+        if (response.status === 200) {
+          this.clearUserData(); // 요청이 성공적으로 완료되면 로컬스토리지 데이터 삭제
+          console.log('회원 탈퇴가 성공적으로 완료되었습니다.');
+          window.location.reload(); // 페이지 새로고침 추가
+        } else {
+          console.error('회원 탈퇴 요청 실패:', response.data);
+        }
+      })
+      .catch(error => {
+        console.error('회원 탈퇴 오류:', error);
+        return null;
+      });
   }
 
   private clearUserData(): void {
@@ -125,16 +144,13 @@ export class AuthService {
 
   public getUserIdFromToken(): string | null {
     const token = this.extractToken();
-    if (!token) {
-      return null;
-    }
+    if (!token) return null;
 
     try {
-      const decodedToken: any = jwtDecode(token);
-      console.log('Decoded token:', decodedToken); // 디버깅용 출력
-      return decodedToken?.sub || decodedToken?.userId || null;
+      const decoded: any = jwtDecode(token); // jwt-decode를 사용하여 토큰 디코드
+      return decoded.userId; // 'id'를 'userId'로 수정
     } catch (error) {
-      console.error('토큰 디코딩 오류:', error);
+      console.error('토큰 디코드 오류:', error);
       return null;
     }
   }
@@ -143,8 +159,6 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  
-  
   public getUserInfo(userId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/${userId}`).pipe(
       catchError(error => {

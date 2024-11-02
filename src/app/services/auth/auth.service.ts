@@ -8,17 +8,33 @@ import { Injectable } from '@angular/core';
 import axios from 'axios'; // axios 모듈 임포트
 import { jwtDecode } from 'jwt-decode'; // jwt-decode 모듈 임포트
 
+export interface User {
+  id: string;  // 추가된 id 속성
+  username: string;
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:3000/api/auth';
-  public user: { username: string; email: string } | null = null;
+  public user: User | null = null;
 
   // 로그인 상태를 관리하는 BehaviorSubject
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.initializeUser(); // 서비스 초기화 시 사용자 정보 설정
+  }
+
+  public initializeUser() {
+    const userId = this.getUserIdFromToken();
+    if (userId) {
+      this.user = { id: userId, username: 'Unknown', email: 'Unknown' }; // 필요한 경우 추가 API 호출로 사용자 정보 가져오기
+      console.log('Initialized user:', this.user);
+    }
+  }
 
   // 로그인 상태를 Observable로 제공
   getLoginStatus(): Observable<boolean> {
@@ -42,39 +58,35 @@ export class AuthService {
   }
 
   // 로그인 메서드
-login(data: SignInRequestData): Observable<AuthResponse> {
-  return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  }).pipe(
-    tap(response => {
-      if (response.success && response.data) {
-        this.user = {
-          username: response.data.user.username,
-          email: response.data.user.email,
-        };
+  login(data: SignInRequestData): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    }).pipe(
+      tap(response => {
+        if (response.success && response.data) {
+          this.user = {
+            id: response.data.user.id,
+            username: response.data.user.username,
+            email: response.data.user.email,
+          };
 
-        localStorage.setItem('token', response.data.token);
-        this.loggedInSubject.next(true);
-        this.router.navigate(['/mypage']);
-      }
-    }),
-    catchError(error => {
-      console.error('로그인 오류:', error);
-      let errorMessage = '로그인 중 오류가 발생했습니다.'; // 기본 오류 메시지
-
-      if (error.status === 401) {
-        errorMessage = '존재하지않거나 올바르지 않은 이메일 입니다.'; // 401 상태 코드에 대한 사용자 친화적인 메시지
-      }
-
-      return of({
-        success: false,
-        data: null,
-        statusCode: error.status,
-        message: errorMessage,
-      } as AuthResponse);
-    })
-  );
-}
+          console.log('AuthService user after login:', this.user); // 디버깅용
+          localStorage.setItem('token', response.data.token);
+          this.loggedInSubject.next(true);
+          this.router.navigate(['/mypage']);
+        }
+      }),
+      catchError(error => {
+        console.error('로그인 오류:', error);
+        return of({
+          success: false,
+          data: null,
+          statusCode: error.status,
+          message: error.message,
+        } as AuthResponse);
+      })
+    );
+  }
 
   logOut(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
@@ -130,21 +142,21 @@ login(data: SignInRequestData): Observable<AuthResponse> {
     return !!this.extractToken();
   }
 
-  private extractToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
   public getUserIdFromToken(): string | null {
     const token = this.extractToken();
     if (!token) return null;
 
     try {
-        const decoded: any = jwtDecode(token); // jwt-decode를 사용하여 토큰 디코드
-        return decoded.userId; // 'id'를 'userId'로 수정
+      const decoded: any = jwtDecode(token); // jwt-decode를 사용하여 토큰 디코드
+      return decoded.userId; // 'id'를 'userId'로 수정
     } catch (error) {
-        console.error('토큰 디코드 오류:', error);
-        return null;
+      console.error('토큰 디코드 오류:', error);
+      return null;
     }
+  }
+
+  public extractToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   public getUserInfo(userId: string): Observable<any> {

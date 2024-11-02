@@ -7,7 +7,7 @@ export interface FavoriteResponseData {
   export interface ShowFavoritesResponseData {
     userId: number;
     movieId: number;
-    movieTitle: string;
+    movietitle: string;
     posterUrl: string; 
     addedAt: Date;
   }
@@ -15,7 +15,7 @@ export interface FavoriteResponseData {
   export interface ShowFavoriteByIdResponseData {
     userId: number;
     movieId: number;
-    movieTitle: string;
+    movietitle: string;
     posterUrl: string; 
     addedAt: Date;
   }

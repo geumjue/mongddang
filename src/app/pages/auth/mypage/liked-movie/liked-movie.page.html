@@ -1,25 +1,26 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>좋아요한 영화</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <ion-list *ngIf="likedMovies.length > 0; else noMovies">
-      <ion-item *ngFor="let movie of likedMovies">
-        <ion-thumbnail slot="start">
-          <img [src]="movie.posterUrl" alt="{{ movie.title }} 포스터">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>{{ movie.title }}</h2>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  
-    <ng-template #noMovies>
-      <ion-item>
-        <ion-label>좋아요한 영화가 없습니다.</ion-label>
-      </ion-item>
-    </ng-template>
-  </ion-content>
-  
+  <ion-toolbar>
+    <ion-title>좋아요한 영화</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="likedMovies.length > 0; else noMovies" class="movies-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="3" *ngFor="let movie of likedMovies">
+          <div class="movie-poster">
+            <img [src]="movie.posterUrl" alt="{{ movie.movietitle }} 포스터">
+            <div class="movie-title">{{ movie.movietitle }}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ng-template #noMovies>
+    <div class="no-movies">
+      좋아요한 영화가 없습니다.
+    </div>
+  </ng-template>
+</ion-content>

@@ -20,6 +20,7 @@ export class CreateAccountPage {
       username: this.username,
       password: this.password,
       email: this.email,
+      userId: 0
     };
 
     this.authService.signUp(signUpRequestData).subscribe({

@@ -12,7 +12,7 @@ export class HomePage implements AfterViewInit {
   @ViewChild('swiper_cgv') swiperRef_cgv!: ElementRef;
   @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
-  
+
   movies: GetMoviesResponseData[] = [];
 
   constructor(private router: Router, private movieService: MovieService) {}
@@ -45,6 +45,9 @@ export class HomePage implements AfterViewInit {
     this.router.navigate(['nows-comment']);
   }
 
+  goToSearchPage() {
+    this.router.navigate(['search'])
+  }
   getMovies() {
     this.movieService.getMovies().subscribe({
       next: (response: GetMoviesResponseData[]) => {

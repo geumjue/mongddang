@@ -32,50 +32,14 @@
         <ion-icon (click)="goToCommentWritePage()" name="create-outline"></ion-icon>
         <div class="text">코멘트 작성</div>
       </ion-col>
-
-
-
       <ion-col class="detail-col">
 <!--        (click)="presentCollectionModal()"-->
         <ion-icon name="bookmark-outline"></ion-icon>
         <div class="text">컬렉션에 추가</div>
       </ion-col>
-
-      <!-- 첫 번째 모달 -->
-      <ion-modal [isOpen]="isCollectionModalOpen" id="example-modal">
-<!--        (didDismiss)="closeCollectionModal()"-->
-        <ng-template>
-          <div class="wrapper">
-            <h1>컬렉션 추가</h1>
-            <ion-list lines="none">
-              <ion-item
-                *ngFor="let collection of collections"
-                button="true"
-                detail="false"
-                >
-<!--                (click)="openSecondModal(collection)"-->
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-label>{{ collection.name }}</ion-label>
-              </ion-item>
-            </ion-list>
-          </div>
-        </ng-template>
-      </ion-modal>
-
-      <!-- 두 번째 모달 -->
-      <ion-modal [isOpen]="isSecondModalOpen"  id="example-modal">
-<!--        (didDismiss)="closeSecondModal()"-->
-        <ng-template>
-          <div class="wrapper">
-            <h1>새로운 컬렉션 {{ selectedItem.name }}</h1>
-            <ion-button >추가</ion-button>
-<!--            (click)="closeSecondModal()"-->
-          </div>
-        </ng-template>
-      </ion-modal>
     </ion-row>
   </ion-grid>
-  <hr><br>
+
 
   <!-- Movie Summary -->
   <a class="summ">줄거리</a>

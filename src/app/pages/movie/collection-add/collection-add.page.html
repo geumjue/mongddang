@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>컬렉션 추가</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let collection of collections" (click)="addMovieToCollection(collection.id)">
+        <ion-label>{{ collection.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+  
+    <ion-button expand="full" (click)="showNewCollectionInput = !showNewCollectionInput">
+      새 컬렉션 만들기
+    </ion-button>
+  
+    <ion-item *ngIf="showNewCollectionInput">
+      <ion-label position="floating">새 컬렉션 이름</ion-label>
+      <ion-input [(ngModel)]="newCollectionName"></ion-input>
+    </ion-item>
+    
+    <ion-button expand="full" *ngIf="showNewCollectionInput" (click)="createCollection()">컬렉션 생성</ion-button>
+  </ion-content>

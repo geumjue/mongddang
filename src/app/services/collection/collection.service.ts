@@ -21,8 +21,8 @@ export class CollectionService {
   }
 
   // 컬렉션 생성
-  postCollection(payload: PostCollectionRequestData): Observable<PostCollectionResponseData>{
-    const headers = new HttpHeaders({'Content-Type':'application/json'});
+  createCollection(payload: PostCollectionRequestData): Observable<PostCollectionResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<PostCollectionResponseData>(`${this.apiUrl}`, payload, { headers });
   }
 
@@ -36,5 +36,11 @@ export class CollectionService {
   updateCollection(id:number, payload:UpdateCollectionRequestData) :Observable<UpdateCollectionResponseData[]>{
     const headers = new HttpHeaders({'Content-Type':'application/json'});
     return this.http.put<UpdateCollectionResponseData[]>(`${this.apiUrl}/${id}`,payload,{headers})
+  }
+
+ // 컬렉션에 영화 추가
+  addMovieToCollection(collectionId: number, movieId: string): Observable<any> {
+    const url = `${this.apiUrl}/${collectionId}/add-movie`; // apiUrl을 사용하도록 수정
+    return this.http.post<any>(url, { movieId });
   }
 }

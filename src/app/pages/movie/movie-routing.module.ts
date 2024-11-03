@@ -5,6 +5,7 @@ import { MovieDetailPage } from './movie-detail/movie-detail.page';
 import { CommentWritePage } from './movie-comment/comment-write/comment-write.page';
 import { MovieFavoritePage } from './movie-favorite/movie-favorite.page';
 import {CommentListPage} from "./movie-comment/comment-list/comment-list.page";
+import {AddCollectionPage} from "../collection/add-collection/add-collection.page";
 
 
 
@@ -31,11 +32,12 @@ const routes: Routes = [
     component: CommentWritePage
   },
 
-
   {
     path: 'detail/:id/comment/list',
     component: CommentListPage
   },
+
+
 
 ];
 

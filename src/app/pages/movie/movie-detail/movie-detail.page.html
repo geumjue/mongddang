@@ -4,7 +4,7 @@
   <ion-header collapse="condense" style="position: relative;">
     <ion-icon name="arrow-back" class="backBtn" (click)="goBackHomePage()"></ion-icon>
 
-    <img alt="" [src]="movie.posterUrl" style="width: 430px; height:550px; object-fit: cover;">
+    <img alt="" [src]="movie.stillUrl" style="width: 430px; height:550px; object-fit: cover;">
     <div class="detailsImage">
       <a class="movieTitle">{{movie.title}}</a><br>
       <a class="rate_star"> ★</a><a class="rate_num">{{movie.favorite}}</a><br>
@@ -35,7 +35,7 @@
       <ion-col class="detail-col">
 <!--        (click)="presentCollectionModal()"-->
         <ion-icon name="bookmark-outline"></ion-icon>
-        <div class="text">컬렉션에 추가</div>
+        <div class="text" (click)="goToAddCollectionPage()">컬렉션에 추가</div>
       </ion-col>
     </ion-row>
   </ion-grid>

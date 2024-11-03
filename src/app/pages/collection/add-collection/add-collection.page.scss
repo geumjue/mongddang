@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Pretendard-Regular';
+  box-sizing: border-box; /* 박스 모델을 쉽게 관리하기 위해 추가 */
+}
+
+
+ion-back-button{
+  color:#db4a2b;
+  margin-left: 9px;
+  margin-top: 40px;
+
+}
+
+ion-title {
+  font-size: 20px; /* 제목 크기 */
+  font-weight: bold; /* 제목 두께 */
+  margin-top: 20px;
+}
+
+ion-content {
+  padding: 32px; /* 내용 패딩 */
+  background: #ffffff; /* 내용 배경색 */
+}
+
+ion-item {
+  margin-top: 9px;
+  border-radius: 8px; /* 모서리 둥글게 */
+}
+
+
+
+ion-input::part(native)::placeholder {
+  color: grey; /* Placeholder 텍스트 색상 */
+}
+
+.foot {
+  display: flex;
+  align-items: center; /* 가운데 정렬 */
+  justify-content: space-between; /* 양쪽 정렬 */
+  margin: 15px 0; /* 위 아래 여백 */
+  color: #777; /* 글자 색상 */
+  font-size: 12px; /* 글자 크기 */
+}
+
+.foot .text_count {
+  margin-left: auto;
+}
+
+//.store_comment {
+//  width: 70px;
+//  height: 50px;
+//  background-color: #db4a2b; /* 버튼 배경색 */
+//  color: white; /* 버튼 텍스트 색상 */
+//  border-radius: 8px; /* 버튼 모서리 둥글게 */
+//  padding: 2px 5px; /* 버튼 패딩 */
+//  font-weight: bold; /* 버튼 글자 두께 */
+//  margin-top: 50px;
+//  margin-left: 20px;
+//}
+
+.confirm {
+  color: grey; // 기본 색상
+  margin-top: 40px;
+}
+.confirm:hover {
+  background-color: #c43e2a; /* 호버 효과 */
+  transition: background-color 0.3s; /* 부드러운 전환 효과 */
+}
+

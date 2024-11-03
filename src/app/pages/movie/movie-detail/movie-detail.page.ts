@@ -157,6 +157,10 @@ export class MovieDetailPage implements OnInit {
     });
   }
 
+  goToAddCollectionPage() {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`/collection/add-collection`]);
+  }
   goBackHomePage() {
     this.route.navigate(['/home']);
   }

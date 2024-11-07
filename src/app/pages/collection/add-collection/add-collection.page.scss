@@ -65,11 +65,11 @@ ion-input::part(native)::placeholder {
 //  margin-left: 20px;
 //}
 
-.store_comment {
+.confirm {
   color: grey; // 기본 색상
   margin-top: 40px;
 }
-.store_comment:hover {
+.confirm:hover {
   background-color: #c43e2a; /* 호버 효과 */
   transition: background-color 0.3s; /* 부드러운 전환 효과 */
 }

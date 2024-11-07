@@ -5,6 +5,7 @@ import { ApiResponse } from '../../models/common/api-response.interface';
 import { CommentWithUserResponseData } from '../../models/comment/comment-with-user-response-data.interface';
 import { CommentPaginatedResponse } from 'src/app/models/comment/comment-paginated-response-data.interface';
 import {CommentWriteResponseData} from "../../models/comment/comment-write-response-data";
+import {CommentListResponseData} from "../../models/comment/comment-list-response-data";
 
 @Injectable({
   providedIn: 'root'
@@ -20,53 +21,53 @@ export class CommentService {
   getAllComments(): Observable<ApiResponse<CommentWithUserResponseData[]>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentWithUserResponseData[]>>(
-      `${this.apiUrl}/comments`, 
+      `${this.apiUrl}/comments`,
       { headers, withCredentials: true });
   }
-  
+
   // 페이징 처리된 댓글 조회
   getPaginatedComments(page: number, limit: number): Observable<ApiResponse<CommentPaginatedResponse>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentPaginatedResponse>>(
-      `${this.apiUrl}/paginated?page=${page}&limit=${limit}`, 
+      `${this.apiUrl}/paginated?page=${page}&limit=${limit}`,
       { headers, withCredentials: true }
     );
   }
-  
+
   // 특정 댓글 조회
   getCommentById(id: number): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/${id}`, 
+      `${this.apiUrl}/${id}`,
       { headers, withCredentials: true }
     );
   }
-  
+
   // 댓글 작성
   writeComment(commentRequestDto: any): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/comments`, 
-      commentRequestDto, 
+      `${this.apiUrl}/comments`,
+      commentRequestDto,
       { headers, withCredentials: true }
     );
   }
-  
+
   // 댓글 업데이트
   updateComment(id: number, commentRequestDto: any): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/comments${id}`, 
-      commentRequestDto, 
+      `${this.apiUrl}/comments${id}`,
+      commentRequestDto,
       { headers, withCredentials: true }
     );
   }
-  
+
   // 댓글 삭제
   deleteComment(id: number): Observable<ApiResponse<void>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.delete<ApiResponse<void>>(
-      `${this.apiUrl}/comments${id}`, 
+      `${this.apiUrl}/comments${id}`,
       { headers, withCredentials: true }
     );
   }
@@ -80,6 +81,13 @@ export class CommentService {
       {headers, withCredentials: true}
     );
   }
+  //코멘트 업로드
+  getCommentsByMovieId(movieId: string): Observable<CommentListResponseData[]> {
+    return this.http.get<CommentListResponseData[]>(`${this.apiUrl}/${movieId}`, {
+      withCredentials: true
+    });
+  }
+
 
   // 좋아요 상태 토글
   toggleFavoriteComment(commentId: number, isFavorite: boolean): Observable<ApiResponse<CommentWithUserResponseData>> {
@@ -95,7 +103,7 @@ export class CommentService {
     } else {
       // 좋아요X -> POST
       return this.http.post<ApiResponse<CommentWithUserResponseData>>(
-        `${this.apiUrl}/${commentId}/favorite`, 
+        `${this.apiUrl}/${commentId}/favorite`,
         {},
         { headers, withCredentials: true }
       );

@@ -32,6 +32,10 @@ export class CollectionService {
     return this.http.get<GetCollectionsResponseData[]>(`${this.apiUrl}`,{headers})
   }
 
+  getUserCollections(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/${userId}`);
+  }
+
   // 컬렉션 업데이트
   updateCollection(id:number, payload:UpdateCollectionRequestData) :Observable<UpdateCollectionResponseData[]>{
     const headers = new HttpHeaders({'Content-Type':'application/json'});
@@ -43,4 +47,11 @@ export class CollectionService {
     const url = `${this.apiUrl}/${collectionId}/movies/${movieId}`; // 백엔드와 맞추기
     return this.http.post<any>(url, {});
   }
+
+  // 컬렉션 삭제
+  deleteCollection(collectionId: number): Observable<void> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<void>(`${this.apiUrl}/${collectionId}`, { headers });
+  }
+  
 }

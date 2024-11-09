@@ -1,16 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CollectionService } from 'src/app/services/collection/collection.service';
 
 @Component({
   selector: 'app-my-collection',
   templateUrl: './my-collection.page.html',
   styleUrls: ['./my-collection.page.scss'],
 })
-export class MyCollectionPage implements OnInit {
+export class MyCollectionPage {
+  collections: any[] = [];
 
+  constructor(private collectionService: CollectionService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.loadCollections();
   }
 
+  loadCollections() {
+    this.collectionService.getCollections().subscribe((data) => {
+      this.collections = data;
+    });
+  }
+
+  deleteCollection(collectionId: number): void {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      this.collectionService.deleteCollection(collectionId).subscribe(() => {
+        this.collections = this.collections.filter((c) => c.id !== collectionId);
+        alert("컬렉션이 삭제되었습니다!");
+      });
+    }
+  }
+  
 }

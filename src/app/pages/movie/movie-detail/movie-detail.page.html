@@ -4,7 +4,7 @@
   <ion-header collapse="condense" style="position: relative;">
     <ion-icon name="arrow-back" class="backBtn" (click)="goBackHomePage()"></ion-icon>
 
-    <img alt="" [src]="movie.posterUrl" style="width: 430px; height:550px; object-fit: cover;">
+    <img alt="" [src]="movie.stillUrl" style="width: 430px; height:550px; object-fit: cover;">
     <div class="detailsImage">
       <a class="movieTitle">{{movie.title}}</a><br>
       <a class="rate_star"> ★</a><a class="rate_num">{{movie.favorite}}</a><br>
@@ -33,81 +33,20 @@
         <div class="text">코멘트 작성</div>
       </ion-col>
 
-
-
       <ion-col class="detail-col" (click)="navigateToCollectionAdd()">
+
         <ion-icon name="bookmark-outline"></ion-icon>
-        <div class="text">컬렉션에 추가</div>
+        <div class="text" (click)="goToAddCollectionPage()">컬렉션에 추가</div>
       </ion-col>
-
-      <!-- 첫 번째 모달 -->
-      <ion-modal [isOpen]="isCollectionModalOpen" id="example-modal">
-<!--        (didDismiss)="closeCollectionModal()"-->
-        <ng-template>
-          <div class="wrapper">
-            <h1>컬렉션 추가</h1>
-            <ion-list lines="none">
-              <ion-item
-                *ngFor="let collection of collections"
-                button="true"
-                detail="false"
-                >
-<!--                (click)="openSecondModal(collection)"-->
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-label>{{ collection.name }}</ion-label>
-              </ion-item>
-            </ion-list>
-          </div>
-        </ng-template>
-      </ion-modal>
-
-      <!-- 두 번째 모달 -->
-      <ion-modal [isOpen]="isSecondModalOpen"  id="example-modal">
-<!--        (didDismiss)="closeSecondModal()"-->
-        <ng-template>
-          <div class="wrapper">
-            <h1>새로운 컬렉션 {{ selectedItem.name }}</h1>
-            <ion-button >추가</ion-button>
-<!--            (click)="closeSecondModal()"-->
-          </div>
-        </ng-template>
-      </ion-modal>
     </ion-row>
   </ion-grid>
-  <hr><br>
+
 
   <!-- Movie Summary -->
   <a class="summ">줄거리</a>
   <a class="summary">{{movie.contents}}</a>
   <img class="poster" alt="" [src]="movie.posterUrl">
 
-  <!-- Gallery Section -->
-  <ion-label class="gallery_text">갤러리</ion-label>
-  <div class="gallery_img">
-    <ion-button fill="clear">
-<!--      (click)="presentGalleryModal(movie.stillUrl)"-->
-      <img alt="이미지 버튼" [src]="movie.stillUrl">
-    </ion-button>
-  </div>
-
-  <!-- Modal -->
-  <ion-modal [isOpen]="isGalleryModalOpen"  class="example-modal">
-<!--    (didDismiss)="closeGalleryModal()"-->
-    <ng-template>
-      <ion-content>
-        <img [src]="selectedImage" alt="모달 이미지" style="width: 100%;">
-        <ion-button>Close</ion-button>
-<!--        (click)="closeGalleryModal()"-->
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-  <!-- Video Section -->
-  <ion-label class="video_text">동영상</ion-label>
-  <div class="video_clip">
-    <img alt="" src="assets/images/베테랑2_teaser_clip.png">
-    <img alt="" src="assets/images/베테랑2_main_clip.png">
-  </div>
 
   <!-- Cast and Crew Section -->
   <ion-label class="personTitle">출연/제작</ion-label>

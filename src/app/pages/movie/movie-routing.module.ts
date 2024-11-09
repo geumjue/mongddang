@@ -35,7 +35,8 @@ const routes: Routes = [
   {
     path: 'detail/:id/comment/list',
     component: CommentListPage
-  },  {
+  },
+  {
     path: 'collection-add',
     loadChildren: () => import('./collection-add/collection-add.module').then( m => m.CollectionAddPageModule)
   },

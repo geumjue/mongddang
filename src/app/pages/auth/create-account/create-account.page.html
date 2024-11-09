@@ -1,21 +1,29 @@
 <ion-content>
+  <p class="notice">회원가입을 위해</p>
+  <p class="notice2">정보를 입력해주세요.</p>
   <form (ngSubmit)="signUp()">
-    <div class="login-box" style="margin-top: 80px">
+    <div class="login-box">
       <ion-item>
-        <label for="email">이메일</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="이메일을 입력하세요" required>
+<!--        <label for="email">* 이메일</label>-->
+        <ion-input label="* 이메일" id="email" name="email" labelPlacement="stacked" [(ngModel)]="email" placeholder="" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="비밀번호를 입력하세요" required>
+<!--        <label for="password1">* 비밀번호</label>-->
+        <ion-input label="* 비밀번호" id="password" name="password" type="password" value="password" labelPlacement="stacked" [(ngModel)]="password" placeholder="" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="username">닉네임</label>
-        <input type="username" id="username" name="username" [(ngModel)]="username" placeholder="닉네임을 입력하세요" required>
+<!--        <label for="username">* 닉네임</label>-->
+        <ion-input label="* 닉네임" type="username" id="username" name="username" labelPlacement="stacked" [(ngModel)]="username" placeholder="" required></ion-input>
       </ion-item>
+
+        <div style="text-align: left; margin-top: 20px; margin-left: 10px; ">
+          <ion-checkbox labelPlacement="end" style="font-size: 12px;" color="light" required>이용약관 개인정보 수집 및 정보이용에 동의합니다.
+          </ion-checkbox>
+        </div>
     </div>
-    <ion-button class="signUp" expand="full" type="submit">회원가입</ion-button>
+    <ion-button class="signUp" expand="full" type="submit">가입하기</ion-button>
   </form>
 </ion-content>
+

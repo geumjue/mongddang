@@ -1,35 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiResponse } from '../../models/common/api-response.interface';
 import { CommentWithUserResponseData } from '../../models/comment/comment-with-user-response-data.interface';
 import { CommentPaginatedResponse } from 'src/app/models/comment/comment-paginated-response-data.interface';
-import {CommentWriteResponseData} from "../../models/comment/comment-write-response-data";
-import {CommentListResponseData} from "../../models/comment/comment-list-response-data";
+import { CommentWriteResponseData } from "../../models/comment/comment-write-response-data";
+import { CommentListResponseData } from "../../models/comment/comment-list-response-data";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-
   private readonly apiUrl = 'http://localhost:3000/api/comments';
+  private newCommentSubject = new BehaviorSubject<CommentListResponseData | null>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  // 새로운 코멘트를 설정하는 메서드
+  setNewComment(comment: CommentListResponseData) {
+    this.newCommentSubject.next(comment);
+  }
+
+  // 새로운 코멘트를 가져오는 Observable
+  getNewComment(): Observable<CommentListResponseData | null> {
+    return this.newCommentSubject.asObservable();
+  }
+
+  clearNewComment() {
+    this.newCommentSubject.next(null);
   }
 
   // 모든 댓글 조회
   getAllComments(): Observable<ApiResponse<CommentWithUserResponseData[]>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentWithUserResponseData[]>>(
-      `${this.apiUrl}/comments`,
-      { headers, withCredentials: true });
+      `${this.apiUrl}/show`,
+      { headers, withCredentials: true }
+    );
   }
 
   // 페이징 처리된 댓글 조회
   getPaginatedComments(page: number, limit: number): Observable<ApiResponse<CommentPaginatedResponse>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentPaginatedResponse>>(
-      `${this.apiUrl}/paginated?page=${page}&limit=${limit}`,
+      `${this.apiUrl}/show?page=${page}&limit=${limit}`,
       { headers, withCredentials: true }
     );
   }
@@ -38,7 +52,7 @@ export class CommentService {
   getCommentById(id: number): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/${id}`,
+      `${this.apiUrl}/show/detail/${id}`,
       { headers, withCredentials: true }
     );
   }
@@ -47,7 +61,7 @@ export class CommentService {
   writeComment(commentRequestDto: any): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/comments`,
+      `${this.apiUrl}/add`,
       commentRequestDto,
       { headers, withCredentials: true }
     );
@@ -57,7 +71,7 @@ export class CommentService {
   updateComment(id: number, commentRequestDto: any): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<ApiResponse<CommentWithUserResponseData>>(
-      `${this.apiUrl}/comments${id}`,
+      `${this.apiUrl}/update/${id}`,
       commentRequestDto,
       { headers, withCredentials: true }
     );
@@ -67,33 +81,34 @@ export class CommentService {
   deleteComment(id: number): Observable<ApiResponse<void>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.delete<ApiResponse<void>>(
-      `${this.apiUrl}/comments${id}`,
+      `${this.apiUrl}/remove/${id}`,
       { headers, withCredentials: true }
     );
   }
 
-  //영화 코멘트 작성
-  postCommentById(username: string, content: string, movieId: string): Observable<CommentWriteResponseData> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  // 영화 코멘트 작성 (extra functionality if required)
+  postCommentById(userId: number, commentContent: string, movieId: number): Observable<CommentWriteResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<CommentWriteResponseData>(
-      `${this.apiUrl}`,
-      {username, content, movieId},
-      {headers, withCredentials: true}
+      `${this.apiUrl}/add`,
+      { userId, commentContent, movieId },
+      { headers, withCredentials: true }
     );
   }
-  //코멘트 업로드
-  getCommentsByMovieId(movieId: string): Observable<CommentListResponseData[]> {
-    return this.http.get<CommentListResponseData[]>(`${this.apiUrl}/${movieId}`, {
-      withCredentials: true
-    });
-  }
 
+  // 특정 영화의 댓글 조회
+  getCommentsByMovieId(movieId: number): Observable<ApiResponse<CommentListResponseData[]>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<ApiResponse<CommentListResponseData[]>>(
+      `${this.apiUrl}/movie/${movieId}`, // 엔드포인트 URL 확인 필요
+      { headers, withCredentials: true }
+    );
+  }
 
   // 좋아요 상태 토글
   toggleFavoriteComment(commentId: number, isFavorite: boolean): Observable<ApiResponse<CommentWithUserResponseData>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    // 좋아요 상태에 따라 다른 요청
     if (isFavorite) {
       // 좋아요 -> DELETE
       return this.http.delete<ApiResponse<CommentWithUserResponseData>>(
@@ -104,6 +119,26 @@ export class CommentService {
       // 좋아요X -> POST
       return this.http.post<ApiResponse<CommentWithUserResponseData>>(
         `${this.apiUrl}/${commentId}/favorite`,
+        {},
+        { headers, withCredentials: true }
+      );
+    }
+  }
+
+  // 싫어요 상태 토글
+  toggleDislikeComment(commentId: number, isDislike: boolean): Observable<ApiResponse<CommentWithUserResponseData>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    if (isDislike) {
+      // 싫어요 -> DELETE
+      return this.http.delete<ApiResponse<CommentWithUserResponseData>>(
+        `${this.apiUrl}/${commentId}/dislike`,
+        { headers, withCredentials: true }
+      );
+    } else {
+      // 싫어요X -> POST
+      return this.http.post<ApiResponse<CommentWithUserResponseData>>(
+        `${this.apiUrl}/${commentId}/dislike`,
         {},
         { headers, withCredentials: true }
       );

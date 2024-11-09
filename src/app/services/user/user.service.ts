@@ -12,7 +12,9 @@ export class UserService {
   private apiUrl = 'http://localhost:3000/api/user'; // NestJS API URL
 
   constructor(private http: HttpClient) {}
-
+  getUserById(userId: number): Observable<GetUserResponseData> {
+    return this.http.get<GetUserResponseData>(`${this.apiUrl}/${userId}`);
+  }
   // JWT 토큰에서 사용자 이메일 추출
   private getUserEmailFromToken(): string | null {
     const token = localStorage.getItem('token'); // 일관된 키 사용

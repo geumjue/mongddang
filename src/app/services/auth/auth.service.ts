@@ -7,9 +7,11 @@ import { AuthResponse } from 'src/app/models/auth/auth-reponse.interface';
 import { Injectable } from '@angular/core';
 import axios from 'axios'; // axios 모듈 임포트
 import { jwtDecode } from 'jwt-decode'; // jwt-decode 모듈 임포트
+import { UserService } from '../user/user.service'; // UserService 임포트
+import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 
 export interface User {
-  id: string;  // 추가된 id 속성
+  id: string;
   username: string;
   email: string;
 }
@@ -24,17 +26,44 @@ export class AuthService {
   // 로그인 상태를 관리하는 BehaviorSubject
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService // UserService 주입
+  ) {
     this.initializeUser(); // 서비스 초기화 시 사용자 정보 설정
+  }
+
+  decodeToken(token: string): any {
+    return jwtDecode(token);
   }
 
   public initializeUser() {
     const userId = this.getUserIdFromToken();
+    
     if (userId) {
-      this.user = { id: userId, username: 'Unknown', email: 'Unknown' }; // 필요한 경우 추가 API 호출로 사용자 정보 가져오기
-      console.log('Initialized user:', this.user);
+      // 초기값으로 'Unknown'을 설정하고, 이후 API 호출로 사용자 정보를 가져옴
+      this.user = { id: userId, username: 'Unknown', email: 'Unknown' };
+  
+      // API 호출로 사용자 정보 가져오기
+      this.userService.getUserById(parseInt(userId, 10)).subscribe({
+        next: (userData: GetUserResponseData) => {
+          if (this.user) {
+            // API 응답 데이터로 사용자 정보 업데이트
+            this.user.username = userData.username;
+            this.user.email = userData.email;
+            console.log('Fetched user data:', this.user);
+          }
+        },
+        error: (err: any) => {
+          console.error('Failed to fetch user data:', err);
+        }
+      });
+    } else {
+      console.warn('User ID is not available, cannot fetch user data.');
     }
   }
+  
 
   // 로그인 상태를 Observable로 제공
   getLoginStatus(): Observable<boolean> {
@@ -104,11 +133,11 @@ export class AuthService {
 
   // 수정된 회원 탈퇴 메서드
   deleteAccount(password: string): Promise<any> {
-    const token = this.extractToken(); // 로컬스토리지에서 토큰 가져오기
-    const userId = this.getUserIdFromToken(); // 토큰에서 사용자 ID 가져오기
+    const token = this.extractToken();
+    const userId = this.getUserIdFromToken();
     if (!userId || !token) {
       console.error('사용자 ID 또는 토큰이 유효하지 않습니다.');
-      return Promise.resolve(null); // 유효하지 않으면 null 반환
+      return Promise.resolve(null);
     }
 
     return axios
@@ -116,13 +145,13 @@ export class AuthService {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        data: { password }, // DELETE 요청의 body에 비밀번호 포함
+        data: { password },
       })
       .then(response => {
         if (response.status === 200) {
-          this.clearUserData(); // 요청이 성공적으로 완료되면 로컬스토리지 데이터 삭제
+          this.clearUserData();
           console.log('회원 탈퇴가 성공적으로 완료되었습니다.');
-          window.location.reload(); // 페이지 새로고침 추가
+          window.location.reload();
         } else {
           console.error('회원 탈퇴 요청 실패:', response.data);
         }
@@ -147,8 +176,8 @@ export class AuthService {
     if (!token) return null;
 
     try {
-      const decoded: any = jwtDecode(token); // jwt-decode를 사용하여 토큰 디코드
-      return decoded.userId; // 'id'를 'userId'로 수정
+      const decoded: any = jwtDecode(token);
+      return decoded.userId; // 'userId' 필드 반환
     } catch (error) {
       console.error('토큰 디코드 오류:', error);
       return null;

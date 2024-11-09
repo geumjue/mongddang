@@ -1,52 +1,42 @@
-<div class="comment-list">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>코멘트 목록</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-card>
-  <ion-list>
-    <ion-item>
-      <div class="comment_profile">
-        <ion-avatar slot="start">
-          <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-        </ion-avatar>
-        <ion-label>메타몽</ion-label>
-      </div>
-    </ion-item>
+<ion-content>
+  <div class="comment-list">
+    <ion-card *ngFor="let item of comments" class="comment-card">
+      <ion-row>
+        <ion-col size="2" class="poster-col">
+          <ion-img [src]="item.posterUrl" alt="Movie Poster" class="movie-poster"></ion-img>
+        </ion-col>
+        <ion-col size="10" class="content-col">
+          <ion-card-header>
+            <ion-card-title class="movie-title">{{ item.movieTitle }}</ion-card-title>
+          </ion-card-header>
+          
+          <ion-card-content>
+            <!-- 사용자 정보 -->
+            <div class="user-info">
+              <ion-label>
+                <h3>{{ item.username }}</h3>
+                <p>{{ item.comment.commentContent }}</p>
+              </ion-label>
+            </div>
 
-    <!-- 영화 이미지와 코멘트 -->
-    <ion-item lines="none">
-      <ion-label>
-        <h2 class="comment-베테랑2">베테랑2</h2>
-        <p class="comment">
-          서울의 봄 GV 때 류승완 감독님이 직접 밝히신 공식 정보 세가지.<br><br>
-          1. 올 겨울 개봉. 영화 배경이 겨울이라서 그렇답니다. 12월 확정인듯... 었으나, 추석으로 앞당겨짐.<br>
-          2. 관객들 기대와는 달리 좀 분위기가 어두워졌답니다. 2편 악역이 연쇄살인범이라는데, 그래서인듯.<br>
-
-        </p>
-      </ion-label>
-    </ion-item>
-    <!-- 좋아요 및 댓글 버튼 -->
-    <ion-item class="good_and_comment">
-      <ion-button fill="clear" class="text-button">
-        <ion-icon name="thumbs-up"></ion-icon> 1,004
-      </ion-button>
-      <ion-button fill="clear" class="text-button">
-        <ion-icon name="thumbs-down"></ion-icon> 127
-      </ion-button>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon></ion-button>
-    </ion-item>
-  </ion-list>
-</ion-card>
-
-  <ion-list>
-    <ion-item *ngFor="let comment of comments">
-      <ion-label>
-        <h2>{{ comment.username }}</h2>
-        <p>{{ comment.content }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-
-</div>
+            <!-- 좋아요, 싫어요 버튼 -->
+            <div class="interaction-buttons">
+              <ion-button fill="clear" color="primary" size="small">
+                <ion-icon name="thumbs-up-outline"></ion-icon> {{ item.comment.favoriteCount }}
+              </ion-button>
+              <ion-button fill="clear" color="danger" size="small">
+                <ion-icon name="thumbs-down-outline"></ion-icon> {{ item.comment.dislikeCount }}
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</ion-content>

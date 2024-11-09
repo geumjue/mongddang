@@ -1,5 +1,5 @@
-export interface CommentWriteResponseData{
-  "content" : string,
-  "username": string,
-  "id": string,
+export interface CommentWriteResponseData {
+  commentContent: string; 
+  username: string;
+  id: number;
 }

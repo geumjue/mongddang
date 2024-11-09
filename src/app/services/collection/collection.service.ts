@@ -40,7 +40,7 @@ export class CollectionService {
 
  // 컬렉션에 영화 추가
   addMovieToCollection(collectionId: number, movieId: string): Observable<any> {
-    const url = `${this.apiUrl}/${collectionId}/add-movie`; // apiUrl을 사용하도록 수정
-    return this.http.post<any>(url, { movieId });
+    const url = `${this.apiUrl}/${collectionId}/movies/${movieId}`; // 백엔드와 맞추기
+    return this.http.post<any>(url, {});
   }
 }

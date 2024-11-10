@@ -5,18 +5,29 @@ import { UserService } from 'src/app/services/user/user.service'; // Import User
 import { CommentWriteRequestData } from 'src/app/models/comment/comment-write-request-data';
 import { CommentListResponseData } from 'src/app/models/comment/comment-list-response-data';
 import { CommentService } from 'src/app/services/comment/comment.sevice';
+import { Component } from '@angular/core';
+import { CommentWriteResponseData } from "../../../../models/comment/comment-write-response-data";
+import { CommentService } from "../../../../services/comment/comment.sevice";
+import { AuthService } from "../../../../services/auth/auth.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-comment-write',
   templateUrl: './comment-write.page.html',
   styleUrls: ['./comment-write.page.scss'],
 })
+
 export class CommentWritePage implements OnInit {
   commentContent: string = '';
   movieTitle: string = ''; // 필요시 영화 제목 설정
   username: string = '';   // 사용자 이름을 저장할 변수
   userId: string | null = null; // userId를 저장할 변수
   movieId: string | null = null;
+
+export class CommentWritePage {
+  content = "";
+  rating: number = 0; // 별점 변수 추가
+  stars: number[] = Array(5).fill(0); // 별 5개 배열 생성
 
   constructor(
     private route: Router,
@@ -28,6 +39,9 @@ export class CommentWritePage implements OnInit {
 
   ngOnInit() {
     this.initializeUser();
+  goBackMovieDetail() {
+    const movieId = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`movie/detail/${movieId}`]);
   }
 
   // 사용자 정보를 초기화
@@ -55,6 +69,7 @@ export class CommentWritePage implements OnInit {
 
     console.log('Initialized user in CommentWritePage:', { userId: this.userId, username: this.username });
   }
+
 
   // 댓글 작성 메서드
   writeComment() {
@@ -96,6 +111,16 @@ export class CommentWritePage implements OnInit {
       error: (err) => {
         console.error('Comment submission error:', err);
         alert('댓글 작성 중 오류가 발생했습니다. 다시 시도해주세요.');
+  postCommentById(username: string, content: string, movieId: string) {
+    this.commentService.postCommentById(username, content, movieId).subscribe({
+      next: (response: CommentWriteResponseData) => {
+        this.goToCommentsPage(movieId);
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
       }
     });
   }
@@ -103,6 +128,7 @@ export class CommentWritePage implements OnInit {
   // 영화 상세 페이지로 돌아가는 메서드
   goBackMovieDetail() {
     const movieId = this.activateRoute.snapshot.params['id'];
+
     this.route.navigate([`movie/detail/${movieId}`]);
   }
 
@@ -111,5 +137,12 @@ export class CommentWritePage implements OnInit {
     this.route.navigate([`movie/detail/${movieId}/comment/list`], {
       state: { newComment }  // 새로운 코멘트를 state로 전달
     });
+
+    this.postCommentById(username, content, movieId);
+  }
+
+  setRating(index: number) {
+    this.rating = index; // 클릭한 별에 따라 별점 설정
+
   }
 }

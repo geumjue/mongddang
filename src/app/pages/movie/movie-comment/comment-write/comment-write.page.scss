@@ -10,12 +10,10 @@
   box-sizing: border-box; /* 박스 모델을 쉽게 관리하기 위해 추가 */
 }
 
-
-ion-back-button{
-  color:#db4a2b;
+ion-back-button {
+  color: #db4a2b;
   margin-left: 9px;
   margin-top: 40px;
-
 }
 
 ion-title {
@@ -32,9 +30,14 @@ ion-content {
 ion-item {
   margin-top: 9px;
   border-radius: 8px; /* 모서리 둥글게 */
+  display: flex; /* flexbox 사용 */
+  justify-content: center; /* 수평 가운데 정렬 */
 }
 
-
+ion-input {
+  text-align: center; /* 입력 텍스트 가운데 정렬 */
+  width: 100%; /* 입력 필드 너비를 100%로 설정 */
+}
 
 ion-input::part(native)::placeholder {
   color: grey; /* Placeholder 텍스트 색상 */
@@ -53,24 +56,30 @@ ion-input::part(native)::placeholder {
   margin-left: auto;
 }
 
-//.store_comment {
-//  width: 70px;
-//  height: 50px;
-//  background-color: #db4a2b; /* 버튼 배경색 */
-//  color: white; /* 버튼 텍스트 색상 */
-//  border-radius: 8px; /* 버튼 모서리 둥글게 */
-//  padding: 2px 5px; /* 버튼 패딩 */
-//  font-weight: bold; /* 버튼 글자 두께 */
-//  margin-top: 50px;
-//  margin-left: 20px;
-//}
-
 .store_comment {
-  color: grey; // 기본 색상
+  color: grey; /* 기본 색상 */
   margin-top: 40px;
 }
+
 .store_comment:hover {
   background-color: #c43e2a; /* 호버 효과 */
   transition: background-color 0.3s; /* 부드러운 전환 효과 */
 }
 
+.star-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 가운데 정렬 */
+  margin-top: 20px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 30px; /* 별 크기 */
+  color: gold; /* 별 색상 */
+  margin-right: 5px; /* 별 간격 */
+}
+
+.star:hover {
+  color: gold; /* 호버 색상 */
+}

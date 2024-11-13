@@ -32,8 +32,9 @@
         <ion-icon (click)="goToCommentWritePage()" name="create-outline"></ion-icon>
         <div class="text">코멘트 작성</div>
       </ion-col>
-      <ion-col class="detail-col">
-<!--        (click)="presentCollectionModal()"-->
+
+      <ion-col class="detail-col" (click)="navigateToCollectionAdd()">
+
         <ion-icon name="bookmark-outline"></ion-icon>
         <div class="text" (click)="goToAddCollectionPage()">컬렉션에 추가</div>
       </ion-col>

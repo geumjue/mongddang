@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
+import { CollectionAddPage } from './pages/movie/collection-add/collection-add.page';
 
 const routes: Routes = [
   {
@@ -49,6 +50,9 @@ const routes: Routes = [
     path: 'my-colleciton',
     loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   },
+  {
+    path: 'movie/detail/:id/collection-add', component: CollectionAddPage
+  }
 
 
 

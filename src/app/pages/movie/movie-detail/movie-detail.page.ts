@@ -165,6 +165,10 @@ export class MovieDetailPage implements OnInit {
     this.route.navigate(['/home']);
   }
 
+  navigateToCollectionAdd() {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.route.navigate([`/movie/detail/${this.id}/collection-add`]);  }  
+
   goToCommentWritePage() {
     this.id = this.activateRoute.snapshot.params['id'];
     this.route.navigate([`movie/detail/${this.id}/comment/write`]);

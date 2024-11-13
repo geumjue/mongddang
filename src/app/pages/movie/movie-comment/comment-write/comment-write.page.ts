@@ -16,7 +16,7 @@ export class CommentWritePage implements OnInit {
   movieTitle: string = ''; // 필요시 영화 제목 설정
   username: string = '';   // 사용자 이름을 저장할 변수
   userId: string | null = null; // userId를 저장할 변수
-  movieId: string | null = null; // movieId를 string으로 유지할 경우
+  movieId: number | null = null;
   content = "";
   rating: number = 0; // 별점 변수 추가
   stars: number[] = Array(5).fill(0); // 별 5개 배열 생성
@@ -81,19 +81,25 @@ export class CommentWritePage implements OnInit {
           console.log('Comment submission successful:', response.data);
           alert('댓글 작성이 완료되었습니다.');
 
-          // 새로운 코멘트 객체 생성
-          const newComment: CommentListResponseData = {
-            userId: parseInt(this.userId ?? '0', 10), // userId가 null일 경우 '0'을 기본값으로 사용
-            username: this.username,               // 초기화된 사용자 이름
-            movieId: parseInt(this.movieId ?? '1', 10),
-            movieTitle: this.movieTitle,           // 영화 제목
-            commentContent: this.commentContent,   // 댓글 내용
-            favoriteCount: 0,
-            dislikeCount: 0,
-          };
+          if(!commentWriteRequestData.movieId) {
+            alert('알 수 없는 에러 발생');
+          } else {
+            // 새로운 코멘트 객체 생성
+            const newComment: CommentListResponseData = {
+              userId: parseInt(this.userId ?? '0', 10), // userId가 null일 경우 '0'을 기본값으로 사용
+              username: this.username,               // 초기화된 사용자 이름
+              movieId: commentWriteRequestData.movieId,
+              movieTitle: this.movieTitle,           // 영화 제목
+              commentContent: this.commentContent,   // 댓글 내용
+              favoriteCount: 0,
+              dislikeCount: 0,
+            };
 
-          // 새로운 코멘트를 포함하여 목록 페이지로 이동
-          this.goToCommentsPage(commentWriteRequestData.movieId, newComment);
+            // 새로운 코멘트를 포함하여 목록 페이지로 이동
+            this.goToCommentsPage(commentWriteRequestData.movieId, newComment);
+          }
+
+
         } else {
           console.error('Comment submission failed:', response.message);
           alert('댓글 작성 실패했습니다: ' + response.message);
@@ -119,6 +125,8 @@ export class CommentWritePage implements OnInit {
     });
   }
 
+
+  //별점
   setRating(index: number) {
     this.rating = index; // 클릭한 별에 따라 별점 설정
   }

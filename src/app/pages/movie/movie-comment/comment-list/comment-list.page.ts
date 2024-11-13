@@ -47,8 +47,9 @@ export class CommentListPage implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     const newComment = navigation?.extras?.state?.['newComment'];
     if (newComment) {
-      this.fetchMovieDetails(newComment.movieId, newComment);
+      this.fetchMovieDetails(this.movieId, newComment);
     }
+
   }
 
   loadComments(movieId: number) {
@@ -111,7 +112,7 @@ export class CommentListPage implements OnInit {
       return '알 수 없음';
     }
   }
-  
+
 
   private getUserEmailFromToken(): string | null {
     const token = localStorage.getItem('token');

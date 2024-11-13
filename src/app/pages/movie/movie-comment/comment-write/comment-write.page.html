@@ -12,26 +12,25 @@
 
 <ion-content style="margin-top: 60px">
 
-  <form (ngSubmit)="writeComment()">
-    <ion-item>      
-      <ion-input>
-        id="commentContent" 
-        name="commentContent" 
-        labelPlacement="stacked"
-        [(ngModel)]="commentContent" 
-        placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요." 
-        required>
-      </ion-input>
-    </ion-item>
-  </form>
- 
   <div class="star-rating">
     <div class="star" *ngFor="let star of stars; let i = index" (click)="setRating(i + 1)">
       <ion-icon [name]="i < rating ? 'star' : 'star-outline'"></ion-icon>
     </div>
     <span>{{ rating.toFixed(1) }}점</span>
   </div>
-  <ion-item lines="none">
-    <ion-input [(ngModel)]="content" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></ion-input>
-  </ion-item>
+
+  <form (ngSubmit)="writeComment()">
+    <ion-item lines ="none">
+      <ion-input
+        id="commentContent"
+        name="commentContent"
+        labelPlacement="stacked"
+        [(ngModel)]="commentContent"
+        placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."
+        required>
+      </ion-input>
+    </ion-item>
+  </form>
+
+
 </ion-content>

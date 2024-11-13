@@ -1,12 +1,14 @@
-<ion-header style="margin-top:50px;"></ion-header>
 <ion-content>
-  <div *ngFor="let collection of collections" class="collection_item" tabindex="0" style="margin-top: 20px;">
-    <div class="header">
-      <span>{{ collection.name }}</span>
-      <span class="delete-text" (click)="deleteCollection(collection.id)">삭제</span>
-    </div>
-    <div class="movie-images">
-      <img *ngFor="let movie of collection.movies" class="alone" [src]="movie.imageUrl" alt="">
-    </div>
-  </div>
+  <ion-list>
+    <ion-item *ngFor="let collection of collections">
+      <ion-label>
+        <div class="poster-row">
+          <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
+        </div>
+        
+        <h2>{{ collection.name }}</h2>
+      </ion-label>
+      <ion-button color="danger" (click)="deleteCollection(collection.id)">삭제</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

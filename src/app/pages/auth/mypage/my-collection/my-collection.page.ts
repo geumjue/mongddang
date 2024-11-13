@@ -17,7 +17,7 @@ export class MyCollectionPage {
 
   loadCollections() {
     this.collectionService.getCollections().subscribe((data) => {
-      this.collections = data;
+      this.collections = data; // 영화 포함한 컬렉션 데이터 할당
     });
   }
 
@@ -29,5 +29,4 @@ export class MyCollectionPage {
       });
     }
   }
-  
 }

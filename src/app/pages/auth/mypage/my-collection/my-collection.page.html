@@ -1,14 +1,18 @@
 <ion-content>
-  <ion-list>
+  <ion-list style="padding-top: 70px;">
     <ion-item *ngFor="let collection of collections">
-      <ion-label (click)="viewDetail(collection.id)">
+      <div class="collection-container">
+        <!-- 포스터 부분 -->
         <div class="poster-row">
           <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
         </div>
-        
-        <h2>{{ collection?.name }}</h2>
-      </ion-label>
-      <ion-button color="danger" (click)="deleteCollection(collection.id)">삭제</ion-button>
+
+        <!-- 컬렉션 이름과 삭제 버튼 부분 -->
+        <div class="details-row">
+          <h2>{{ collection?.name }}</h2>
+          <ion-button color="danger" (click)="deleteCollection(collection.id)" class="delete-button">삭제</ion-button>
+        </div>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

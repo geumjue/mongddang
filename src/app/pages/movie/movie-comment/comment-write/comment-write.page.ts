@@ -93,6 +93,7 @@ export class CommentWritePage implements OnInit {
               commentContent: this.commentContent,   // 댓글 내용
               favoriteCount: 0,
               dislikeCount: 0,
+              commentId: response.data?.id ?? 0,
             };
 
             // 새로운 코멘트를 포함하여 목록 페이지로 이동

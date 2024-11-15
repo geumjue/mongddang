@@ -16,6 +16,11 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
+  // 코멘트를 서버에 추가하는 메서드
+  addComment(comment: CommentListResponseData): Observable<CommentListResponseData> {
+    return this.http.post<CommentListResponseData>(this.apiUrl, comment);
+  }
+
   // 새로운 코멘트를 설정하는 메서드
   setNewComment(comment: CommentListResponseData) {
     this.newCommentSubject.next(comment);
@@ -97,9 +102,9 @@ export class CommentService {
   }
 
   // 특정 영화의 댓글 조회
-  getCommentsByMovieId(movieId: number): Observable<ApiResponse<CommentListResponseData[]>> {
+  getCommentsByMovieId(movieId: number): Observable<CommentListResponseData[]> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<ApiResponse<CommentListResponseData[]>>(
+    return this.http.get<CommentListResponseData[]>(
       `${this.apiUrl}/movie/${movieId}`, // 엔드포인트 URL 확인 필요
       { headers, withCredentials: true }
     );

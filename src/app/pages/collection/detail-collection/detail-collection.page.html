@@ -1,31 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>컬렉션 상세</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="christmas_movie" style="margin-top: 60px">
-    <div class="header">
-      <img class="unknow-image" alt="" src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/25/holapet/20210525044423699dwdp.jpg">
-      <p class="username">메타몽</p>
-    </div>
+  <!-- 사용자 정보 영역 -->
+  <div class="user-info">
+    <img
+      class="user-image"
+      alt="프로필 이미지"
+      src= "assets/images/unknown.png"
+    >
+    <p class="username">{{ username }}</p>
   </div>
 
-  <div class="header2">
-    <p class="collection_title">
-      # {{ collection?.name }}
-    </p>
+  <!-- 컬렉션 타이틀 -->
+  <div class="collection-header">
+    <p class="collection-title"># {{ collection?.name }}</p>
   </div>
 
-  <div class="image-container" *ngIf="collection?.movies">
+  <!-- 영화 리스트 -->
+  <div *ngIf="collection && collection.movies && collection.movies.length > 0; else noMovies" class="movie-list">
     <ul class="movie-images">
       <li *ngFor="let movie of collection.movies">
-        <img class="alone" [src]="movie.posterUrl" [alt]="movie.title">
+        <img class="movie-poster" [src]="movie.posterUrl" [alt]="movie.title">
       </li>
     </ul>
   </div>
+
+  <!-- 영화가 없을 때 메시지 -->
+  <ng-template #noMovies>
+    <p class="no-movies">이 컬렉션에 추가된 영화가 없어요. 새로 추가해보세요! 🎬</p>
+  </ng-template>
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { CollectionService } from 'src/app/services/collection/collection.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { CollectionService } from 'src/app/services/collection/collection.servic
 export class MyCollectionPage {
   collections: any[] = [];
 
-  constructor(private collectionService: CollectionService) {}
+  constructor(
+    private collectionService: CollectionService,
+    private navController: NavController
+  ) {}
 
   ionViewWillEnter() {
     this.loadCollections();
@@ -28,5 +32,9 @@ export class MyCollectionPage {
         alert("컬렉션이 삭제되었습니다!");
       });
     }
+  }
+
+  viewDetail(collectionId: number) {
+    this.navController.navigateForward(`/detail-collection/${collectionId}`);
   }
 }

@@ -1,7 +1,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let collection of collections">
-      <ion-label>
+      <ion-label (click)="viewDetail(collection.id)">
         <div class="poster-row">
           <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
         </div>

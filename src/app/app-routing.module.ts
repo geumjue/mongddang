@@ -54,7 +54,7 @@ const routes: Routes = [
     path: 'movie/detail/:id/collection-add', component: CollectionAddPage
   },
   {
-    path: 'detail-collection',
+    path: 'detail-collection/:id',
     loadChildren: () => import('./pages/collection/detail-collection/detail-collection.page.module').then(m => m.DetailCollectionPageModule )
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionService } from 'src/app/services/collection/collection.service';
 
 @Component({
   selector: 'app-upload-collection',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload-collection.page.scss'],
 })
 export class UploadCollectionPage implements OnInit {
+  collections: any[] = [];
+
+  constructor(private collectionService: CollectionService) {}
+
   public alertButtons = [
     {
       text: '취소',
@@ -23,13 +28,23 @@ export class UploadCollectionPage implements OnInit {
     },
   ];
 
+  ionViewWillEnter() {
+    this.loadCollections();
+  }
+
+  loadCollections() {
+    this.collectionService.getCollections().subscribe((data) => {
+      this.collections = data; // 영화 포함한 컬렉션 데이터 할당
+    });
+  }
+
   setResult(ev: CustomEvent) {
     console.log(`Dismissed with role: ${ev.detail.role}`);
   }
 
   selectedMovie: HTMLElement | null = null; // 선택된 영화 요소 저장
 
-  selectMovie(event: Event) {
+  selectCollection(event: Event) {
     // 이벤트의 currentTarget을 HTMLElement로 타입 단언
     const movieElement = event.currentTarget as HTMLElement;
 
@@ -62,9 +77,6 @@ export class UploadCollectionPage implements OnInit {
       shareButton.classList.remove('active-share');
     }
   }
-
-
-  constructor() { }
 
   ngOnInit() {
   }

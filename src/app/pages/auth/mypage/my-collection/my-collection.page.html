@@ -6,7 +6,7 @@
           <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
         </div>
         
-        <h2>{{ collection.name }}</h2>
+        <h2>{{ collection?.name }}</h2>
       </ion-label>
       <ion-button color="danger" (click)="deleteCollection(collection.id)">삭제</ion-button>
     </ion-item>

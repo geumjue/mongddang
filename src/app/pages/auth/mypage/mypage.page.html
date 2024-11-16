@@ -65,7 +65,7 @@
 
     <ion-card-content class="collection-content">
       <div *ngFor="let collection of collections" class="collection-container">
-        <div class="poster">
+        <div class="poster" (click)="goToCollectionDetail(collection.id)">
           <div class="image image1">
             <img [src]="collection.movie?.posterUrl" alt="컬렉션 이미지">
           </div>

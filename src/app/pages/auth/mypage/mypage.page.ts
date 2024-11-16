@@ -138,6 +138,10 @@ export class MypagePage implements OnInit {
     this.router.navigate(['mypage/my-collection'])
   }
 
+  goToCollectionDetail(collectionId: string) {
+    this.router.navigate([`/detail-collection/${collectionId}`]);
+  }
+
   loadCollections() {
     this.collectionService.getCollections().subscribe((data) => {
       this.collections = data.map((collection) => ({

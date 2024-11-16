@@ -23,6 +23,33 @@ ion-item{
 ion-input::part(native)::placeholder {
   color: grey; /* Placeholder 텍스트 색상 */
 }
+
+.poster-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  margin-bottom: 10px; /* 포스터와 텍스트 사이에 간격 추가 */
+}
+
+.poster-image {
+  width: 100px;
+  height: 150px;
+  border-radius: 4px;
+  padding-bottom: 5px;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-row h2 {
+  margin: 0;
+  font-size: 16px;
+  flex: 1; /* 컬렉션 이름이 공간을 차지하게 함 */
+}
+
 .foot{
   display: flex;
   align-content: center;

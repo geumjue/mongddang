@@ -1,13 +1,19 @@
 <ion-content>
+  <!--검색-->
   <div class="searchbar_collection" style="margin-top: 55px;">
     <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!" (click)="goToSearchPage()"
       style="padding: 0 15px 15px 15px;"></ion-searchbar>
   </div>
+  <!-- 프리뷰-->
   <div class="preview">
-    <swiper-container #swiper_preview>
-      <swiper-slide data-swiper-autoplay="2000">
-        <img src="assets/images/kevin.png" alt="프리뷰"
-          style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+    <swiper-container
+      class="mySwiper"
+      space-between="30"
+      centered-slides="true"
+      autoplay-delay="2000"
+      autoplay-disable-on-interaction="false">
+      <swiper-slide>
+        <img src="assets/images/kevin.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
         <div class="kevin_text">
           <a class="HOT">🎅HOT🎄</a><br>
           <a class="nows_HOT">크리스마스에 생각나는 영화</a>
@@ -15,9 +21,9 @@
         <a class="preview_count">1/2</a>
       </swiper-slide>
 
-      <swiper-slide data-swiper-autoplay="2000">
-        <img src="assets/images/harry3.png" alt="프리뷰"
-          style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+
+      <swiper-slide>
+        <img src="assets/images/harry3.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
         <div class="kevin_text">
           <a class="HOT">🎅HOT🎄</a><br>
           <a class="nows_HOT">"해리포터 정주행, 준비됐어?"</a>
@@ -27,12 +33,21 @@
     </swiper-container>
   </div>
 
+  <!--지금 뜨는 코멘트 -->
   <div class="home_comment">
-    <p class="bold_title">
+    <p>
       지금 뜨는 코멘트
       <ion-icon (click)="goToNowsCommentPage()" name="chevron-forward-outline"></ion-icon>
     </p>
-    <swiper-container #swiper_comments>
+    <swiper-container
+      class="mySwiper"
+      pagination="true"
+      pagination-clickable="true"
+      space-between="30"
+      centered-slides="true"
+      autoplay-delay="3000"
+      autoplay-disable-on-interaction="false">
+
       <swiper-slide>
         <ion-card class="comment-card">
           <ion-card-header class="comment-card-header">
@@ -83,57 +98,38 @@
               </div>
             </ion-content>
           </ion-item>
-          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>
-          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>
+
         </ion-card>
       </swiper-slide>
     </swiper-container>
   </div>
-  <!--  -->
-  <!--  <ion-card>-->
-  <!--    <ion-card-header>-->
-  <!--      <ion-card-title>Welcome to the Board App Page</ion-card-title>-->
-  <!--    </ion-card-header>-->
-  <!--    <ion-card-content>-->
-  <!--      This is the main page of the application. Not Ready to use yet. 🛠️-->
-  <!--    </ion-card-content>-->
-  <!--  </ion-card>-->
 
-  <!--  <ion-card>-->
-  <!--    <ion-card-header>-->
-  <h5 style="font-weight: bold;">박스오피스 순위</h5>
-  <swiper-container #swiper_cgv>
-    <swiper-slide *ngFor="let movie of movies" (click)="goToMovieDetailPage(movie.id)">
-      <img [src]="movie.posterUrl">
-    </swiper-slide>
-  </swiper-container>
 
-  <ion-card>
-    <ion-card-header>
-      <h5>인기순위</h5>
-    </ion-card-header>
-    <ion-card-content>
-      <!--      <swiper-container #swiper_netflix>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/125601"><img src="https://file.kinolights.com/s/content_poster/202408/13/46825657-6778-440a-94b7-5dab55771173.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/130737"><img src="https://file.kinolights.com/s/content_poster/202406/13/f053a4af-1e1f-4c59-b672-9f1f62450b32.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/130244"><img src="https://file.kinolights.com/s/content_poster/202407/19/d3c5aa85-ea5d-4be3-a9bf-4302d2ed1b7b.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/136465"><img src="https://file.kinolights.com/s/content_poster/202409/03/94ec063c-c11a-409a-a72c-f23c1caa1d70.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/97833"><img src="https://file.kinolights.com/s/content_poster/202307/12/8864e988-b7ae-4c86-98e8-72535905e90c.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/136323"><img src="https://file.kinolights.com/s/content_poster/202409/03/4e312d56-5ae5-463b-a1f3-319813a70dd9.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/135659"><img src="https://file.kinolights.com/s/content_poster/202407/30/4a3c4045-b2dc-4811-ac88-a15a6b6356ea.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/136704"><img src="https://file.kinolights.com/s/content_poster/202409/02/c1af77c5-e5d5-49cb-a865-cf4984a09789.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/78554"><img src="https://file.kinolights.com/s/content_poster/202307/12/76c46436-adba-45b6-8d90-8e0d7cc0fc5c.webp"></a></swiper-slide>-->
-      <!--        <swiper-slide><a href="https://m.kinolights.com/title/111908"><img src="https://file.kinolights.com/s/content_poster/202309/11/0115be6e-ef82-46f9-b31b-92b5e26c83cb.webp"></a></swiper-slide>-->
-      <!--      </swiper-container>-->
+  <!-- 영화리스트 -->
+  <div class="movie">
+    <p>박스오피스 순위</p>
+    <swiper-container #swiper_cgv>
+      <swiper-slide *ngFor="let movie of movies; let i = index" (click)="goToMovieDetailPage(movie.id)">
+        <div class="movie-item">
+          <img [src]="movie.posterUrl" class="movie-poster">
+          <div class="rank">{{ i + 1 }}</div> <!-- 순위를 이미지 위에 표시 -->
+          <div class="movie_name">{{ movie.title }}</div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <div class="movie2">
+    <p>#판타지</p>
       <swiper-container #swiper_netflix>
-        <swiper-slide *ngFor="let movie of movies">
-          <a [href]="movie.posterUrl">
-            <img [src]="movie.posterUrl">
-          </a>
+        <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">
+          <div class="movie-item">
+            <img [src]="movie.posterUrl" class="movie-poster">
+            <div class="movie_name">{{ movie.title }}</div>
+          </div>
         </swiper-slide>
       </swiper-container>
-    </ion-card-content>
-  </ion-card>
+
   <div class="recommended-section">
     <h5 class="recommended-title">추천 영화</h5>
     <swiper-container #swiper_recommended>
@@ -146,3 +142,4 @@
   
   <ion-item (click)="goToRecommendationPage()">여기 클릭</ion-item>
 </ion-content>
+

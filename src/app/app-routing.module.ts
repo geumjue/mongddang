@@ -59,14 +59,16 @@ const routes: Routes = [
   {
     path: 'movie/detail/:id/collection-add', component: CollectionAddPage
   },
+
   // {
   //   path: 'recommendation',
   //   loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
   // },
   
-  
-  
-
+  {
+    path: 'detail-collection/:id',
+    loadChildren: () => import('./pages/collection/detail-collection/detail-collection.page.module').then(m => m.DetailCollectionPageModule )
+  }
 
 ];
 

@@ -364,3 +364,18 @@ ion-modal#example-modal .wrapper {
   height: 82px;
   border-radius: 10px;
 }
+
+/*공유버튼 css*/
+ion-fab-button::part(native) {
+  background-color: #db4a2b;
+  border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  color: #f1f1f1;
+}
+ion-fab-button::part(native):hover::after {
+  background-color: #d55b41;
+}
+ion-fab-button::part(native):active::after {
+  background-color: #d55b41;
+}
+

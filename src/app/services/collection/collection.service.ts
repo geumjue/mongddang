@@ -31,6 +31,12 @@ export class CollectionService {
     return this.http.get<GetCollectionsResponseData[]>(`${this.apiUrl}?includeMovies=true`, { headers });
   }
 
+  // 특정 컬렉션 조회 (ID로)
+  getCollectionById(collectionId: number): Observable<GetCollectionsResponseData> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<GetCollectionsResponseData>(`${this.apiUrl}/${collectionId}`, { headers });
+  }
+
   // 특정 사용자의 컬렉션 조회
   getUserCollections(userId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/user/${userId}`);
@@ -52,5 +58,17 @@ export class CollectionService {
   deleteCollection(collectionId: number): Observable<void> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.delete<void>(`${this.apiUrl}/${collectionId}`, { headers });
+  }
+
+  // 공유된 컬렉션 조회
+  getSharedCollections(): Observable<any[]> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<any[]>(`${this.apiUrl}/shared`, { headers });
+  }
+
+  // 컬렉션 공유
+  shareCollection(collectionId: number): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(`${this.apiUrl}/share/${collectionId}`, {}, { headers });
   }
 }

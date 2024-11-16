@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection/collection.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-collection',
@@ -8,8 +10,13 @@ import { CollectionService } from 'src/app/services/collection/collection.servic
 })
 export class UploadCollectionPage implements OnInit {
   collections: any[] = [];
+  selectedCollectionId: number | null = null;
 
-  constructor(private collectionService: CollectionService) {}
+  constructor(
+    private collectionService: CollectionService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   public alertButtons = [
     {
@@ -44,7 +51,9 @@ export class UploadCollectionPage implements OnInit {
 
   selectedMovie: HTMLElement | null = null; // 선택된 영화 요소 저장
 
-  selectCollection(event: Event) {
+  selectCollection(collectionId: number, event: Event) {
+    this.selectedCollectionId = collectionId;
+
     // 이벤트의 currentTarget을 HTMLElement로 타입 단언
     const movieElement = event.currentTarget as HTMLElement;
 
@@ -64,6 +73,8 @@ export class UploadCollectionPage implements OnInit {
       this.selectedMovie = movieElement; // 선택된 요소를 저장
     }
 
+    console.log('선택된 컬렉션 ID:', this.selectedCollectionId);
+
     // "공유" 버튼 색깔 변경
     this.updateShareButtonStyle();
   }
@@ -78,7 +89,23 @@ export class UploadCollectionPage implements OnInit {
     }
   }
 
+  shareCollection() {
+    if (this.selectedCollectionId !== null) {
+      this.collectionService.shareCollection(this.selectedCollectionId).subscribe(
+        (response) => {
+          console.log('컬렉션이 성공적으로 공유되었습니다.', response);
+        },
+        (error) => {
+          console.error('컬렉션 공유에 실패했습니다.', error);
+        }
+      );
+    } else {
+      console.error('선택된 컬렉션이 없습니다.');
+    }
+  }
+
   ngOnInit() {
+    this.loadCollections();
   }
 
 }

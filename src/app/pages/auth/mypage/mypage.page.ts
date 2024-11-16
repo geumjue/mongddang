@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 import { AlertController } from '@ionic/angular';
 import { jwtDecode } from 'jwt-decode';
+import { CollectionService } from 'src/app/services/collection/collection.service';
 
 @Component({
   selector: 'app-mypage',
@@ -16,12 +17,15 @@ export class MypagePage implements OnInit {
   email: string | null = null;
   isLoggedIn: boolean = false;
   user = { username: '', email: '' };
+  collections: any[] = [];
+  movie: any = null;
 
   constructor(
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private collectionService: CollectionService,
   ) {}
 
   ngOnInit() {
@@ -36,6 +40,7 @@ export class MypagePage implements OnInit {
 
     if (this.isLoggedIn) {
       this.getUserData();
+      this.loadCollections();
     } else {
       console.error('사용자가 로그인하지 않았습니다');
       this.router.navigate(['/auth/login']);
@@ -132,4 +137,14 @@ export class MypagePage implements OnInit {
   goToMyCollectionPage () {
     this.router.navigate(['mypage/my-collection'])
   }
+
+  loadCollections() {
+    this.collectionService.getCollections().subscribe((data) => {
+      this.collections = data.map((collection) => ({
+        ...collection,
+        movie: collection.movies?.[0] || null,
+      }));
+    });
+  }
+  
 }

@@ -1,4 +1,3 @@
-
 <ion-header style="margin-top:50px;">
   <ion-toolbar color="white">
     <ion-buttons slot="start">
@@ -7,7 +6,7 @@
 
     <ion-title>컬렉션 업로드</ion-title>
     <ion-buttons slot="end">
-      <ion-button id = "present-alert" class="store_comment">공유</ion-button>
+      <ion-button id="present-alert" class="store_comment" (click)="shareCollection()">공유</ion-button>
       <ion-alert
         trigger="present-alert"
         header="컬렉션을 공유하시겠습니까?"
@@ -17,29 +16,24 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   <p class="description">공유하고자 하는 컬렉션을 선택해주세요.</p>
   <div>
-     <ion-list>
-          <ion-item *ngFor="let collection of collections" class="christmas_movie" tabindex="0" (click)="selectCollection($event)">
-            <div class="collection-container">
-              <!-- 포스터 부분 -->
-              <div class="poster-row">
-                <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
-              </div>
-      
-              <!-- 컬렉션 이름 부분 -->
-              <div class="details-row">
-                <h2>{{ collection?.name }}</h2>
-              </div>
-            </div>
-          </ion-item>
-     </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let collection of collections" class="christmas_movie" tabindex="0" (click)="selectCollection(collection.id, $event)">
+        <div class="collection-container">
+          <!-- 포스터 부분 -->
+          <div class="poster-row">
+            <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
+          </div>
+
+          <!-- 컬렉션 이름 부분 -->
+          <div class="details-row">
+            <h2>{{ collection?.name }}</h2>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
   </div>
-
-<!--  </ion-radio-group>-->
 </ion-content>
-<!--<div class="foot">-->
-<!--</div>-->
-
-

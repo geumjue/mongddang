@@ -59,4 +59,16 @@ export class CollectionService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.delete<void>(`${this.apiUrl}/${collectionId}`, { headers });
   }
+
+  // 공유된 컬렉션 조회
+  getSharedCollections(): Observable<any[]> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<any[]>(`${this.apiUrl}/shared`, { headers });
+  }
+
+  // 컬렉션 공유
+  shareCollection(collectionId: number): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(`${this.apiUrl}/share/${collectionId}`, {}, { headers });
+  }
 }

@@ -64,10 +64,13 @@
       <!-- 추가 콘텐츠 -->
 
     <ion-card-content class="collection-content">
-      <div class="collection-row">
-        <div class="collection-container" ></div>
-        <div class="collection-container"></div>
-        <div class="collection-container"></div>
+      <div *ngFor="let collection of collections" class="collection-container">
+        <div class="poster">
+          <div class="image image1">
+            <img [src]="collection.movie?.posterUrl" alt="컬렉션 이미지">
+          </div>
+        </div>
+        <h3 class="collection-title">{{ collection.name }}</h3> <!-- 컬렉션 제목 -->
       </div>
     </ion-card-content>
   </ion-card>

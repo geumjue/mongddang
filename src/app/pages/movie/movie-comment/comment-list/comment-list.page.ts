@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 import { CommentService } from 'src/app/services/comment/comment.sevice';
 import {GetMovieByIdResponseData} from "../../../../models/movie/movie-getmoviebyid-response-data.interface";
+import { FavoriteService } from 'src/app/services/favorite/favorite.service'; // FavoriteService import
 
 @Component({
   selector: 'app-comment-list',
@@ -22,6 +23,7 @@ export class CommentListPage implements OnInit {
   user = { username: '' };
   comments: CommentListResponseData[] = [];
   isLiked: boolean = false;
+  likedMovies: any[] = []; // 좋아요한 영화 배열 추가
 
 
   constructor(
@@ -31,6 +33,7 @@ export class CommentListPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    private favoriteService: FavoriteService
 
   ) {}
 
@@ -39,6 +42,7 @@ export class CommentListPage implements OnInit {
     this.loadMovieDetail(this.movieId)
     this.loadComments(this.movieId);
     this.getUserData(); // 사용자 정보 로드
+    this.checkIfLiked(); // 좋아요 상태 확인
   }
 
   loadMovieDetail(movieId: number) {
@@ -93,4 +97,58 @@ export class CommentListPage implements OnInit {
     const movieId = this.route.snapshot.params['id'];
     this.router.navigate([`movie/detail/${movieId}`]);
   }
+
+  // 좋아요 상태 확인
+  checkIfLiked() {
+    const userId = parseInt(this.authService.user?.id || '0', 10);
+    this.favoriteService.getUserFavorites(userId).subscribe({
+      next: (favorites) => {
+        this.isLiked = favorites.some(fav => fav.movieId === this.movieId);
+      },
+      error: (err: any) => {
+        console.error('좋아요 상태 확인 중 오류 발생:', err);
+      }
+    });
+  }
+  // 좋아요 토글 메서드
+  toggleLike() {
+    this.isLiked = !this.isLiked;
+
+    const userId = parseInt(this.authService.user?.id || '0', 10);
+
+    if (this.isLiked) {
+      const newFavorite = {
+        movieId: this.movieId,
+        movietitle: this.movieInfo.title || '제목 없음',
+        posterUrl: this.movieInfo.posterUrl || '/assets/default-poster.jpg',
+        userId: userId,
+      };
+
+      this.favoriteService.addFavorite({
+        userId: userId,
+        movieId: newFavorite.movieId,
+        movietitle: newFavorite.movietitle,
+        posterUrl: newFavorite.posterUrl
+      }).subscribe({
+        next: () => {
+          console.log('좋아요가 저장되었습니다.');
+          this.likedMovies.push(newFavorite);
+        },
+        error: (err: any) => {
+          console.error('좋아요 추가 중 오류 발생:', err);
+        }
+      });
+    } else {
+      this.favoriteService.removeFavorite(userId, this.movieId).subscribe({
+        next: () => {
+          console.log('좋아요가 취소되었습니다.');
+          this.likedMovies = this.likedMovies.filter(movie => movie.movieId !== this.movieId);
+        },
+        error: (err: any) => {
+          console.error('좋아요 제거 중 오류 발생:', err);
+        }
+      });
+    }
+  }
+
 }

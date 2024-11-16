@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="tabs/collection" (click)="goBackMovieDetail()" icon="close" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>코멘트 목록</ion-title>
+    <ion-title class="movie_title">{{ movieInfo.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -31,12 +31,13 @@
         </ion-col>
       </ion-row>
       <!-- 좋아요기능 --->
-      <ion-icon
-        [name]="isLiked ? 'heart' : 'heart-outline'"
-        [style.color]="isLiked ? 'red' : '#ededed'"
-        style="font-size: 22px; margin-left: 380px;">
-      </ion-icon>
-
+      <ion-col class="detail-col-want" (click)="toggleLike()">
+        <ion-icon
+          [name]="isLiked ? 'heart' : 'heart-outline'"
+          [style.color]="isLiked ? 'red' : '#ededed'"
+          style="font-size: 40px;">
+        </ion-icon>
+      </ion-col>
       <!-- 좋아요, 싫어요 버튼 -->
 <!--      <div class="interaction-buttons">-->
 <!--        <ion-button fill="clear" color="primary" size="small">-->

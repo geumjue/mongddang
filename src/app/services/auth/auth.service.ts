@@ -102,7 +102,7 @@ export class AuthService {
           console.log('AuthService user after login:', this.user); // 디버깅용
           localStorage.setItem('token', response.data.token);
           this.loggedInSubject.next(true);
-          this.router.navigate(['/mypage']);
+          this.router.navigate(['/recommendation']);
         }
       }),
       catchError(error => {

@@ -9,6 +9,7 @@ import { CommentService } from 'src/app/services/comment/comment.sevice';
 import {GetMovieByIdResponseData} from "../../../../models/movie/movie-getmoviebyid-response-data.interface";
 import { FavoriteService } from 'src/app/services/favorite/favorite.service'; // FavoriteService import
 
+
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.page.html',

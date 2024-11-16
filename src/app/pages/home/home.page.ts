@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { MovieService } from "../../services/movie/movie.service";
 import { GetMoviesResponseData } from "../../models/movie/movie-getmovie-response-data.interface";
 
@@ -14,12 +14,23 @@ export class HomePage implements AfterViewInit {
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
 
   movies: GetMoviesResponseData[] = [];
+  recommendedMovies: GetMoviesResponseData[] = []; // 추천 영화 데이터
 
-  constructor(private router: Router, private movieService: MovieService) {}
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private movieService: MovieService) { }
 
-  ngOnInit() {
-    this.getMovies();
-  }
+    ngOnInit() {
+      this.getMovies(() => {
+        this.activatedRoute.queryParams.subscribe((params: { [key: string]: string }) => {
+          const selectedGenre = params['genre'] || localStorage.getItem('selectedGenre');
+          if (selectedGenre) {
+            console.log('Loading recommended movies for genre:', selectedGenre);
+            this.loadRecommendedMovies(selectedGenre);
+          }
+        });
+      });
+    }
 
   ngAfterViewInit() {
     if (this.swiperRef_cgv && this.swiperRef_netflix) {
@@ -49,10 +60,16 @@ export class HomePage implements AfterViewInit {
     this.router.navigate(['search'], { state: { movies: this.movies } });
   }
 
-  getMovies() {
+  getMovies(callback?: () => void) {
     this.movieService.getMovies().subscribe({
       next: (response: GetMoviesResponseData[]) => {
         this.movies = response;
+        console.log('Movies loaded:', this.movies);
+  
+        // 콜백 실행
+        if (callback) {
+          callback();
+        }
       },
       error: (err: any) => {
         console.error('Error fetching movies:', err);
@@ -62,6 +79,7 @@ export class HomePage implements AfterViewInit {
       }
     });
   }
+  
 
   goToMovieDetailPage(id: string) {
     if (id) {
@@ -70,4 +88,20 @@ export class HomePage implements AfterViewInit {
       console.warn('Invalid movie ID');
     }
   }
+  goToRecommendationPage() {
+    this.router.navigate(['recommendation'], { state: { movies: this.movies } })
+  }
+  loadRecommendedMovies(genre: string) {
+    console.log('Filtering movies for genre:', genre);
+    console.log('Available movies:', this.movies);
+  
+    this.recommendedMovies = this.movies.filter(
+      (movie) => movie.genre?.trim() === genre.trim()
+    );
+  
+    console.log('Filtered recommended movies:', this.recommendedMovies);
+  
+    localStorage.setItem('recommendedMovies', JSON.stringify(this.recommendedMovies));
+  }
+  
 }

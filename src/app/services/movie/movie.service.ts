@@ -12,7 +12,7 @@ export class MovieService {
 
   constructor(private http: HttpClient) {
   }
-
+  
   // 영화 목록 조회
   getMovies(): Observable<GetMoviesResponseData[]> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});

@@ -2,7 +2,7 @@
   <!--검색-->
   <div class="searchbar_collection" style="margin-top: 55px;">
     <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!" (click)="goToSearchPage()"
-                   style="padding: 0 15px 15px 15px;"></ion-searchbar>
+      style="padding: 0 15px 15px 15px;"></ion-searchbar>
   </div>
   <!-- 프리뷰-->
   <div class="preview">
@@ -20,6 +20,7 @@
         </div>
         <a class="preview_count">1/2</a>
       </swiper-slide>
+
 
       <swiper-slide>
         <img src="assets/images/harry3.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
@@ -46,6 +47,7 @@
       centered-slides="true"
       autoplay-delay="3000"
       autoplay-disable-on-interaction="false">
+
       <swiper-slide>
         <ion-card class="comment-card">
           <ion-card-header class="comment-card-header">
@@ -59,7 +61,8 @@
           <ion-item>
             <!-- 영화 이미지-->
             <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+              <img alt="인사이드 아웃2"
+                src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
             </ion-thumbnail>
             <ion-content>
               <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
@@ -68,8 +71,8 @@
               </div>
             </ion-content>
           </ion-item>
-<!--          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>-->
-<!--          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>-->
+          <!--          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>-->
+          <!--          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>-->
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -85,7 +88,8 @@
           <ion-item>
             <!-- 영화 이미지-->
             <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2" src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+              <img alt="인사이드 아웃2"
+                src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
             </ion-thumbnail>
             <ion-content>
               <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
@@ -99,6 +103,7 @@
       </swiper-slide>
     </swiper-container>
   </div>
+
 
   <!-- 영화리스트 -->
   <div class="movie">
@@ -124,5 +129,17 @@
           </div>
         </swiper-slide>
       </swiper-container>
+
+  <div class="recommended-section">
+    <h5 class="recommended-title">추천 영화</h5>
+    <swiper-container #swiper_recommended>
+      <swiper-slide *ngFor="let movie of recommendedMovies" (click)="goToMovieDetailPage(movie.id)">
+        <img [src]="movie.posterUrl" alt="{{ movie.title }}" />
+        <div class="movie-title">{{ movie.title }}</div>
+      </swiper-slide>
+    </swiper-container>
   </div>
+  
+  <ion-item (click)="goToRecommendationPage()">여기 클릭</ion-item>
+</ion-content>
 

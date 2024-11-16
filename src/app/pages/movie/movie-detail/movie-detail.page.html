@@ -71,45 +71,61 @@
   </ion-item>
 
   <!-- Comment Section -->
-  <div class="comment-container">
-    <ion-label class="commentTitle">코멘트</ion-label>
-    <span class="commentCount">50+</span>
-    <span class="moreComment" (click)="goToCommentListPage()">더보기</span>
-  </div>
+<!--  <div class="comment-container">-->
+<!--    <ion-label class="commentTitle">코멘트</ion-label>-->
+<!--    <span class="commentCount">50+</span>-->
+<!--    <span class="moreComment" (click)="goToCommentListPage()">더보기</span>-->
+<!--  </div>-->
 
-  <ion-card>
-    <ion-list>
-      <ion-item>
-        <div class="comment_profile">
-          <ion-avatar slot="start">
-            <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-          </ion-avatar>
-          <ion-label>(유저네임)</ion-label>
-        </div>
-      </ion-item>
 
-      <!-- 영화 이미지와 코멘트 -->
-      <ion-item lines="none">
-        <ion-label>
-          <h2 class="comment-베테랑2">(영화제목)</h2>
-          <p class="comment">
-            (코멘트내용)
-          </p>
-        </ion-label>
-      </ion-item>
-      <!-- 좋아요 및 댓글 버튼 -->
-      <ion-item class="good_and_comment">
-<!--        <ion-button fill="clear" class="text-button">-->
-<!--          <ion-icon name="thumbs-up"></ion-icon> 1,004-->
-<!--        </ion-button>-->
-<!--        <ion-button fill="clear" class="text-button">-->
-<!--          <ion-icon name="thumbs-down"></ion-icon> 127-->
-<!--        </ion-button>-->
-      </ion-item>
-      <ion-item lines="none">
-        <ion-button fill="clear" class="text-button"><ion-icon name="thumbs-up-sharp"></ion-icon></ion-button>
-        <ion-button fill="clear" class="text-button"><ion-icon name="chatbubbles-sharp"></ion-icon></ion-button>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+
+  <ion-fab style="margin-top: 55px; margin-right: 5px"  slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon (click)="goToCommentListPage()" name="chatbox-ellipses-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon (click)="goToCommentWritePage()" name="create-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+<!--  <ion-card>-->
+<!--    <ion-list>-->
+<!--      <ion-item>-->
+<!--        <div class="comment_profile">-->
+<!--          <ion-avatar slot="start">-->
+<!--            <img alt="프로필 사진" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>-->
+<!--          </ion-avatar>-->
+<!--          <ion-label>(유저네임)</ion-label>-->
+<!--        </div>-->
+<!--      </ion-item>-->
+
+<!--      &lt;!&ndash; 영화 이미지와 코멘트 &ndash;&gt;-->
+<!--      <ion-item lines="none">-->
+<!--        <ion-label>-->
+<!--          <h2 class="comment-베테랑2">(영화제목)</h2>-->
+<!--          <p class="comment">-->
+<!--            (코멘트내용)-->
+<!--          </p>-->
+<!--        </ion-label>-->
+<!--      </ion-item>-->
+<!--      &lt;!&ndash; 좋아요 및 댓글 버튼 &ndash;&gt;-->
+<!--      <ion-item class="good_and_comment">-->
+<!--&lt;!&ndash;        <ion-button fill="clear" class="text-button">&ndash;&gt;-->
+<!--&lt;!&ndash;          <ion-icon name="thumbs-up"></ion-icon> 1,004&ndash;&gt;-->
+<!--&lt;!&ndash;        </ion-button>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ion-button fill="clear" class="text-button">&ndash;&gt;-->
+<!--&lt;!&ndash;          <ion-icon name="thumbs-down"></ion-icon> 127&ndash;&gt;-->
+<!--&lt;!&ndash;        </ion-button>&ndash;&gt;-->
+<!--      </ion-item>-->
+<!--      <ion-item lines="none">-->
+<!--        <ion-button fill="clear" class="text-button"><ion-icon name="thumbs-up-sharp"></ion-icon></ion-button>-->
+<!--        <ion-button fill="clear" class="text-button"><ion-icon name="chatbubbles-sharp"></ion-icon></ion-button>-->
+<!--      </ion-item>-->
+<!--    </ion-list>-->
+<!--  </ion-card>-->
 </ion-content>

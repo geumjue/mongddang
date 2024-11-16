@@ -1,45 +1,19 @@
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-*{
-  font-family: 'Pretendard-Regular';
+ion-item {
+  padding: 0;
+  margin-top: 10px;
 }
 
-ion-back-button{
-  color:#db4a2b;
-  margin-left: 9px;
-
-}
-//ion-button{
-//  color: ;
-//}
-ion-item{
-  margin-top: 60px !important;
-}
-
-ion-input::part(native)::placeholder {
-  color: grey; /* Placeholder 텍스트 색상 */
-}
-
-.foot{
-  display: flex;
-  align-content: center;
-  margin: 15px;
-  color: grey;
-  font-size: 12px;
-
-}
-.foot .text_count{
-  margin-left: auto;
+.collection-container {
+  display: grid;
+  grid-template-columns: 1fr; /* 기본적으로 한 열로 설정 */
+  gap: 10px; /* 아이템 간의 간격 */
 }
 
 .poster-row {
   display: flex;
   overflow-x: auto;
-  gap: 8px; /* 포스터 사이 간격 */
+  gap: 8px;
+  margin-bottom: 10px; /* 포스터와 텍스트 사이에 간격 추가 */
 }
 
 .poster-image {
@@ -49,175 +23,18 @@ ion-input::part(native)::placeholder {
   padding-bottom: 5px;
 }
 
-
-.christmas_movie {
+.details-row {
   display: flex;
-  flex-direction: column; /* 세로 방향으로 쌓이게 설정 */
-  margin: 0 10px 10px 10px;
-  border: 2px solid transparent; /* 기본적으로 투명한 테두리 */
-  transition: border-color 0.3s; /* 테두리 색상 변화에 애니메이션 추가 */
-  cursor: pointer;
-  padding:10px;
-}
-.christmas_movie.active {
-  border-color: #db4a2b; /* 선택되었을 때 테두리 색상 */
-  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/*크히스마스에 생각나는 영화*/
-.header {
-  display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
-  margin-bottom: 3px; /* 텍스트와 영화 이미지 사이의 간격 */
-  font-size: 17px;
-  font-weight: bold;
-  color: #1c1c1c;
+.details-row h2 {
+  margin: 0;
+  font-size: 16px;
+  flex: 1; /* 컬렉션 이름이 공간을 차지하게 함 */
 }
 
-
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-*{
-  font-family: 'Pretendard-Regular';
-}
-
-ion-back-button{
-  color:#db4a2b;
-  margin-left: 9px;
-
-}
-//ion-button{
-//  color: ;
-//}
-ion-item{
-  margin-top: 10px;
-
-}
-ion-input::part(native)::placeholder {
-  color: grey; /* Placeholder 텍스트 색상 */
-}
-.foot{
-  display: flex;
-  align-content: center;
-  margin: 15px;
-  color: grey;
-  font-size: 12px;
-
-}
-.foot .text_count{
-  margin-left: auto;
-}
-
-.christmas_movie {
-  display: flex;
-  flex-direction: column; /* 세로 방향으로 쌓이게 설정 */
-  margin: 0 10px 10px 10px;
-  border: 2px solid transparent; /* 기본적으로 투명한 테두리 */
-  transition: border-color 0.3s; /* 테두리 색상 변화에 애니메이션 추가 */
-  cursor: pointer;
-  padding:10px;
-}
-.christmas_movie.active {
-  border-color: #db4a2b; /* 선택되었을 때 테두리 색상 */
-  border-radius: 8px;
-}
-
-/*크히스마스에 생각나는 영화*/
-.header {
-  display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
-  margin-bottom: 3px; /* 텍스트와 영화 이미지 사이의 간격 */
-  font-size: 17px;
-  font-weight: bold;
-  color: #1c1c1c;
-}
-
-
-.movie-images {
-  display: flex;
-  flex-wrap: wrap; /* 이미지가 넘칠 경우 아래로 내려가도록 설정 */
-}
-
-
-.alone {
-  flex: 0 1 calc(20% - 6px); /* 5개가 들어가도록 너비 계산 (간격을 고려) */
-  width: 70px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
-  height: auto;
-  object-fit: cover;
-  //max-width: 100px; /* 최대 너비 설정 */
-  margin: 3px; /* 이미지 사이의 간격 */
-  border-radius: 3px; /* 모서리를 둥글게 설정 (값 조정 가능) */
-}
-
-.store_comment {
-  color: grey; // 기본 색상
-
-  &.active-share {
-    color: #db4a2b; // 선택된 경우 색상
-  }
-}
-
-.description {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: grey;
-  font-size: 15px;
-}
-
-.custom-cancel-button {
-  background-color: transparent; /* Red */
-  color: #db4a2b; /* Text color */
-}
-
-.custom-confirm-button {
-  background-color: #222222; /* Blue */
-  color: white; /* Text color */
-}
-
-
-.alone {
-  width: 70px; /* 이미지 너비를 100%로 설정하여 컨테이너에 맞춤 */
-  height: auto;
-  object-fit: cover;
-  //max-width: 100px; /* 최대 너비 설정 */
-  margin: 3px; /* 이미지 사이의 간격 */
-  border-radius: 3px; /* 모서리를 둥글게 설정 (값 조정 가능) */
-}
-
-.store_comment {
-  color: grey; // 기본 색상
-
-  &.active-share {
-    color: #db4a2b; // 선택된 경우 색상
-  }
-}
-
-.description {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: grey;
-  font-size: 15px;
-}
-
-.custom-cancel-button {
-  background-color: transparent; /* Red */
-  color: #db4a2b; /* Text color */
-}
-
-.custom-confirm-button {
-  background-color: #222222; /* Blue */
-  color: white; /* Text color */
-}
-.delete-text {
-  margin-left: auto;
+.delete-button {
   font-size: 14px;
-  font-weight: lighter;
-  color: grey;
-  cursor: pointer; /* 커서 모양 변경 */
 }

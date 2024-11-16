@@ -1,0 +1,22 @@
+src/app/app.component.html
+<div class="chat-container">
+    <h1>Chatbot</h1>
+  
+    <div class="chat-box">
+      <div class="message user-message" *ngIf="userMessage">
+        You: {{ userMessage }}
+      </div>
+      <div class="message bot-response" *ngIf="botResponse">
+        Bot: {{ botResponse }}
+      </div>
+    </div>
+  
+    <input
+      type="text"
+      [(ngModel)]="userMessage"
+      placeholder="Enter your message"
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+  

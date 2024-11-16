@@ -2,11 +2,17 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
 import { CollectionAddPage } from './pages/movie/collection-add/collection-add.page';
+import { RecommendationPage } from './pages/home/recommendation/recommendation.page';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePage
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'auth',
@@ -52,10 +58,14 @@ const routes: Routes = [
   },
   {
     path: 'movie/detail/:id/collection-add', component: CollectionAddPage
-  }
-
-
-
+  },
+  // {
+  //   path: 'recommendation',
+  //   loadChildren: () => import('./pages/auth/mypage/mypage.module').then(m => m.MypagePageModule)
+  // },
+  
+  
+  
 
 
 ];

@@ -5,10 +5,10 @@ import { CommentListResponseData } from '../../../../models/comment/comment-list
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { AlertController } from '@ionic/angular';
 import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
 import { CommentService } from 'src/app/services/comment/comment.sevice';
 import { jwtDecode } from 'jwt-decode';
+import { AlertController } from '@ionic/angular';
 
 interface CommentWithMovie {
   comment: CommentListResponseData;

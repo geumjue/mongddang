@@ -1,10 +1,11 @@
+//home-routing.page
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import {NowsCommentPage} from "./nows-comment/nows-comment.page";
 import {MovieDetailPage} from "../movie/movie-detail/movie-detail.page";
 import {SearchPage} from "../movie/movie-search/search.page";
-// import {SearchPage} from "../search/search.page";
+import { RecommendationPage } from './recommendation/recommendation.page';
 
 
 const routes: Routes = [
@@ -18,8 +19,11 @@ const routes: Routes = [
     path: 'movie-detail', component: MovieDetailPage,
   },
   {
-    path: 'search', component: SearchPage
+    path: 'search', component: SearchPage,
   },
+  {
+    path: 'recommendation', component: RecommendationPage 
+  }
 
 ];
 

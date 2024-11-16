@@ -14,99 +14,24 @@
   padding: 0 10px ;
 }
 
-ion-header{
-  display: flex;
-  justify-content: center;
-  padding: 15px;
-}
 
-
-.home_wrapper{
-  overflow-y: scroll;
-  scrollbar-width: none;
-}
-
-.home_wrapper::-webkit-scrollbar {
-  display: none;
- }
-
-.toolbar_list {
-  display: flex; /* 가로 정렬 */
-  list-style: none; /* 기본 리스트 스타일 제거 */
-  padding: 0;
-  margin: 0;
-}
-.toolbar_list ion-button {
-  --margin: 0;
-  --border: none;
-  --box-shadow: none;
-  --color: grey;
-  font-size:18px;
-  font-weight: bold;
-}
-.toolbar_list ion-button:hover{
-  --color: black;
-}
-.toolbar_list ion-button ::after{
-  position: relative;
-  left: 15px;
-  width: 1px;
-  height: 13px;
-  content: "";
-  background: black;
-}
-
-
-
-.logo_image {
-  width: auto;  /* 이미지 너비 */
-  height: 44px;
-
-  display: block;  /* 이미지 블록 요소로 설정 */
-}
-ion-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.toolbar_list {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-}
-.toolbar_list li {
-  margin-right: 15px; /* 항목 간의 간격 조절 */
-}
-
-.toolbar_logo {
-  margin-left: auto; /* 리스트와 이미지 사이에 자동 여백 */
-}
-
-.logo_image {
-  width: 100px; /* 이미지 너비 조절 */
-  height: auto; /* 이미지 비율 유지 */
-}
 
 p{
+  font-weight: bold;
   font-size: 20px;
   margin-left: 16px;
 }
-.bold_title{
-  font-weight: bold;
-}
+
+
 p ion-icon {
   margin-left: 230px;
   color: grey;/* 텍스트와 아이콘 사이의 간격을 16px로 설정 */
 }
 
+
 .home_comment {
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
 
 }
@@ -187,130 +112,9 @@ ion-thumbnail img {
 
 }
 
-.box_office_rankings {
-  width: 430px;
-  margin-bottom: 30px;
-}
-.box_office_rankings .label {
-  font-size: 20px;
-  font-weight: 700;
-  padding: 14px 0;
-}
-
-.box_office_rankings .movie_list {
-  width: 100%;
-  height: 300px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-
-   ////가로 스크롤 없애기, 대신 mobile에서만 스크롤 가능함
-   //-ms-overflow-style: none;
-   //scrollbar-width: none;
-   //
-   //::-webkit-scrollbar {
-   //  display: none;
-   //}
-}
-
-
-.movie_list{
-  margin-top: 10px;
-}
-.box_office_rankings .movie_list ul {
-  width: auto;
-  gap: 12px;
-  display: inline-flex;
-  flex-wrap: nowrap;
-  overflow: visible;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.box_office_rankings .movie_list ul li {
-  width: 120px; //왓챠피디아에서 그대로 이미지 가져온거라 따로 이미지 크기는 조정안함
-}
-
-.box_office_rankings .movie_list ul li img {
-  margin-left: 16px; /* 리스트 항목 내 모든 이미지의 왼쪽 마진 */
-  border-radius: 5px;
-
-}
-
-.box_office_rankings .movie_list ul li .description {
-  margin-top: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
 
 
 
-
-/* 정렬하기 */
-
-//
-//.box_office_rankings {
-//  width: 430px;
-//  margin-bottom: 30px;
-//}
-//
-//.box_office_rankings .label {
-//  font-size: 20px;
-//  font-weight: 700;
-//  padding: 14px 0;
-//}
-//
-//.box_office_rankings .movie_list {
-//  width: 100%;
-//  height: auto; /* height를 auto로 설정하여 내부 콘텐츠에 맞게 동적으로 조정 */
-//  margin-top: 10px;
-//}
-//
-//.box_office_rankings .movie_list swiper-container {
-//  width: 100%;
-//  overflow-x: hidden; /* Swiper는 자체적으로 스크롤 처리를 하므로 overflow 설정을 조정 */
-//}
-//
-//.box_office_rankings .movie_list swiper-slide {
-//  width: 120px; /* 슬라이드의 너비를 고정 */
-//  display: flex;
-//  flex-direction: column;
-//  align-items: center;
-//  margin-right: 12px; /* 각 슬라이드 사이에 여백 추가 */
-//}
-//
-//.box_office_rankings .movie_list swiper-slide img {
-//  width: 100%; /* 이미지가 슬라이드의 너비에 맞게 설정 */
-//  border-radius: 5px;
-//}
-//
-//.box_office_rankings .movie_list swiper-slide .description {
-//  margin-top: 5px;
-//  text-align: center;
-//}
-//
-//.title {
-//  font-size: 16px;
-//  font-weight: 400;
-//  overflow: hidden;
-//  text-overflow: ellipsis;
-//  white-space: nowrap;
-//}
-//
-//.year_country {
-//  font-size: 14px;
-//}
-//
-//.sub {
-//  font-size: 13px;
-//  color: #7e7e7e;
-//}
-
-
-.actor h4{
-  color: grey;
-}
 
 
 
@@ -363,3 +167,51 @@ ion-thumbnail img {
   text-decoration: none;
   z-index: 10;
 }
+
+
+
+
+
+
+.movie-item {
+  position: relative; /* 순위와 이미지 겹치기 위해 설정 */
+  display: flex;
+  flex-direction: column; /* 포스터와 이름을 세로 배치 */
+  justify-content: space-between; /* 내용 사이 간격 조정 */
+  padding: 7px;
+  border-radius: 10px; /* 모서리를 둥글게 */
+  margin: 7px; /* 카드 간 간격 */
+  width: 150px; /* 카드 고정 너비 */
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto; /* 이미지를 비율에 맞게 조정 */
+  border-radius: 5px; /* 필요하면 둥근 모서리 */
+}
+
+.rank {
+  position: absolute; /* 이미지 위에 겹치도록 설정 */
+  top: 10px; /* 이미지 위쪽에서 10px 아래 */
+  left: 10px; /* 이미지 왼쪽에서 10px 오른쪽 */
+  background-color: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
+  color: white; /* 텍스트 색상 */
+  padding: 5px 10px; /* 내부 여백 */
+  border-radius: 20%; /* 동그라미 형태 */
+  font-size: 16px; /* 폰트 크기 */
+  font-weight: bold; /* 텍스트 굵게 */
+  text-align: center; /* 가운데 정렬 */
+  width: 30px; /* 동그라미 크기 */
+  height: 30px; /* 동그라미 크기 */
+  display: flex; /* 숫자 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.movie_name {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2d2d2d;
+}
+

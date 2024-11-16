@@ -21,6 +21,7 @@ export class CommentListPage implements OnInit {
   }
   user = { username: '' };
   comments: CommentListResponseData[] = [];
+  isLiked: boolean = false;
 
 
   constructor(
@@ -28,7 +29,9 @@ export class CommentListPage implements OnInit {
     private movieService: MovieService,
     private userService: UserService,
     private route: ActivatedRoute,
+    private router: Router,
     private authService: AuthService,
+
   ) {}
 
   ngOnInit() {
@@ -83,5 +86,11 @@ export class CommentListPage implements OnInit {
       return decodedToken?.email || null;
     }
     return null;
+  }
+
+  // 영화 상세 페이지로 돌아가는 메서드
+  goBackMovieDetail() {
+    const movieId = this.route.snapshot.params['id'];
+    this.router.navigate([`movie/detail/${movieId}`]);
   }
 }

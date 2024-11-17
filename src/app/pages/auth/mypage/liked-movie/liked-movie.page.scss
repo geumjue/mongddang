@@ -9,42 +9,12 @@
   font-family: 'Pretendard-Regular';
 }
 
-ion-content {
-  background-color: #000; // 어두운 배경 설정
-}
-
-.movies-container {
-  padding: 10px;
-}
-
-.movie-poster {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.movie-poster img {
-  width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
 
 .movie-poster:hover img {
   transform: scale(1.05); // 호버 시 확대 효과
 }
 
-.movie-title {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.7); // 반투명 배경
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-}
+
 .no-movies {
   display: flex;
   justify-content: center;
@@ -52,4 +22,46 @@ ion-content {
   margin-top: 400px;
   color: #3c3c3c;
   font-size: 20px;
+}
+
+.movie-card {
+  padding: 0; /* 카드의 기본 패딩 제거 */
+  height: auto; /* 높이를 포스터에 맞춤 */
+  display: flex; /* 전체 레이아웃을 플렉스로 설정 */
+  flex-direction: row; /* 가로 방향 정렬 */
+  align-items: stretch; /* 아이템 높이를 동일하게 설정 */
+}
+
+.movie-item {
+  display: flex;
+  flex: 1; /* 카드 전체를 채우도록 설정 */
+  align-items: center; /* 세로 가운데 정렬 */
+}
+
+.poster {
+  width: 90px; /* 원하는 포스터 크기로 조정 */
+  height: auto; /* 원본 비율 유지 */
+  object-fit: cover; /* 이미지 크기 조절 */
+}
+
+.details {
+  //flex: 1; /* 제목 부분이 남은 공간을 차지하도록 설정 */
+  margin: 10px; /* 텍스트에 여백 추가 */
+}
+
+.movie-title {
+  font-size: 18px; /* 제목 크기 조정 */
+  margin-bottom: 20px;
+  color: black;
+}
+.movie-info {
+  margin-top: 8px; /* 제목과의 간격 */
+  font-size: 14px; /* 정보 크기 */
+  line-height: 1.6; /* 정보 줄 간격 */
+  color: #666; /* 텍스트 색상 */
+}
+
+.movie-card {
+  --ion-card-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 크기 및 투명도를 줄임 */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }

@@ -36,7 +36,7 @@
   <!--지금 뜨는 코멘트 -->
   <div class="home_comment">
     <p>
-      지금 뜨는 코멘트
+      지금 뜨는 코멘트💡
       <ion-icon (click)="goToNowsCommentPage()" name="chevron-forward-outline"></ion-icon>
     </p>
     <swiper-container
@@ -53,21 +53,21 @@
           <ion-card-header class="comment-card-header">
             <div class="comment_profile">
               <ion-avatar aria-hidden="true" slot="start">
-                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                <img alt="" src="assets/images/unknow.png" />
               </ion-avatar>
-              <ion-label>메타몽</ion-label>
+              <ion-label>영화덕후</ion-label>
             </div>
           </ion-card-header>
           <ion-item>
             <!-- 영화 이미지-->
             <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2"
-                src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+              <img alt=""
+                src="https://image.cine21.com/resize/cine21/poster/2019/0806/11_33_48__5d48e70c8f222[X230,330].jpg" />
             </ion-thumbnail>
             <ion-content>
-              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
+              <ion-card-title class="now-comment-card-title">유열의 음악앨범</ion-card-title>
               <div class="comment">
-                결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
+                시대의 공기와 지형을 만든 후 탄탄하게 쌓아올린 감정의 결
               </div>
             </ion-content>
           </ion-item>
@@ -80,9 +80,9 @@
           <ion-card-header class="comment-card-header">
             <div class="comment_profile">
               <ion-avatar aria-hidden="true" slot="start">
-                <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                <img alt="" src="assets/images/unknow.png" />
               </ion-avatar>
-              <ion-label>메타몽</ion-label>
+              <ion-label>무비러버</ion-label>
             </div>
           </ion-card-header>
           <ion-item>
@@ -107,7 +107,7 @@
 
   <!-- 영화리스트 -->
   <div class="movie">
-    <p>박스오피스 순위</p>
+    <p>박스오피스 순위🏆</p>
     <swiper-container #swiper_cgv>
       <swiper-slide *ngFor="let movie of movies; let i = index" (click)="goToMovieDetailPage(movie.id)">
         <div class="movie-item">

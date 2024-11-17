@@ -13,7 +13,6 @@ import { CollectionService } from 'src/app/services/collection/collection.servic
 import { tap } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.page.html',
@@ -37,11 +36,14 @@ export class CollectionPage implements OnInit {
   }
 
   loadCollections() {
-    this.collections = [
-      { id: 1, name: '크리스마스에 생각나는 영화', favoriteCount: 326 },
-      { id: 2, name: '천만 돌파한 한국 영화는 뭐가 있을까?', favoriteCount: 220 },
-      { id: 3, name: '웹툰 원작 영화 컬렉션', favoriteCount: 104 },
-    ];
+    this.collectionService.getCollections().subscribe(
+      (collections: any[]) => {
+        this.collections = collections; // 서버에서 가져온 컬렉션 목록을 할당
+      },
+      (error) => {
+        console.error('컬렉션 로딩 실패:', error);
+      }
+    );
   }
 
   goToUploadCollectionPage() {

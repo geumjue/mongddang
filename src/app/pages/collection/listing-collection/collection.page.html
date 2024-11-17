@@ -33,9 +33,8 @@
   </div>
 
   <!-- 공유된 컬렉션 -->
-  <ion-item *ngFor="let collection of collections" (click)="viewDetail(collection.id)">
+  <ion-item *ngFor="let collection of sharedCollections$ | async" (click)="viewDetail(collection.id)">
     <div class="collection-container">
-
       <div class="details-row">
         <h2>{{ collection?.name }}</h2>
       </div>
@@ -43,7 +42,6 @@
       <div class="poster-row">
         <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
       </div>
-
     </div>
   </ion-item>
 

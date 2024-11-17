@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 import {
   PostCollectionRequestData,
   PostCollectionResponseData
@@ -60,7 +60,7 @@ export class CollectionService {
     return this.http.delete<void>(`${this.apiUrl}/${collectionId}`, { headers });
   }
 
-  // 공유된 컬렉션 조회
+  // 공유된 컬렉션 조회 메서드
   getSharedCollections(): Observable<any[]> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<any[]>(`${this.apiUrl}/shared`, { headers });
@@ -69,6 +69,10 @@ export class CollectionService {
   // 컬렉션 공유
   shareCollection(collectionId: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.apiUrl}/share/${collectionId}`, {}, { headers });
+    return this.http.post<any>(`${this.apiUrl}/share/${collectionId}`, {}, { headers }).pipe(
+      tap((response) => {
+        console.log('컬렉션 공유 성공:', response);
+      })
+    );
   }
 }

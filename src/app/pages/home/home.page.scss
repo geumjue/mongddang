@@ -58,9 +58,13 @@ p ion-icon {
 .now-comment-card-title{
   //font-weight: 600;
   font-size: 15px;
+  margin-top: 5px;
 }
 ion-card-header {
   padding-bottom: 8px;
+  padding-left: 15px;
+  padding-top: 0;
+  //margin-bottom: 8px;
 }
 ion-avatar {
   width: 30px; /* 아이콘의 너비 조정 */
@@ -83,7 +87,7 @@ ion-label {
 }
 
 .comment-card-header{
-  height: 40px;
+  height: 35px;
 }
 //comment: 이미지 크기 설정
 ion-thumbnail {
@@ -95,6 +99,7 @@ ion-thumbnail img {
   height: 100px;
   //border-radius: 5px;
   object-fit: cover; /* 이미지 비율 유지하면서 썸네일에 맞게 조정 */
+  border-radius: 3px;
 }
 
 .home_comment ion-item {

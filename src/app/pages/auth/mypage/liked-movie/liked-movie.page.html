@@ -1,29 +1,44 @@
-<ion-header>
-  <ion-toolbar>
+<!--<ion-header>-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>좋아요한 영화</ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
+<ion-header style="margin-top: 45px">
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="tabs/collection" (click)="goBackMyPage()" icon="close" text=""></ion-back-button>
+    </ion-buttons>
     <ion-title>좋아요한 영화</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
   <div *ngIf="likedMovies.length > 0; else noMovies" class="movies-container">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12" *ngFor="let movie of likedMovies">
-          <ion-card class="movie-card">
+    <div class="grid-container">
+      <div class="row">
+        <div class="col" *ngFor="let movie of likedMovies">
+          <div class="movie-card">
             <div class="movie-item">
               <img class="poster" [src]="movie.posterUrl" alt="{{ movie.movietitle }} 포스터">
               <div class="details">
                 <h2 class="movie-title">{{ movie.movietitle }}</h2>
                 <p class="movie-info">
+                  {{movie.directorName}}
+                  <br>
+                  {{movie.actor}}
+                  <br>
                   {{ movie.genre }} · {{ movie.nation }} <br>
                   {{ movie.runningTime }}분 · {{ movie.ratedYn ? '15세 이상 관람가' : '연령 제한 없음' }}
                 </p>
               </div>
             </div>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <ng-template #noMovies>

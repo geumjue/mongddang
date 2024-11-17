@@ -11,6 +11,8 @@ interface LikedMovie {
   movietitle: string;
   posterUrl: string;
   genre: string;
+  directorName: string,
+  actor:string,
   runningTime: number;
   nation: string;
   ratedYn: boolean;
@@ -80,6 +82,8 @@ export class LikedMoviePage implements OnInit {
         releasedAt: movie.releasedAt,
         createdAt: movie.createdAt,
         modifiedAt: movie.modifiedAt,
+        directorName: movie.directorName,
+        actor:movie.actor,
       };
       this.favoriteService.addFavorite(favoriteData).subscribe({
         next: () => {
@@ -132,6 +136,8 @@ export class LikedMoviePage implements OnInit {
                     releasedAt: movieData.releasedAt || '발매일 미정',
                     createdAt: movieData.createdAt || '',
                     modifiedAt: movieData.modifiedAt || '',
+                    directorName: movieData.directorName || '',
+                    actor: movieData.actor || '',
                   });
                   console.log('Updated likedMovies array:', this.likedMovies);
                 },
@@ -154,4 +160,7 @@ export class LikedMoviePage implements OnInit {
   }
 
 
+  goBackMyPage () {
+    this.router.navigate(['mypage/'])
+  }
 }

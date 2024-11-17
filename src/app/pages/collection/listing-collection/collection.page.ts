@@ -72,4 +72,20 @@ export class CollectionPage implements OnInit {
   viewDetail(collectionId: number) {
     this.navController.navigateForward(`/detail-collection/${collectionId}`);
   }
+
+  favoriteSharedCollection(collectionId: number) {
+    this.collectionService.favoriteCollection(collectionId).subscribe(
+      (response) => {
+        console.log('즐겨찾기 성공:', response);
+        // 즐겨찾기 후, 해당 컬렉션의 상태를 갱신
+        const collection = this.collections.find(c => c.id === collectionId);
+        if (collection) {
+          collection.isFavorite = !collection.isFavorite;  // 상태 변경
+        }
+      },
+      (error) => {
+        console.error('즐겨찾기 실패:', error);
+      }
+    );
+  }
 }

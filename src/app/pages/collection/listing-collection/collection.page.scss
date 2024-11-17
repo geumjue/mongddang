@@ -11,14 +11,14 @@
 
 .poster-row {
   display: flex;
-  overflow-x: auto;
+  justify-content: space-between;
   gap: 8px;
-  margin-bottom: 10px; /* 포스터와 텍스트 사이에 간격 추가 */
+  margin-bottom: 10px;
 }
 
 .poster-image {
-  width: 100px;
-  height: 150px;
+  width: 30%;
+  height: auto;
   border-radius: 4px;
   padding-bottom: 5px;
 }
@@ -33,6 +33,24 @@
   margin: 0;
   font-size: 16px;
   flex: 1; /* 컬렉션 이름이 공간을 차지하게 함 */
+}
+
+.heart-empty,
+.heart-filled {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 24px;
+  color: red;
+  cursor: pointer;
+}
+
+.heart-filled {
+  color: red;
+}
+
+.heart-empty {
+  color: #ccc; /* 빈 하트는 연한 빨간색 */
 }
 
 /* 서치바 css */

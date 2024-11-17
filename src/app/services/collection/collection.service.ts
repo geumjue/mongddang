@@ -75,4 +75,11 @@ export class CollectionService {
       })
     );
   }
+
+  // 컬렉션 좋아요
+  favoriteCollection(collectionId: number): Observable<any> {
+    const url = `${this.apiUrl}/${collectionId}/favorite`;  // 즐겨찾기용 엔드포인트
+    return this.http.post<any>(url, {});
+  }
+  
 }

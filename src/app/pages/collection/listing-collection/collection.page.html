@@ -43,8 +43,16 @@
         <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
       </div>
     </div>
+
+    <ion-icon 
+      [ngClass]="{'heart-filled': collection.isFavorite, 'heart-empty': !collection.isFavorite}" 
+      name="heart" 
+      (click)="favoriteSharedCollection(collection.id)">
+    </ion-icon>
+
   </ion-item>
 
+  <!-- 공유 컬렉션 추가 버튼 -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon (click)="goToUploadCollectionPage()" name="add"></ion-icon>

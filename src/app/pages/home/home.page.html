@@ -36,7 +36,7 @@
   <!--지금 뜨는 코멘트 -->
   <div class="home_comment">
     <p>
-      지금 뜨는 코멘트💡
+      지금 뜨는 코멘트 💡
       <ion-icon (click)="goToNowsCommentPage()" name="chevron-forward-outline"></ion-icon>
     </p>
     <swiper-container
@@ -107,7 +107,7 @@
 
   <!-- 영화리스트 -->
   <div class="movie">
-    <p>박스오피스 순위🏆</p>
+    <p>박스오피스 순위 🏆</p>
     <swiper-container #swiper_cgv>
       <swiper-slide *ngFor="let movie of movies; let i = index" (click)="goToMovieDetailPage(movie.id)">
         <div class="movie-item">
@@ -119,16 +119,34 @@
     </swiper-container>
   </div>
 
-  <div class="movie2">
-    <p>#판타지</p>
-      <swiper-container #swiper_netflix>
-        <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">
-          <div class="movie-item">
-            <img [src]="movie.posterUrl" class="movie-poster">
-            <div class="movie_name">{{ movie.title }}</div>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+<!--  <div class="movie2">-->
+<!--    <p>#판타지</p>-->
+<!--      <swiper-container #swiper_netflix>-->
+<!--        <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">-->
+<!--          <div class="movie-item">-->
+<!--            <img [src]="movie.posterUrl" class="movie-poster">-->
+<!--            <div class="movie_name">{{ movie.title }}</div>-->
+<!--          </div>-->
+<!--        </swiper-slide>-->
+<!--      </swiper-container>-->
+<!--  </div>-->
+
+
+<div class="genre">
+  <div *ngFor="let genre of genres" #swiper_genre>
+    <p># {{ genre }}</p>
+    <swiper-container>
+      <swiper-slide *ngFor="let movie of moviesGroupedByGenre[genre]">
+        <div class="movie-item">
+          <img [src]="movie.posterUrl" class="movie-poster">
+          <div class="movie_name">{{ movie.movietitle }}</div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>
+
+
 
   <div class="recommended-section">
     <h5 class="recommended-title">추천 영화</h5>
@@ -138,7 +156,6 @@
         <div class="movie-title">{{ movie.title }}</div>
       </swiper-slide>
     </swiper-container>
-  </div>
   </div>
   <ion-item (click)="goToRecommendationPage()">여기 클릭</ion-item>
 </ion-content>

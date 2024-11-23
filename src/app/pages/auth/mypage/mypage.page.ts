@@ -41,6 +41,9 @@ export class MypagePage implements OnInit {
     if (this.isLoggedIn) {
       this.getUserData();
       this.loadCollections();
+
+      console.log('로그인 상태 확인됨. Recommendation 페이지로 이동합니다.');
+      this.router.navigate(['/recommendation']);
     } else {
       console.error('사용자가 로그인하지 않았습니다');
       this.router.navigate(['/auth/login']);
@@ -150,5 +153,5 @@ export class MypagePage implements OnInit {
       }));
     });
   }
-  
+
 }

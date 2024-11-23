@@ -1,8 +1,8 @@
 <ion-content>
-  <div class="header">
+  <div class="header" style="margin-top: 55px;">
     <h1>{{ user.username }}님이 좋아하는 영화를 골라주세요!</h1>
   </div>
-  
+
   <div *ngFor="let genre of genres">
     <h2>{{ genre }}</h2>
     <div class="genre-container">
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  
+
   <button (click)="goToShowRecommendedGenre()">선택 완료</button>
-  
+
 </ion-content>

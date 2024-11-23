@@ -14,44 +14,77 @@
 
   <p class="hot">인기🔥</p>
   
-  <!-- 실제 컬렉션 데이터 반복 출력 -->
-  <div *ngFor="let collection of collections" class="christmas_movie">
-    <div class="header">
-      <img class="unknow-image" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_ERNCSI1HFpbvGex7nWhFR-ZYtVQnhCjEhAr4ryvrDdMVUxiGCFvuYeY9hfiHYQfxpA&usqp=CAU" style="width:50px; height: auto;">
-      <p>{{ collection.name }}</p>
-      <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(collection.id)"></ion-icon>
-    </div>
-    <div class="movie-images">
-      <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
-    </div>
-    <div class="likes">
-      <ion-icon name="heart"></ion-icon>
-      <span>{{ collection.favoriteCount }}</span>
-    </div>
+  <!-- 샘플 데이터 -->
+<div class="christmas_movie">
+  <div class="header">
+    <img class="unknow-image" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_ERNCSI1HFpbvGex7nWhFR-ZYtVQnhCjEhAr4ryvrDdMVUxiGCFvuYeY9hfiHYQfxpA&usqp=CAU" style="width:50px; height: auto;">
+    <p>크리스마스에 생각나는 영화</p>
+    <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(1)"></ion-icon>
   </div>
+  <div class="movie-images">
+    <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
+  </div>
+  <div class="likes">
+    <ion-icon name="heart"></ion-icon>
+    <span>12</span>
+  </div>
+</div>
+<div class="christmas_movie">
+  <div class="header">
+    <img class="unknow-image" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_ERNCSI1HFpbvGex7nWhFR-ZYtVQnhCjEhAr4ryvrDdMVUxiGCFvuYeY9hfiHYQfxpA&usqp=CAU" style="width:50px; height: auto;">
+    <p>천만 돌파한 한국 영화는 뭐가 있을까?</p>
+    <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(1)"></ion-icon>
+  </div>
+  <div class="movie-images">
+    <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
+  </div>
+  <div class="likes">
+    <ion-icon name="heart"></ion-icon>
+    <span>12</span>
+  </div>
+</div>
+<div class="christmas_movie">
+  <div class="header">
+    <img class="unknow-image" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_ERNCSI1HFpbvGex7nWhFR-ZYtVQnhCjEhAr4ryvrDdMVUxiGCFvuYeY9hfiHYQfxpA&usqp=CAU" style="width:50px; height: auto;">
+    <p>웹툰 원작 영화 컬렉션</p>
+    <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(1)"></ion-icon>
+  </div>
+  <div class="movie-images">
+    <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
+    <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
+  </div>
+  <div class="likes">
+    <ion-icon name="heart"></ion-icon>
+    <span>12</span>
+  </div>
+</div>
+
 
   <!-- 공유된 컬렉션 -->
-  <ion-item *ngFor="let collection of sharedCollections$ | async" (click)="viewDetail(collection.id)">
-    <div class="collection-container">
-      <div class="details-row">
-        <h2>{{ collection?.name }}</h2>
-      </div>
-      
-      <div class="poster-row">
-        <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image" />
-      </div>
-    </div>
+  <div class="christmas_movie">
+    <ng-container *ngFor="let collection of sharedCollections$ | async">
+        <div class="header">
+            <img class="unknow-image" alt="" src="assets/images/unknown.png" style="width:50px; height: auto;">
+            <p class="collection-name" style="font-size: 22px;">{{ collection?.name }}</p>
+            <ion-icon class="arrow-icon" name="chevron-forward-outline" (click)="goToDetailCollectionPage(collection.id)"></ion-icon>
+        </div>
 
-    <ion-icon 
-      [ngClass]="{'heart-filled': collection.isFavorite, 'heart-empty': !collection.isFavorite}" 
-      name="heart" 
-      (click)="favoriteSharedCollection(collection.id)">
-    </ion-icon>
-
-  </ion-item>
-
+        <ion-item (click)="viewDetail(collection.id)" style="border: none; width: 100%; background: transparent;">
+            <div class="collection-container" style="width: 100%;">
+                <div class="poster-row">
+                    <img *ngFor="let movie of collection.movies" [src]="movie.posterUrl" alt="Movie Poster" class="poster-image"/>
+                </div>
+            </div>
+            <ion-icon [ngClass]="{'heart-filled': collection.isFavorite, 'heart-empty': !collection.isFavorite}" name="heart" (click)="favoriteSharedCollection(collection.id)"></ion-icon>
+        </ion-item>
+    </ng-container>
+  </div>
+  
   <!-- 공유 컬렉션 추가 버튼 -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>

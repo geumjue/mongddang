@@ -11,17 +11,18 @@
 
 .poster-row {
   display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 10px;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
 }
 
 .poster-image {
-  width: 30%;
+  width: 120px; 
   height: auto;
   border-radius: 4px;
-  padding-bottom: 5px;
+  object-fit: cover;
 }
+
 
 .details-row {
   display: flex;
@@ -156,12 +157,13 @@ ion-item {
 }
 
 .collection-container {
-  padding: 10px;
+  padding: 0; 
+  overflow: hidden; 
 }
 
 .collection-container h2 {
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -187,4 +189,8 @@ ion-item {
   width: 100px;
   height: 150px;
   border-radius: 8px;
+}
+
+.arrow-icon {
+  margin-left: auto; /* 화살표를 오른쪽으로 이동 */
 }

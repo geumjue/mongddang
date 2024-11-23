@@ -1,15 +1,24 @@
-// 전체 페이지 스타일
-:host {
-  display: block;
-  padding: 20px;
-  background-color: #f9f9f9; // 페이지 배경색
-  font-family: 'Arial', sans-serif;
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
+
+*{
+  font-family: 'Pretendard-Regular';
+}
+// 전체 페이지 스타일
+//:host {
+//  display: block;
+//  padding: 20px;
+//}
 
 // 헤더 스타일
 .header {
   text-align: center;
-  margin: 20px 0;
+  //margin: 20px 0;
 
   h1 {
     font-size: 20px; /* 글씨 크기를 줄임 */
@@ -19,6 +28,7 @@
     white-space: normal; /* 텍스트가 잘리지 않도록 설정 */
     margin: 0 auto;
     max-width: 90%; /* 화면 폭을 넘어가지 않도록 설정 */
+    margin-bottom: 30px;
   }
 }
 
@@ -38,16 +48,6 @@
   word-wrap: break-word;
 }
 
-
-// 장르 컨테이너
-.genre-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 30px;
-  justify-content: flex-start; /* 왼쪽 정렬 */
-}
-
 .movie-card {
   width: 150px;
   height: auto; /* 카드 높이를 자동으로 조정 */
@@ -55,7 +55,7 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, border-color 0.3s;
   border: 2px solid transparent;
 
@@ -77,12 +77,11 @@
 }
 
 // 장르 제목 스타일
-h2 {
-  font-size: 20px;
-  color: #555;
+p{
+  font-weight: bold;
+  margin-left: 20px;
   margin-bottom: 10px;
 }
-
 button {
   display: block;
   margin: 20px auto;
@@ -100,3 +99,28 @@ button {
   }
 }
 
+.genre-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* 카드 간의 간격 */
+  justify-content: flex-start;
+  margin-left: 20px;
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.movie-card {
+  width: calc(33.33% - 20px); /* 한 줄에 3개씩, 카드 간의 간격을 빼기 위해 계산 */
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-title {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
+}

@@ -40,7 +40,6 @@ html,
 body,
 #root {
   height: 100%;
-  margin: 0;
   padding: 0;
 }
 
@@ -52,4 +51,8 @@ div,
 p{
   margin: 0;
   padding: 0;
+}
+
+html {
+  background-color: #f8f5ee;
 }

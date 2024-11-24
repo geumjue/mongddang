@@ -1,7 +1,3 @@
-<ion-header>
-  <img class="logo-image" src="assets/images/logo_mongDDang.png" alt="로고이미지_가로" style="width:180px; height: auto;">
-</ion-header>
-
 <ion-content>
   <div class="searchbar_collection">
     <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 컬렉션을 검색하세요!" style="padding: 0 15px 15px 15px;"></ion-searchbar>
@@ -22,9 +18,9 @@
       <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(1)"></ion-icon>
     </div>
     <div class="movie-images">
-      <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
+      <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt=""/>
+      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg"/>
+      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg"/>
     </div>
     <div class="likes" style="margin-top: 10px;">
       <ion-icon name="heart"></ion-icon>
@@ -39,9 +35,9 @@
       <ion-icon name="chevron-forward-outline" style="margin-left: auto; color: grey;" (click)="goToDetailCollectionPage(1)"></ion-icon>
     </div>
     <div class="movie-images">
-      <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt="">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg">
-      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg">
+      <img class="alone" src="https://i.namu.wiki/i/yKCKWxSAUkSiQHdKyRckkA-miB0VZeIJcpgjtoYPcutixTS9IYbvpXpwD7TvmCIFEf5J52lSfXKFuJzH3UILLA.webp" alt=""/>
+      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BOGEyYzRmNzYtYzJjZi00ZjhlLWJiNDktYzZhNTgxMzc1NThlXkEyXkFqcGc@._V1_.jpg"/>
+      <img class="alone" alt="" src="https://m.media-amazon.com/images/M/MV5BNmI0MjcxYjYtYzY5Ni00NjBkLTllN2MtZGYyNzJiYzA5ZGYxXkEyXkFqcGc@._V1_.jpg"/>
     </div>
     <div class="likes" style="margin-top: 10px;">
       <ion-icon name="heart"></ion-icon>
@@ -66,13 +62,17 @@
         </div>
       </ion-item>
   
-    <div class="likes" style="margin-top: 10px;">
-      <ion-icon name="heart"></ion-icon>
-      <span>{{ collection.favoriteCount }}</span>
-    </div>      
+      <div class="likes" style="margin-top: 10px;">
+        <ion-icon name="heart"></ion-icon>
+        <span>{{ collection.favoriteCount }}</span>
+      </div>      
+    </ng-container>
+  </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon (click)="goToUploadCollectionPage()" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+</ion-content>

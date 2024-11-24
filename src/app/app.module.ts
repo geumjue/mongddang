@@ -9,9 +9,11 @@ import { LayoutsModule } from './layout/layouts.module';
 import { HomePageModule } from './pages/home/home.module';
 import { CollectionPageModule } from "./pages/collection/collection.module";
 import { AuthInterceptor } from './services/auth/auth.interceptor';
+import { ChatbotPage } from './pages/chatbot/chatbot.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,ChatbotPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios' }),
@@ -20,6 +22,7 @@ import { AuthInterceptor } from './services/auth/auth.interceptor';
     LayoutsModule,
     HomePageModule,
     CollectionPageModule,
+    FormsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

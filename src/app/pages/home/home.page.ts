@@ -19,12 +19,22 @@ export class HomePage implements AfterViewInit {
   @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
   @ViewChild('swiper_genre') swiperRef_genre!: ElementRef;
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
-
+  
+   // 챗봇 모달 열림/닫힘 상태
+   isChatbotModalOpen: boolean = false;
   movies: GetMoviesResponseData[] = [];
   recommendedMovies: GetMoviesResponseData[] = []; // 추천 영화 데이터
   genres: string[] = [];
   moviesGroupedByGenre: { [key: string]: Movie[] } = {};
 
+
+  toggleChatbotModal() {
+    this.isChatbotModalOpen = !this.isChatbotModalOpen; // 모달 열기/닫기 토글
+  }
+  // 모달 닫힘 처리
+  closeChatbotModal() {
+    this.isChatbotModalOpen = false;
+  }
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -127,6 +137,11 @@ export class HomePage implements AfterViewInit {
   goToRecommendationPage() {
     this.router.navigate(['recommendation'], { state: { movies: this.movies } })
   }
+
+  goTochatbotPage() {
+    this.router.navigate(['/chatbot']);
+  }
+
   // 특정 장르의 추천 영화를 로드
   loadRecommendedMovies(genre: string) {
     console.log('Filtering movies for genre:', genre);
@@ -136,5 +151,9 @@ export class HomePage implements AfterViewInit {
 
     console.log('Filtered recommended movies:', this.recommendedMovies);
     localStorage.setItem('recommendedMovies', JSON.stringify(this.recommendedMovies));
+  }
+  // 챗봇 페이지로 이동
+  navigateToChatbotPage() {
+    this.router.navigate(['/chatbot']); // '/chatbot' 경로로 이동
   }
 }

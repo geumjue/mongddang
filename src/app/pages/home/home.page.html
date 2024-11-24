@@ -1,31 +1,45 @@
 <ion-content>
-  <!--검색-->
+  <!-- 검색 -->
   <div class="searchbar_collection" style="margin-top: 55px;">
-    <ion-searchbar color="light" show-clear-button="never" placeholder="찾고 싶은 영화를 검색하세요!" (click)="goToSearchPage()"
-      style="padding: 0 15px 15px 15px;"></ion-searchbar>
+    <ion-searchbar
+      color="light"
+      show-clear-button="never"
+      placeholder="찾고 싶은 영화를 검색하세요!"
+      (click)="goToSearchPage()"
+      style="padding: 0 15px 15px 15px;"
+    ></ion-searchbar>
   </div>
-  <!-- 프리뷰-->
+
+  <!-- 프리뷰 -->
   <div class="preview">
     <swiper-container
       class="mySwiper"
       space-between="30"
       centered-slides="true"
       autoplay-delay="2000"
-      autoplay-disable-on-interaction="false">
+      autoplay-disable-on-interaction="false"
+    >
       <swiper-slide>
-        <img src="assets/images/kevin.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+        <img
+          src="assets/images/kevin.png"
+          alt="프리뷰"
+          style="object-fit: cover; width: 430px; height: 210px; position: relative;"
+        />
         <div class="kevin_text">
-          <a class="HOT">🎅HOT🎄</a><br>
+          <a class="HOT">🎅HOT🎄</a><br />
           <a class="nows_HOT">크리스마스에 생각나는 영화</a>
         </div>
         <a class="preview_count">1/2</a>
       </swiper-slide>
 
-
       <swiper-slide>
-        <img src="assets/images/harry3.png" alt="프리뷰" style="object-fit: cover; width: 430px; height: 210px; position: relative;">
+        <img
+          src="assets/images/harry3.png"
+          alt="프리뷰"
+          style="object-fit: cover; width: 430px; height: 210px; position: relative;"
+        />
         <div class="kevin_text">
-          <a class="HOT">🎅HOT🎄</a><br>
+          <a class="HOT">🎅HOT🎄</a><br />
           <a class="nows_HOT">"해리포터 정주행, 준비됐어?"</a>
         </div>
         <a class="preview_count">2/2</a>
@@ -33,7 +47,29 @@
     </swiper-container>
   </div>
 
-  <!--지금 뜨는 코멘트 -->
+  <!-- 플로팅 챗봇 버튼 -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="primary" (click)="navigateToChatbotPage()">
+    <ion-icon name="chatbubbles-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+  <!-- 챗봇 모달 -->
+<ion-modal [isOpen]="isChatbotModalOpen" (didDismiss)="closeChatbotModal()" class="chatbot-modal">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>챗봇</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleChatbotModal()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</ion-modal>
+
+
+  <!-- 지금 뜨는 코멘트 -->
   <div class="home_comment">
     <p>
       지금 뜨는 코멘트 💡
@@ -46,8 +82,8 @@
       space-between="30"
       centered-slides="true"
       autoplay-delay="3000"
-      autoplay-disable-on-interaction="false">
-
+      autoplay-disable-on-interaction="false"
+    >
       <swiper-slide>
         <ion-card class="comment-card">
           <ion-card-header class="comment-card-header">
@@ -59,22 +95,24 @@
             </div>
           </ion-card-header>
           <ion-item>
-            <!-- 영화 이미지-->
             <ion-thumbnail slot="start">
-              <img alt=""
-                src="https://image.cine21.com/resize/cine21/poster/2019/0806/11_33_48__5d48e70c8f222[X230,330].jpg" />
+              <img
+                alt=""
+                src="https://image.cine21.com/resize/cine21/poster/2019/0806/11_33_48__5d48e70c8f222[X230,330].jpg"
+              />
             </ion-thumbnail>
             <ion-content>
-              <ion-card-title class="now-comment-card-title">유열의 음악앨범</ion-card-title>
+              <ion-card-title class="now-comment-card-title">
+                유열의 음악앨범
+              </ion-card-title>
               <div class="comment">
                 시대의 공기와 지형을 만든 후 탄탄하게 쌓아올린 감정의 결
               </div>
             </ion-content>
           </ion-item>
-          <!--          <ion-button fill="clear" class="text-button"><ion-icon name="heart-outline"></ion-icon>1,004</ion-button>-->
-          <!--          <ion-button fill="clear" class="text-button"><ion-icon name="chatbox-outline"></ion-icon>127</ion-button>-->
         </ion-card>
       </swiper-slide>
+
       <swiper-slide>
         <ion-card class="comment-card">
           <ion-card-header class="comment-card-header">
@@ -86,33 +124,37 @@
             </div>
           </ion-card-header>
           <ion-item>
-            <!-- 영화 이미지-->
             <ion-thumbnail slot="start">
-              <img alt="인사이드 아웃2"
-                src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg" />
+              <img
+                alt="인사이드 아웃2"
+                src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240612_151%2F1718180074487NH0V5_JPEG%2Fmovie_image.jpg"
+              />
             </ion-thumbnail>
             <ion-content>
-              <ion-card-title class="now-comment-card-title">인사이드 아웃2</ion-card-title>
+              <ion-card-title class="now-comment-card-title">
+                인사이드 아웃2
+              </ion-card-title>
               <div class="comment">
                 결국 시작은 '잘 해내야한다'는 불안감. 그냥 좀 못합시다, 뭐 어때요
               </div>
             </ion-content>
           </ion-item>
-
         </ion-card>
       </swiper-slide>
     </swiper-container>
   </div>
 
-
   <!-- 영화리스트 -->
   <div class="movie">
     <p>박스오피스 순위 🏆</p>
     <swiper-container #swiper_cgv>
-      <swiper-slide *ngFor="let movie of movies; let i = index" (click)="goToMovieDetailPage(movie.id)">
+      <swiper-slide
+        *ngFor="let movie of movies; let i = index"
+        (click)="goToMovieDetailPage(movie.id)"
+      >
         <div class="movie-item">
-          <img [src]="movie.posterUrl" class="movie-poster">
-          <div class="rank">{{ i + 1 }}</div> <!-- 순위를 이미지 위에 표시 -->
+          <img [src]="movie.posterUrl" class="movie-poster" />
+          <div class="rank">{{ i + 1 }}</div>
           <div class="movie_name">{{ movie.title }}</div>
         </div>
       </swiper-slide>

@@ -1,22 +1,68 @@
-src/app/app.component.html
-<div class="chat-container">
-    <h1>Chatbot</h1>
-  
-    <div class="chat-box">
-      <div class="message user-message" *ngIf="userMessage">
-        You: {{ userMessage }}
-      </div>
-      <div class="message bot-response" *ngIf="botResponse">
-        Bot: {{ botResponse }}
+<ion-header>
+  <ion-toolbar class="header-toolbar">
+    <ion-title>MONGDDANG-BOT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 로딩 화면 -->
+  <div *ngIf="showLoading" class="loading-screen">
+    <img src="assets/Asset 3 1.png" alt="Loading" class="loading-image" />
+  </div>
+
+  <!-- 챗봇 화면 -->
+  <div *ngIf="!showLoading" class="chatbot-container">
+    <!-- 챗봇 헤더 -->
+    <div class="chat-header">
+      <img src="assets/chatbot.jpg" alt="Chatbot" class="chat-avatar-large" />
+      <h2>MONGDDANG-BOT</h2>
+      <p>무엇이든 물어보세요!</p>
+    </div>
+
+    <!-- 채팅 기록 -->
+    <div class="chat-history">
+      <div
+        *ngFor="let chat of chatHistory"
+        [ngClass]="{'chat-message': true, 'user': chat.sender === 'You', 'bot': chat.sender === 'Chatbot'}"
+      >
+        <img
+          *ngIf="chat.sender === 'Chatbot'"
+          src="assets/chatbotFace.jpg"
+          alt="Chatbot"
+          class="chat-avatar"
+        />
+        <img
+          *ngIf="chat.sender === 'You'"
+          src="assets/user-avatar.png"
+          alt="User"
+          class="chat-avatar"
+        />
+        <div class="chat-text" [innerHTML]="chat.message"></div>
       </div>
     </div>
-  
-    <input
-      type="text"
-      [(ngModel)]="userMessage"
-      placeholder="Enter your message"
-      (keyup.enter)="sendMessage()"
-    />
-    <button (click)="sendMessage()">Send</button>
+     <!-- 로딩 애니메이션 -->
+      <div *ngIf="isLoading" class="loading-animation bot">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    <!-- 퀵 리플라이 -->
+    <div class="quick-replies">
+      <button class="chip" (click)="sendQuickReply('Movie Recommendation')">Movie Recommendation</button>
+      <button class="chip" (click)="sendQuickReply('Learn CSS')">Learn CSS</button>
+      <button class="chip" (click)="sendQuickReply('Learn JavaScript')">Learn JavaScript</button>
+    </div>
   </div>
-  
+</ion-content>
+
+<ion-footer *ngIf="!showLoading">
+  <ion-toolbar class="input-toolbar">
+    <ion-input
+      [(ngModel)]="userMessage"
+      placeholder="Type your message..."
+      class="chat-input"
+      (keyup.enter)="sendMessage()"
+    ></ion-input>
+    <ion-button fill="outline" (click)="sendMessage()">➤</ion-button>
+  </ion-toolbar>
+</ion-footer>

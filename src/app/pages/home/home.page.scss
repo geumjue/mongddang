@@ -189,18 +189,18 @@ ion-thumbnail img {
   swiper-container {
     width: 100%;
     height: auto;
-    margin-left: 9px;
-    margin-bottom: 25px;
+    // margin-left: 9px;
+    // margin-bottom: 25px;
 
     swiper-slide {
       display: flex;
       flex-direction: column;
       //align-items: center;
-      width: 100%; /* 박스 크기 설정 */
+      width: calc(33.33% - 10px);
       height: auto;
-      //margin-right: 10px;
+      margin-right: 10px;
       //margin-left: 7px;
-      padding: 3px;
+      // padding: 3px;
 
        movie-poster{
         //width: 120px; /* 이미지 크기 설정 */
@@ -233,14 +233,14 @@ ion-thumbnail img {
 }
 
 .movie-item {
-  position: relative; /* 순위와 이미지 겹치기 위해 설정 */
-  display: flex;
-  flex-direction: column; /* 포스터와 이름을 세로 배치 */
-  justify-content: space-between; /* 내용 사이 간격 조정 */
-  padding: 7px;
-  border-radius: 10px; /* 모서리를 둥글게 */
-  margin: 7px; /* 카드 간 간격 */
-  width: 150px; /* 카드 고정 너비 */
+  // position: relative; /* 순위와 이미지 겹치기 위해 설정 */
+  // display: flex;
+  // flex-direction: column; /* 포스터와 이름을 세로 배치 */
+  // justify-content: space-between; /* 내용 사이 간격 조정 */
+  // padding: 7px;
+  // border-radius: 10px; /* 모서리를 둥글게 */
+  margin-right: 5px; /* 카드 간 간격 */
+  // width: 150px; /* 카드 고정 너비 */
 }
 
 .movie-poster {

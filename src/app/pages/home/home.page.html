@@ -192,37 +192,19 @@
         </swiper-slide>
       </swiper-container>
   </div>
-
-
-<!--<div class="genre">-->
-<!--  <div *ngFor="let genre of genres" #swiper_genre>-->
-<!--    <p># {{ genre }}</p>-->
-<!--    <swiper-container>-->
-<!--      <swiper-slide *ngFor="let movie of moviesGroupedByGenre[genre]">-->
-<!--        <div class="movie-item">-->
-<!--          <img [src]="movie.posterUrl" class="movie-poster">-->
-<!--          <div class="movie_name">{{ movie.movietitle }}</div>-->
-<!--        </div>-->
-<!--      </swiper-slide>-->
-<!--    </swiper-container>-->
-<!--  </div>-->
-<!--</div>-->
-    <div class="genre">
-      <swiper-container #swiper_genre>
-        <swiper-slide *ngFor="let genre of genres">
-          <div class="genre-item">
-            <p># {{ genre }}</p>
-            <div class="movies">
-              <div *ngFor="let movie of moviesGroupedByGenre[genre]" class="movie-item">
-                <img [src]="movie.posterUrl" class="movie-poster">
-                <div class="movie_name">{{ movie.movietitle }}</div>
-              </div>
-            </div>
+  <div class="genres">
+    <div class="genre" *ngFor="let genre of genres">
+      <p># {{ genre }}</p>
+      <swiper-container #swiper_genre [slidesPerView]="3">
+        <swiper-slide *ngFor="let movie of moviesGroupedByGenre[genre]">
+          <div class="movie-item">
+            <img [src]="movie.posterUrl" class="movie-poster">
+            <div class="movie_name">{{ movie.movietitle }}</div>
           </div>
         </swiper-slide>
       </swiper-container>
     </div>
-
+  </div>
   </div>
 </ion-content>
 

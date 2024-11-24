@@ -3,6 +3,12 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { MovieService } from "../../services/movie/movie.service";
 import { GetMoviesResponseData } from "../../models/movie/movie-getmovie-response-data.interface";
 
+interface Movie {
+  movieId: number;
+  movietitle: string;
+  posterUrl: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,12 +17,16 @@ import { GetMoviesResponseData } from "../../models/movie/movie-getmovie-respons
 export class HomePage implements AfterViewInit {
   @ViewChild('swiper_cgv') swiperRef_cgv!: ElementRef;
   @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
+  @ViewChild('swiper_genre') swiperRef_genre!: ElementRef;
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
   
    // 챗봇 모달 열림/닫힘 상태
    isChatbotModalOpen: boolean = false;
   movies: GetMoviesResponseData[] = [];
   recommendedMovies: GetMoviesResponseData[] = []; // 추천 영화 데이터
+  genres: string[] = [];
+  moviesGroupedByGenre: { [key: string]: Movie[] } = {};
+
 
   toggleChatbotModal() {
     this.isChatbotModalOpen = !this.isChatbotModalOpen; // 모달 열기/닫기 토글
@@ -25,7 +35,8 @@ export class HomePage implements AfterViewInit {
   closeChatbotModal() {
     this.isChatbotModalOpen = false;
   }
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService) { }
 
@@ -45,6 +56,7 @@ export class HomePage implements AfterViewInit {
     if (this.swiperRef_cgv && this.swiperRef_netflix) {
       const swiperEl_cgv = this.swiperRef_cgv.nativeElement;
       const swiperEl_netflix = this.swiperRef_netflix.nativeElement;
+      const swiperEl_genre = this.swiperRef_netflix.nativeElement;
 
       const params = {
         slidesPerView: 3,
@@ -56,11 +68,13 @@ export class HomePage implements AfterViewInit {
 
       Object.assign(swiperEl_netflix, params);
       swiperEl_netflix.initialize();
+
+      Object.assign(swiperEl_genre, params);
+      swiperEl_genre.initialize();
     } else {
       console.warn('Swiper elements are not available for initialization');
     }
   }
-
   goToNowsCommentPage() {
     this.router.navigate(['nows-comment']);
   }
@@ -74,7 +88,10 @@ export class HomePage implements AfterViewInit {
       next: (response: GetMoviesResponseData[]) => {
         this.movies = response;
         console.log('Movies loaded:', this.movies);
-  
+
+        // 영화 데이터를 장르별로 그룹화
+        this.groupMoviesByGenre(this.movies);
+
         // 콜백 실행
         if (callback) {
           callback();
@@ -88,7 +105,27 @@ export class HomePage implements AfterViewInit {
       }
     });
   }
-  
+// 영화 데이터를 장르별로 그룹화
+  groupMoviesByGenre(movies: GetMoviesResponseData[]) {
+    const groupedByGenre: { [key: string]: Movie[] } = {};
+
+    movies.forEach((movie) => {
+      const genre = movie.genre || '기타';
+      if (!groupedByGenre[genre]) {
+        groupedByGenre[genre] = [];
+      }
+      groupedByGenre[genre].push({
+        movieId: parseInt(movie.id, 10),
+        movietitle: movie.title,
+        posterUrl: movie.posterUrl || 'assets/default-poster.jpg',
+      });
+    });
+
+    this.moviesGroupedByGenre = groupedByGenre;
+    this.genres = Object.keys(groupedByGenre); // 장르 키 배열 생성
+    console.log('Movies grouped by genre:', this.moviesGroupedByGenre);
+  }
+
 
   goToMovieDetailPage(id: string) {
     if (id) {
@@ -100,19 +137,19 @@ export class HomePage implements AfterViewInit {
   goToRecommendationPage() {
     this.router.navigate(['recommendation'], { state: { movies: this.movies } })
   }
+
   goTochatbotPage() {
     this.router.navigate(['/chatbot']);
   }
+
+  // 특정 장르의 추천 영화를 로드
   loadRecommendedMovies(genre: string) {
     console.log('Filtering movies for genre:', genre);
-    console.log('Available movies:', this.movies);
-  
     this.recommendedMovies = this.movies.filter(
       (movie) => movie.genre?.trim() === genre.trim()
     );
-  
+
     console.log('Filtered recommended movies:', this.recommendedMovies);
-  
     localStorage.setItem('recommendedMovies', JSON.stringify(this.recommendedMovies));
   }
   // 챗봇 페이지로 이동

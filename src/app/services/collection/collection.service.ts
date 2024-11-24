@@ -71,4 +71,10 @@ export class CollectionService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.apiUrl}/share/${collectionId}`, {}, { headers });
   }
+
+  // 하트 상태와 favoriteCount 업데이트
+  updateFavoriteStatus(collectionId: number, isFavorite: boolean): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>(`${this.apiUrl}/${collectionId}/favorite`, { isFavorite }, { headers });
+  }
 }

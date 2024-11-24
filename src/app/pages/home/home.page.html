@@ -161,17 +161,17 @@
     </swiper-container>
   </div>
 
-<!--  <div class="movie2">-->
-<!--    <p>#판타지</p>-->
-<!--      <swiper-container #swiper_netflix>-->
-<!--        <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">-->
-<!--          <div class="movie-item">-->
-<!--            <img [src]="movie.posterUrl" class="movie-poster">-->
-<!--            <div class="movie_name">{{ movie.title }}</div>-->
-<!--          </div>-->
-<!--        </swiper-slide>-->
-<!--      </swiper-container>-->
-<!--  </div>-->
+  <div class="movie2">
+    <p>#판타지</p>
+      <swiper-container #swiper_netflix>
+        <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">
+          <div class="movie-item">
+            <img [src]="movie.posterUrl" class="movie-poster">
+            <div class="movie_name">{{ movie.title }}</div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+  </div>
 
 
 <div class="genre">

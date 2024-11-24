@@ -10,6 +10,8 @@ import {
   globe,
 } from 'ionicons/icons';
 import { CollectionService } from 'src/app/services/collection/collection.service';
+import { tap } from 'rxjs/operators';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-collection',
@@ -18,38 +20,50 @@ import { CollectionService } from 'src/app/services/collection/collection.servic
 })
 export class CollectionPage implements OnInit {
   collections: any[] = [];
-  sharedCollections: any[] = [];
+  sharedCollections$ = this.collectionService.getSharedCollections();
 
   constructor(
     private router: Router,
-    private collectionService: CollectionService
+    private collectionService: CollectionService,
+    private navController: NavController
   ) {
     addIcons({ chevronDownCircle, chevronForwardCircle, chevronUpCircle, colorPalette, document, globe });
   }
 
   ngOnInit() {
     this.loadCollections();
-    this.loadSharedCollections(); // 공유된 컬렉션을 가져오는 메서드 호출
+    this.sharedCollections$ = this.collectionService.getSharedCollections();
   }
 
   loadCollections() {
-    // 임시 데이터 추가
-    this.collections = [
-      { id: 1, name: '크리스마스에 생각나는 영화', favoriteCount: 326 },
-      { id: 2, name: '천만 돌파한 한국 영화는 뭐가 있을까?', favoriteCount: 220 },
-      { id: 3, name: '웹툰 원작 영화 컬렉션', favoriteCount: 104 },
-    ];
-  }
-
-  loadSharedCollections() {
-    // 공유된 컬렉션을 서버에서 가져오는 API 호출
-    this.collectionService.getSharedCollections().subscribe(
-      (data) => {
-        this.sharedCollections = data;
-        console.log('공유된 컬렉션 데이터:', this.sharedCollections);
+    this.collectionService.getCollections().subscribe(
+      (collections: any[]) => {
+        this.collections = collections.map((collection) => ({
+          ...collection,
+          isFavorite: collection.isFavorite || false, // 초기값 설정
+          favoriteCount: collection.favoriteCount || 0, // 초기값 설정
+        }));
       },
       (error) => {
-        console.error('공유된 컬렉션을 가져오는 데 실패했습니다.', error);
+        console.error('컬렉션 로딩 실패:', error);
+      }
+    );
+  }
+
+  toggleFavorite(collection: any) {
+    collection.isFavorite = !collection.isFavorite;
+    collection.favoriteCount += collection.isFavorite ? 1 : -1;
+
+    // 서버에 업데이트 요청 (필요한 경우)
+    this.collectionService.updateFavoriteStatus(collection.id, collection.isFavorite).subscribe(
+      (response) => {
+        console.log('하트 상태 업데이트 성공:', response);
+      },
+      (error) => {
+        console.error('하트 상태 업데이트 실패:', error);
+        // 실패 시 원래 상태로 복구
+        collection.isFavorite = !collection.isFavorite;
+        collection.favoriteCount += collection.isFavorite ? 1 : -1;
       }
     );
   }
@@ -63,16 +77,21 @@ export class CollectionPage implements OnInit {
   }
 
   shareCollection(collectionId: number) {
-    // 컬렉션을 공유하는 API 호출
-    this.collectionService.shareCollection(collectionId).subscribe(
-      (response) => {
+    this.collectionService.shareCollection(collectionId).pipe(
+      tap((response) => {
         console.log('컬렉션 공유 성공:', response);
         // 공유된 컬렉션을 리스트에 추가
-        this.sharedCollections.push(response);
-      },
-      (error) => {
-        console.error('컬렉션 공유 실패:', error);
-      }
+        this.sharedCollections$.subscribe((sharedCollections) => {
+          sharedCollections.push(response);
+        });
+      })
+    ).subscribe(
+      (response) => console.log('공유된 컬렉션:', response),
+      (error) => console.error('컬렉션 공유 실패:', error)
     );
+  }
+
+  viewDetail(collectionId: number) {
+    this.navController.navigateForward(`/detail-collection/${collectionId}`);
   }
 }

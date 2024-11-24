@@ -3,12 +3,15 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
 import { CollectionAddPage } from './pages/movie/collection-add/collection-add.page';
 import { RecommendationPage } from './pages/home/recommendation/recommendation.page';
+import { ChatbotPage } from './pages/chatbot/chatbot.page';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePage
   },
+  { path: 'chatbot', component: ChatbotPage }, // 챗봇 라우트 추가
+
   {
     path: 'home',
     loadChildren: () =>

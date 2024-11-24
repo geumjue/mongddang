@@ -1,19 +1,30 @@
-<ion-content class="collection-content">
-  <div class="collection-list" style="margin-top: 50px;">
-    <ion-item *ngFor="let collection of collections" (click)="addMovieToCollection(collection.id)" class="collection-item">
+<ion-header style="margin-top:50px;">
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="tabs/collection" icon="close" text=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>컬렉션 업로드</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="collection-content" >
+  <ion-list class="collection-list">
+    <ion-item *ngFor="let collection of collections" class="collection-item">
+      <ion-checkbox slot="start" (ionChange)="addMovieToCollection(collection.id)"></ion-checkbox>
       <ion-label>{{ collection.name }}</ion-label>
     </ion-item>
-  </div>
+  </ion-list>
 
   <ion-button expand="full" class="new-collection-button" (click)="showNewCollectionInput = !showNewCollectionInput">
-    새 컬렉션 만들기
+    컬렉션 만들기
   </ion-button>
 
   <ion-item *ngIf="showNewCollectionInput" class="new-collection-input">
-    <ion-label position="floating">새 컬렉션 이름</ion-label>
+    <ion-input label="제목" label-placement="floating" fill="outline" placeholder="새 컬렉션을 만들어보세요 !"></ion-input>
+<!--    <ion-label position="floating">제목</ion-label>-->
     <ion-input [(ngModel)]="newCollectionName"></ion-input>
   </ion-item>
-  
+
   <ion-button expand="full" *ngIf="showNewCollectionInput" class="create-collection-button" (click)="createCollection()">
     컬렉션 생성
   </ion-button>

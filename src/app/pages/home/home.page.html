@@ -191,7 +191,7 @@
 
 
   <div class="recommended-section">
-    <h5 class="recommended-title">추천 영화</h5>
+    <h5 class="recommended-title">추천 영화 🎥</h5>
     <swiper-container #swiper_recommended>
       <swiper-slide *ngFor="let movie of recommendedMovies" (click)="goToMovieDetailPage(movie.id)">
         <img [src]="movie.posterUrl" alt="{{ movie.title }}" />
@@ -199,6 +199,8 @@
       </swiper-slide>
     </swiper-container>
   </div>
-  <ion-item (click)="goToRecommendationPage()">여기 클릭</ion-item>
+  <ion-item class="more" (click)="goToRecommendationPage()">
+    <ion-label>다양한 영화를 추천해드릴게요!</ion-label>
+  </ion-item>
 </ion-content>
 

@@ -146,6 +146,7 @@
   </div>
 
   <!-- 영화리스트 -->
+  <div>
   <div class="movie">
     <p>박스오피스 순위 🏆</p>
     <swiper-container #swiper_cgv>
@@ -162,7 +163,25 @@
     </swiper-container>
   </div>
 
-  <div class="movie2">
+  <div class="recommended-section">
+    <div class="recommended-header">
+      <h5 class="recommended-title">추천 영화 🎥</h5>
+      <ion-item class="more" (click)="goToRecommendationPage()">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-item>
+    </div>
+    <swiper-container #swiper_recommended>
+      <swiper-slide *ngFor="let movie of recommendedMovies" (click)="goToMovieDetailPage(movie.id)">
+        <img [src]="movie.posterUrl" class="movie-poster" />
+        <div class="movie_name">{{ movie.title }}</div>
+      </swiper-slide>
+    </swiper-container>
+<!--    <ion-item class="more" (click)="goToRecommendationPage()">-->
+<!--      <ion-label>다양한 영화를 추천해드릴게요!</ion-label>-->
+<!--    </ion-item>-->
+  </div>
+
+  <div class="movie">
     <p>#판타지</p>
       <swiper-container #swiper_netflix>
         <swiper-slide *ngFor="let movie of movies;" (click)="goToMovieDetailPage(movie.id)">
@@ -175,33 +194,35 @@
   </div>
 
 
-<div class="genre">
-  <div *ngFor="let genre of genres" #swiper_genre>
-    <p># {{ genre }}</p>
-    <swiper-container>
-      <swiper-slide *ngFor="let movie of moviesGroupedByGenre[genre]">
-        <div class="movie-item">
-          <img [src]="movie.posterUrl" class="movie-poster">
-          <div class="movie_name">{{ movie.movietitle }}</div>
-        </div>
-      </swiper-slide>
-    </swiper-container>
+<!--<div class="genre">-->
+<!--  <div *ngFor="let genre of genres" #swiper_genre>-->
+<!--    <p># {{ genre }}</p>-->
+<!--    <swiper-container>-->
+<!--      <swiper-slide *ngFor="let movie of moviesGroupedByGenre[genre]">-->
+<!--        <div class="movie-item">-->
+<!--          <img [src]="movie.posterUrl" class="movie-poster">-->
+<!--          <div class="movie_name">{{ movie.movietitle }}</div>-->
+<!--        </div>-->
+<!--      </swiper-slide>-->
+<!--    </swiper-container>-->
+<!--  </div>-->
+<!--</div>-->
+    <div class="genre">
+      <swiper-container #swiper_genre>
+        <swiper-slide *ngFor="let genre of genres">
+          <div class="genre-item">
+            <p># {{ genre }}</p>
+            <div class="movies">
+              <div *ngFor="let movie of moviesGroupedByGenre[genre]" class="movie-item">
+                <img [src]="movie.posterUrl" class="movie-poster">
+                <div class="movie_name">{{ movie.movietitle }}</div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
   </div>
-</div>
-
-
-
-  <div class="recommended-section">
-    <h5 class="recommended-title">추천 영화 🎥</h5>
-    <swiper-container #swiper_recommended>
-      <swiper-slide *ngFor="let movie of recommendedMovies" (click)="goToMovieDetailPage(movie.id)">
-        <img [src]="movie.posterUrl" alt="{{ movie.title }}" />
-        <div class="movie-title">{{ movie.title }}</div>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-  <ion-item class="more" (click)="goToRecommendationPage()">
-    <ion-label>다양한 영화를 추천해드릴게요!</ion-label>
-  </ion-item>
 </ion-content>
 

@@ -39,6 +39,8 @@ ion-header {
 
 .poster-row {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   overflow-x: auto;
   gap: 10px;
   padding: 10px 0;

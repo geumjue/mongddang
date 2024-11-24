@@ -66,18 +66,13 @@
         </div>
       </ion-item>
   
-      <!-- 여기에 하트 아이콘과 favoriteCount를 포스터 아래로 배치 -->
-      <div class="likes">
-        <ion-icon name="heart" class="heart-icon"></ion-icon>
-        <span class="favorite-count">{{ collection.favoriteCount }}</span>
-      </div>
-    </ng-container>
-  </div>  
+    <div class="likes" style="margin-top: 10px;">
+      <ion-icon name="heart"></ion-icon>
+      <span>{{ collection.favoriteCount }}</span>
+    </div>      
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon (click)="goToUploadCollectionPage()" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-</ion-content>

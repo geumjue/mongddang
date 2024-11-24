@@ -38,10 +38,32 @@ export class CollectionPage implements OnInit {
   loadCollections() {
     this.collectionService.getCollections().subscribe(
       (collections: any[]) => {
-        this.collections = collections; // 서버에서 가져온 컬렉션 목록을 할당
+        this.collections = collections.map((collection) => ({
+          ...collection,
+          isFavorite: collection.isFavorite || false, // 초기값 설정
+          favoriteCount: collection.favoriteCount || 0, // 초기값 설정
+        }));
       },
       (error) => {
         console.error('컬렉션 로딩 실패:', error);
+      }
+    );
+  }
+
+  toggleFavorite(collection: any) {
+    collection.isFavorite = !collection.isFavorite;
+    collection.favoriteCount += collection.isFavorite ? 1 : -1;
+
+    // 서버에 업데이트 요청 (필요한 경우)
+    this.collectionService.updateFavoriteStatus(collection.id, collection.isFavorite).subscribe(
+      (response) => {
+        console.log('하트 상태 업데이트 성공:', response);
+      },
+      (error) => {
+        console.error('하트 상태 업데이트 실패:', error);
+        // 실패 시 원래 상태로 복구
+        collection.isFavorite = !collection.isFavorite;
+        collection.favoriteCount += collection.isFavorite ? 1 : -1;
       }
     );
   }

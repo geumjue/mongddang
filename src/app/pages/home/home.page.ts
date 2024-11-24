@@ -18,6 +18,7 @@ export class HomePage implements AfterViewInit {
   @ViewChild('swiper_cgv') swiperRef_cgv!: ElementRef;
   @ViewChild('swiper_netflix') swiperRef_netflix!: ElementRef;
   @ViewChild('swiper_genre') swiperRef_genre!: ElementRef;
+  @ViewChild('swiper_recommended') swiperRef_recommended!: ElementRef;
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
 
   movies: GetMoviesResponseData[] = [];
@@ -47,6 +48,7 @@ export class HomePage implements AfterViewInit {
       const swiperEl_cgv = this.swiperRef_cgv.nativeElement;
       const swiperEl_netflix = this.swiperRef_netflix.nativeElement;
       const swiperEl_genre = this.swiperRef_netflix.nativeElement;
+      const swiperEl_recommended = this.swiperRef_recommended.nativeElement;
 
       const params = {
         slidesPerView: 3,
@@ -61,6 +63,9 @@ export class HomePage implements AfterViewInit {
 
       Object.assign(swiperEl_genre, params);
       swiperEl_genre.initialize();
+
+      Object.assign(swiperEl_recommended, params);
+      swiperEl_recommended.initialize();
     } else {
       console.warn('Swiper elements are not available for initialization');
     }

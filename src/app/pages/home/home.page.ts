@@ -20,7 +20,7 @@ export class HomePage implements AfterViewInit {
   @ViewChild('swiper_genre') swiperRef_genre!: ElementRef;
   @ViewChild('swiper_recommended') swiperRef_recommended!: ElementRef;
   @ViewChild('elementRef', { static: false }) elementRef!: ElementRef;
-  
+
    // 챗봇 모달 열림/닫힘 상태
    isChatbotModalOpen: boolean = false;
   movies: GetMoviesResponseData[] = [];
@@ -71,10 +71,20 @@ export class HomePage implements AfterViewInit {
       Object.assign(swiperEl_netflix, params);
       swiperEl_netflix.initialize();
 
-      Object.assign(swiperEl_genre, params);
+      const genreparams = {
+        slidesPerView: 3, // 4개 표시
+        spaceBetween: 5,
+      };
+
+      Object.assign(swiperEl_genre, genreparams);
       swiperEl_genre.initialize();
 
-      Object.assign(swiperEl_recommended, params);
+      const recommendedparams = {
+        slidesPerView: 4, // 4개 표시
+        spaceBetween: 5,
+      };
+
+      Object.assign(swiperEl_recommended, recommendedparams);
       swiperEl_recommended.initialize();
     } else {
       console.warn('Swiper elements are not available for initialization');

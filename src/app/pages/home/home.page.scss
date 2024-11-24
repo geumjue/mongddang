@@ -262,18 +262,6 @@ ion-thumbnail img {
   color: #2d2d2d;
 }
 
-/* 플로팅 챗봇 버튼 */
-ion-fab-button {
-  --background: #007bff;
-  --color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-ion-fab-button:hover {
-  transform: scale(1.1);
-}
-
 /* 챗봇 모달 */
 .chatbot-modal {
   --background: white;
@@ -355,4 +343,10 @@ ion-label {
   align-items: center;
   text-align: center;
   color: #575757;
+}
+ion-fab-button::part(native) {
+  background-color: #2e43f3;
+  border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  color: #f1f1f1;
 }

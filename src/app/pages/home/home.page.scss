@@ -19,21 +19,26 @@
 p{
   font-weight: bold;
   font-size: 20px;
-  margin-left: 16px;
+  //margin-left: 10px;
+  margin-bottom: 5px;
+
 }
-
-
-p ion-icon {
-  margin-left: 230px;
-  color: grey;/* 텍스트와 아이콘 사이의 간격을 16px로 설정 */
+.home_comment_header {
+  display: flex; /* Flexbox 활성화 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: space-between; /* 두 요소 사이의 공간 균등 분배 */
+  padding: 10px; /* 적절한 여백 */
 }
-
 
 .home_comment {
   margin-top: 20px;
   margin-bottom: 30px;
-
-
+}
+.home_comment p{
+  margin-left: 20px;
+}
+.home_comment swiper-container {
+  margin-top: 0; /* swiper-container 위의 기본 마진 제거 */
 }
 
 //comment: 택스트 크기 설정
@@ -83,7 +88,7 @@ ion-label {
 
 .comment-card{
   padding: 15px;
-  margin: 20px 20px;
+  //margin: 20px 20px;
 }
 
 .comment-card-header{
@@ -174,23 +179,28 @@ ion-thumbnail img {
 }
 
 .movie{
+  margin-left: 15px;
 
+}
+.movie-items{
+  margin-left: 10px;
 }
 .recommended-section {
   //margin-top: 30px;
 
+
   .recommended-title {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 15px;
-    padding-left: 16px;
+    //margin-bottom: 8px;
+    margin-left: 12px;
   }
 
   swiper-container {
     width: 100%;
     height: auto;
-    // margin-left: 9px;
-    // margin-bottom: 25px;
+    margin-left: 12px;
+    margin-bottom: 25px;
 
     swiper-slide {
       display: flex;
@@ -199,7 +209,7 @@ ion-thumbnail img {
       width: calc(33.33% - 10px);
       height: auto;
       margin-right: 10px;
-      //margin-left: 7px;
+      //margin-left: 10px;
       // padding: 3px;
 
        movie-poster{
@@ -211,10 +221,12 @@ ion-thumbnail img {
         //transition: transform 0.3s; /* 애니메이션 효과 */
         // width: 100%;
         // height: auto; /* 이미지를 비율에 맞게 조정 */
-         width: 80px; /* 포스터 가로 크기 */
-         height: 135px; /* 포스터 세로 크기 */
+         width: 100px ; /* 포스터 가로 크기 */
+         height: auto; /* 포스터 세로 크기 */
          object-fit: cover; /* 비율 유지하며 크기 조정 */
          border-radius: 5px; /* 필요하면 둥근 모서리 */
+         margin-left: 10px;
+
 
       }
 
@@ -241,6 +253,7 @@ ion-thumbnail img {
   // border-radius: 10px; /* 모서리를 둥글게 */
   margin-right: 5px; /* 카드 간 간격 */
   // width: 150px; /* 카드 고정 너비 */
+
 }
 
 .movie-poster {
@@ -375,9 +388,12 @@ ion-fab-button::part(native) {
 }
 
 .genre {
-  padding: 10px;
+  padding: 5px;
 }
 
+.genre p{
+  margin-left: 10px;
+}
 .genre-item {
   display: flex;
   flex-direction: column;
@@ -387,7 +403,7 @@ ion-fab-button::part(native) {
 .movies {
   display: flex;
   gap: 10px; /* 영화 간격 */
-  overflow: auto; /* 스크롤을 허용 */
+  //overflow: auto; /* 스크롤을 허용 */
 }
 
 

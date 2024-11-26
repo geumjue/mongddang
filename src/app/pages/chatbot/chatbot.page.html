@@ -59,10 +59,13 @@
   <ion-toolbar class="input-toolbar">
     <ion-input
       [(ngModel)]="userMessage"
-      placeholder="Type your message..."
+      placeholder="궁금한 것을 무엇이든 물어보세요 !"
       class="chat-input"
       (keyup.enter)="sendMessage()"
+
     ></ion-input>
-    <ion-button fill="outline" (click)="sendMessage()">➤</ion-button>
+    <ion-button (click)="sendMessage()" slot="end">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-footer>

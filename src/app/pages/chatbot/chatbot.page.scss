@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*{
+  font-family: 'Pretendard-Regular';
+}
+
 /* 로딩 화면 */
 .loading-screen {
   display: flex;
@@ -154,18 +165,18 @@
   color: #333;
 }
 
-ion-button {
-  border-radius: 50%;
-  background-color: #007bff;
-  color: white;
-  height: 48px;
-  width: 48px;
-  text-align: center;
-}
+//ion-button {
+//  border-radius: 50%;
+//  background-color: #007bff;
+//  color: white;
+//  height: 48px;
+//  width: 48px;
+//  text-align: center;
+//}
 
-ion-button:hover {
-  background-color: #0056b3;
-}
+//ion-button:hover {
+//  background-color: #0056b3;
+//}
 
 /* 로딩 애니메이션 */
 .loading-animation {
@@ -204,4 +215,5 @@ ion-button:hover {
     transform: translateY(-8px);
   }
 }
+
 

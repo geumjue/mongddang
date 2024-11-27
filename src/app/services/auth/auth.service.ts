@@ -70,23 +70,6 @@ export class AuthService {
     return this.loggedInSubject.asObservable();
   }
 
-  // 회원가입 메서드
-  signUp(data: SignUpRequestData): Observable<AuthResponse> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(`${this.apiUrl}/signup`, data, { headers }).pipe(
-      catchError(error => {
-        console.error('회원가입 오류:', error);
-        return of({
-          success: false,
-          data: null,
-          statusCode: error.status,
-          message: error.message,
-        } as AuthResponse);
-      })
-    );
-  }
-
-  // 로그인 메서드
   login(data: SignInRequestData): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, data, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -98,11 +81,26 @@ export class AuthService {
             username: response.data.user.username,
             email: response.data.user.email,
           };
-
-          console.log('AuthService user after login:', this.user); // 디버깅용
-          localStorage.setItem('token', response.data.token);
+  
+          localStorage.setItem('token', response.data.token); // 토큰 저장
+          const isFirstLogin = localStorage.getItem('isFirstLogin') === 'true';
+          const recommendationShown = localStorage.getItem('recommendationShown') === 'true';
+  
+          console.log('isFirstLogin:', isFirstLogin);
+          console.log('recommendationShown:', recommendationShown);
+  
+          if (isFirstLogin && !recommendationShown) {
+            // 추천 페이지를 첫 로그인 시 한 번만 표시
+            console.log('추천 페이지로 이동합니다.');
+            localStorage.setItem('recommendationShown', 'true');
+            localStorage.removeItem('isFirstLogin');
+            this.router.navigate(['/recommendation']);
+          } else {
+            console.log('홈 페이지로 이동합니다.');
+            this.router.navigate(['/home']);
+          }
+  
           this.loggedInSubject.next(true);
-          this.router.navigate(['/recommendation']);
         }
       }),
       catchError(error => {
@@ -116,7 +114,31 @@ export class AuthService {
       })
     );
   }
-
+  
+  
+  signUp(data: SignUpRequestData): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/signup`, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    }).pipe(
+      tap(response => {
+        if (response.success && response.data) {
+          console.log('회원가입 성공. isFirstLogin 설정');
+          localStorage.setItem('isFirstLogin', 'true'); // 첫 로그인 플래그 설정
+        }
+      }),
+      catchError(error => {
+        console.error('회원가입 오류:', error);
+        return of({
+          success: false,
+          data: null,
+          statusCode: error.status,
+          message: error.message,
+        } as AuthResponse);
+      })
+    );
+  }
+  
+  
   logOut(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => {

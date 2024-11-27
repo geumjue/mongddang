@@ -4,7 +4,9 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { FavoriteService } from 'src/app/services/favorite/favorite.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
 import { GetMovieByIdResponseData } from 'src/app/models/movie/movie-getmoviebyid-response-data.interface';
-import { GetMoviesResponseData } from 'src/app/models/movie/movie-getmovie-response-data.interface';
+import { jwtDecode } from 'jwt-decode';
+import { GetUserResponseData } from 'src/app/models/user/user-getuser-response.data.interface';
+import { UserService } from 'src/app/services/user/user.service';
 
 interface LikedMovie {
   movieId: number;
@@ -25,7 +27,8 @@ interface Movie{
 })
 export class RecommendationPage implements OnInit {
   isLoggedIn: boolean = false;
-  user = { id: 0, username: '', email: '' };
+  user = { username: '', email: '' };
+  nickname: string | null = null; // 사용자 닉네임
   likedMovies: LikedMovie[] = [];
   movies: Movie[] = []; // movies 속성 추가
   selectedMovies: Movie[] = []; // 사용자가 선택한 영화 목록
@@ -37,25 +40,84 @@ export class RecommendationPage implements OnInit {
     private authService: AuthService,
     private favoriteService: FavoriteService,
     private movieService: MovieService,
+    private userService: UserService,
     private router: Router
   ) {}
 
+ 
   ngOnInit(): void {
     this.authService.getLoginStatus().subscribe({
       next: (status) => {
         this.isLoggedIn = status;
+  
         if (this.isLoggedIn) {
-          this.loadMovies(); // 영화 데이터를 로드
+          const isFirstLogin = localStorage.getItem('isFirstLogin') === 'true';
+          const recommendationShown = localStorage.getItem('recommendationShown') === 'true';
+  
+          console.log('isFirstLogin:', isFirstLogin);
+          console.log('recommendationShown:', recommendationShown);
+  
+          // 첫 로그인 시 추천 페이지 표시
+          if (isFirstLogin && !recommendationShown) {
+            console.log('추천 페이지를 표시합니다.');
+            this.getUserData(); // 사용자 데이터 로드
+            this.loadMovies(); // 영화 데이터 로드
+          } else if (!recommendationShown) {
+            console.log('추천 페이지 유지');
+            this.getUserData(); // 사용자 데이터 로드
+            this.loadMovies(); // 영화 데이터 로드
+          } else {
+            // 이미 추천 페이지를 표시했다면 홈으로 이동
+            console.log('이미 추천 페이지를 표시했으므로 홈으로 이동합니다.');
+            this.router.navigate(['/home']);
+          }
         } else {
-          this.router.navigate(['/auth/login']); // 로그인 페이지로 리다이렉트
+          // 로그인하지 않은 경우 로그인 페이지로 이동
+          console.log('로그인하지 않았으므로 로그인 페이지로 이동합니다.');
+          this.router.navigate(['/auth/login']);
         }
       },
       error: (err) => {
-        console.error('Error checking login status:', err);
+        console.error('로그인 상태 확인 중 오류 발생:', err);
       },
     });
   }
+  
+  
+  // 페이지 완료 후 플래그 저장
+  completeRecommendationProcess() {
+    localStorage.setItem('recommendationShown', 'true'); // 페이지 표시 완료 기록
+    this.router.navigate(['/home']); // Home 페이지로 리다이렉트
+  }
+  
+  // 사용자 데이터를 가져오는 메서드
+  getUserData() {
+    const email = this.getUserEmailFromToken();
+    if (email) {
+      this.userService.getUserByEmail(email).subscribe({
+        next: (user: GetUserResponseData) => {
+          console.log('User Data:', user);
+          this.user = user;
+        },
+        error: (err) => {
+          console.error('사용자 정보를 가져오는 중 오류:', err);
+        }
+      });
+    } else {
+      console.warn('No email found in token');
+      this.isLoggedIn = false;
+    }
+  }
 
+  // JWT 토큰에서 이메일 추출
+  private getUserEmailFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.email;
+    }
+    return null;
+  }
   getUserFavorites() {
     const userId = parseInt(this.authService.getUserIdFromToken()!, 10);
     if (!isNaN(userId) && userId > 0) {
@@ -146,14 +208,10 @@ export class RecommendationPage implements OnInit {
       return;
     }
   
-    console.log('Selected movies:', this.selectedMovies);
-  
     const genreCounts: { [key: string]: number } = {};
   
     this.selectedMovies.forEach((movie) => {
       const genre = this.getGenreByMovie(movie);
-      console.log(`Movie ID: ${movie.movieId}, Genre: ${genre}`);
-  
       if (!genreCounts[genre]) {
         genreCounts[genre] = 0;
       }
@@ -164,15 +222,12 @@ export class RecommendationPage implements OnInit {
       genreCounts[a] > genreCounts[b] ? a : b
     );
   
-    alert(`가장 많이 선택된 장르: ${mostFrequentGenre}`);
-  
-    // 선택된 장르를 localStorage에 저장
+    // 선택된 장르를 로컬 스토리지에 저장
     localStorage.setItem('selectedGenre', mostFrequentGenre);
   
-    // Home 페이지로 이동하며 장르를 전달
+    // Home 페이지로 이동하며 선택된 장르 전달
     this.router.navigate(['/home'], { queryParams: { genre: mostFrequentGenre } });
   }
-  
   
   
   getGenreByMovie(movie: Movie): string {
@@ -186,5 +241,10 @@ export class RecommendationPage implements OnInit {
   
     return foundGenre || '기타';
   }
+  goToRecommendationProcess() {
+    // 장르 선택 페이지로 이동
+    this.router.navigate(['/recommendation']);
+  }
+  
   
 }
